@@ -1,1 +1,7 @@
 # dapp-scaner
+
+This is the Database diagram for the DB called dappscaner:
+
+![img.png](img.png)
+
+https://www.mermaidchart.com/play#pako:eNp9k19rgzAUxb9K8L0ve_RNNHWymoiNBWEgwUYbVo0kdrC1--4L_m9rep-C_E7uzT3Hq5WLI7Nsi0mP01LS6rMGujwnisDtttmIa3fO3HcnQGAoG6hL0wjZKgO9ewNz2eBETWAUY4JdvBtAXrdMD9EyE79NkBcgf7xYUq6MLMEfcDEyV-pivhfC5cD5icrSCPv4AGPkIBd2cCm-maxNcAhJHLjTza2k-ZeJdVwSHAKSDqwoCiY129OuQ6CP43SpAHdrzvXiSiH57zh5gLxkT15KzlQpXnA2t-mMNllvgyMreD02GHw2Wb-ge362ezUET_xgd7bHSay3vZaESQNG0Z3va4F4eET3OdviOHSIgS-ErGg7jwVhRtIIPrcYc6SN_mnmd8yJyULswZ0pTjao9O94nnR9eKZea7l66DRGaNCspmuSWH__-RMfSw

@@ -7,3 +7,4 @@ venv/
 .idea/
 *.iml
 *.ini
+dapp_scraper/init_db.py
