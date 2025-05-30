@@ -1,0 +1,8 @@
+dapp_name,slug,category,fee_type,rate,charged_to,recipient
+Aave,aave,DAO,Protocol Fee,0.0009,Borrowers,Safety Module
+Compound,compound,DAO,Interest Fee,0.1,Borrowers,Lenders
+MakerDAO,maker,DAO,Stability Fee,0.025,Borrowers,Protocol
+OpenSea,opensea,Marketplaces,Marketplace Fee,0.025,Sellers,Platform
+PancakeSwap,pancakeswap,DeFi,Trading Fee,0.0025,Traders,Liquidity Providers
+Uniswap,uniswap,DAO,Trading Fee,0.003,Traders,Liquidity Providers
+Yearn Finance,yearn,DAO,Management Fee,0.02,Vault Users,Treasury

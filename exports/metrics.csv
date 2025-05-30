@@ -1,0 +1,1325 @@
+dapp_name,slug,category,metric_name,metric_value,metric_date
+Aave,aave,DAO,active_voters,2100.0,2025-05-30
+Aave,aave,DAO,active_voters,2100.0,2025-05-29
+Aave,aave,DAO,members,12000.0,2025-05-30
+Aave,aave,DAO,members,12000.0,2025-05-29
+Aave,aave,DAO,proposals,234.0,2025-05-30
+Aave,aave,DAO,proposals,234.0,2025-05-29
+Aave,aave,DAO,treasury_value,850000000.0,2025-05-30
+Aave,aave,DAO,treasury_value,850000000.0,2025-05-29
+Aave,aave,DAO,tvl,6800000000.0,2025-05-30
+Aave,aave,DAO,tvl,6800000000.0,2025-05-29
+Aave,aave,DAO,users,12000.0,2025-05-30
+Aave,aave,DAO,users,12000.0,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_arbitrum,859846989.45928,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_arbitrum,896901612.83647,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_arbitrum-borrowed,554788213.46941,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_arbitrum-borrowed,575256354.3472,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_avalanche,709454279.12331,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_avalanche,722189129.72654,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_avalanche-borrowed,364370655.33724,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_avalanche-borrowed,374780970.55207,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_base,522715004.06783,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_base,539335648.68718,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_base-borrowed,363922349.79725,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_base-borrowed,374221805.85406,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_binance,208867631.38584,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_binance,215923947.6341,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_binance-borrowed,96732642.49361,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_binance-borrowed,97989856.81795,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_borrowed,16304943198.80044,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_borrowed,16654110757.31203,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_celo,5298903.63864,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_celo,5354142.81598,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_celo-borrowed,163694.12072,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_celo-borrowed,165587.49284,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_ethereum,21279427009.76068,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_ethereum,22000194282.84953,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_ethereum-borrowed,14609526042.03393,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_ethereum-borrowed,14906684005.08801,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_fantom,37907.59135,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_fantom,41500.40837,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_fantom-borrowed,7451.59087,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_fantom-borrowed,8157.26379,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_harmony,0.0,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_harmony,0.0,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_harmony-borrowed,1015708.46139,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_harmony-borrowed,1145157.15804,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_linea,8365164.53069,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_linea,8619948.76094,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_linea-borrowed,4269575.5403,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_linea-borrowed,4074492.68762,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_metis,8980908.41956,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_metis,9554345.3451,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_metis-borrowed,5346753.77881,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_metis-borrowed,5432774.80816,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_optimism,135458511.25308,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_optimism,140862574.17945,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_optimism-borrowed,67873915.97962,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_optimism-borrowed,69280090.87152,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_polygon,244469048.94131,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_polygon,252548195.41148,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_polygon-borrowed,106445412.96675,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_polygon-borrowed,107417754.33584,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_scroll,21424794.6975,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_scroll,26452410.46507,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_scroll-borrowed,19619369.11595,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_scroll-borrowed,23103002.78212,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_sonic,314122830.75399,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_sonic,315243132.17117,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_sonic-borrowed,83296161.11887,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_sonic-borrowed,84872743.67517,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_xdai,70669297.28286,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_xdai,71391081.97804,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_xdai-borrowed,23676642.36723,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_xdai-borrowed,25647656.12435,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_zksync era,9244244.32635,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_zksync era,9879121.02963,2025-05-29
+AAVE V3,aave-v3,Lending,tvl_zksync era-borrowed,3888610.62848,2025-05-30
+AAVE V3,aave-v3,Lending,tvl_zksync era-borrowed,4030347.45329,2025-05-29
+Aerodrome Slipstream,aerodrome-slipstream,Dexs,tvl_base,699375848.80385,2025-05-30
+Arbitrum Bridge,arbitrum-bridge,Chain,tvl_ethereum,4957636947.44629,2025-05-30
+Arbitrum Bridge,arbitrum-bridge,Chain,tvl_ethereum,5173570228.32362,2025-05-29
+Avalanche Core Bridge,avalanche-core-bridge,Chain,tvl_bitcoin,520353246.27932,2025-05-30
+Avalanche Core Bridge,avalanche-core-bridge,Chain,tvl_ethereum,198962675.46046,2025-05-30
+Axelar Cross Chain,axelar-cross-chain,Bridge,tvl_arbitrum,105755166.63977,2025-05-30
+Axelar Cross Chain,axelar-cross-chain,Bridge,tvl_binance,529083897.6242,2025-05-30
+Axelar Cross Chain,axelar-cross-chain,Bridge,tvl_ethereum,36525733.90108,2025-05-30
+B2 Buzz,b2-buzz,Chain,tvl_binance,35040.41614,2025-05-30
+B2 Buzz,b2-buzz,Chain,tvl_bitcoin,627273678.71241,2025-05-30
+B2 Buzz,b2-buzz,Chain,tvl_ethereum,2440422.57986,2025-05-30
+B2 Buzz,b2-buzz,Chain,tvl_polygon,71210.92668,2025-05-30
+Babylon Protocol,babylon-protocol,Restaking,tvl_bitcoin,5045344867.02277,2025-05-30
+Babylon Protocol,babylon-protocol,Restaking,tvl_bitcoin,5184128920.86798,2025-05-29
+Base Bridge,base-bridge,Chain,tvl_ethereum,6232457737.47627,2025-05-30
+Base Bridge,base-bridge,Chain,tvl_ethereum,6594357313.22417,2025-05-29
+Binance Bitcoin,binance-bitcoin,Bridge,tvl_bitcoin,7209627271.5968,2025-05-30
+Binance Bitcoin,binance-bitcoin,Bridge,tvl_bitcoin,7400246289.35349,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_algorand,142706285.64098,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_algorand,152958493.26878,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_aptos,223047540.25017,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_aptos,236574849.62968,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_arbitrum,858410103.71925,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_arbitrum,998845724.07051,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_avalanche,941575016.9785,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_avalanche,928989132.59367,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_base,2539402656.73866,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_base,2652013530.38485,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_binance,22998468643.23093,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_binance,23577893552.71801,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_bitcoin,58706625104.8149,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_bitcoin,60011915208.52631,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_celo,48852840.46407,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_celo,53902961.74786,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_chiliz,64331846.19093,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_chiliz,70715185.33818,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_doge,3378367285.06191,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_doge,3708122850.58385,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_ethereum,38213085172.85828,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_ethereum,39152699299.74117,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_hedera,524246960.05978,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_hedera,551595464.66682,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_litecoin,525962133.09676,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_litecoin,568518606.22229,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_manta,848524.88969,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_manta,882874.8043,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_near,522151763.82839,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_near,550657602.50372,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_op_bnb,26578998.86467,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_op_bnb,27185391.62927,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_optimism,292780313.20446,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_optimism,316878983.13285,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_polkadot,571817333.46175,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_polkadot,622416574.64649,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_polygon,238914775.64788,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_polygon,240186249.00822,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_ripple,5409257568.45667,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_ripple,5701554158.24891,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_ronin,14290286.77919,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_ronin,17106358.5647,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_scroll,9417061.22301,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_scroll,9717075.07154,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_solana,6812517266.83682,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_solana,7170066771.41501,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_sonic,331543934.85852,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_sonic,469304390.09116,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_starknet,78165096.59942,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_starknet,80168830.80617,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_stellar,127965676.79611,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_stellar,133091086.27217,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_sui,1938499.63598,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_sui,2044642.26736,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_ton,494676577.81316,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_ton,485276504.45955,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_tron,7914432770.65276,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_tron,7915265090.34397,2025-05-29
+Binance CEX,binance-cex,CEX,tvl_zksync era,2440600.38977,2025-05-30
+Binance CEX,binance-cex,CEX,tvl_zksync era,2560685.19371,2025-05-29
+Binance staked ETH,binance-staked-eth,Liquid Staking,tvl_binance,495786633.20828,2025-05-30
+Binance staked ETH,binance-staked-eth,Liquid Staking,tvl_binance,511049852.97511,2025-05-29
+Binance staked ETH,binance-staked-eth,Liquid Staking,tvl_ethereum,5784402961.94814,2025-05-30
+Binance staked ETH,binance-staked-eth,Liquid Staking,tvl_ethereum,5844736921.24919,2025-05-29
+Binance Staked SOL,binance-staked-sol,Liquid Staking,tvl_solana,1447598573.2049,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_algorand,1184600.8326,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_algorand,1267504.29371,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_aptos,1571572.30077,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_aptos,1659689.08782,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_avalanche,26795471.52687,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_avalanche,17737089.05538,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_bitcoin,16179364569.45358,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_bitcoin,16549841729.90894,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_cardano,0.8906,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_cardano,0.94792,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_cosmos,2460739.0628,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_cosmos,2682136.93742,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_doge,0.0,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_doge,0.0,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_elrond,490697.82338,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_elrond,507531.78731,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_eos,3097319.89947,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_eos,5434876.62892,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_ethereum,9149983495.74215,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_ethereum,9644379667.91713,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_ethereumclassic,0.16799,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_ethereumclassic,0.17906,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_fantom,0.07692,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_fantom,0.08407,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_litecoin,3281295.85969,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_litecoin,4076818.28701,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_near,1255449.05832,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_near,1396124.53741,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_polkadot,6130663.02859,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_polkadot,6667313.17314,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_polygon,56512838.76496,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_polygon,54538298.9175,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_solana,150992418.39553,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_solana,166500600.42626,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_tezos,1953452.5817,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_tezos,1775534.83918,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_tron,528703267.02916,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_tron,402127767.82368,2025-05-29
+Bitfinex,bitfinex,CEX,tvl_zilliqa,159674.5707,2025-05-30
+Bitfinex,bitfinex,CEX,tvl_zilliqa,172010.42591,2025-05-29
+Bitget,bitget,CEX,tvl_arbitrum,32235517.85353,2025-05-30
+Bitget,bitget,CEX,tvl_arbitrum,37606240.68034,2025-05-29
+Bitget,bitget,CEX,tvl_avalanche,21939839.25638,2025-05-30
+Bitget,bitget,CEX,tvl_avalanche,23246643.54328,2025-05-29
+Bitget,bitget,CEX,tvl_binance,103693477.48006,2025-05-30
+Bitget,bitget,CEX,tvl_binance,94334721.46568,2025-05-29
+Bitget,bitget,CEX,tvl_bitcoin,2049897467.72085,2025-05-30
+Bitget,bitget,CEX,tvl_bitcoin,2081511255.68193,2025-05-29
+Bitget,bitget,CEX,tvl_cronos,5974988.96705,2025-05-30
+Bitget,bitget,CEX,tvl_cronos,5959020.83497,2025-05-29
+Bitget,bitget,CEX,tvl_ethereum,2564456319.22885,2025-05-30
+Bitget,bitget,CEX,tvl_ethereum,2643529330.69303,2025-05-29
+Bitget,bitget,CEX,tvl_fantom,82.50677,2025-05-30
+Bitget,bitget,CEX,tvl_fantom,116.76102,2025-05-29
+Bitget,bitget,CEX,tvl_kava,6354392.96177,2025-05-30
+Bitget,bitget,CEX,tvl_kava,6350090.91841,2025-05-29
+Bitget,bitget,CEX,tvl_metis,404560.29007,2025-05-30
+Bitget,bitget,CEX,tvl_metis,445153.69501,2025-05-29
+Bitget,bitget,CEX,tvl_optimism,21648458.5387,2025-05-30
+Bitget,bitget,CEX,tvl_optimism,20420423.64777,2025-05-29
+Bitget,bitget,CEX,tvl_polygon,29470202.22758,2025-05-30
+Bitget,bitget,CEX,tvl_polygon,29709435.83586,2025-05-29
+Bitget,bitget,CEX,tvl_ripple,272063975.49685,2025-05-30
+Bitget,bitget,CEX,tvl_ripple,282923231.64673,2025-05-29
+Bitget,bitget,CEX,tvl_solana,344218585.61526,2025-05-30
+Bitget,bitget,CEX,tvl_solana,367390462.41426,2025-05-29
+Bitget,bitget,CEX,tvl_starknet,292868.24166,2025-05-30
+Bitget,bitget,CEX,tvl_starknet,297532.0284,2025-05-29
+Bitget,bitget,CEX,tvl_ton,129249125.68556,2025-05-30
+Bitget,bitget,CEX,tvl_ton,130007287.37442,2025-05-29
+Bitget,bitget,CEX,tvl_tron,472366986.40236,2025-05-30
+Bitget,bitget,CEX,tvl_tron,481422499.51081,2025-05-29
+Bitget,bitget,CEX,tvl_zksync era,3959474.48719,2025-05-30
+Bitget,bitget,CEX,tvl_zksync era,4047736.32774,2025-05-29
+Bitkub,bitkub,CEX,tvl_algorand,947714.80535,2025-05-30
+Bitkub,bitkub,CEX,tvl_aptos,150659.93227,2025-05-30
+Bitkub,bitkub,CEX,tvl_arbitrum,15503349.82232,2025-05-30
+Bitkub,bitkub,CEX,tvl_avalanche,4612764.28361,2025-05-30
+Bitkub,bitkub,CEX,tvl_base,1526814.70635,2025-05-30
+Bitkub,bitkub,CEX,tvl_binance,31257232.73194,2025-05-30
+Bitkub,bitkub,CEX,tvl_bitcoin,727650663.73471,2025-05-30
+Bitkub,bitkub,CEX,tvl_cardano,78872325.13282,2025-05-30
+Bitkub,bitkub,CEX,tvl_core,102306.49347,2025-05-30
+Bitkub,bitkub,CEX,tvl_doge,99690737.55293,2025-05-30
+Bitkub,bitkub,CEX,tvl_ethereum,83691123.82856,2025-05-30
+Bitkub,bitkub,CEX,tvl_fantom,0.40962,2025-05-30
+Bitkub,bitkub,CEX,tvl_litecoin,6912.10918,2025-05-30
+Bitkub,bitkub,CEX,tvl_mantle,273568.14188,2025-05-30
+Bitkub,bitkub,CEX,tvl_optimism,13172146.9181,2025-05-30
+Bitkub,bitkub,CEX,tvl_polygon,4859996.14875,2025-05-30
+Bitkub,bitkub,CEX,tvl_ripple,189657370.17049,2025-05-30
+Bitkub,bitkub,CEX,tvl_solana,28794922.07025,2025-05-30
+Bitkub,bitkub,CEX,tvl_ton,939412.23082,2025-05-30
+Bitkub,bitkub,CEX,tvl_tron,4421513.37583,2025-05-30
+Bitkub,bitkub,CEX,tvl_zksync era,63522.61578,2025-05-30
+Bitmex,bitmex,CEX,tvl_bitcoin,5297548574.49215,2025-05-30
+Bitmex,bitmex,CEX,tvl_bitcoin,5438954689.0011,2025-05-29
+Bitmex,bitmex,CEX,tvl_ethereum,74590263.63495,2025-05-30
+Bitmex,bitmex,CEX,tvl_ethereum,71587112.60046,2025-05-29
+Bitstamp,bitstamp,CEX,tvl_algorand,1601279.21991,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_avalanche,3073739.47946,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_bitcoin,1264832269.11983,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_cardano,83.84841,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_ethereum,506912947.79311,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_litecoin,23382162.17009,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_near,646102.19465,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_ripple,437422033.6505,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_solana,50041799.79427,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_sui,3.83368,2025-05-30
+Bitstamp,bitstamp,CEX,tvl_xdc,56.88245,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_aptos,53586902.03,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_arbitrum,31098377.48,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_avalanche,53008324.26,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_ethereum,2712159811.25385,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_optimism,26263442.89,2025-05-30
+BlackRock BUIDL,blackrock-buidl,RWA,tvl_polygon,23963484.43,2025-05-30
+Bybit,bybit,CEX,tvl_aptos,41782708.90261,2025-05-30
+Bybit,bybit,CEX,tvl_aptos,44102832.02039,2025-05-29
+Bybit,bybit,CEX,tvl_arbitrum,56166083.13177,2025-05-30
+Bybit,bybit,CEX,tvl_arbitrum,64402765.8445,2025-05-29
+Bybit,bybit,CEX,tvl_arbitrum nova,2945395.10131,2025-05-30
+Bybit,bybit,CEX,tvl_arbitrum nova,3012691.88864,2025-05-29
+Bybit,bybit,CEX,tvl_avalanche,127159129.91996,2025-05-30
+Bybit,bybit,CEX,tvl_avalanche,121850175.6119,2025-05-29
+Bybit,bybit,CEX,tvl_base,28901076.25727,2025-05-30
+Bybit,bybit,CEX,tvl_base,28811226.69958,2025-05-29
+Bybit,bybit,CEX,tvl_binance,185870596.85807,2025-05-30
+Bybit,bybit,CEX,tvl_binance,193535080.46008,2025-05-29
+Bybit,bybit,CEX,tvl_bitcoin,6144893117.4748,2025-05-30
+Bybit,bybit,CEX,tvl_bitcoin,6226640735.34037,2025-05-29
+Bybit,bybit,CEX,tvl_cardano,43755936.2813,2025-05-30
+Bybit,bybit,CEX,tvl_cardano,43786161.78008,2025-05-29
+Bybit,bybit,CEX,tvl_celo,6424741.56339,2025-05-30
+Bybit,bybit,CEX,tvl_celo,6904985.28116,2025-05-29
+Bybit,bybit,CEX,tvl_cosmos,31253879.20123,2025-05-30
+Bybit,bybit,CEX,tvl_cosmos,34010129.30979,2025-05-29
+Bybit,bybit,CEX,tvl_doge,273964836.37586,2025-05-30
+Bybit,bybit,CEX,tvl_doge,297651978.42489,2025-05-29
+Bybit,bybit,CEX,tvl_dydx,22393687.13874,2025-05-30
+Bybit,bybit,CEX,tvl_dydx,23642868.89851,2025-05-29
+Bybit,bybit,CEX,tvl_eos,1471194.08034,2025-05-30
+Bybit,bybit,CEX,tvl_eos,1578351.45915,2025-05-29
+Bybit,bybit,CEX,tvl_ethereum,6873194030.4751,2025-05-30
+Bybit,bybit,CEX,tvl_ethereum,6984494235.30536,2025-05-29
+Bybit,bybit,CEX,tvl_fantom,50.79774,2025-05-30
+Bybit,bybit,CEX,tvl_fantom,71.88738,2025-05-29
+Bybit,bybit,CEX,tvl_kava,11813903.5778,2025-05-30
+Bybit,bybit,CEX,tvl_kava,12073044.65123,2025-05-29
+Bybit,bybit,CEX,tvl_linea,22205158.48411,2025-05-30
+Bybit,bybit,CEX,tvl_linea,21561330.32247,2025-05-29
+Bybit,bybit,CEX,tvl_litecoin,78876204.5775,2025-05-30
+Bybit,bybit,CEX,tvl_litecoin,85838301.43994,2025-05-29
+Bybit,bybit,CEX,tvl_manta,76478.61279,2025-05-30
+Bybit,bybit,CEX,tvl_manta,78067.51824,2025-05-29
+Bybit,bybit,CEX,tvl_mantle,536432686.07631,2025-05-30
+Bybit,bybit,CEX,tvl_mantle,545099095.27738,2025-05-29
+Bybit,bybit,CEX,tvl_optimism,69339465.68382,2025-05-30
+Bybit,bybit,CEX,tvl_optimism,73173057.75217,2025-05-29
+Bybit,bybit,CEX,tvl_polkadot,65278565.98691,2025-05-30
+Bybit,bybit,CEX,tvl_polkadot,69600852.11087,2025-05-29
+Bybit,bybit,CEX,tvl_polygon,44754699.28163,2025-05-30
+Bybit,bybit,CEX,tvl_polygon,43598655.01695,2025-05-29
+Bybit,bybit,CEX,tvl_ripple,763520978.43417,2025-05-30
+Bybit,bybit,CEX,tvl_ripple,803196852.5969,2025-05-29
+Bybit,bybit,CEX,tvl_scroll,33232.58919,2025-05-30
+Bybit,bybit,CEX,tvl_scroll,33886.78796,2025-05-29
+Bybit,bybit,CEX,tvl_solana,1392994488.06859,2025-05-30
+Bybit,bybit,CEX,tvl_solana,1425885324.85335,2025-05-29
+Bybit,bybit,CEX,tvl_sonic,3.28432,2025-05-30
+Bybit,bybit,CEX,tvl_sonic,4.65306,2025-05-29
+Bybit,bybit,CEX,tvl_starknet,64975.19252,2025-05-30
+Bybit,bybit,CEX,tvl_starknet,65425.2682,2025-05-29
+Bybit,bybit,CEX,tvl_taiko,6409.31402,2025-05-30
+Bybit,bybit,CEX,tvl_taiko,6526.57032,2025-05-29
+Bybit,bybit,CEX,tvl_ton,36546201.02422,2025-05-30
+Bybit,bybit,CEX,tvl_ton,40768109.61409,2025-05-29
+Bybit,bybit,CEX,tvl_tron,1663251220.17492,2025-05-30
+Bybit,bybit,CEX,tvl_tron,1736692064.35234,2025-05-29
+Bybit,bybit,CEX,tvl_zksync era,16905162.21539,2025-05-30
+Bybit,bybit,CEX,tvl_zksync era,17233150.34618,2025-05-29
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_arbitrum,2423147.95303,2025-05-30
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_base,10599.82093,2025-05-30
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_binance,4395.57213,2025-05-30
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_ethereum,832215083.66269,2025-05-30
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_optimism,24031.62401,2025-05-30
+CIAN Yield Layer,cian-yield-layer,Yield Aggregator,tvl_scroll,0.0,2025-05-30
+Coinbase BTC,coinbase-btc,Bridge,tvl_bitcoin,1601064741.48394,2025-05-30
+Compound,compound,DAO,active_voters,1200.0,2025-05-30
+Compound,compound,DAO,active_voters,1200.0,2025-05-29
+Compound,compound,DAO,members,8500.0,2025-05-30
+Compound,compound,DAO,members,8500.0,2025-05-29
+Compound,compound,DAO,proposals,156.0,2025-05-30
+Compound,compound,DAO,proposals,156.0,2025-05-29
+Compound,compound,DAO,treasury_value,450000000.0,2025-05-30
+Compound,compound,DAO,treasury_value,450000000.0,2025-05-29
+Compound,compound,DAO,tvl,3200000000.0,2025-05-30
+Compound,compound,DAO,tvl,3200000000.0,2025-05-29
+Compound,compound,DAO,users,8500.0,2025-05-30
+Compound,compound,DAO,users,8500.0,2025-05-29
+Compound V3,compound-v3,Lending,tvl_arbitrum,135925059.07467,2025-05-30
+Compound V3,compound-v3,Lending,tvl_arbitrum-borrowed,59455557.74852,2025-05-30
+Compound V3,compound-v3,Lending,tvl_base,63955001.24199,2025-05-30
+Compound V3,compound-v3,Lending,tvl_base-borrowed,26486077.64077,2025-05-30
+Compound V3,compound-v3,Lending,tvl_borrowed,895960427.21178,2025-05-30
+Compound V3,compound-v3,Lending,tvl_ethereum,1830172157.57055,2025-05-30
+Compound V3,compound-v3,Lending,tvl_ethereum-borrowed,774221457.09945,2025-05-30
+Compound V3,compound-v3,Lending,tvl_mantle,7027494.12568,2025-05-30
+Compound V3,compound-v3,Lending,tvl_mantle-borrowed,1928770.40366,2025-05-30
+Compound V3,compound-v3,Lending,tvl_optimism,31090358.90039,2025-05-30
+Compound V3,compound-v3,Lending,tvl_optimism-borrowed,15173679.70379,2025-05-30
+Compound V3,compound-v3,Lending,tvl_polygon,36314128.26682,2025-05-30
+Compound V3,compound-v3,Lending,tvl_polygon-borrowed,12925338.4872,2025-05-30
+Compound V3,compound-v3,Lending,tvl_ronin,1668068.07872,2025-05-30
+Compound V3,compound-v3,Lending,tvl_ronin-borrowed,6089.72125,2025-05-30
+Compound V3,compound-v3,Lending,tvl_scroll,257180.75146,2025-05-30
+Compound V3,compound-v3,Lending,tvl_scroll-borrowed,42083.376,2025-05-30
+Compound V3,compound-v3,Lending,tvl_unichain,7649298.58486,2025-05-30
+Compound V3,compound-v3,Lending,tvl_unichain-borrowed,5721373.03113,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_arbitrum,1813229.83023,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_ethereum,1142551988.59857,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_ethereum-staking,160510364.87232,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_fraxtal,33144128.27308,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_polygon,3934613.30128,2025-05-30
+Convex Finance,convex-finance,Yield,tvl_staking,160510364.87232,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_arbitrum,0.03134,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_avalanche,4.312,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_binance,637323.32436,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_bitcoin,2524310227.29693,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_ethereum,1029795097.55007,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_fantom,0.04174,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_optimism,0.00585,2025-05-30
+Crypto-com,crypto-com,CEX,tvl_polygon,421645.26932,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_arbitrum,38326439.54908,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_aurora,17220.12609,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_avalanche,3437880.67798,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_base,43229791.52913,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_binance,11177389.68509,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_celo,318749.1074,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_corn,360116.35739,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_ethereum,1755514445.23604,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_ethereum-staking,605917814.66555,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_fantom,2878560.33712,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_fraxtal,36116727.54711,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_harmony,0.0,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_hyperliquid l1,12277370.5856,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_ink,26460.95657,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_kava,2719550.41747,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_mantle,1.00274,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_moonbeam,17120.3901,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_optimism,4521230.81265,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_polygon,12069986.29149,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_sonic,9221583.42263,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_staking,605917814.66555,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_taiko,1520471.98867,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_x layer,5005777.54524,2025-05-30
+Curve DEX,curve-dex,Dexs,tvl_xdai,2891509.86763,2025-05-30
+Deribit,deribit,CEX,tvl_binance,0.0,2025-05-30
+Deribit,deribit,CEX,tvl_binance,0.0,2025-05-29
+Deribit,deribit,CEX,tvl_bitcoin,3698232018.90444,2025-05-30
+Deribit,deribit,CEX,tvl_bitcoin,3816356311.30856,2025-05-29
+Deribit,deribit,CEX,tvl_ethereum,814575052.9257,2025-05-30
+Deribit,deribit,CEX,tvl_ethereum,846005226.85619,2025-05-29
+Deribit,deribit,CEX,tvl_ethereumpow,6.04079,2025-05-30
+Deribit,deribit,CEX,tvl_ethereumpow,6.61793,2025-05-29
+Deribit,deribit,CEX,tvl_ripple,2266610.50771,2025-05-30
+Deribit,deribit,CEX,tvl_ripple,2366070.93759,2025-05-29
+Deribit,deribit,CEX,tvl_solana,12185175.05947,2025-05-30
+Deribit,deribit,CEX,tvl_solana,12484802.0868,2025-05-29
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_ailayer,21076525.17807,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_arbitrum,28.38142,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_binance,144.28903,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_bitlayer,126296898.44208,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_bsquared,79570582.52475,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_core,231417400.2839,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_ethereum,842172.48926,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_exsat,315538205.82268,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_hemi,284774510.61804,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_linea,0.0,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_merlin,0.0,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_mode,281425073.55366,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_scroll,0.0,2025-05-30
+DeSyn Liquid Strategy,desyn-liquid-strategy,Yield Aggregator,tvl_zklink,0.0,2025-05-30
+Drift Trade,drift-trade,Derivatives,tvl_solana,779937612.09069,2025-05-30
+EigenLayer,eigenlayer,Restaking,tvl_ethereum,11103738789.58504,2025-05-30
+EigenLayer,eigenlayer,Restaking,tvl_ethereum,11751426420.56726,2025-05-29
+EigenLayer,eigenlayer,Restaking,tvl_ethereum-staking,630420270.93377,2025-05-30
+EigenLayer,eigenlayer,Restaking,tvl_ethereum-staking,705083895.86279,2025-05-29
+EigenLayer,eigenlayer,Restaking,tvl_staking,630420270.93377,2025-05-30
+EigenLayer,eigenlayer,Restaking,tvl_staking,705083895.86279,2025-05-29
+Ethena USDe,ethena-usde,Basis Trading,tvl_ethereum,5296072295.03503,2025-05-30
+Ethena USDe,ethena-usde,Basis Trading,tvl_ethereum,5222431594.16278,2025-05-29
+Ethena USDtb,ethena-usdtb,RWA,tvl_ethereum,1449159857.12565,2025-05-30
+ether.fi Liquid,ether.fi-liquid,Onchain Capital Allocator,tvl_ethereum,1066588635.05119,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_arbitrum-staking,2650250.73874,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_arbitrum-staking,2994328.63516,2025-05-29
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_base-staking,0.0,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_base-staking,0.0,2025-05-29
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_ethereum,6345526389.50674,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_ethereum,6365762680.92804,2025-05-29
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_ethereum-staking,30389496.22052,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_ethereum-staking,34671012.62024,2025-05-29
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_staking,33039746.95927,2025-05-30
+ether.fi Stake,ether.fi-stake,Liquid Restaking,tvl_staking,37665341.2554,2025-05-29
+Ethereal,ethereal,Derivatives,tvl_ethereum,773929791.06333,2025-05-30
+Euler DAO,euler-dao,Risk Curators,tvl_base,32877598.04295,2025-05-30
+Euler DAO,euler-dao,Risk Curators,tvl_ethereum,642103228.27346,2025-05-30
+Euler DAO,euler-dao,Risk Curators,tvl_swellchain,20851151.5709,2025-05-30
+Euler DAO,euler-dao,Risk Curators,tvl_unichain,58487821.90637,2025-05-30
+Euler V2,euler-v2,Lending,tvl_avalanche,111922334.88,2025-05-30
+Euler V2,euler-v2,Lending,tvl_avalanche-borrowed,171344814.21818,2025-05-30
+Euler V2,euler-v2,Lending,tvl_base,17274520.03988,2025-05-30
+Euler V2,euler-v2,Lending,tvl_base-borrowed,16139807.42085,2025-05-30
+Euler V2,euler-v2,Lending,tvl_berachain,9970880.43492,2025-05-30
+Euler V2,euler-v2,Lending,tvl_berachain-borrowed,9189005.09793,2025-05-30
+Euler V2,euler-v2,Lending,tvl_binance,16080873.28129,2025-05-30
+Euler V2,euler-v2,Lending,tvl_binance-borrowed,15319997.71823,2025-05-30
+Euler V2,euler-v2,Lending,tvl_bob,11481392.62597,2025-05-30
+Euler V2,euler-v2,Lending,tvl_bob-borrowed,13131433.24161,2025-05-30
+Euler V2,euler-v2,Lending,tvl_borrowed,887943703.57354,2025-05-30
+Euler V2,euler-v2,Lending,tvl_ethereum,711407385.80965,2025-05-30
+Euler V2,euler-v2,Lending,tvl_ethereum-borrowed,584427217.58305,2025-05-30
+Euler V2,euler-v2,Lending,tvl_sonic,57072986.63073,2025-05-30
+Euler V2,euler-v2,Lending,tvl_sonic-borrowed,32139903.19268,2025-05-30
+Euler V2,euler-v2,Lending,tvl_swellchain,14401658.00313,2025-05-30
+Euler V2,euler-v2,Lending,tvl_swellchain-borrowed,11675627.70616,2025-05-30
+Euler V2,euler-v2,Lending,tvl_unichain,23491519.81619,2025-05-30
+Euler V2,euler-v2,Lending,tvl_unichain-borrowed,34575897.39484,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_arbitrum,76806057.51821,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_arbitrum-borrowed,57192222.82892,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_base,32129839.18181,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_base-borrowed,17074673.81606,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_borrowed,906335471.54294,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_ethereum,836418343.50819,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_ethereum-borrowed,821985383.94064,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_polygon,52709851.68424,2025-05-30
+Fluid Lending,fluid-lending,Lending,tvl_polygon-borrowed,10083190.95731,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_aptos,21663084.5269,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_arbitrum,92056101.89894,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_avalanche,34169418.759,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_base,46934424.36406,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_ethereum,40692002.38777,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_polygon,32869815.07729,2025-05-30
+Franklin Templeton,franklin-templeton,RWA,tvl_stellar,475414811.70784,2025-05-30
+Function FBTC,function-fbtc,Bridge,tvl_bitcoin,1521556610.4535,2025-05-30
+Gate,gate,CEX,tvl_acala,87889.47937,2025-05-30
+Gate,gate,CEX,tvl_acala,99063.25888,2025-05-29
+Gate,gate,CEX,tvl_agoric,319242.25005,2025-05-30
+Gate,gate,CEX,tvl_agoric,383545.89887,2025-05-29
+Gate,gate,CEX,tvl_ailayer,0.0,2025-05-30
+Gate,gate,CEX,tvl_ailayer,0.0,2025-05-29
+Gate,gate,CEX,tvl_airdao,278785.17373,2025-05-30
+Gate,gate,CEX,tvl_airdao,297299.03768,2025-05-29
+Gate,gate,CEX,tvl_alephium,6282826.47634,2025-05-30
+Gate,gate,CEX,tvl_alephium,6545155.93666,2025-05-29
+Gate,gate,CEX,tvl_algorand,2604772.05098,2025-05-30
+Gate,gate,CEX,tvl_algorand,2852991.33156,2025-05-29
+Gate,gate,CEX,tvl_apechain,56382.82212,2025-05-30
+Gate,gate,CEX,tvl_apechain,58447.37453,2025-05-29
+Gate,gate,CEX,tvl_aptos,7543275.69342,2025-05-30
+Gate,gate,CEX,tvl_aptos,8140538.72421,2025-05-29
+Gate,gate,CEX,tvl_arbitrum,19615286.5515,2025-05-30
+Gate,gate,CEX,tvl_arbitrum,20590189.85182,2025-05-29
+Gate,gate,CEX,tvl_arbitrum nova,6760282.82416,2025-05-30
+Gate,gate,CEX,tvl_arbitrum nova,6927640.03871,2025-05-29
+Gate,gate,CEX,tvl_archway,130409.64475,2025-05-30
+Gate,gate,CEX,tvl_archway,131824.65565,2025-05-29
+Gate,gate,CEX,tvl_astar,381858.4132,2025-05-30
+Gate,gate,CEX,tvl_astar,437313.33342,2025-05-29
+Gate,gate,CEX,tvl_aura network,86319.3636,2025-05-30
+Gate,gate,CEX,tvl_aura network,88138.57758,2025-05-29
+Gate,gate,CEX,tvl_aurora,903.69848,2025-05-30
+Gate,gate,CEX,tvl_aurora,924.19208,2025-05-29
+Gate,gate,CEX,tvl_avalanche,20195799.92689,2025-05-30
+Gate,gate,CEX,tvl_avalanche,13472207.36289,2025-05-29
+Gate,gate,CEX,tvl_bahamut,2252983.16787,2025-05-30
+Gate,gate,CEX,tvl_bahamut,2221262.79243,2025-05-29
+Gate,gate,CEX,tvl_bandchain,38173.49228,2025-05-30
+Gate,gate,CEX,tvl_bandchain,41121.15819,2025-05-29
+Gate,gate,CEX,tvl_base,9403103.43814,2025-05-30
+Gate,gate,CEX,tvl_base,9664156.09988,2025-05-29
+Gate,gate,CEX,tvl_bifrost,49284.28695,2025-05-30
+Gate,gate,CEX,tvl_bifrost,49585.38888,2025-05-29
+Gate,gate,CEX,tvl_binance,1314851805.18742,2025-05-30
+Gate,gate,CEX,tvl_binance,1348071519.35258,2025-05-29
+Gate,gate,CEX,tvl_bitcoin,1473457061.05747,2025-05-30
+Gate,gate,CEX,tvl_bitcoin,1495878753.73127,2025-05-29
+Gate,gate,CEX,tvl_bitgert,292759.30061,2025-05-30
+Gate,gate,CEX,tvl_bitgert,306611.03311,2025-05-29
+Gate,gate,CEX,tvl_bitkub,298014.00015,2025-05-30
+Gate,gate,CEX,tvl_bitkub,331499.97956,2025-05-29
+Gate,gate,CEX,tvl_bitlayer,25615.1136,2025-05-30
+Gate,gate,CEX,tvl_bitlayer,26075.6618,2025-05-29
+Gate,gate,CEX,tvl_bittorrent,488656.2206,2025-05-30
+Gate,gate,CEX,tvl_bittorrent,504980.21344,2025-05-29
+Gate,gate,CEX,tvl_blast,12001.43204,2025-05-30
+Gate,gate,CEX,tvl_blast,12314.72126,2025-05-29
+Gate,gate,CEX,tvl_boba,17038.31816,2025-05-30
+Gate,gate,CEX,tvl_boba,17424.09,2025-05-29
+Gate,gate,CEX,tvl_bouncebit,2948112.26051,2025-05-30
+Gate,gate,CEX,tvl_bouncebit,2972482.6515,2025-05-29
+Gate,gate,CEX,tvl_bsquared,434.82064,2025-05-30
+Gate,gate,CEX,tvl_bsquared,443.51762,2025-05-29
+Gate,gate,CEX,tvl_canto,324287.12528,2025-05-30
+Gate,gate,CEX,tvl_canto,282102.32994,2025-05-29
+Gate,gate,CEX,tvl_cardano,44312646.04914,2025-05-30
+Gate,gate,CEX,tvl_cardano,46593279.60011,2025-05-29
+Gate,gate,CEX,tvl_celestia,4601357.60966,2025-05-30
+Gate,gate,CEX,tvl_celestia,5000126.99066,2025-05-29
+Gate,gate,CEX,tvl_celo,3015352.22102,2025-05-30
+Gate,gate,CEX,tvl_celo,3191362.23132,2025-05-29
+Gate,gate,CEX,tvl_chiliz,1310909.94205,2025-05-30
+Gate,gate,CEX,tvl_chiliz,1383634.83548,2025-05-29
+Gate,gate,CEX,tvl_core,4332607.58845,2025-05-30
+Gate,gate,CEX,tvl_core,4542186.26588,2025-05-29
+Gate,gate,CEX,tvl_cosmos,2738893.50889,2025-05-30
+Gate,gate,CEX,tvl_cosmos,2970262.55943,2025-05-29
+Gate,gate,CEX,tvl_cronos,5951014.19317,2025-05-30
+Gate,gate,CEX,tvl_cronos,6026665.42494,2025-05-29
+Gate,gate,CEX,tvl_doge,429864630.77677,2025-05-30
+Gate,gate,CEX,tvl_doge,469679363.45804,2025-05-29
+Gate,gate,CEX,tvl_dydx,3572988.8064,2025-05-30
+Gate,gate,CEX,tvl_dydx,3901996.02585,2025-05-29
+Gate,gate,CEX,tvl_dymension,440483.92122,2025-05-30
+Gate,gate,CEX,tvl_dymension,481723.16117,2025-05-29
+Gate,gate,CEX,tvl_elrond,687831.31888,2025-05-30
+Gate,gate,CEX,tvl_elrond,740271.25309,2025-05-29
+Gate,gate,CEX,tvl_energyweb,1600575.73633,2025-05-30
+Gate,gate,CEX,tvl_energyweb,1654948.22885,2025-05-29
+Gate,gate,CEX,tvl_enuls,5439.56631,2025-05-30
+Gate,gate,CEX,tvl_enuls,6001.9574,2025-05-29
+Gate,gate,CEX,tvl_eos,167983.3073,2025-05-30
+Gate,gate,CEX,tvl_eos,179379.40043,2025-05-29
+Gate,gate,CEX,tvl_eos evm,181.60738,2025-05-30
+Gate,gate,CEX,tvl_eos evm,193.18466,2025-05-29
+Gate,gate,CEX,tvl_ergo,4739699.43973,2025-05-30
+Gate,gate,CEX,tvl_ergo,4323881.79105,2025-05-29
+Gate,gate,CEX,tvl_ethereum,2474617452.16791,2025-05-30
+Gate,gate,CEX,tvl_ethereum,2555599272.05852,2025-05-29
+Gate,gate,CEX,tvl_ethereumclassic,28225223.34797,2025-05-30
+Gate,gate,CEX,tvl_ethereumclassic,30024281.77991,2025-05-29
+Gate,gate,CEX,tvl_etherlink,0.0,2025-05-30
+Gate,gate,CEX,tvl_etherlink,0.0,2025-05-29
+Gate,gate,CEX,tvl_ethf,16526.97087,2025-05-30
+Gate,gate,CEX,tvl_ethf,17148.26831,2025-05-29
+Gate,gate,CEX,tvl_fantom,1419.53667,2025-05-30
+Gate,gate,CEX,tvl_fantom,1995.51272,2025-05-29
+Gate,gate,CEX,tvl_flare,1624297.35086,2025-05-30
+Gate,gate,CEX,tvl_flare,1682161.76312,2025-05-29
+Gate,gate,CEX,tvl_fuel,0.0,2025-05-30
+Gate,gate,CEX,tvl_fuel,0.0,2025-05-29
+Gate,gate,CEX,tvl_fuse,174653.29215,2025-05-30
+Gate,gate,CEX,tvl_fuse,180237.00507,2025-05-29
+Gate,gate,CEX,tvl_gochain,0.0,2025-05-30
+Gate,gate,CEX,tvl_gochain,0.0,2025-05-29
+Gate,gate,CEX,tvl_haqq,0.0,2025-05-30
+Gate,gate,CEX,tvl_haqq,0.0,2025-05-29
+Gate,gate,CEX,tvl_harmony,970861.5511,2025-05-30
+Gate,gate,CEX,tvl_harmony,1059468.65986,2025-05-29
+Gate,gate,CEX,tvl_heco,0.0,2025-05-30
+Gate,gate,CEX,tvl_heco,0.0,2025-05-29
+Gate,gate,CEX,tvl_hpb,0.0,2025-05-30
+Gate,gate,CEX,tvl_hpb,0.0,2025-05-29
+Gate,gate,CEX,tvl_injective,1525214.38724,2025-05-30
+Gate,gate,CEX,tvl_injective,1562115.86227,2025-05-29
+Gate,gate,CEX,tvl_iotex,1419964.08435,2025-05-30
+Gate,gate,CEX,tvl_iotex,1128107.98884,2025-05-29
+Gate,gate,CEX,tvl_kardia,0.0,2025-05-30
+Gate,gate,CEX,tvl_kardia,0.0,2025-05-29
+Gate,gate,CEX,tvl_klaytn,1812337.05456,2025-05-30
+Gate,gate,CEX,tvl_klaytn,1929882.81458,2025-05-29
+Gate,gate,CEX,tvl_kroma,571.53166,2025-05-30
+Gate,gate,CEX,tvl_kroma,584.47076,2025-05-29
+Gate,gate,CEX,tvl_linea,29204627.03721,2025-05-30
+Gate,gate,CEX,tvl_linea,29926485.87579,2025-05-29
+Gate,gate,CEX,tvl_litecoin,47810728.55276,2025-05-30
+Gate,gate,CEX,tvl_litecoin,52383692.34238,2025-05-29
+Gate,gate,CEX,tvl_lukso,600187.27924,2025-05-30
+Gate,gate,CEX,tvl_lukso,656026.01462,2025-05-29
+Gate,gate,CEX,tvl_manta,12551338.99634,2025-05-30
+Gate,gate,CEX,tvl_manta,12873529.63012,2025-05-29
+Gate,gate,CEX,tvl_mantle,361687.92464,2025-05-30
+Gate,gate,CEX,tvl_mantle,363155.62767,2025-05-29
+Gate,gate,CEX,tvl_matchain,0.0,2025-05-30
+Gate,gate,CEX,tvl_matchain,0.0,2025-05-29
+Gate,gate,CEX,tvl_merlin,42777.50634,2025-05-30
+Gate,gate,CEX,tvl_merlin,43636.86082,2025-05-29
+Gate,gate,CEX,tvl_meter,4013.4874,2025-05-30
+Gate,gate,CEX,tvl_meter,4041.47678,2025-05-29
+Gate,gate,CEX,tvl_metis,4102794.07836,2025-05-30
+Gate,gate,CEX,tvl_metis,4415574.48408,2025-05-29
+Gate,gate,CEX,tvl_mode,340.49645,2025-05-30
+Gate,gate,CEX,tvl_mode,349.13342,2025-05-29
+Gate,gate,CEX,tvl_moonbeam,727770.68165,2025-05-30
+Gate,gate,CEX,tvl_moonbeam,817978.22608,2025-05-29
+Gate,gate,CEX,tvl_moonriver,661650.81722,2025-05-30
+Gate,gate,CEX,tvl_moonriver,717048.17254,2025-05-29
+Gate,gate,CEX,tvl_naka,0.0,2025-05-30
+Gate,gate,CEX,tvl_naka,0.0,2025-05-29
+Gate,gate,CEX,tvl_neon,83968.33537,2025-05-30
+Gate,gate,CEX,tvl_neon,86259.74005,2025-05-29
+Gate,gate,CEX,tvl_neutron,446530.15428,2025-05-30
+Gate,gate,CEX,tvl_neutron,514864.15156,2025-05-29
+Gate,gate,CEX,tvl_oasys,212141.44037,2025-05-30
+Gate,gate,CEX,tvl_oasys,222116.10581,2025-05-29
+Gate,gate,CEX,tvl_okexchain,226679.0034,2025-05-30
+Gate,gate,CEX,tvl_okexchain,236451.48041,2025-05-29
+Gate,gate,CEX,tvl_op_bnb,9340818.43385,2025-05-30
+Gate,gate,CEX,tvl_op_bnb,9487129.71467,2025-05-29
+Gate,gate,CEX,tvl_optimism,29872039.99399,2025-05-30
+Gate,gate,CEX,tvl_optimism,32601329.43591,2025-05-29
+Gate,gate,CEX,tvl_orai,993508.52732,2025-05-30
+Gate,gate,CEX,tvl_orai,1102932.3579,2025-05-29
+Gate,gate,CEX,tvl_osmosis,382111.00908,2025-05-30
+Gate,gate,CEX,tvl_osmosis,423864.81699,2025-05-29
+Gate,gate,CEX,tvl_persistence,223500.81585,2025-05-30
+Gate,gate,CEX,tvl_persistence,230802.87127,2025-05-29
+Gate,gate,CEX,tvl_polkadot,24830839.98383,2025-05-30
+Gate,gate,CEX,tvl_polkadot,26612744.66063,2025-05-29
+Gate,gate,CEX,tvl_polygon,6146078.33653,2025-05-30
+Gate,gate,CEX,tvl_polygon,6280979.34269,2025-05-29
+Gate,gate,CEX,tvl_polygon zkevm,473.80484,2025-05-30
+Gate,gate,CEX,tvl_polygon zkevm,484.53146,2025-05-29
+Gate,gate,CEX,tvl_radix,887218.95196,2025-05-30
+Gate,gate,CEX,tvl_radix,935848.55132,2025-05-29
+Gate,gate,CEX,tvl_rei,68432.84295,2025-05-30
+Gate,gate,CEX,tvl_rei,184613.02646,2025-05-29
+Gate,gate,CEX,tvl_ripple,150584090.10814,2025-05-30
+Gate,gate,CEX,tvl_ripple,161945211.58565,2025-05-29
+Gate,gate,CEX,tvl_ronin,622817.14873,2025-05-30
+Gate,gate,CEX,tvl_ronin,633986.8213,2025-05-29
+Gate,gate,CEX,tvl_rsk,6136.40651,2025-05-30
+Gate,gate,CEX,tvl_rsk,6246.73633,2025-05-29
+Gate,gate,CEX,tvl_scroll,151.89792,2025-05-30
+Gate,gate,CEX,tvl_scroll,155.64983,2025-05-29
+Gate,gate,CEX,tvl_sei,4758293.10479,2025-05-30
+Gate,gate,CEX,tvl_sei,5158472.25179,2025-05-29
+Gate,gate,CEX,tvl_shibarium,12311.07377,2025-05-30
+Gate,gate,CEX,tvl_shibarium,8401.45809,2025-05-29
+Gate,gate,CEX,tvl_solana,405189946.213,2025-05-30
+Gate,gate,CEX,tvl_solana,434187067.40293,2025-05-29
+Gate,gate,CEX,tvl_songbird,0.0,2025-05-30
+Gate,gate,CEX,tvl_songbird,0.0,2025-05-29
+Gate,gate,CEX,tvl_stacks,2417190.44431,2025-05-30
+Gate,gate,CEX,tvl_stacks,2646470.76181,2025-05-29
+Gate,gate,CEX,tvl_starknet,462677.57967,2025-05-30
+Gate,gate,CEX,tvl_starknet,471277.51496,2025-05-29
+Gate,gate,CEX,tvl_sui,23769985.1165,2025-05-30
+Gate,gate,CEX,tvl_sui,25634897.44797,2025-05-29
+Gate,gate,CEX,tvl_taiko,328.63522,2025-05-30
+Gate,gate,CEX,tvl_taiko,336.15331,2025-05-29
+Gate,gate,CEX,tvl_tenet,0.0,2025-05-30
+Gate,gate,CEX,tvl_tenet,0.0,2025-05-29
+Gate,gate,CEX,tvl_terra,2666509.6651,2025-05-30
+Gate,gate,CEX,tvl_terra,2814159.29681,2025-05-29
+Gate,gate,CEX,tvl_tezos,370939.08679,2025-05-30
+Gate,gate,CEX,tvl_tezos,379828.61963,2025-05-29
+Gate,gate,CEX,tvl_theta,1084889.20745,2025-05-30
+Gate,gate,CEX,tvl_theta,1128939.94812,2025-05-29
+Gate,gate,CEX,tvl_thundercore,340417.89788,2025-05-30
+Gate,gate,CEX,tvl_thundercore,355012.00441,2025-05-29
+Gate,gate,CEX,tvl_tomochain,0.0,2025-05-30
+Gate,gate,CEX,tvl_tomochain,0.0,2025-05-29
+Gate,gate,CEX,tvl_ton,0.0,2025-05-30
+Gate,gate,CEX,tvl_ton,0.0,2025-05-29
+Gate,gate,CEX,tvl_tron,236865970.82558,2025-05-30
+Gate,gate,CEX,tvl_tron,267648243.24755,2025-05-29
+Gate,gate,CEX,tvl_umee,101328.18564,2025-05-30
+Gate,gate,CEX,tvl_umee,108198.21787,2025-05-29
+Gate,gate,CEX,tvl_vana,715216.89033,2025-05-30
+Gate,gate,CEX,tvl_vana,750498.68015,2025-05-29
+Gate,gate,CEX,tvl_vechain,0.0,2025-05-30
+Gate,gate,CEX,tvl_vechain,0.0,2025-05-29
+Gate,gate,CEX,tvl_wemix,3281265.93211,2025-05-30
+Gate,gate,CEX,tvl_wemix,2034228.27889,2025-05-29
+Gate,gate,CEX,tvl_x layer,5303.05473,2025-05-30
+Gate,gate,CEX,tvl_x layer,5416.47218,2025-05-29
+Gate,gate,CEX,tvl_xdc,6191813.49781,2025-05-30
+Gate,gate,CEX,tvl_xdc,6303468.20099,2025-05-29
+Gate,gate,CEX,tvl_xpla,1279489.2324,2025-05-30
+Gate,gate,CEX,tvl_xpla,1127543.12964,2025-05-29
+Gate,gate,CEX,tvl_zetachain,2505679.77991,2025-05-30
+Gate,gate,CEX,tvl_zetachain,2709838.1877,2025-05-29
+Gate,gate,CEX,tvl_zircuit,2505.56124,2025-05-30
+Gate,gate,CEX,tvl_zircuit,2561.6256,2025-05-29
+Gate,gate,CEX,tvl_zklink,1449.69135,2025-05-30
+Gate,gate,CEX,tvl_zklink,1482.77041,2025-05-29
+Gate,gate,CEX,tvl_zksync era,5524706.70333,2025-05-30
+Gate,gate,CEX,tvl_zksync era,5663079.10995,2025-05-29
+Gauntlet,gauntlet,Risk Curators,tvl_base,126888362.49853,2025-05-30
+Gauntlet,gauntlet,Risk Curators,tvl_ethereum,405573873.24782,2025-05-30
+Gauntlet,gauntlet,Risk Curators,tvl_polygon,83363070.69167,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_aptos,457076.81036,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_arbitrum,155.33531,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_avalanche,3504860.66799,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_bitcoin,763046465.50476,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_doge,18798261.30499,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_ethereum,235569005.36926,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_litecoin,470071.77957,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_optimism,419080.84502,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_polkadot,269582.4746,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_polygon,3112.44986,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_solana,7246953.91719,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_ton,1268632.3,2025-05-30
+HashKey Exchange,hashkey-exchange,CEX,tvl_tron,3971681.79299,2025-05-30
+HTX,htx,CEX,tvl_algorand,0.14346,2025-05-30
+HTX,htx,CEX,tvl_algorand,0.13083,2025-05-29
+HTX,htx,CEX,tvl_arbitrum,3008878.70695,2025-05-30
+HTX,htx,CEX,tvl_arbitrum,4776208.75891,2025-05-29
+HTX,htx,CEX,tvl_avalanche,7086570.93678,2025-05-30
+HTX,htx,CEX,tvl_avalanche,6860021.47648,2025-05-29
+HTX,htx,CEX,tvl_binance,13826641.24461,2025-05-30
+HTX,htx,CEX,tvl_binance,12822422.78941,2025-05-29
+HTX,htx,CEX,tvl_bitcoin,1029095523.38834,2025-05-30
+HTX,htx,CEX,tvl_bitcoin,1058331994.94395,2025-05-29
+HTX,htx,CEX,tvl_cardano,22421045.37924,2025-05-30
+HTX,htx,CEX,tvl_cardano,23798176.99364,2025-05-29
+HTX,htx,CEX,tvl_core,3321162.74944,2025-05-30
+HTX,htx,CEX,tvl_core,3504449.86016,2025-05-29
+HTX,htx,CEX,tvl_doge,59026909.84839,2025-05-30
+HTX,htx,CEX,tvl_doge,65954661.20755,2025-05-29
+HTX,htx,CEX,tvl_eos,111831.98816,2025-05-30
+HTX,htx,CEX,tvl_eos,120732.62578,2025-05-29
+HTX,htx,CEX,tvl_ethereum,2772452948.34416,2025-05-30
+HTX,htx,CEX,tvl_ethereum,2854342145.48788,2025-05-29
+HTX,htx,CEX,tvl_litecoin,8062627.21828,2025-05-30
+HTX,htx,CEX,tvl_litecoin,8213178.42919,2025-05-29
+HTX,htx,CEX,tvl_optimism,2669673.778,2025-05-30
+HTX,htx,CEX,tvl_optimism,2945962.43477,2025-05-29
+HTX,htx,CEX,tvl_polygon,1665694.48586,2025-05-30
+HTX,htx,CEX,tvl_polygon,1745129.91319,2025-05-29
+HTX,htx,CEX,tvl_ripple,77649128.61209,2025-05-30
+HTX,htx,CEX,tvl_ripple,81057676.34745,2025-05-29
+HTX,htx,CEX,tvl_solana,68592944.55914,2025-05-30
+HTX,htx,CEX,tvl_solana,70396656.12795,2025-05-29
+HTX,htx,CEX,tvl_starknet,2493.86952,2025-05-30
+HTX,htx,CEX,tvl_starknet,2590.47737,2025-05-29
+HTX,htx,CEX,tvl_sui,2702719.96064,2025-05-30
+HTX,htx,CEX,tvl_sui,2839282.61209,2025-05-29
+HTX,htx,CEX,tvl_ton,6403501.19234,2025-05-30
+HTX,htx,CEX,tvl_ton,6502536.57443,2025-05-29
+HTX,htx,CEX,tvl_tron,3134539664.00691,2025-05-30
+HTX,htx,CEX,tvl_tron,3187515326.06251,2025-05-29
+Hyperliquid Bridge,hyperliquid-bridge,Bridge,tvl_arbitrum,3429994075.39241,2025-05-30
+Infrared Finance,infrared-finance,Liquid Staking,tvl_berachain,954592589.4843,2025-05-30
+Jito Liquid Staking,jito-liquid-staking,Liquid Staking,tvl_solana,3031018518.28651,2025-05-30
+Jupiter Perpetual Exchange,jupiter-perpetual-exchange,Derivatives,tvl_solana,1633052319.32764,2025-05-30
+Jupiter Staked SOL,jupiter-staked-sol,Liquid Staking,tvl_solana,865219347.86231,2025-05-30
+JustCryptos,justcryptos,Bridge,tvl_tron,3278684663.0,2025-05-30
+JustLend,justlend,Lending,tvl_borrowed,155129808.35409,2025-05-30
+JustLend,justlend,Lending,tvl_borrowed,154334378.76679,2025-05-29
+JustLend,justlend,Lending,tvl_tron,5226762369.60503,2025-05-30
+JustLend,justlend,Lending,tvl_tron,5343012458.22698,2025-05-29
+JustLend,justlend,Lending,tvl_tron-borrowed,155129808.35409,2025-05-30
+JustLend,justlend,Lending,tvl_tron-borrowed,154334378.76679,2025-05-29
+Kamino Lend,kamino-lend,Lending,tvl_solana,2117767052.20614,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_arbitrum,9693756.70926,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_base,5748353.65787,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_berachain,152499.75696,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_blast,191221.06154,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_ethereum,1157355551.80655,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_hemi,9183744.54054,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_linea,4584966.7886,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_manta,12448.69898,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_mode,150651.25502,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_optimism,840240.16199,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_scroll,2189010.10451,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_sonic,57.37411,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_swellchain,574371.48135,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_x layer,5997.63456,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_zircuit,9691876.02436,2025-05-30
+Kelp,kelp,Liquid Restaking,tvl_zksync era,492023.47262,2025-05-30
+Korbit,korbit,CEX,tvl_bitcoin,659669451.32771,2025-05-30
+Korbit,korbit,CEX,tvl_ethereum,100809955.02473,2025-05-30
+Korbit,korbit,CEX,tvl_ripple,270626813.21098,2025-05-30
+Kraken,kraken,CEX,tvl_bitcoin,0.0,2025-05-30
+Kraken,kraken,CEX,tvl_ethereum,694228211.79296,2025-05-30
+Kraken,kraken,CEX,tvl_starknet,0.0,2025-05-30
+Kucoin,kucoin,CEX,tvl_algorand,248661.7042,2025-05-30
+Kucoin,kucoin,CEX,tvl_arbitrum,6616937.06402,2025-05-30
+Kucoin,kucoin,CEX,tvl_base,215523.03876,2025-05-30
+Kucoin,kucoin,CEX,tvl_binance,45609353.64015,2025-05-30
+Kucoin,kucoin,CEX,tvl_bitcoin,529756872.99933,2025-05-30
+Kucoin,kucoin,CEX,tvl_eos,1290626.57767,2025-05-30
+Kucoin,kucoin,CEX,tvl_ethereum,1332148329.16407,2025-05-30
+Kucoin,kucoin,CEX,tvl_kava,272107.64241,2025-05-30
+Kucoin,kucoin,CEX,tvl_kucoin,9542489.26819,2025-05-30
+Kucoin,kucoin,CEX,tvl_optimism,2960360.55804,2025-05-30
+Kucoin,kucoin,CEX,tvl_solana,438141721.95616,2025-05-30
+Kucoin,kucoin,CEX,tvl_starknet,12316.39414,2025-05-30
+Kucoin,kucoin,CEX,tvl_ton,17022850.71918,2025-05-30
+Kucoin,kucoin,CEX,tvl_tron,261000880.95739,2025-05-30
+Lido,lido,Liquid Staking,tvl_ethereum,23409561794.5179,2025-05-30
+Lido,lido,Liquid Staking,tvl_ethereum,24148935859.30287,2025-05-29
+Lido,lido,Liquid Staking,tvl_moonbeam,132213.12626,2025-05-30
+Lido,lido,Liquid Staking,tvl_moonbeam,143572.72661,2025-05-29
+Lido,lido,Liquid Staking,tvl_moonriver,40467.23952,2025-05-30
+Lido,lido,Liquid Staking,tvl_moonriver,43905.63242,2025-05-29
+Lido,lido,Liquid Staking,tvl_solana,9173264.13221,2025-05-30
+Lido,lido,Liquid Staking,tvl_solana,9719928.74269,2025-05-29
+Lido,lido,Liquid Staking,tvl_terra,0.0,2025-05-30
+Lido,lido,Liquid Staking,tvl_terra,0.0,2025-05-29
+Lombard,lombard,Restaked BTC,tvl_bitcoin,1885317583.54953,2025-05-30
+Lombard,lombard,Restaked BTC,tvl_ethereum,105347476.68307,2025-05-30
+MakerDAO,maker,DAO,active_voters,2500.0,2025-05-30
+MakerDAO,maker,DAO,active_voters,2500.0,2025-05-29
+MakerDAO,maker,DAO,members,15000.0,2025-05-30
+MakerDAO,maker,DAO,members,15000.0,2025-05-29
+MakerDAO,maker,DAO,proposals,850.0,2025-05-30
+MakerDAO,maker,DAO,proposals,850.0,2025-05-29
+MakerDAO,maker,DAO,treasury_value,1200000000.0,2025-05-30
+MakerDAO,maker,DAO,treasury_value,1200000000.0,2025-05-29
+MakerDAO,maker,DAO,tvl,8500000000.0,2025-05-30
+MakerDAO,maker,DAO,tvl,8500000000.0,2025-05-29
+MakerDAO,maker,DAO,users,15000.0,2025-05-30
+MakerDAO,maker,DAO,users,15000.0,2025-05-29
+Mantle Bridge,mantle-bridge,Chain,tvl_ethereum,629722583.30295,2025-05-30
+Maple,maple,Lending,tvl_borrowed,501841609.70188,2025-05-30
+Maple,maple,Lending,tvl_ethereum,1304084715.94804,2025-05-30
+Maple,maple,Lending,tvl_ethereum-borrowed,501841609.70188,2025-05-30
+Maple,maple,Lending,tvl_ethereum-staking,169204003.84172,2025-05-30
+Maple,maple,Lending,tvl_solana,0.0,2025-05-30
+Maple,maple,Lending,tvl_staking,169204003.84172,2025-05-30
+Marinade Liquid Staking,marinade-liquid-staking,Liquid Staking,tvl_solana,903358680.44832,2025-05-30
+Marinade Native,marinade-native,Staking Pool,tvl_solana,837961081.19808,2025-05-30
+MaskEX,maskex,CEX,tvl_binance,14087528.42235,2025-05-30
+MaskEX,maskex,CEX,tvl_bitcoin,1030511667.43475,2025-05-30
+MaskEX,maskex,CEX,tvl_ethereum,7660434.74686,2025-05-30
+MaskEX,maskex,CEX,tvl_tron,102244.00217,2025-05-30
+Merlins Seal,merlins-seal,Bridge,tvl_arbitrum,0.0,2025-05-30
+Merlins Seal,merlins-seal,Bridge,tvl_bitcoin,673518441.50211,2025-05-30
+Merlins Seal,merlins-seal,Bridge,tvl_ethereum,0.0,2025-05-30
+Merlins Seal,merlins-seal,Bridge,tvl_zkfair,0.0,2025-05-30
+MetaMask,metamask,Wallets,balance,0.0,2025-05-30
+MetaMask,metamask,Wallets,balance,0.0,2025-05-29
+MetaMask,metamask,Wallets,transactions,0.0,2025-05-30
+MetaMask,metamask,Wallets,transactions,0.0,2025-05-29
+MetaMask,metamask,Wallets,tvl,0.0,2025-05-30
+MetaMask,metamask,Wallets,tvl,0.0,2025-05-29
+MetaMask,metamask,Wallets,users,100000000.0,2025-05-30
+MetaMask,metamask,Wallets,users,100000000.0,2025-05-29
+MetaMask,metamask,Wallets,volume,0.0,2025-05-30
+MetaMask,metamask,Wallets,volume,0.0,2025-05-29
+Meteora DLMM,meteora-dlmm,Dexs,tvl_solana,657336482.91788,2025-05-30
+mETH Protocol,meth-protocol,Liquid Staking,tvl_ethereum,956867400.82731,2025-05-30
+MEXC,mexc,CEX,tvl_arbitrum,11231145.07778,2025-05-30
+MEXC,mexc,CEX,tvl_binance,88759368.05693,2025-05-30
+MEXC,mexc,CEX,tvl_bitcoin,232692444.87478,2025-05-30
+MEXC,mexc,CEX,tvl_ethereum,2608265302.13136,2025-05-30
+MEXC,mexc,CEX,tvl_optimism,12342375.87491,2025-05-30
+MEXC,mexc,CEX,tvl_polygon,2001606.33544,2025-05-30
+MEXC,mexc,CEX,tvl_starknet,1122803.37761,2025-05-30
+MEXC,mexc,CEX,tvl_tron,7982722.76754,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_arbitrum,86976.03934,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_arbitrum,88005.60201,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_arbitrum-borrowed,991866.43751,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_arbitrum-borrowed,990617.48081,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_base,955545243.22722,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_base,972644528.72981,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_base-borrowed,448036783.12741,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_base-borrowed,446032234.77871,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_basecamp,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_basecamp,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_basecamp-borrowed,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_basecamp-borrowed,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_borrowed,1830876040.22194,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_borrowed,1884130943.0676,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_corn,827398.75845,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_corn,857546.3819,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_corn-borrowed,624415.69736,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_corn-borrowed,638185.7971,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_ethereum,2380473017.36072,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_ethereum,2399201872.68433,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_ethereum-borrowed,1267847389.6843,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_ethereum-borrowed,1323534968.09434,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_flame,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_flame,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_flame-borrowed,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_flame-borrowed,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_fraxtal,853.92947,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_fraxtal,870.19323,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_fraxtal-borrowed,252.41926,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_fraxtal-borrowed,252.42103,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_hemi,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_hemi,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_hemi-borrowed,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_hemi-borrowed,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_hyperliquid l1,112441752.92541,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_hyperliquid l1,109735774.61736,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_hyperliquid l1-borrowed,37912753.11415,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_hyperliquid l1-borrowed,36145024.38118,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_ink,2.17739,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_ink,2.24034,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_ink-borrowed,0.90004,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_ink-borrowed,0.90274,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_mode,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_mode,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_mode-borrowed,0.0,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_mode-borrowed,0.0,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_optimism,2241050.54662,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_optimism,2381029.42059,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_optimism-borrowed,430699.85363,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_optimism-borrowed,430811.04301,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_plume mainnet,12751331.58683,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_plume mainnet,12751328.17429,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_plume mainnet-borrowed,12.12274,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_plume mainnet-borrowed,12.12235,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_polygon,112415872.85488,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_polygon,114278203.04951,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_polygon-borrowed,68708996.86405,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_polygon-borrowed,69883178.42501,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_scroll,36.77869,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_scroll,37.64247,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_scroll-borrowed,1.99978,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_scroll-borrowed,2.00002,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_sonic,67.11016,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_sonic,67.15683,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_sonic-borrowed,12.49582,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_sonic-borrowed,12.49649,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_unichain,194.2627,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_unichain,195.02661,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_unichain-borrowed,14.94229,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_unichain-borrowed,9.14687,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_world chain,36610492.54793,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_world chain,37837234.12728,2025-05-29
+Morpho Blue,morpho-blue,Lending,tvl_world chain-borrowed,6322840.56359,2025-05-30
+Morpho Blue,morpho-blue,Lending,tvl_world chain-borrowed,6475633.97794,2025-05-29
+OKX,okx,CEX,tvl_aptos,22438779.84914,2025-05-30
+OKX,okx,CEX,tvl_aptos,23263138.21725,2025-05-29
+OKX,okx,CEX,tvl_arbitrum,9917958.77133,2025-05-30
+OKX,okx,CEX,tvl_arbitrum,12811755.58175,2025-05-29
+OKX,okx,CEX,tvl_avalanche,142.33471,2025-05-30
+OKX,okx,CEX,tvl_avalanche,143.78052,2025-05-29
+OKX,okx,CEX,tvl_base,6514406.27769,2025-05-30
+OKX,okx,CEX,tvl_base,6430500.28035,2025-05-29
+OKX,okx,CEX,tvl_bitcoin,12098322467.577,2025-05-30
+OKX,okx,CEX,tvl_bitcoin,12395182379.96925,2025-05-29
+OKX,okx,CEX,tvl_doge,861953728.92903,2025-05-30
+OKX,okx,CEX,tvl_doge,939118269.7121,2025-05-29
+OKX,okx,CEX,tvl_ethereum,10234272812.62821,2025-05-30
+OKX,okx,CEX,tvl_ethereum,10477825187.43734,2025-05-29
+OKX,okx,CEX,tvl_linea,7055790.97962,2025-05-30
+OKX,okx,CEX,tvl_linea,7431667.37689,2025-05-29
+OKX,okx,CEX,tvl_litecoin,288249774.13634,2025-05-30
+OKX,okx,CEX,tvl_litecoin,307637445.06281,2025-05-29
+OKX,okx,CEX,tvl_optimism,11094611.33731,2025-05-30
+OKX,okx,CEX,tvl_optimism,11556407.79275,2025-05-29
+OKX,okx,CEX,tvl_polkadot,66870174.83714,2025-05-30
+OKX,okx,CEX,tvl_polkadot,72548709.31471,2025-05-29
+OKX,okx,CEX,tvl_polygon,5.05954,2025-05-30
+OKX,okx,CEX,tvl_polygon,5.28774,2025-05-29
+OKX,okx,CEX,tvl_ripple,400294774.73666,2025-05-30
+OKX,okx,CEX,tvl_ripple,419362316.35919,2025-05-29
+OKX,okx,CEX,tvl_scroll,23440.79687,2025-05-30
+OKX,okx,CEX,tvl_scroll,23932.67817,2025-05-29
+OKX,okx,CEX,tvl_solana,920610616.31064,2025-05-30
+OKX,okx,CEX,tvl_solana,977496453.19277,2025-05-29
+OKX,okx,CEX,tvl_starknet,5093.94018,2025-05-30
+OKX,okx,CEX,tvl_starknet,5241.82644,2025-05-29
+OKX,okx,CEX,tvl_ton,8395852.97391,2025-05-30
+OKX,okx,CEX,tvl_ton,5346738.92568,2025-05-29
+OKX,okx,CEX,tvl_tron,178736109.53946,2025-05-30
+OKX,okx,CEX,tvl_tron,242728153.37014,2025-05-29
+OKX,okx,CEX,tvl_zksync era,4735875.02834,2025-05-30
+OKX,okx,CEX,tvl_zksync era,4856753.45618,2025-05-29
+Ondo Finance,ondo-finance,RWA,tvl_aptos,7470678.5898,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_arbitrum,6279096.28711,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_ethereum,972066915.42357,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_mantle,26363346.49867,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_noble,15051642.22534,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_polygon,0.0,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_solana,256706749.01491,2025-05-30
+Ondo Finance,ondo-finance,RWA,tvl_sui,17542710.80152,2025-05-30
+OpenSea,opensea,Marketplaces,balance,0.0,2025-05-30
+OpenSea,opensea,Marketplaces,balance,0.0,2025-05-29
+OpenSea,opensea,Marketplaces,transactions,850000.0,2025-05-30
+OpenSea,opensea,Marketplaces,transactions,850000.0,2025-05-29
+OpenSea,opensea,Marketplaces,tvl,0.0,2025-05-30
+OpenSea,opensea,Marketplaces,tvl,0.0,2025-05-29
+OpenSea,opensea,Marketplaces,users,45000.0,2025-05-30
+OpenSea,opensea,Marketplaces,users,45000.0,2025-05-29
+OpenSea,opensea,Marketplaces,volume,2800000000.0,2025-05-30
+OpenSea,opensea,Marketplaces,volume,2800000000.0,2025-05-29
+Optimism Bridge,optimism-bridge,Chain,tvl_base,0.0,2025-05-30
+Optimism Bridge,optimism-bridge,Chain,tvl_ethereum,1598822234.26201,2025-05-30
+Optimism Bridge,optimism-bridge,Chain,tvl_pgn,0.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,balance,2100000000.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,balance,2100000000.0,2025-05-29
+PancakeSwap,pancakeswap,DeFi,transactions,1200000.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,transactions,1200000.0,2025-05-29
+PancakeSwap,pancakeswap,DeFi,tvl,2100000000.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,tvl,2100000000.0,2025-05-29
+PancakeSwap,pancakeswap,DeFi,users,18000.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,users,18000.0,2025-05-29
+PancakeSwap,pancakeswap,DeFi,volume,850000000.0,2025-05-30
+PancakeSwap,pancakeswap,DeFi,volume,850000000.0,2025-05-29
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_aptos,12891717.61729,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_arbitrum,2932679.96257,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_arbitrum-staking,10186.3613,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_base,252915.1363,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_binance,1306005967.25762,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_binance-staking,206401384.75374,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_ethereum,2481770.8347,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_ethereum-staking,8988.97234,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_linea,14971.76317,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_op_bnb,2794912.51723,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_polygon zkevm,3765.32082,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_staking,206424488.25634,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_zksync era,145151.62833,2025-05-30
+PancakeSwap AMM,pancakeswap-amm,Dexs,tvl_zksync era-staking,3928.16898,2025-05-30
+Paxos Gold,paxos-gold,RWA,tvl_ethereum,795394014.4836,2025-05-30
+Pendle,pendle,Yield,tvl_arbitrum,61674692.0585,2025-05-30
+Pendle,pendle,Yield,tvl_arbitrum,62887729.80402,2025-05-29
+Pendle,pendle,Yield,tvl_avalanche,58443.63196,2025-05-30
+Pendle,pendle,Yield,tvl_avalanche,59272.43492,2025-05-29
+Pendle,pendle,Yield,tvl_avalanche-pool2,1510245.09235,2025-05-30
+Pendle,pendle,Yield,tvl_avalanche-pool2,1652514.55758,2025-05-29
+Pendle,pendle,Yield,tvl_base,105415791.44948,2025-05-30
+Pendle,pendle,Yield,tvl_base,116660438.99186,2025-05-29
+Pendle,pendle,Yield,tvl_berachain,32341044.48764,2025-05-30
+Pendle,pendle,Yield,tvl_berachain,20555398.06599,2025-05-29
+Pendle,pendle,Yield,tvl_binance,176665608.217,2025-05-30
+Pendle,pendle,Yield,tvl_binance,168715507.50645,2025-05-29
+Pendle,pendle,Yield,tvl_ethereum,3603494168.88859,2025-05-30
+Pendle,pendle,Yield,tvl_ethereum,3802347789.84443,2025-05-29
+Pendle,pendle,Yield,tvl_ethereum-pool2,505439.13884,2025-05-30
+Pendle,pendle,Yield,tvl_ethereum-pool2,551742.0576,2025-05-29
+Pendle,pendle,Yield,tvl_ethereum-staking,254835679.8274,2025-05-30
+Pendle,pendle,Yield,tvl_ethereum-staking,278502043.43424,2025-05-29
+Pendle,pendle,Yield,tvl_mantle,15661144.38911,2025-05-30
+Pendle,pendle,Yield,tvl_mantle,16271054.1584,2025-05-29
+Pendle,pendle,Yield,tvl_optimism,61306.1689,2025-05-30
+Pendle,pendle,Yield,tvl_optimism,63597.04334,2025-05-29
+Pendle,pendle,Yield,tvl_pool2,2015684.23119,2025-05-30
+Pendle,pendle,Yield,tvl_pool2,2204256.61517,2025-05-29
+Pendle,pendle,Yield,tvl_sonic,94731011.59891,2025-05-30
+Pendle,pendle,Yield,tvl_sonic,102581988.55239,2025-05-29
+Pendle,pendle,Yield,tvl_staking,254835679.8274,2025-05-30
+Pendle,pendle,Yield,tvl_staking,278502043.43424,2025-05-29
+Polygon Bridge & Staking,polygon-bridge-&-staking,Chain,tvl_polygon,2631956531.04387,2025-05-30
+Portal,portal,Bridge,tvl_acala,0.0,2025-05-30
+Portal,portal,Bridge,tvl_algorand,50781.63662,2025-05-30
+Portal,portal,Bridge,tvl_aptos,822551.74116,2025-05-30
+Portal,portal,Bridge,tvl_arbitrum,3655497.25399,2025-05-30
+Portal,portal,Bridge,tvl_aurora,7718.76289,2025-05-30
+Portal,portal,Bridge,tvl_avalanche,6588928.16544,2025-05-30
+Portal,portal,Bridge,tvl_base,279228.18004,2025-05-30
+Portal,portal,Bridge,tvl_binance,22861581.1951,2025-05-30
+Portal,portal,Bridge,tvl_celo,108882.0913,2025-05-30
+Portal,portal,Bridge,tvl_ethereum,2786389951.72034,2025-05-30
+Portal,portal,Bridge,tvl_fantom,499793.6882,2025-05-30
+Portal,portal,Bridge,tvl_injective,2126.78597,2025-05-30
+Portal,portal,Bridge,tvl_karura,0.0,2025-05-30
+Portal,portal,Bridge,tvl_klaytn,47908.75358,2025-05-30
+Portal,portal,Bridge,tvl_moonbeam,2547192.99092,2025-05-30
+Portal,portal,Bridge,tvl_near,4082325.38515,2025-05-30
+Portal,portal,Bridge,tvl_oasis,54372.75868,2025-05-30
+Portal,portal,Bridge,tvl_optimism,811100.69445,2025-05-30
+Portal,portal,Bridge,tvl_polygon,4606629.79229,2025-05-30
+Portal,portal,Bridge,tvl_solana,114652613.46583,2025-05-30
+Portal,portal,Bridge,tvl_sui,693943.41279,2025-05-30
+Portal,portal,Bridge,tvl_terra,6464903.05595,2025-05-30
+Portal,portal,Bridge,tvl_terra2,522.2047,2025-05-30
+Portal,portal,Bridge,tvl_xpla,0.28186,2025-05-30
+Raydium AMM,raydium-amm,Dexs,tvl_solana,1893598620.05834,2025-05-30
+Raydium AMM,raydium-amm,Dexs,tvl_solana-staking,100342747.41521,2025-05-30
+Raydium AMM,raydium-amm,Dexs,tvl_staking,100342747.41521,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_arbitrum,16029067.31396,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_base,4237110.20649,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_binance,257553.17514,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_blast,1221450.0945,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_ethereum,824238873.18565,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_fraxtal,1564347.63587,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_linea,44047639.2683,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_mode,2700146.76884,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_optimism,1870804.25708,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_sei,8421.92158,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_solana,103663774.76711,2025-05-30
+Renzo,renzo,Liquid Restaking,tvl_zircuit,25585329.50705,2025-05-30
+Robinhood,robinhood,CEX,tvl_avalanche,91194130.02261,2025-05-30
+Robinhood,robinhood,CEX,tvl_avalanche,97741050.28132,2025-05-29
+Robinhood,robinhood,CEX,tvl_bitcoin,14853211166.75596,2025-05-30
+Robinhood,robinhood,CEX,tvl_bitcoin,15239901886.36456,2025-05-29
+Robinhood,robinhood,CEX,tvl_ethereum,4342351144.49946,2025-05-30
+Robinhood,robinhood,CEX,tvl_ethereum,4515013515.42085,2025-05-29
+Robinhood,robinhood,CEX,tvl_polygon,10155.74683,2025-05-30
+Robinhood,robinhood,CEX,tvl_polygon,10266.47893,2025-05-29
+Rocket Pool,rocket-pool,Liquid Staking,tvl_ethereum,1738880078.17197,2025-05-30
+Rocket Pool,rocket-pool,Liquid Staking,tvl_ethereum-staking,57029086.6071,2025-05-30
+Rocket Pool,rocket-pool,Liquid Staking,tvl_staking,57029086.6071,2025-05-30
+Sanctum Validator LSTs,sanctum-validator-lsts,Liquid Staking,tvl_solana,1668207086.33288,2025-05-30
+Sky Lending,sky-lending,CDP,tvl_ethereum,5473752119.75691,2025-05-30
+Sky Lending,sky-lending,CDP,tvl_ethereum,5480741129.83668,2025-05-29
+SolvBTC,solvbtc,Bridge,tvl_arbitrum,1860254.28869,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_avalanche,498440.74259,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_base,3085100.13742,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_binance,33352104.609,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_bitcoin,704056185.5515,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_bob,179710.79057,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_ethereum,4576920.9639,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_mantle,66362.07432,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_merlin,0.0,2025-05-30
+SolvBTC,solvbtc,Bridge,tvl_polygon,0.0,2025-05-30
+SolvBTC LSTs,solvbtc-lsts,Restaked BTC,tvl_bitcoin,530116581.24525,2025-05-30
+SolvBTC LSTs,solvbtc-lsts,Restaked BTC,tvl_ethereum,132961086.405,2025-05-30
+Spark Liquidity Layer,spark-liquidity-layer,Onchain Capital Allocator,tvl_arbitrum,10006014.66233,2025-05-30
+Spark Liquidity Layer,spark-liquidity-layer,Onchain Capital Allocator,tvl_base,313543787.7626,2025-05-30
+Spark Liquidity Layer,spark-liquidity-layer,Onchain Capital Allocator,tvl_ethereum,2803327403.2353,2025-05-30
+SparkLend,sparklend,Lending,tvl_borrowed,1606758996.17568,2025-05-30
+SparkLend,sparklend,Lending,tvl_ethereum,3157820693.04141,2025-05-30
+SparkLend,sparklend,Lending,tvl_ethereum-borrowed,1599689656.36794,2025-05-30
+SparkLend,sparklend,Lending,tvl_xdai,30546272.27362,2025-05-30
+SparkLend,sparklend,Lending,tvl_xdai-borrowed,7069339.80773,2025-05-30
+Stables Labs USDX,stables-labs-usdx,Basis Trading,tvl_arbitrum,105755483.93953,2025-05-30
+Stables Labs USDX,stables-labs-usdx,Basis Trading,tvl_binance,529094839.92936,2025-05-30
+Stables Labs USDX,stables-labs-usdx,Basis Trading,tvl_ethereum,36525843.49011,2025-05-30
+StakeWise V2,stakewise-v2,Liquid Staking,tvl_ethereum,940155932.03105,2025-05-30
+StakeWise V2,stakewise-v2,Liquid Staking,tvl_xdai,1601556.24581,2025-05-30
+Steakhouse Financial,steakhouse-financial,Risk Curators,tvl_base,7141127.71753,2025-05-30
+Steakhouse Financial,steakhouse-financial,Risk Curators,tvl_corn,1087502.27683,2025-05-30
+Steakhouse Financial,steakhouse-financial,Risk Curators,tvl_ethereum,640320866.85282,2025-05-30
+SwissBorg,swissborg,CEX,tvl_algorand,97713.21054,2025-05-30
+SwissBorg,swissborg,CEX,tvl_arbitrum,237175.98121,2025-05-30
+SwissBorg,swissborg,CEX,tvl_avalanche,8565688.79727,2025-05-30
+SwissBorg,swissborg,CEX,tvl_berachain,715.56078,2025-05-30
+SwissBorg,swissborg,CEX,tvl_binance,17544332.66072,2025-05-30
+SwissBorg,swissborg,CEX,tvl_bitcoin,587389254.47484,2025-05-30
+SwissBorg,swissborg,CEX,tvl_cardano,13963784.00636,2025-05-30
+SwissBorg,swissborg,CEX,tvl_celestia,683911.6611,2025-05-30
+SwissBorg,swissborg,CEX,tvl_cosmos,1794096.30781,2025-05-30
+SwissBorg,swissborg,CEX,tvl_doge,9116410.0566,2025-05-30
+SwissBorg,swissborg,CEX,tvl_ethereum,432747394.01335,2025-05-30
+SwissBorg,swissborg,CEX,tvl_hedera,11079916.72535,2025-05-30
+SwissBorg,swissborg,CEX,tvl_injective,2027527.91765,2025-05-30
+SwissBorg,swissborg,CEX,tvl_moonbeam,435486.33027,2025-05-30
+SwissBorg,swissborg,CEX,tvl_near,4732818.10897,2025-05-30
+SwissBorg,swissborg,CEX,tvl_optimism,653999.17988,2025-05-30
+SwissBorg,swissborg,CEX,tvl_osmosis,3857.55563,2025-05-30
+SwissBorg,swissborg,CEX,tvl_polkadot,10600141.64518,2025-05-30
+SwissBorg,swissborg,CEX,tvl_polygon,3898732.03445,2025-05-30
+SwissBorg,swissborg,CEX,tvl_ripple,105729148.45218,2025-05-30
+SwissBorg,swissborg,CEX,tvl_sei,142015.77764,2025-05-30
+SwissBorg,swissborg,CEX,tvl_solana,121365162.9353,2025-05-30
+SwissBorg,swissborg,CEX,tvl_sonic,258818.23699,2025-05-30
+SwissBorg,swissborg,CEX,tvl_stellar,68897.54089,2025-05-30
+SwissBorg,swissborg,CEX,tvl_ton,400015.0252,2025-05-30
+SwissBorg,swissborg,CEX,tvl_tron,2144850.25466,2025-05-30
+SwissBorg,swissborg,CEX,tvl_xdai,11.99547,2025-05-30
+Symbiotic,symbiotic,Restaking,tvl_ethereum,1102435656.07091,2025-05-30
+Tether Gold,tether-gold,RWA,tvl_ethereum,811429901.7084,2025-05-30
+UniRouter,unirouter,Bridge,tvl_bsquared,592756141.72553,2025-05-30
+Uniswap,uniswap,DAO,active_voters,4500.0,2025-05-30
+Uniswap,uniswap,DAO,active_voters,4500.0,2025-05-29
+Uniswap,uniswap,DAO,members,25000.0,2025-05-30
+Uniswap,uniswap,DAO,members,25000.0,2025-05-29
+Uniswap,uniswap,DAO,proposals,78.0,2025-05-30
+Uniswap,uniswap,DAO,proposals,78.0,2025-05-29
+Uniswap,uniswap,DAO,treasury_value,2800000000.0,2025-05-30
+Uniswap,uniswap,DAO,treasury_value,2800000000.0,2025-05-29
+Uniswap,uniswap,DAO,tvl,4100000000.0,2025-05-30
+Uniswap,uniswap,DAO,tvl,4100000000.0,2025-05-29
+Uniswap,uniswap,DAO,users,25000.0,2025-05-30
+Uniswap,uniswap,DAO,users,25000.0,2025-05-29
+Uniswap,uniswap,DAO,volume_24h,1200000000.0,2025-05-30
+Uniswap,uniswap,DAO,volume_24h,1200000000.0,2025-05-29
+Uniswap V2,uniswap-v2,Dexs,tvl_arbitrum,12224944.54119,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_avalanche,59294.51674,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_base,224011813.19597,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_binance,537571.58786,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_celo,0.0,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_ethereum,1306578754.26374,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_optimism,3123744.39846,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_polygon,2545174.53482,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_unichain,502174.07939,2025-05-30
+Uniswap V2,uniswap-v2,Dexs,tvl_zora,26844.96483,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_arbitrum,254430599.95607,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_avalanche,31492260.61774,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_base,214063251.81472,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_binance,36765026.99827,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_blast,35281.19743,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_bob,64593140.32012,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_boba,280483.3549,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_celo,17137201.05438,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_corn,2200899.32203,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_ethereum,1874472448.71439,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_filecoin,755323.76156,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_goat,638759.07927,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_hemi,21343357.98149,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_lens,153159.24687,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_lightlink,992877.06574,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_linea,76631.58239,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_lisk,713962.61017,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_manta,2644.28528,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_mantle,64317.7962,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_moonbeam,4835.80202,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_optimism,28949203.73476,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_polygon,67061067.77171,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_polygon zkevm,2178.84713,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_rsk,47229452.98449,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_saga,12924445.82991,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_scroll,425764.94159,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_sei,682337.45983,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_sonic,1009821.30795,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_taiko,159420.63238,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_telos,556710.35759,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_unichain,2118719.34055,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_world chain,4853825.92694,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_xdai,12711296.77916,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_xdc,59222.25172,2025-05-30
+Uniswap V3,uniswap-v3,Dexs,tvl_zksync era,1101592.36252,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_arbitrum,27086135.30022,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_avalanche,170436.36328,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_base,18724863.90392,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_binance,7780881.40642,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_blast,370.03521,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_ethereum,214056927.23023,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_ink,1.96372,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_optimism,1250055.29976,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_polygon,6255701.75904,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_soneium,615570.3128,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_unichain,504609049.76399,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_world chain,34169.8973,2025-05-30
+Uniswap V4,uniswap-v4,Dexs,tvl_zora,11044.83828,2025-05-30
+USDT0,usdt0,Bridge,tvl_ethereum,1295821985.5528,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_arbitrum,5163126.73358,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_base,5616572.92981,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_berachain,166262062.78095,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_binance,2524367.93277,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_bob,2850708.49041,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_ethereum,2335955688.51742,2025-05-30
+Veda,veda,Onchain Capital Allocator,tvl_sonic,120892679.78315,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_arbitrum,7463478.36613,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_arbitrum-borrowed,2519899.73051,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_base,56321.66401,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_base-borrowed,19521.02667,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_binance,1583124856.60666,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_binance-borrowed,652084943.45437,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_borrowed,668749040.43789,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_ethereum,17676339.9115,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_ethereum-borrowed,4442932.37314,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_op_bnb,9465.38832,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_op_bnb-borrowed,740.73768,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_optimism,35064.3969,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_optimism-borrowed,3571.28804,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_unichain,4473126.39591,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_unichain-borrowed,6675347.49636,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_zksync era,7701041.61487,2025-05-30
+Venus Core Pool,venus-core-pool,Lending,tvl_zksync era-borrowed,3002084.33112,2025-05-30
+WBTC,wbtc,Bridge,tvl_bitcoin,13617765309.2892,2025-05-30
+WBTC,wbtc,Bridge,tvl_bitcoin,13948957070.09612,2025-05-29
+Yearn Finance,yearn,DAO,active_voters,850.0,2025-05-30
+Yearn Finance,yearn,DAO,active_voters,850.0,2025-05-29
+Yearn Finance,yearn,DAO,members,3500.0,2025-05-30
+Yearn Finance,yearn,DAO,members,3500.0,2025-05-29
+Yearn Finance,yearn,DAO,proposals,189.0,2025-05-30
+Yearn Finance,yearn,DAO,proposals,189.0,2025-05-29
+Yearn Finance,yearn,DAO,treasury_value,45000000.0,2025-05-30
+Yearn Finance,yearn,DAO,treasury_value,45000000.0,2025-05-29
+Yearn Finance,yearn,DAO,tvl,420000000.0,2025-05-30
+Yearn Finance,yearn,DAO,tvl,420000000.0,2025-05-29
+Yearn Finance,yearn,DAO,users,3500.0,2025-05-30
+Yearn Finance,yearn,DAO,users,3500.0,2025-05-29
+Zircuit Staking,zircuit-staking,Farm,tvl_ethereum,326753463.95124,2025-05-30
+Zircuit Staking,zircuit-staking,Farm,tvl_zircuit,523507387.2535,2025-05-30

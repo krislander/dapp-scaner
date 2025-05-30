@@ -1,11 +1,10 @@
 import os
 from configparser import ConfigParser
-
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 _cfg = ConfigParser()
-_cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.ini'))
+_cfg.read(os.path.join(os.path.dirname(__file__), '..', 'config', 'config.ini'))
 DB_NAME = _cfg["database"]["name"]
 SUPERUSER = _cfg["database"]["user"]
 PASSWORD = _cfg["database"]["password"]
@@ -15,7 +14,7 @@ PORT = _cfg["database"]["port"]
 def create_database():
     # Connect to default 'postgres' DB to issue CREATE DATABASE
     conn = psycopg2.connect(
-        dbname=DB_NAME,
+        dbname="postgres",
         user=SUPERUSER,
         password=PASSWORD,
         host=HOST,
@@ -33,8 +32,39 @@ def create_database():
     cur.close()
     conn.close()
 
-def create_schema():
-    # Connect to the newly created database
+def drop_existing_tables():
+    """Drop existing complex tables"""
+    conn = psycopg2.connect(
+        dbname=DB_NAME,
+        user=SUPERUSER,
+        password=PASSWORD,
+        host=HOST,
+        port=PORT
+    )
+    cur = conn.cursor()
+    
+    # Drop all existing tables
+    tables_to_drop = [
+        'dapp_activity', 'dapp_metric', 'dapp_governance', 'dapp_fee', 
+        'dapp_token', 'dapp_funding', 'dapp_protocol', 'dapp_l2', 
+        'dapp_chain', 'activity_type', 'metric_type', 'governance_model', 
+        'fee_type', 'token', 'token_format', 'funding_source', 'protocol', 
+        'l2_network', 'chain', 'industry', 'category', 'dapp'
+    ]
+    
+    for table in tables_to_drop:
+        try:
+            cur.execute(f"DROP TABLE IF EXISTS {table} CASCADE;")
+            print(f"✅ Dropped table: {table}")
+        except Exception as e:
+            print(f"⚠️ Could not drop {table}: {e}")
+    
+    conn.commit()
+    cur.close()
+    conn.close()
+
+def create_simple_schema():
+    # Connect to the database
     conn = psycopg2.connect(
         dbname=DB_NAME,
         user=SUPERUSER,
@@ -44,136 +74,138 @@ def create_schema():
     )
     cur = conn.cursor()
     ddl = """
-    -- Lookup tables
-    CREATE TABLE IF NOT EXISTS category (
-      category_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS industry (
-      industry_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS chain (
-      chain_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS l2_network (
-      l2_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL,
-      status VARCHAR(50),
-      announced DATE
-    );
-    CREATE TABLE IF NOT EXISTS protocol (
-      protocol_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS funding_source (
-      fund_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS token_format (
-      format_id SERIAL PRIMARY KEY,
-      name VARCHAR(50) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS token (
-      token_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) NOT NULL,
-      symbol VARCHAR(50) NOT NULL,
-      format_id INTEGER REFERENCES token_format(format_id)
-    );
-    CREATE TABLE IF NOT EXISTS fee_type (
-      fee_type_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS governance_model (
-      gov_model_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS metric_type (
-      metric_type_id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS activity_type (
-      activity_id SERIAL PRIMARY KEY,
+    -- Simple lookup table for categories
+    CREATE TABLE IF NOT EXISTS categories (
+      id SERIAL PRIMARY KEY,
       name VARCHAR(100) UNIQUE NOT NULL
     );
 
-    -- Core DApp table
-    CREATE TABLE IF NOT EXISTS dapp (
-      dapp_id               SERIAL       PRIMARY KEY,
-      name                  VARCHAR(255) NOT NULL,
-      slug                  VARCHAR(255) NOT NULL UNIQUE,
-      decentralisation_lvl  VARCHAR(50),
-      multi_chain           BOOLEAN      DEFAULT FALSE,
-      birth_date            DATE,
-      status                VARCHAR(50),
-      ownership_status      VARCHAR(100),
-      capital_raised        NUMERIC      DEFAULT 0,
-      showcase_fun          BOOLEAN      DEFAULT FALSE
+    -- Main DApp table with most data flattened
+    CREATE TABLE IF NOT EXISTS dapps (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      slug VARCHAR(255) UNIQUE NOT NULL,
+      category_id INTEGER REFERENCES categories(id),
+      
+      -- Basic info
+      status VARCHAR(50) DEFAULT 'active',
+      industry VARCHAR(100),
+      description TEXT,
+      website VARCHAR(500),
+      
+      -- Blockchain info (simplified - store as comma-separated for multi-chain)
+      chains TEXT,  -- e.g., "Ethereum,Polygon,BSC"
+      multi_chain BOOLEAN DEFAULT FALSE,
+      
+      -- Dates and ownership
+      birth_date DATE,
+      ownership_status VARCHAR(100),
+      decentralisation_lvl VARCHAR(50),
+      
+      -- Financial data
+      capital_raised NUMERIC DEFAULT 0,
+      showcase_fun BOOLEAN DEFAULT FALSE,
+      
+      -- Tokens (simplified - store main token info)
+      token_name VARCHAR(100),
+      token_symbol VARCHAR(20),
+      token_format VARCHAR(50),
+      
+      -- Governance (simplified)
+      governance_type VARCHAR(100),  -- e.g., "DAO", "Centralized", "Multi-sig"
+      
+      -- Social & Links
+      twitter VARCHAR(200),
+      discord VARCHAR(200),
+      
+      -- Timestamps
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
-    ALTER TABLE dapp
-      ADD COLUMN category_id  INTEGER REFERENCES category(category_id),
-      ADD COLUMN industry_id  INTEGER REFERENCES industry(industry_id);
 
-    -- M:N and 1:N relation tables
-    CREATE TABLE IF NOT EXISTS dapp_chain (
-      dapp_id  INTEGER REFERENCES dapp(dapp_id),
-      chain_id INTEGER REFERENCES chain(chain_id),
-      PRIMARY KEY (dapp_id, chain_id)
+    -- Metrics table for key-value metrics
+    CREATE TABLE IF NOT EXISTS dapp_metrics (
+      id SERIAL PRIMARY KEY,
+      dapp_id INTEGER REFERENCES dapps(id) ON DELETE CASCADE,
+      metric_name VARCHAR(100) NOT NULL,
+      metric_value NUMERIC,
+      metric_date DATE DEFAULT CURRENT_DATE,
+      UNIQUE(dapp_id, metric_name, metric_date)
     );
-    CREATE TABLE IF NOT EXISTS dapp_l2 (
-      dapp_id INTEGER REFERENCES dapp(dapp_id),
-      l2_id   INTEGER REFERENCES l2_network(l2_id),
-      PRIMARY KEY (dapp_id, l2_id)
+
+    -- Simplified fees table
+    CREATE TABLE IF NOT EXISTS dapp_fees (
+      id SERIAL PRIMARY KEY,
+      dapp_id INTEGER REFERENCES dapps(id) ON DELETE CASCADE,
+      fee_type VARCHAR(100) NOT NULL,
+      rate NUMERIC,
+      charged_to VARCHAR(100),
+      recipient VARCHAR(100)
     );
-    CREATE TABLE IF NOT EXISTS dapp_protocol (
-      dapp_id     INTEGER REFERENCES dapp(dapp_id),
-      protocol_id INTEGER REFERENCES protocol(protocol_id),
-      role        VARCHAR(20),         -- e.g. 'Protocol A'
-      PRIMARY KEY (dapp_id, protocol_id, role)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_funding (
-      dapp_id     INTEGER REFERENCES dapp(dapp_id),
-      fund_id     INTEGER REFERENCES funding_source(fund_id),
-      amount      NUMERIC,
-      PRIMARY KEY (dapp_id, fund_id)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_token (
-      dapp_id   INTEGER REFERENCES dapp(dapp_id),
-      token_id  INTEGER REFERENCES token(token_id),
-      PRIMARY KEY (dapp_id, token_id)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_fee (
-      dapp_id        INTEGER REFERENCES dapp(dapp_id),
-      fee_type_id    INTEGER REFERENCES fee_type(fee_type_id),
-      rate           NUMERIC,
-      charged_to     VARCHAR(100),
-      recipient      VARCHAR(100),
-      PRIMARY KEY (dapp_id, fee_type_id)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_governance (
-      dapp_id      INTEGER REFERENCES dapp(dapp_id),
-      gov_model_id INTEGER REFERENCES governance_model(gov_model_id),
-      PRIMARY KEY (dapp_id, gov_model_id)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_metric (
-      dapp_id        INTEGER REFERENCES dapp(dapp_id),
-      metric_type_id INTEGER REFERENCES metric_type(metric_type_id),
-      value          NUMERIC,
-      PRIMARY KEY (dapp_id, metric_type_id)
-    );
-    CREATE TABLE IF NOT EXISTS dapp_activity (
-      dapp_id     INTEGER REFERENCES dapp(dapp_id),
-      activity_id INTEGER REFERENCES activity_type(activity_id),
-      PRIMARY KEY (dapp_id, activity_id)
-    );
+
+    -- Insert some default categories
+    INSERT INTO categories (name) VALUES 
+      ('DeFi'), ('Gaming'), ('Marketplaces'), ('Social'), ('Wallets'), 
+      ('Infrastructure'), ('DAO'), ('NFT'), ('Yield Farming'), ('DEX'),
+      ('Lending'), ('Insurance'), ('Analytics'), ('Bridge'), ('Staking')
+    ON CONFLICT (name) DO NOTHING;
+
+    -- Create indexes for better performance
+    CREATE INDEX IF NOT EXISTS idx_dapps_category ON dapps(category_id);
+    CREATE INDEX IF NOT EXISTS idx_dapps_chains ON dapps USING gin(to_tsvector('english', chains));
+    CREATE INDEX IF NOT EXISTS idx_dapps_industry ON dapps(industry);
+    CREATE INDEX IF NOT EXISTS idx_metrics_dapp ON dapp_metrics(dapp_id);
+    CREATE INDEX IF NOT EXISTS idx_metrics_name ON dapp_metrics(metric_name);
+    CREATE INDEX IF NOT EXISTS idx_fees_dapp ON dapp_fees(dapp_id);
+
+    -- Create view for easy querying
+    CREATE OR REPLACE VIEW dapp_summary AS
+    SELECT 
+      d.id,
+      d.name,
+      d.slug,
+      c.name as category,
+      d.industry,
+      d.chains,
+      d.multi_chain,
+      d.status,
+      d.ownership_status,
+      d.decentralisation_lvl,
+      d.token_symbol,
+      d.governance_type,
+      d.birth_date,
+      d.capital_raised,
+      d.website,
+      -- Get key metrics in columns
+      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'tvl' ORDER BY metric_date DESC LIMIT 1) as tvl,
+      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) as users,
+      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) as volume,
+      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) as transactions
+    FROM dapps d
+    LEFT JOIN categories c ON d.category_id = c.id;
     """
     cur.execute(ddl)
     conn.commit()
-    print("→ Schema created/updated in", DB_NAME)
+    print("→ Simplified schema created in", DB_NAME)
     cur.close()
     conn.close()
 
 if __name__ == "__main__":
+    print("🗃️ Creating Simplified Database Schema")
+    print("=" * 40)
+    
     create_database()
-    create_schema()
+    
+    choice = input("⚠️ This will DROP all existing tables and create new simplified ones. Continue? (y/N): ")
+    if choice.lower() == 'y':
+        drop_existing_tables()
+        create_simple_schema()
+        print("\n✅ Simplified database schema created!")
+        print("📋 Tables created:")
+        print("  • categories - DApp categories")
+        print("  • dapps - Main DApp information (flattened)")
+        print("  • dapp_metrics - Key-value metrics")
+        print("  • dapp_fees - Fee information")
+        print("  • dapp_summary - Easy query view")
+    else:
+        print("❌ Operation cancelled.") 
