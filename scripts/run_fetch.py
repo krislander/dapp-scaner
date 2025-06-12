@@ -5,6 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from dapp_scraper.scrapers.defillama import fetch_defillama
 from dapp_scraper.scrapers.dappradar import fetch_dappradar
 from dapp_scraper.scrapers.deepdao import fetch_deepdao
+from dapp_scraper.scrapers.coinmarketcap import fetch_coinmarketcap
 from dapp_scraper.store import store_records, get_dapp_count, get_recent_dapps
 import time
 
@@ -68,12 +69,29 @@ def main():
     except Exception as e:
         print(f"❌ Error with DeepDAO: {e}")
     
+    # Small delay
+    time.sleep(2)
+    
+    # 4. Fetch from CoinMarketCap
+    print("\n💰 Fetching data from CoinMarketCap...")
+    try:
+        cmc = fetch_coinmarketcap(limit=50)  # Lower limit due to API restrictions
+        if cmc:
+            print(f"✅ Retrieved {len(cmc)} DEX pairs and exchanges from CoinMarketCap")
+            store_records(cmc)
+            total_stored += len(cmc)
+            print(f"✅ Stored {len(cmc)} CoinMarketCap records")
+        else:
+            print("⚠️ No data retrieved from CoinMarketCap")
+    except Exception as e:
+        print(f"❌ Error with CoinMarketCap: {e}")
+    
     final_count = get_dapp_count()
     
     print(f"\n🎉 Data collection complete!")
     print(f"📈 Records processed: {total_stored}")
     print(f"📊 Total DApps in database: {final_count} (was {initial_count})")
-    print(f"🔗 Sources: DeFiLlama, DappRadar, DeepDAO")
+    print(f"🔗 Sources: DeFiLlama, DappRadar, DeepDAO, CoinMarketCap")
     
     # Show recent DApps
     print(f"\n📋 Recently updated DApps:")
@@ -94,6 +112,8 @@ def test_single_source(source_name, limit=3):
             data = fetch_dappradar(limit=limit)
         elif source_name.lower() == "deepdao":
             data = fetch_deepdao(limit=limit)
+        elif source_name.lower() == "coinmarketcap" or source_name.lower() == "cmc":
+            data = fetch_coinmarketcap(limit=limit)
         else:
             print(f"❌ Unknown source: {source_name}")
             return
