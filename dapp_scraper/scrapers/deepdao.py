@@ -4,7 +4,7 @@ import time
 import re
 from datetime import datetime
 
-def fetch_deepdao(limit=100):
+def fetch_deepdao(limit):
     """
     Scrape DAO information from DeepDAO website
     Returns list of dicts with comprehensive DAO data

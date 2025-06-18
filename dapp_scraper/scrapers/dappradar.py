@@ -3,6 +3,9 @@ from configparser import ConfigParser
 import os
 from datetime import datetime
 import time
+import threading
+
+from scripts import rate_limiter
 
 # load API key
 _cfg = ConfigParser()
@@ -10,88 +13,148 @@ _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.
 API_KEY = _cfg["dappradar"]["api_key"]
 API_ORIGIN = _cfg["dappradar"]["api_origin"]
 
-def fetch_dappradar(limit=100):
+rate_limiter = rate_limiter.DappRadarRateLimiter()
+
+def make_rate_limited_request(url, headers, params=None):
     """
-    Fetch top-*limit* DApps from DappRadar API and
-    normalize to our schema with comprehensive data
+    Make a rate-limited request to DappRadar API
+    """
+    rate_limiter.wait_if_needed()
+    return requests.get(url, headers=headers, params=params)
+
+def fetch_dappradar(limit):
+    """
+    Fetch top-*limit* DApps from DappRadar API for all supported chains
+    and normalize to our schema with comprehensive data
     """
     headers = {"x-api-key": API_KEY}
+    categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
     
-    # Get basic DApp list
-    params = {"limit": limit}
-    
-    try:
-        print(f"Making request to: {API_ORIGIN}dapps")
-        print(f"Headers: x-api-key: {API_KEY[:10]}...")
-        print(f"Params: {params}")
+    try:        
+        all_records = []
         
-        resp = requests.get(API_ORIGIN + "dapps", headers=headers, params=params)
+        # Iterate through each supported chain
+        for category in categories:
+            print(f"\n📱 Fetching DApps for category: {category}")
+            
+            # Parameters for each chain request
+            params = {
+                "metric": "uaw",
+                "category": category,
+                "top": 100
+            }
+            
+            try:
+                print(f"Making request to: {API_ORIGIN}dapps/top/uaw")
+                print(f"Headers: x-api-key: {API_KEY[:10]}...")
+                print(f"Params: {params}")
+
+                resp = make_rate_limited_request(API_ORIGIN + "dapps/top", headers, params)
+                
+                print(f"Response status for {category}: {resp.status_code}")
+                if resp.status_code != 200:
+                    print(f"Response text: {resp.text[:500]}...")
+                    print(f"❌ DappRadar API returned error for chain {category} - skipping")
+                    continue
+                
+                resp.raise_for_status()
+                items = resp.json().get("data", [])
+                
+                if not items:
+                    print(f"⚠️ No data returned for chain {category}")
+                    continue
+                
+                print(f"✅ Retrieved {len(items)} DApps for chain {category}")
+                
+                # Process each DApp for this chain
+                chain_records = []
+                for i, dapp in enumerate(items):
+                    print(f"Processing DApp {i+1}/{len(items)} for {category}: {dapp['name']}")
+                    
+                    # Get detailed information for each DApp
+                    detailed_data = get_dapp_details(dapp.get('id'), headers)
+                    
+                    record = {
+                        "name": dapp["name"],
+                        "slug": dapp["slug"],
+                        "category": dapp.get("category", "") or category,
+                        "chains": dapp.get("blockchains", []),
+                        "status": "active",  # Default status
+                        "multi_chain": len(dapp.get("blockchains", [])) > 1,
+                        "birth_date": None,
+                        "ownership_status": None,
+                        "capital_raised": 0,
+                        "showcase_fun": False,
+                        "decentralisation_lvl": None,
+                        "industry": dapp.get("industry", ""),
+                        "source_chain": dapp.get("chains", ""),
+                        "metrics": {
+                            "tvl": float(dapp.get("tvl", 0)),
+                            "users": int(dapp.get("activeUsers", 0)),
+                            "volume": float(dapp.get("volume", 0)),
+                            "transactions": int(dapp.get("transactions", 0)),
+                            "balance": float(dapp.get("balance", 0)),
+                        },
+                        "tokens": [],
+                        "protocols": [],
+                        "fees": [],
+                        "governance": [],
+                        "activities": [],
+                        "funding": []
+                    }
+                    
+                    # Merge detailed data if available
+                    if detailed_data:
+                        record.update(detailed_data)
+                    
+                    chain_records.append(record)
+                
+                all_records.extend(chain_records)
+                print(f"✅ Added {len(chain_records)} records from chain {category}")
+                
+                # Small delay between chains for processing feedback
+                time.sleep(0.5)
+                
+            except Exception as chain_error:
+                print(f"❌ Error fetching data for chain {category}: {chain_error}")
+                continue
         
-        print(f"Response status: {resp.status_code}")
-        if resp.status_code != 200:
-            print(f"Response text: {resp.text[:500]}...")
-            print("❌ DappRadar API returned error - using fallback data")
+        if not all_records:
+            print("⚠️ No data retrieved from any chain - using fallback data")
             return get_sample_dappradar_data(limit)
         
-        resp.raise_for_status()
-        items = resp.json().get("data", [])
+        # Remove duplicates based on slug (same DApp might appear on multiple chains)
+        unique_records = {}
+        for record in all_records:
+            slug = record.get('slug')
+            if slug not in unique_records:
+                unique_records[slug] = record
+            else:
+                # If duplicate, merge chain information
+                existing_chains = set(unique_records[slug].get('chains', []))
+                new_chains = set(record.get('chains', []))
+                merged_chains = list(existing_chains.union(new_chains))
+                unique_records[slug]['chains'] = merged_chains
+                unique_records[slug]['multi_chain'] = len(merged_chains) > 1
+                
+                # Keep the record with higher metrics (assuming more recent/accurate)
+                if record.get('metrics', {}).get('tvl', 0) > unique_records[slug].get('metrics', {}).get('tvl', 0):
+                    unique_records[slug] = record
+                    unique_records[slug]['chains'] = merged_chains
+                    unique_records[slug]['multi_chain'] = len(merged_chains) > 1
         
-        if not items:
-            print("⚠️ No data returned from DappRadar API - using fallback data")
-            return get_sample_dappradar_data(limit)
+        final_records = list(unique_records.values())
+        print(f"\n🎉 Total unique DApps collected: {len(final_records)} (from {len(all_records)} total records)")
+        print(f"📊 Categories processed: {', '.join(category)}")
+        
+        return final_records
 
     except Exception as e:
         print(f"❌ DappRadar API error: {e}")
         print("🔄 Using fallback sample data instead")
         return get_sample_dappradar_data(limit)
 
-    records = []
-    for i, dapp in enumerate(items):
-        print(f"Processing DApp {i+1}/{len(items)}: {dapp['name']}")
-        
-        # Get detailed information for each DApp
-        detailed_data = get_dapp_details(dapp.get('id'), headers)
-        
-        record = {
-            "name": dapp["name"],
-            "slug": dapp["slug"],
-            "category": dapp.get("category", "") or "",
-            "chains": dapp.get("blockchains", []),
-            "status": "active",  # Default status
-            "multi_chain": len(dapp.get("blockchains", [])) > 1,
-            "birth_date": None,
-            "ownership_status": None,
-            "capital_raised": 0,
-            "showcase_fun": False,
-            "decentralisation_lvl": None,
-            "industry": dapp.get("industry", ""),
-            "metrics": {
-                "tvl": float(dapp.get("tvl", 0)),
-                "users": int(dapp.get("activeUsers", 0)),
-                "volume": float(dapp.get("volume", 0)),
-                "transactions": int(dapp.get("transactions", 0)),
-                "balance": float(dapp.get("balance", 0)),
-            },
-            "tokens": [],
-            "protocols": [],
-            "fees": [],
-            "governance": [],
-            "activities": [],
-            "funding": []
-        }
-        
-        # Merge detailed data if available
-        if detailed_data:
-            record.update(detailed_data)
-        
-        records.append(record)
-        
-        # Rate limiting to avoid API limits
-        time.sleep(0.1)
-
-    return records
-
-def get_sample_dappradar_data(limit=10):
+def get_sample_dappradar_data(limit):
     """
     Fallback sample data when DappRadar API fails
     """
@@ -204,7 +267,7 @@ def get_dapp_details(dapp_id, headers):
     """
     try:
         # Get DApp details
-        detail_resp = requests.get(f"{API_ORIGIN}dapps/{dapp_id}", headers=headers)
+        detail_resp = make_rate_limited_request(f"{API_ORIGIN}dapps/{dapp_id}", headers)
         if detail_resp.status_code == 200:
             detail_data = detail_resp.json().get("data", {})
             
@@ -281,7 +344,7 @@ def get_dapp_history(dapp_id, headers, days=30):
     """
     try:
         params = {"range": f"{days}d"}
-        hist_resp = requests.get(f"{API_ORIGIN}dapps/{dapp_id}/history", headers=headers, params=params)
+        hist_resp = make_rate_limited_request(f"{API_ORIGIN}dapps/{dapp_id}/history", headers, params)
         if hist_resp.status_code == 200:
             return hist_resp.json().get("data", [])
     except Exception as e:

@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 import time
 
-def fetch_defillama(limit=100):
+def fetch_defillama(limit):
     """
     Fetch top-*limit* protocols by TVL from DeFiLlama API and
     normalize to our schema with comprehensive data

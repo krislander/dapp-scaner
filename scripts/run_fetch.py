@@ -9,39 +9,23 @@ from dapp_scraper.scrapers.coinmarketcap import fetch_coinmarketcap
 from dapp_scraper.store import store_records, get_dapp_count, get_recent_dapps
 import time
 
-def main():
+def main(limit):
     """
-    Main function to fetch and store DApp data from all sources
+    Main function to fetch and store DApp data
+    Args:
+        limit: Number of records to fetch (required)
     """
-    print("🚀 Starting DApp data collection (Simplified Schema)")
-    print("=" * 50)
     
     initial_count = get_dapp_count()
     print(f"📊 Starting with {initial_count} DApps in database")
+    print(f"🎯 Target limit: {limit} records")
     
     total_stored = 0
     
-    # 1. Fetch from DeFiLlama
-    print("\n📊 Fetching data from DeFiLlama...")
+    # Only fetch from DappRadar for now
+    print(f"\n📱 Fetching data from DappRadar (limit: {limit})...")
     try:
-        dl = fetch_defillama(limit=100)
-        if dl:
-            print(f"✅ Retrieved {len(dl)} protocols from DeFiLlama")
-            store_records(dl)
-            total_stored += len(dl)
-            print(f"✅ Stored {len(dl)} DeFiLlama protocols")
-        else:
-            print("⚠️ No data retrieved from DeFiLlama")
-    except Exception as e:
-        print(f"❌ Error with DeFiLlama: {e}")
-    
-    # Small delay between API calls
-    time.sleep(2)
-    
-    # 2. Fetch from DappRadar
-    print("\n📱 Fetching data from DappRadar...")
-    try:
-        dr = fetch_dappradar(limit=100)
+        dr = fetch_dappradar(limit)
         if dr:
             print(f"✅ Retrieved {len(dr)} DApps from DappRadar")
             store_records(dr)
@@ -52,46 +36,60 @@ def main():
     except Exception as e:
         print(f"❌ Error with DappRadar: {e}")
     
-    # Small delay
-    time.sleep(2)
+    # Other sources are commented out for now but kept in code
+    # # 1. Fetch from DeFiLlama
+    # print(f"\n📊 Fetching data from DeFiLlama (limit: {limit})...")
+    # try:
+    #     dl = fetch_defillama(limit)
+    #     if dl:
+    #         print(f"✅ Retrieved {len(dl)} protocols from DeFiLlama")
+    #         store_records(dl)
+    #         total_stored += len(dl)
+    #         print(f"✅ Stored {len(dl)} DeFiLlama protocols")
+    #     else:
+    #         print("⚠️ No data retrieved from DeFiLlama")
+    # except Exception as e:
+    #     print(f"❌ Error with DeFiLlama: {e}")
     
-    # 3. Fetch from DeepDAO
-    print("\n🏛️ Fetching data from DeepDAO...")
-    try:
-        dd = fetch_deepdao(limit=100)
-        if dd:
-            print(f"✅ Retrieved {len(dd)} DAOs from DeepDAO")
-            store_records(dd)
-            total_stored += len(dd)
-            print(f"✅ Stored {len(dd)} DeepDAO organizations")
-        else:
-            print("⚠️ No data retrieved from DeepDAO")
-    except Exception as e:
-        print(f"❌ Error with DeepDAO: {e}")
+    # # Small delay between API calls
+    # time.sleep(2)
     
-    # Small delay
-    time.sleep(2)
+    # # 3. Fetch from DeepDAO
+    # print(f"\n🏛️ Fetching data from DeepDAO (limit: {limit})...")
+    # try:
+    #     dd = fetch_deepdao(limit)
+    #     if dd:
+    #         print(f"✅ Retrieved {len(dd)} DAOs from DeepDAO")
+    #         store_records(dd)
+    #         total_stored += len(dd)
+    #         print(f"✅ Stored {len(dd)} DeepDAO organizations")
+    #     else:
+    #         print("⚠️ No data retrieved from DeepDAO")
+    # except Exception as e:
+    #     print(f"❌ Error with DeepDAO: {e}")
     
-    # 4. Fetch from CoinMarketCap
-    print("\n💰 Fetching data from CoinMarketCap...")
-    try:
-        cmc = fetch_coinmarketcap(limit=50)  # Lower limit due to API restrictions
-        if cmc:
-            print(f"✅ Retrieved {len(cmc)} DEX pairs and exchanges from CoinMarketCap")
-            store_records(cmc)
-            total_stored += len(cmc)
-            print(f"✅ Stored {len(cmc)} CoinMarketCap records")
-        else:
-            print("⚠️ No data retrieved from CoinMarketCap")
-    except Exception as e:
-        print(f"❌ Error with CoinMarketCap: {e}")
+    # # Small delay
+    # time.sleep(2)
+    
+    # # 4. Fetch from CoinMarketCap
+    # print(f"\n💰 Fetching data from CoinMarketCap (limit: {limit})...")
+    # try:
+    #     cmc = fetch_coinmarketcap(limit)
+    #     if cmc:
+    #         print(f"✅ Retrieved {len(cmc)} DEX pairs and exchanges from CoinMarketCap")
+    #         store_records(cmc)
+    #         total_stored += len(cmc)
+    #         print(f"✅ Stored {len(cmc)} CoinMarketCap records")
+    #     else:
+    #         print("⚠️ No data retrieved from CoinMarketCap")
+    # except Exception as e:
+    #     print(f"❌ Error with CoinMarketCap: {e}")
     
     final_count = get_dapp_count()
     
     print(f"\n🎉 Data collection complete!")
     print(f"📈 Records processed: {total_stored}")
     print(f"📊 Total DApps in database: {final_count} (was {initial_count})")
-    print(f"🔗 Sources: DeFiLlama, DappRadar, DeepDAO, CoinMarketCap")
     
     # Show recent DApps
     print(f"\n📋 Recently updated DApps:")
@@ -99,21 +97,24 @@ def main():
     for name, slug, category, chains, updated_at in recent:
         print(f"  • {name} ({category}) - {chains}")
 
-def test_single_source(source_name, limit=3):
+def test_single_source(source_name, limit):
     """
-    Test a single data source with limited records
+    Test a single data source with specified limit (no default)
+    Args:
+        source_name: Name of the source to test
+        limit: Number of records to fetch (required)
     """
     print(f"🧪 Testing {source_name} with limit={limit}")
     
     try:
         if source_name.lower() == "defillama":
-            data = fetch_defillama(limit=limit)
+            data = fetch_defillama(limit)
         elif source_name.lower() == "dappradar":
-            data = fetch_dappradar(limit=limit)
+            data = fetch_dappradar(limit)
         elif source_name.lower() == "deepdao":
-            data = fetch_deepdao(limit=limit)
+            data = fetch_deepdao(limit)
         elif source_name.lower() == "coinmarketcap" or source_name.lower() == "cmc":
-            data = fetch_coinmarketcap(limit=limit)
+            data = fetch_coinmarketcap(limit)
         else:
             print(f"❌ Unknown source: {source_name}")
             return
@@ -133,71 +134,43 @@ def test_single_source(source_name, limit=3):
     except Exception as e:
         print(f"❌ Error testing {source_name}: {e}")
 
-def quick_analysis():
-    """Quick analysis of stored data"""
-    from dapp_scraper.simple_store import get_conn
-    
-    conn = get_conn()
-    cur = conn.cursor()
-    
-    print("📊 Quick Database Analysis")
-    print("=" * 30)
-    
-    # Total DApps
-    cur.execute("SELECT COUNT(*) FROM dapps;")
-    total = cur.fetchone()[0]
-    print(f"Total DApps: {total}")
-    
-    # By category
-    cur.execute("""
-        SELECT c.name, COUNT(d.id) 
-        FROM categories c 
-        LEFT JOIN dapps d ON c.id = d.category_id 
-        GROUP BY c.name 
-        ORDER BY COUNT(d.id) DESC 
-        LIMIT 5;
-    """)
-    print("\nTop Categories:")
-    for category, count in cur.fetchall():
-        print(f"  • {category}: {count}")
-    
-    # Multi-chain DApps
-    cur.execute("SELECT COUNT(*) FROM dapps WHERE multi_chain = true;")
-    multi_chain = cur.fetchone()[0]
-    print(f"\nMulti-chain DApps: {multi_chain}")
-    
-    # Top by TVL
-    cur.execute("""
-        SELECT d.name, dm.metric_value 
-        FROM dapps d
-        JOIN dapp_metrics dm ON d.id = dm.dapp_id
-        WHERE dm.metric_name = 'tvl' AND dm.metric_value > 0
-        ORDER BY dm.metric_value DESC
-        LIMIT 5;
-    """)
-    print("\nTop by TVL:")
-    for name, tvl in cur.fetchall():
-        print(f"  • {name}: ${tvl:,.0f}")
-    
-    cur.close()
-    conn.close()
+
+def print_usage():
+    """Print usage instructions"""
+    print("Usage:")
+    print("  python run_fetch.py <limit>                    # Fetch from DappRadar with specified limit")
+    print("  python run_fetch.py test <source> <limit>      # Test specific source with limit")
+    print("  python run_fetch.py analysis                   # Run database analysis")
+    print("")
+    print("Examples:")
+    print("  python run_fetch.py 500                        # Fetch 500 DApps from DappRadar")
+    print("  python run_fetch.py test dappradar 10          # Test DappRadar with 10 records")
+    print("  python run_fetch.py analysis                   # Analyze current database")
+    print("")
+    print("Available sources for testing: dappradar, defillama, deepdao, coinmarketcap")
 
 if __name__ == "__main__":
-    # Check if we're running in test mode
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "test":
-            # Test mode - run with limited data
-            if len(sys.argv) > 2:
-                test_single_source(sys.argv[2])
-            else:
-                print("🧪 Running in test mode...")
-                test_single_source("defillama", 2)
-                test_single_source("dappradar", 2)
-                test_single_source("deepdao", 2)
-        elif sys.argv[1] == "analysis":
-            quick_analysis()
-        else:
-            test_single_source(sys.argv[1], int(sys.argv[2]) if len(sys.argv) > 2 else 3)
+    if len(sys.argv) < 2:
+        print("❌ Error: Limit parameter is required!")
+        print_usage()
+        sys.exit(1)
+    
+    if sys.argv[1] == "test":
+        if len(sys.argv) < 4:
+            print("❌ Error: Test mode requires source name and limit!")
+            print("Usage: python run_fetch.py test <source> <limit>")
+            sys.exit(1)
+        test_single_source(sys.argv[2], int(sys.argv[3]))
+    elif sys.argv[1] == "help" or sys.argv[1] == "--help":
+        print_usage()
     else:
-        # Full run
-        main() 
+        try:
+            limit = int(sys.argv[1])
+            if limit <= 0:
+                print("❌ Error: Limit must be a positive integer!")
+                sys.exit(1)
+            main(limit)
+        except ValueError:
+            print("❌ Error: Limit must be a valid integer!")
+            print_usage()
+            sys.exit(1) 

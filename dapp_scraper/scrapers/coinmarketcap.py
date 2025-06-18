@@ -10,7 +10,7 @@ _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.
 API_KEY = _cfg["coinmarketcap"]["api_key"]
 API_ORIGIN = _cfg["coinmarketcap"]["api_origin"]
 
-def fetch_coinmarketcap(limit=100):
+def fetch_coinmarketcap(limit):
     """
     Fetch comprehensive cryptocurrency and exchange data from CoinMarketCap API using multiple endpoints
     and normalize to our schema with comprehensive data
@@ -23,11 +23,13 @@ def fetch_coinmarketcap(limit=100):
         # 1. Fetch cryptocurrency listings (main data source)
         crypto_data = fetch_cryptocurrency_listings(headers, limit)
         
-        # 2. Fetch exchange listings
-        exchange_data = fetch_exchange_listings(headers, min(limit, 50))  # Lower limit for exchanges
+        # 2. Fetch exchange listings (use smaller portion of limit)
+        exchange_limit = max(10, min(limit // 4, 50))  # Use 1/4 of limit, min 10, max 50
+        exchange_data = fetch_exchange_listings(headers, exchange_limit)
         
         # 3. Try to fetch DEX data with network parameters (fallback if fails)
-        dex_data = fetch_dex_data_with_networks(headers, min(limit, 20))
+        dex_limit = max(5, min(limit // 8, 20))  # Use 1/8 of limit, min 5, max 20
+        dex_data = fetch_dex_data_with_networks(headers, dex_limit)
         
         # Process and merge all data sources
         records = process_and_merge_data(crypto_data, exchange_data, dex_data)
@@ -422,7 +424,7 @@ def create_record_from_dex_data(dex):
         print(f"Error creating record from DEX data: {e}")
         return None
 
-def get_sample_coinmarketcap_data(limit=10):
+def get_sample_coinmarketcap_data(limit):
     """
     Fallback sample data when CoinMarketCap API fails
     """

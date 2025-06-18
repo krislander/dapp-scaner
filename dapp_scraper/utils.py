@@ -14,7 +14,7 @@ def get_database_url():
 def get_api_key(service_name):
     return CFG[service_name]["api_key"]
 
-def fetch_deepdao(limit=100):
+def fetch_deepdao(limit):
     """
     Fallback scraper for DeepDAO homepage.
     Returns list of dicts like other fetchers.

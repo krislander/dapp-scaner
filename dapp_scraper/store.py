@@ -181,7 +181,7 @@ def get_dapp_count():
     conn.close()
     return count
 
-def get_recent_dapps(limit=10):
+def get_recent_dapps(limit):
     """Get recently updated DApps"""
     conn = get_conn()
     cur = conn.cursor()
