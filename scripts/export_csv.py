@@ -79,31 +79,90 @@ def export_dapps_to_csv(output_file="dapps_export.csv"):
     print(f"✅ Exported {len(rows)} DApps to {output_file}")
     return len(rows)
 
-def export_metrics_to_csv(output_file="dapp_metrics_export.csv"):
-    """Export all metrics to a separate CSV file"""
+def export_pilot_dataset(output_file="pilot_dataset.csv"):
+    """Export a pilot dataset of 30 DApps with maximum non-null fields from specified categories"""
     
     conn = get_conn()
     cur = conn.cursor()
     
+    # Define target categories
+    target_categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
+    
+    # Query to get 30 DApps with most complete data from target categories
     query = """
     SELECT 
-        d.name as dapp_name,
+        d.id,
+        d.name,
         d.slug,
         c.name as category,
-        dm.metric_name,
-        dm.metric_value,
-        dm.metric_date
-    FROM dapp_metrics dm
-    JOIN dapps d ON dm.dapp_id = d.id
+        d.industry,
+        d.status,
+        d.chains,
+        d.multi_chain,
+        d.ownership_status,
+        d.decentralisation_lvl,
+        d.birth_date,
+        d.capital_raised,
+        d.showcase_fun,
+        d.token_name,
+        d.token_symbol,
+        d.token_format,
+        d.governance_type,
+        d.website,
+        d.twitter,
+        d.discord,
+        d.description,
+        d.created_at,
+        d.updated_at,
+        -- Get key metrics
+        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'tvl' ORDER BY metric_date DESC LIMIT 1) as tvl,
+        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) as users,
+        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) as volume,
+        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) as transactions,
+        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'balance' ORDER BY metric_date DESC LIMIT 1) as balance,
+        -- Get fees as concatenated string
+        (SELECT string_agg(fee_type || ':' || COALESCE(rate::text, 'N/A'), '; ') FROM dapp_fees WHERE dapp_id = d.id) as fees,
+        -- Count non-null fields for ordering (prioritize complete records)
+        (
+            CASE WHEN d.name IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.industry IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.chains IS NOT NULL AND d.chains != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.ownership_status IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.decentralisation_lvl IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.birth_date IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.capital_raised IS NOT NULL AND d.capital_raised > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.token_name IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.token_symbol IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.governance_type IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.website IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.twitter IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.discord IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.description IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'balance' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END
+        ) as completeness_score
+    FROM dapps d
     LEFT JOIN categories c ON d.category_id = c.id
-    ORDER BY d.name, dm.metric_name, dm.metric_date DESC;
+    WHERE c.name = ANY(%s)
+    ORDER BY completeness_score DESC, d.name
+    LIMIT 30;
     """
     
-    cur.execute(query)
+    cur.execute(query, (target_categories,))
     rows = cur.fetchall()
     
-    headers = ['dapp_name', 'slug', 'category', 'metric_name', 'metric_value', 'metric_date']
+    # Column headers (excluding the completeness_score which is just for ordering)
+    headers = [
+        'id', 'name', 'slug', 'category', 'industry', 'status', 'chains', 'multi_chain',
+        'ownership_status', 'decentralisation_lvl', 'birth_date', 'capital_raised', 
+        'showcase_fun', 'token_name', 'token_symbol', 'token_format', 'governance_type',
+        'website', 'twitter', 'discord', 'description', 'created_at', 'updated_at',
+        'tvl', 'users', 'volume', 'transactions', 'balance', 'fees', 'completeness_score'
+    ]
     
+    # Write to CSV
     with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(headers)
@@ -112,44 +171,23 @@ def export_metrics_to_csv(output_file="dapp_metrics_export.csv"):
     cur.close()
     conn.close()
     
-    print(f"✅ Exported {len(rows)} metrics to {output_file}")
-    return len(rows)
-
-def export_fees_to_csv(output_file="dapp_fees_export.csv"):
-    """Export all fees to a CSV file"""
+    # Print summary by category
+    print(f"✅ Exported {len(rows)} DApps to {output_file}")
     
-    conn = get_conn()
-    cur = conn.cursor()
+    # Count by category
+    category_counts = {}
+    for row in rows:
+        category = row[3]  # category column
+        category_counts[category] = category_counts.get(category, 0) + 1
     
-    query = """
-    SELECT 
-        d.name as dapp_name,
-        d.slug,
-        c.name as category,
-        df.fee_type,
-        df.rate,
-        df.charged_to,
-        df.recipient
-    FROM dapp_fees df
-    JOIN dapps d ON df.dapp_id = d.id
-    LEFT JOIN categories c ON d.category_id = c.id
-    ORDER BY d.name, df.fee_type;
-    """
+    print("📊 Pilot Dataset Breakdown:")
+    for category, count in sorted(category_counts.items()):
+        print(f"  • {category}: {count} DApps")
     
-    cur.execute(query)
-    rows = cur.fetchall()
+    if len(rows) > 0:
+        avg_completeness = sum(row[-1] for row in rows) / len(rows)  # completeness_score is last column
+        print(f"  • Average completeness score: {avg_completeness:.1f}/18 fields")
     
-    headers = ['dapp_name', 'slug', 'category', 'fee_type', 'rate', 'charged_to', 'recipient']
-    
-    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(headers)
-        writer.writerows(rows)
-    
-    cur.close()
-    conn.close()
-    
-    print(f"✅ Exported {len(rows)} fees to {output_file}")
     return len(rows)
 
 def export_summary_stats(output_file="dapp_summary_stats.csv"):
@@ -224,11 +262,8 @@ def main():
     # Export main DApp data
     dapp_count = export_dapps_to_csv(os.path.join(export_dir, "dapps.csv"))
     
-    # Export metrics
-    metrics_count = export_metrics_to_csv(os.path.join(export_dir, "metrics.csv"))
-    
-    # Export fees
-    fees_count = export_fees_to_csv(os.path.join(export_dir, "fees.csv"))
+    # Export pilot dataset
+    pilot_count = export_pilot_dataset(os.path.join(export_dir, "pilot_dataset.csv"))
     
     # Export summary stats
     stats_count = export_summary_stats(os.path.join(export_dir, "summary_stats.csv"))
@@ -236,22 +271,19 @@ def main():
     print(f"\n🎉 Export complete!")
     print(f"📂 Files saved to: {export_dir}/")
     print(f"📊 Summary:")
-    print(f"  • {dapp_count} DApps")
-    print(f"  • {metrics_count} metrics entries")
-    print(f"  • {fees_count} fee entries")
+    print(f"  • {dapp_count} DApps (full dataset)")
+    print(f"  • {pilot_count} DApps (pilot dataset)")
     print(f"  • {stats_count} summary statistics")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         if sys.argv[1] == "dapps":
             export_dapps_to_csv("dapps.csv")
-        elif sys.argv[1] == "metrics":
-            export_metrics_to_csv("metrics.csv")
-        elif sys.argv[1] == "fees":
-            export_fees_to_csv("fees.csv")
+        elif sys.argv[1] == "pilot":
+            export_pilot_dataset("pilot_dataset.csv")
         elif sys.argv[1] == "stats":
             export_summary_stats("stats.csv")
         else:
-            print("Usage: python export_simple_csv.py [dapps|metrics|fees|stats]")
+            print("Usage: python export_csv.py [dapps|pilot|stats]")
     else:
         main() 

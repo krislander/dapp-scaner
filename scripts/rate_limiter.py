@@ -1,5 +1,5 @@
-import threading
 import time
+import threading
 
 class DappRadarRateLimiter:
     """
@@ -19,7 +19,6 @@ class DappRadarRateLimiter:
             
             if time_since_last_request < self.min_interval:
                 sleep_time = self.min_interval - time_since_last_request
-                print(f"⏳ Rate limiting: waiting {sleep_time:.2f}s")
                 time.sleep(sleep_time)
             
             self.last_request_time = time.time()

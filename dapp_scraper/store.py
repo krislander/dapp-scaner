@@ -67,53 +67,78 @@ def store_records(records):
             if rec.get("governance") and len(rec["governance"]) > 0:
                 governance_type = rec["governance"][0]
             
-            # Insert/Update main dapp record
+            # Check if a record with the same name or slug already exists
             cur.execute(
-                """
-                INSERT INTO dapps (
-                    name, slug, category_id, status, industry, description, website,
-                    chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
-                    capital_raised, showcase_fun, token_name, token_symbol, token_format,
-                    governance_type, twitter, discord, updated_at
-                ) VALUES (
-                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
-                )
-                ON CONFLICT (slug) DO UPDATE SET
-                    name = EXCLUDED.name,
-                    category_id = EXCLUDED.category_id,
-                    status = EXCLUDED.status,
-                    industry = EXCLUDED.industry,
-                    description = EXCLUDED.description,
-                    website = EXCLUDED.website,
-                    chains = EXCLUDED.chains,
-                    multi_chain = EXCLUDED.multi_chain,
-                    birth_date = EXCLUDED.birth_date,
-                    ownership_status = EXCLUDED.ownership_status,
-                    decentralisation_lvl = EXCLUDED.decentralisation_lvl,
-                    capital_raised = EXCLUDED.capital_raised,
-                    showcase_fun = EXCLUDED.showcase_fun,
-                    token_name = EXCLUDED.token_name,
-                    token_symbol = EXCLUDED.token_symbol,
-                    token_format = EXCLUDED.token_format,
-                    governance_type = EXCLUDED.governance_type,
-                    twitter = EXCLUDED.twitter,
-                    discord = EXCLUDED.discord,
-                    updated_at = CURRENT_TIMESTAMP;
-                """,
-                (
-                    rec["name"], rec["slug"], category_id, rec.get("status", "active"),
-                    rec.get("industry"), rec.get("description"), rec.get("website"),
-                    chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
-                    rec.get("ownership_status"), rec.get("decentralisation_lvl"),
-                    rec.get("capital_raised", 0), rec.get("showcase_fun", False),
-                    token_name, token_symbol, token_format, governance_type,
-                    rec.get("twitter"), rec.get("discord"), datetime.now()
-                )
+                "SELECT id, slug FROM dapps WHERE name = %s OR slug = %s;", 
+                (rec["name"], rec["slug"])
             )
+            existing_record = cur.fetchone()
             
-            # Get the dapp ID
-            cur.execute("SELECT id FROM dapps WHERE slug = %s;", (rec["slug"],))
-            dapp_id = cur.fetchone()[0]
+            if existing_record:
+                # Update existing record
+                existing_id, existing_slug = existing_record
+                cur.execute(
+                    """
+                    UPDATE dapps SET
+                        name = %s,
+                        slug = %s,
+                        category_id = %s,
+                        status = %s,
+                        industry = %s,
+                        description = %s,
+                        website = %s,
+                        chains = %s,
+                        multi_chain = %s,
+                        birth_date = %s,
+                        ownership_status = %s,
+                        decentralisation_lvl = %s,
+                        capital_raised = %s,
+                        showcase_fun = %s,
+                        token_name = %s,
+                        token_symbol = %s,
+                        token_format = %s,
+                        governance_type = %s,
+                        twitter = %s,
+                        discord = %s,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE id = %s;
+                    """,
+                    (
+                        rec["name"], rec["slug"], category_id, rec.get("status", "active"),
+                        rec.get("industry"), rec.get("description"), rec.get("website"),
+                        chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
+                        rec.get("ownership_status"), rec.get("decentralisation_lvl"),
+                        rec.get("capital_raised", 0), rec.get("showcase_fun", False),
+                        token_name, token_symbol, token_format, governance_type,
+                        rec.get("twitter"), rec.get("discord"), existing_id
+                    )
+                )
+                dapp_id = existing_id
+            else:
+                # Insert new record
+                cur.execute(
+                    """
+                    INSERT INTO dapps (
+                        name, slug, category_id, status, industry, description, website,
+                        chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
+                        capital_raised, showcase_fun, token_name, token_symbol, token_format,
+                        governance_type, twitter, discord, updated_at
+                    ) VALUES (
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                    )
+                    RETURNING id;
+                    """,
+                    (
+                        rec["name"], rec["slug"], category_id, rec.get("status", "active"),
+                        rec.get("industry"), rec.get("description"), rec.get("website"),
+                        chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
+                        rec.get("ownership_status"), rec.get("decentralisation_lvl"),
+                        rec.get("capital_raised", 0), rec.get("showcase_fun", False),
+                        token_name, token_symbol, token_format, governance_type,
+                        rec.get("twitter"), rec.get("discord"), datetime.now()
+                    )
+                )
+                dapp_id = cur.fetchone()[0]
             
             # Clear existing metrics for this dapp (for today)
             cur.execute(

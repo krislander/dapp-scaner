@@ -1,0 +1,31 @@
+id,name,slug,category,industry,status,chains,multi_chain,ownership_status,decentralisation_lvl,birth_date,capital_raised,showcase_fun,token_name,token_symbol,token_format,governance_type,website,twitter,discord,description,created_at,updated_at,tvl,users,volume,transactions,balance,fees,completeness_score
+1180,0xAstra,0xastra,other,other,active,mantle,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.303159,0.0,261.0,0.0,261.0,0.0,,7
+993,12HourTrains,12hourtrains,high-risk,high-risk,active,ethereum,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:40.868571,0.0,0.0,0.0,0.0,0.96,,7
+629,1inch Network,1inch-network,defi,defi,active,"kaia,bnb-chain,ethereum,aurora,fantom,zksync-era,arbitrum,optimism,polygon,base,avalanche",True,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,21568.0,173028317.86,36798.0,27722.4,,7
+792,2p2e,2p2e,gambling,gambling,active,soneium,False,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,4.0,534.14,51.0,6385.1,,7
+1209,4EVERLAND,4everland,other,other,active,"arbitrum,blast,bnb-chain,ethereum,linea,opbnb,optimism,polygon,zksync-era",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.349300,0.0,16.0,15.36,60.0,1554.0,,7
+998,50 Percent Daily,50-percent-daily,high-risk,high-risk,active,ethereum,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:40.876188,0.0,0.0,0.0,0.0,24.62,,7
+1019,9wins,9wins,gambling,gambling,active,playblock,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.004337,0.0,1.0,0.0,682.0,0.0,,7
+4,Aave V3,aave-v3,defi,defi,active,"arbitrum,avalanche,base,bnb-chain,celo,ethereum,fantom,linea,optimism,polygon,soneium,zksync-era",True,,,,0,False,,,,,,,,,2025-05-29 17:56:43.525906,2025-07-04 13:46:40.228059,0.0,4051.0,1991193.29,8575.0,20560779.42,,7
+1214,Abstract Global Wallet,abstract-global-wallet,other,other,active,abstract,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.357193,0.0,14.0,0.0,9540.0,0.01,,7
+1106,Access Protocol,access-protocol,social,social,active,solana,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.180558,0.0,112.0,8.99,306.0,675.8,,7
+640,Across,across,defi,defi,active,"arbitrum,base,blast,ethereum,linea,lisk,optimism,polygon,unichain,zksync-era",True,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,5389.0,40137218.56,33468.0,79977044.3,,7
+1183,Actifit,actifit,other,other,active,"bnb-chain,hive,steem",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.307907,0.0,180.0,2.3,358.0,1254.69,,7
+804,Aerodrome,aerodrome,exchanges,exchanges,active,base,False,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,3695.0,1844442.78,18870.0,665502235.06,,7
+1193,Agent Virtual Machine,agent-virtual-machine,other,other,active,ethereum,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.324210,0.0,52.0,5997.59,0.0,0.0,,7
+650,AGNI Finance,agni-finance,defi,defi,active,mantle,False,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,2610.0,9336.68,55831.0,30583.45,,7
+592,AI Nexus,ai-nexus,games,games,active,multiversx,False,,,,0,False,,,,,,,,,2025-07-04 12:05:33.357998,2025-07-04 13:46:40.228059,0.0,2421.0,0.0,2420.0,0.0,,7
+1191,aigent.run,aigentrun,other,other,active,xrpl,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.321304,0.0,56.0,3072.3,269.0,0.0,,7
+1187,aixbt,aixbt,other,other,active,base,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.313742,0.0,83.0,335.57,0.0,5547.8,,7
+821,Alaya AI,alaya-ai,other,other,active,"arbitrum,opbnb",True,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,211365.0,0.0,220200.0,0.0,,7
+840,Alcor.exchange,alcorexchange,defi,defi,active,"wax,telos",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:40.498471,0.0,606.0,48462.04,17213.0,155796.89,,7
+1102,AlfaFrens,alfafrens,social,social,active,base,False,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.174468,0.0,155.0,105.11,91.0,42720.85,,7
+1067,Alien Base,alien-base,exchanges,exchanges,active,"b3,base",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.114256,0.0,292.0,48092.63,343.0,10737232.94,,7
+527,Alien Worlds,alien-worlds,games,games,active,"bnb-chain,wax",True,,,,0,False,,,,,,,,,2025-07-04 12:05:33.357998,2025-07-04 13:46:40.228059,0.0,118976.0,19438.18,6681563.0,367332.19,,7
+1024,All For One (VfSE Lottery),all-for-one-(vfse-lottery),gambling,gambling,active,"ethereum,polygon",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.013700,0.0,1.0,36.6,2.0,80.63,,7
+536,Alliance Games,alliance-games,games,games,active,"bnb-chain,opbnb,polygon",True,,,,0,False,,,,,,,,,2025-07-04 12:05:33.357998,2025-07-04 13:46:40.228059,0.0,67054.0,0.0,70204.0,772.2,,7
+1114,AlphaOrBeta,alphaorbeta,social,social,active,"arbitrum,opbnb",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.192574,0.0,45.0,0.0,47.0,4009.77,,7
+1124,Alt.town,alttown,social,social,active,"bnb-chain,opbnb",True,,,,0,False,,,,,,,,,2025-07-04 13:46:40.228059,2025-07-04 13:46:41.208006,0.0,17.0,139.41,61.0,0.0,,7
+617,Angry Flapper,angry-flapper,games,games,active,core,False,,,,0,False,,,,,,,,,2025-07-04 12:05:33.357998,2025-07-04 12:23:51.564722,0.0,984.0,0.0,988.0,0.0,,7
+581,Anichess,anichess,games,games,active,"base,polygon",True,,,,0,False,,,,,,,,,2025-07-04 12:05:33.357998,2025-07-04 13:46:40.228059,0.0,4106.0,0.0,4111.0,0.0,,7
+811,ApeBond,apebond,exchanges,exchanges,active,"arbitrum,bnb-chain,ethereum,polygon",True,,,,0,False,,,,,,,,,2025-07-04 12:23:51.564722,2025-07-04 13:46:40.228059,0.0,2211.0,163373.94,78.0,5565315.39,,7

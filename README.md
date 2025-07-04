@@ -1,13 +1,13 @@
 # DApp Data Scraper
 
-A streamlined tool for gathering and analyzing Decentralized Application (DApp) data from multiple sources including DappRadar, DeFiLlama, and DeepDAO.
+A streamlined tool for gathering and analyzing Decentralized Application (DApp) data from multiple sources including DappRadar, DeFiLlama, and CMC.
 
 ## Features
 
 🚀 **Multi-Source Data Collection**
 - **DappRadar**: Gaming, social, and various DApp categories with detailed metrics
 - **DeFiLlama**: DeFi protocols with TVL, yield, and treasury data
-- **DeepDAO**: DAO governance and organizational data
+- **CoinMarketCap**: DAO governance and organizational data
 
 📊 **Simplified Data Model**
 - Core DApp information (name, category, chains, status)
@@ -67,8 +67,9 @@ api_key = your_dappradar_api_key
 [defillama]
 api_origin = https://api.llama.fi/
 
-[deepdao]
-api_origin = https://api.deepdao.io/v0.1/
+[coinmarketcap]
+api_key = 
+api_origin =
 ```
 
 **Note**: Do not use quotes around values in the configuration file.
@@ -110,8 +111,8 @@ The CSV export creates files with all DApp data flattened into single rows:
 - `/treasury/{slug}` - Treasury information
 - `/summary/fees/{slug}` - Fee data
 
-### DeepDAO
-- Web scraping from DeepDAO website
+### CMC
+- Web scraping from CMC website
 - Fallback to curated DAO data
 ## License
 

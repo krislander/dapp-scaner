@@ -2,152 +2,153 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from dapp_scraper.scrapers.defillama import fetch_defillama
+from dapp_scraper.scrapers.defillama import fetch_single_project_defillama
 from dapp_scraper.scrapers.dappradar import fetch_dappradar
-from dapp_scraper.scrapers.deepdao import fetch_deepdao
-from dapp_scraper.scrapers.coinmarketcap import fetch_coinmarketcap
+from dapp_scraper.scrapers.coinmarketcap import fetch_single_project_coinmarketcap
 from dapp_scraper.store import store_records, get_dapp_count, get_recent_dapps
 import time
 
 def main(limit):
     """
-    Main function to fetch and store DApp data
-    Args:
-        limit: Number of records to fetch (required)
+    Main function to fetch and enrich DApp data
+    1. Fetch all DApps from DappRadar and save to DB
+    2. Enrich each saved DApp with CMC and DeFiLlama data
     """
+    print("🚀 Starting DApp data collection and enrichment")
     
     initial_count = get_dapp_count()
-    print(f"📊 Starting with {initial_count} DApps in database")
-    print(f"🎯 Target limit: {limit} records")
+    print(f"📊 Current DApps in database: {initial_count}")
     
-    total_stored = 0
-    
-    # Only fetch from DappRadar for now
-    print(f"\n📱 Fetching data from DappRadar (limit: {limit})...")
+    # Phase 1: Fetch DappRadar data
+    print("\n📱 Phase 1: Fetching DappRadar data...")
     try:
-        dr = fetch_dappradar(limit)
-        if dr:
-            print(f"✅ Retrieved {len(dr)} DApps from DappRadar")
-            store_records(dr)
-            total_stored += len(dr)
-            print(f"✅ Stored {len(dr)} DappRadar DApps")
+        dappradar_data = fetch_dappradar(limit)
+        if dappradar_data:
+            print(f"✅ Retrieved {len(dappradar_data)} DApps from DappRadar")
+            store_records(dappradar_data)
+            print(f"✅ Saved {len(dappradar_data)} DApps to database")
         else:
-            print("⚠️ No data retrieved from DappRadar")
+            print("❌ No data retrieved from DappRadar")
+            return
     except Exception as e:
         print(f"❌ Error with DappRadar: {e}")
+        return
     
-    # Other sources are commented out for now but kept in code
-    # # 1. Fetch from DeFiLlama
-    # print(f"\n📊 Fetching data from DeFiLlama (limit: {limit})...")
-    # try:
-    #     dl = fetch_defillama(limit)
-    #     if dl:
-    #         print(f"✅ Retrieved {len(dl)} protocols from DeFiLlama")
-    #         store_records(dl)
-    #         total_stored += len(dl)
-    #         print(f"✅ Stored {len(dl)} DeFiLlama protocols")
-    #     else:
-    #         print("⚠️ No data retrieved from DeFiLlama")
-    # except Exception as e:
-    #     print(f"❌ Error with DeFiLlama: {e}")
-    
-    # # Small delay between API calls
-    # time.sleep(2)
-    
-    # # 3. Fetch from DeepDAO
-    # print(f"\n🏛️ Fetching data from DeepDAO (limit: {limit})...")
-    # try:
-    #     dd = fetch_deepdao(limit)
-    #     if dd:
-    #         print(f"✅ Retrieved {len(dd)} DAOs from DeepDAO")
-    #         store_records(dd)
-    #         total_stored += len(dd)
-    #         print(f"✅ Stored {len(dd)} DeepDAO organizations")
-    #     else:
-    #         print("⚠️ No data retrieved from DeepDAO")
-    # except Exception as e:
-    #     print(f"❌ Error with DeepDAO: {e}")
-    
-    # # Small delay
-    # time.sleep(2)
-    
-    # # 4. Fetch from CoinMarketCap
-    # print(f"\n💰 Fetching data from CoinMarketCap (limit: {limit})...")
-    # try:
-    #     cmc = fetch_coinmarketcap(limit)
-    #     if cmc:
-    #         print(f"✅ Retrieved {len(cmc)} DEX pairs and exchanges from CoinMarketCap")
-    #         store_records(cmc)
-    #         total_stored += len(cmc)
-    #         print(f"✅ Stored {len(cmc)} CoinMarketCap records")
-    #     else:
-    #         print("⚠️ No data retrieved from CoinMarketCap")
-    # except Exception as e:
-    #     print(f"❌ Error with CoinMarketCap: {e}")
+    # Phase 2: Enrich with CMC and DeFiLlama data
+    print("\n💰 Phase 2: Enriching with CMC and DeFiLlama data...")
+    enriched_count = enrich_database_records()
     
     final_count = get_dapp_count()
+    print(f"\n🎉 Process complete!")
+    print(f"📈 DApps processed: {len(dappradar_data) if 'dappradar_data' in locals() else 0}")
+    print(f"💎 Records enriched: {enriched_count}")
+    print(f"📊 Total DApps in database: {final_count}")
+
+def enrich_database_records():
+    """
+    Go through each record in database and enrich with CMC and DeFiLlama data
+    """
+    from dapp_scraper.store import get_conn
     
-    print(f"\n🎉 Data collection complete!")
-    print(f"📈 Records processed: {total_stored}")
-    print(f"📊 Total DApps in database: {final_count} (was {initial_count})")
+    conn = get_conn()
+    cur = conn.cursor()
     
-    # Show recent DApps
-    print(f"\n📋 Recently updated DApps:")
-    recent = get_recent_dapps(5)
-    for name, slug, category, chains, updated_at in recent:
-        print(f"  • {name} ({category}) - {chains}")
+    # Get all DApps that need enrichment
+    cur.execute("""
+        SELECT id, name, slug, token_symbol, token_name 
+        FROM dapps 
+        ORDER BY id
+    """)
+    
+    dapps = cur.fetchall()
+    total_dapps = len(dapps)
+    enriched_count = 0
+    
+    print(f"🎯 Enriching {total_dapps} DApps...")
+    
+    for i, (dapp_id, name, slug, token_symbol, token_name) in enumerate(dapps, 1):
+        print(f"[{i}/{total_dapps}] {name}")
+        
+        enrichment_data = {}
+        
+        # Try to get CMC data
+        cmc_data = fetch_single_project_coinmarketcap(name, token_symbol)
+        if cmc_data:
+            # Add CMC metrics to dapp_metrics table
+            for metric_name, value in cmc_data.items():
+                if value and value != 0:
+                    try:
+                        cur.execute("""
+                            INSERT INTO dapp_metrics (dapp_id, metric_name, metric_value, metric_date)
+                            VALUES (%s, %s, %s, CURRENT_DATE)
+                            ON CONFLICT (dapp_id, metric_name, metric_date)
+                            DO UPDATE SET metric_value = EXCLUDED.metric_value
+                        """, (dapp_id, metric_name, float(value)))
+                    except (ValueError, TypeError):
+                        pass
+        
+        # Try to get DeFiLlama data
+        defillama_data = fetch_single_project_defillama(name, slug)
+        if defillama_data:
+            # Add DeFiLlama metrics to dapp_metrics table
+            for metric_name, value in defillama_data.items():
+                if value and value != 0:
+                    try:
+                        cur.execute("""
+                            INSERT INTO dapp_metrics (dapp_id, metric_name, metric_value, metric_date)
+                            VALUES (%s, %s, %s, CURRENT_DATE)
+                            ON CONFLICT (dapp_id, metric_name, metric_date)
+                            DO UPDATE SET metric_value = EXCLUDED.metric_value
+                        """, (dapp_id, metric_name, float(value)))
+                    except (ValueError, TypeError):
+                        pass
+        
+        if cmc_data or defillama_data:
+            enriched_count += 1
+        
+        # Small delay between enrichments
+        time.sleep(0.2)
+    
+    conn.commit()
+    cur.close()
+    conn.close()
+    
+    return enriched_count
 
 def test_single_source(source_name, limit):
     """
-    Test a single data source with specified limit (no default)
-    Args:
-        source_name: Name of the source to test
-        limit: Number of records to fetch (required)
+    Test a single data source with specified limit
     """
     print(f"🧪 Testing {source_name} with limit={limit}")
     
     try:
-        if source_name.lower() == "defillama":
-            data = fetch_defillama(limit)
-        elif source_name.lower() == "dappradar":
+        if source_name.lower() == "dappradar":
             data = fetch_dappradar(limit)
-        elif source_name.lower() == "deepdao":
-            data = fetch_deepdao(limit)
-        elif source_name.lower() == "coinmarketcap" or source_name.lower() == "cmc":
-            data = fetch_coinmarketcap(limit)
+            if data:
+                print(f"✅ Retrieved {len(data)} records")
+                for i, record in enumerate(data[:5]):  # Show first 5
+                    chains = ", ".join(record.get('chains', [])) if record.get('chains') else "N/A"
+                    print(f"  {i+1}. {record['name']} ({record.get('category', 'N/A')}) - {chains}")
+                
+                store_records(data)
+                print(f"✅ Stored {len(data)} records")
+            else:
+                print("⚠️ No data retrieved")
         else:
             print(f"❌ Unknown source: {source_name}")
-            return
-        
-        if data:
-            print(f"✅ Retrieved {len(data)} records from {source_name}")
-            for i, record in enumerate(data):
-                chains = ", ".join(record.get('chains', [])) if record.get('chains') else "N/A"
-                print(f"  {i+1}. {record['name']} ({record.get('category', 'N/A')}) - {chains}")
-            
-            # Store the test data
-            store_records(data)
-            print(f"✅ Successfully stored {len(data)} records")
-        else:
-            print(f"⚠️ No data retrieved from {source_name}")
             
     except Exception as e:
         print(f"❌ Error testing {source_name}: {e}")
 
-
 def print_usage():
     """Print usage instructions"""
     print("Usage:")
-    print("  python run_fetch.py <limit>                    # Fetch from DappRadar with specified limit")
-    print("  python run_fetch.py test <source> <limit>      # Test specific source with limit")
-    print("  python run_fetch.py analysis                   # Run database analysis")
+    print("  python run_fetch.py <limit>                    # Fetch and enrich DApps")
+    print("  python run_fetch.py test dappradar <limit>     # Test DappRadar fetching")
     print("")
     print("Examples:")
-    print("  python run_fetch.py 500                        # Fetch 500 DApps from DappRadar")
-    print("  python run_fetch.py test dappradar 10          # Test DappRadar with 10 records")
-    print("  python run_fetch.py analysis                   # Analyze current database")
-    print("")
-    print("Available sources for testing: dappradar, defillama, deepdao, coinmarketcap")
+    print("  python run_fetch.py 500                        # Fetch 500 DApps and enrich")
+    print("  python run_fetch.py test dappradar 10          # Test with 10 records")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

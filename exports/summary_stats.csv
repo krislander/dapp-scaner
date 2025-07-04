@@ -1,30 +1,38 @@
 Statistic,Value
-Total DApps,156
+Total DApps,458
+DApps in games,100
+DApps in gambling,62
+DApps in collectibles,50
 DApps in Cryptocurrency,50
+DApps in defi,45
 DApps in CEX,21
+DApps in exchanges,21
+DApps in marketplaces,12
 DApps in Bridge,12
-DApps in Lending,11
 DApps in Liquid Staking,11
-DApps in Dexs,8
+DApps in high-risk,11
+DApps in Lending,10
 DApps in Chain,7
+DApps in Dexs,5
 DApps in RWA,5
-DApps in Restaking,3
-DApps in DAO,3
+DApps in other,4
+DApps in Onchain Capital Allocator,3
 DApps in Liquid Restaking,3
+DApps in DAO,3
 DApps in Derivatives,3
 DApps in Risk Curators,3
-DApps in Onchain Capital Allocator,3
+DApps in social,3
+DApps in Restaking,3
 DApps in Yield Aggregator,2
 DApps in Restaked BTC,2
-DApps in Yield,2
-DApps in Staking Pool,1
 DApps in Farm,1
-DApps in Marketplaces,1
-DApps in CDP,1
-DApps in Basis Trading,1
 DApps in Wallets,1
 DApps in DeFi,1
-Multi-chain DApps,65
-DApps with tokens,154
-Total TVL,"$64,460,000,000"
-Average TVL,"$4,028,750,000"
+DApps in Yield,1
+DApps in CDP,1
+DApps in Staking Pool,1
+DApps in Basis Trading,1
+Multi-chain DApps,191
+DApps with tokens,149
+Total TVL,"$66,560,000,000"
+Average TVL,"$3,915,294,118"

@@ -86,9 +86,9 @@ def test_api_configuration():
         if _cfg.has_section('defillama'):
             print("✅ DeFiLlama configuration found")
         
-        # Test DeepDAO config
-        if _cfg.has_section('deepdao'):
-            print("✅ DeepDAO configuration found")
+        # Test CMC config
+        if _cfg.has_section('coinmarketcap'):
+            print("✅ CMC configuration found")
             
         return True
         
@@ -115,12 +115,6 @@ def test_imports():
         
         from dapp_scraper.scrapers.dappradar import fetch_dappradar
         print("✅ dappradar scraper")
-        
-        from dapp_scraper.scrapers.defillama import fetch_defillama
-        print("✅ defillama scraper")
-        
-        from dapp_scraper.scrapers.deepdao import fetch_deepdao
-        print("✅ deepdao scraper")
         
         from dapp_scraper.store import store_records
         print("✅ store module")
