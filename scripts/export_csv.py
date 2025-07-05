@@ -2,9 +2,26 @@ import sys
 import os
 import csv
 from datetime import datetime
+from configparser import ConfigParser
+import psycopg2
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from dapp_scraper.store import get_conn
+_cfg = ConfigParser()
+_cfg.read(os.path.join(os.path.dirname(__file__), '..', 'config', 'config.ini'))
+DB_NAME = _cfg["database"]["name"]
+SUPERUSER = _cfg["database"]["user"]
+PASSWORD = _cfg["database"]["password"]
+HOST = _cfg["database"]["host"]
+PORT = _cfg["database"]["port"]
+
+def get_conn():
+    return psycopg2.connect(
+        dbname=DB_NAME,
+        user=SUPERUSER,
+        password=PASSWORD,
+        host=HOST,
+        port=PORT
+    )
 
 def export_dapps_to_csv(output_file="dapps_export.csv"):
     """Export all DApps to a single CSV file"""
@@ -12,14 +29,14 @@ def export_dapps_to_csv(output_file="dapps_export.csv"):
     conn = get_conn()
     cur = conn.cursor()
     
-    # Query to get all DApp data with metrics in one row
+    # Query to get all DApp data from the new structure
     query = """
     SELECT 
         d.id,
         d.name,
         d.slug,
         c.name as category,
-        d.industry,
+        i.name as industry,
         d.status,
         d.chains,
         d.multi_chain,
@@ -38,19 +55,27 @@ def export_dapps_to_csv(output_file="dapps_export.csv"):
         d.description,
         d.created_at,
         d.updated_at,
-        -- Get key metrics
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'tvl' ORDER BY metric_date DESC LIMIT 1) as tvl,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) as users,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) as volume,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) as transactions,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'balance' ORDER BY metric_date DESC LIMIT 1) as balance,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'change_1d' ORDER BY metric_date DESC LIMIT 1) as change_1d,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'change_7d' ORDER BY metric_date DESC LIMIT 1) as change_7d,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'mcap' ORDER BY metric_date DESC LIMIT 1) as market_cap,
-        -- Get fees as concatenated string
-        (SELECT string_agg(fee_type || ':' || COALESCE(rate::text, 'N/A'), '; ') FROM dapp_fees WHERE dapp_id = d.id) as fees
+        -- Direct metrics from dapps table
+        d.tvl,
+        d.users,
+        d.volume,
+        d.transactions,
+        d.market_cap,
+        d.circulating_supply,
+        d.total_supply,
+        d.max_supply,
+        d.price,
+        d.volume_24h,
+        d.volume_change_24h,
+        d.percent_change_1h,
+        d.percent_change_24h,
+        d.percent_change_7d,
+        d.percent_change_30d,
+        d.market_cap_dominance,
+        d.fully_diluted_market_cap
     FROM dapps d
     LEFT JOIN categories c ON d.category_id = c.id
+    LEFT JOIN industries i ON d.industry_id = i.id
     ORDER BY d.name;
     """
     
@@ -63,8 +88,10 @@ def export_dapps_to_csv(output_file="dapps_export.csv"):
         'ownership_status', 'decentralisation_lvl', 'birth_date', 'capital_raised', 
         'showcase_fun', 'token_name', 'token_symbol', 'token_format', 'governance_type',
         'website', 'twitter', 'discord', 'description', 'created_at', 'updated_at',
-        'tvl', 'users', 'volume', 'transactions', 'balance', 'change_1d', 'change_7d',
-        'market_cap', 'fees'
+        'tvl', 'users', 'volume', 'transactions', 'market_cap', 'circulating_supply',
+        'total_supply', 'max_supply', 'price', 'volume_24h', 'volume_change_24h',
+        'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'percent_change_30d',
+        'market_cap_dominance', 'fully_diluted_market_cap'
     ]
     
     # Write to CSV
@@ -95,7 +122,7 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
         d.name,
         d.slug,
         c.name as category,
-        d.industry,
+        i.name as industry,
         d.status,
         d.chains,
         d.multi_chain,
@@ -114,18 +141,20 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
         d.description,
         d.created_at,
         d.updated_at,
-        -- Get key metrics
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'tvl' ORDER BY metric_date DESC LIMIT 1) as tvl,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) as users,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) as volume,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) as transactions,
-        (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'balance' ORDER BY metric_date DESC LIMIT 1) as balance,
-        -- Get fees as concatenated string
-        (SELECT string_agg(fee_type || ':' || COALESCE(rate::text, 'N/A'), '; ') FROM dapp_fees WHERE dapp_id = d.id) as fees,
+        -- Direct metrics from dapps table
+        d.tvl,
+        d.users,
+        d.volume,
+        d.transactions,
+        d.market_cap,
+        d.price,
+        d.volume_24h,
+        d.percent_change_24h,
+        d.percent_change_7d,
         -- Count non-null fields for ordering (prioritize complete records)
         (
             CASE WHEN d.name IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.industry IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN i.name IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.chains IS NOT NULL AND d.chains != '' THEN 1 ELSE 0 END +
             CASE WHEN d.ownership_status IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.decentralisation_lvl IS NOT NULL THEN 1 ELSE 0 END +
@@ -138,13 +167,14 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
             CASE WHEN d.twitter IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.discord IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.description IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'balance' ORDER BY metric_date DESC LIMIT 1) IS NOT NULL THEN 1 ELSE 0 END
+            CASE WHEN d.users IS NOT NULL AND d.users > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.volume IS NOT NULL AND d.volume > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.transactions IS NOT NULL AND d.transactions > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.tvl IS NOT NULL AND d.tvl > 0 THEN 1 ELSE 0 END
         ) as completeness_score
     FROM dapps d
     LEFT JOIN categories c ON d.category_id = c.id
+    LEFT JOIN industries i ON d.industry_id = i.id
     WHERE c.name = ANY(%s)
     ORDER BY completeness_score DESC, d.name
     LIMIT 30;
@@ -159,7 +189,8 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
         'ownership_status', 'decentralisation_lvl', 'birth_date', 'capital_raised', 
         'showcase_fun', 'token_name', 'token_symbol', 'token_format', 'governance_type',
         'website', 'twitter', 'discord', 'description', 'created_at', 'updated_at',
-        'tvl', 'users', 'volume', 'transactions', 'balance', 'fees', 'completeness_score'
+        'tvl', 'users', 'volume', 'transactions', 'market_cap', 'price', 'volume_24h',
+        'percent_change_24h', 'percent_change_7d', 'completeness_score'
     ]
     
     # Write to CSV
@@ -224,16 +255,40 @@ def export_summary_stats(output_file="dapp_summary_stats.csv"):
     stats.append(['DApps with tokens', cur.fetchone()[0]])
     
     # Total TVL
-    cur.execute("SELECT SUM(metric_value) FROM dapp_metrics WHERE metric_name = 'tvl';")
+    cur.execute("SELECT SUM(tvl) FROM dapps WHERE tvl > 0;")
     total_tvl = cur.fetchone()[0]
     if total_tvl:
         stats.append(['Total TVL', f"${total_tvl:,.0f}"])
     
     # Average TVL
-    cur.execute("SELECT AVG(metric_value) FROM dapp_metrics WHERE metric_name = 'tvl' AND metric_value > 0;")
+    cur.execute("SELECT AVG(tvl) FROM dapps WHERE tvl > 0;")
     avg_tvl = cur.fetchone()[0]
     if avg_tvl:
         stats.append(['Average TVL', f"${avg_tvl:,.0f}"])
+    
+    # Total Market Cap
+    cur.execute("SELECT SUM(market_cap) FROM dapps WHERE market_cap > 0;")
+    total_market_cap = cur.fetchone()[0]
+    if total_market_cap:
+        stats.append(['Total Market Cap', f"${total_market_cap:,.0f}"])
+    
+    # Average Market Cap
+    cur.execute("SELECT AVG(market_cap) FROM dapps WHERE market_cap > 0;")
+    avg_market_cap = cur.fetchone()[0]
+    if avg_market_cap:
+        stats.append(['Average Market Cap', f"${avg_market_cap:,.0f}"])
+    
+    # Total Users
+    cur.execute("SELECT SUM(users) FROM dapps WHERE users > 0;")
+    total_users = cur.fetchone()[0]
+    if total_users:
+        stats.append(['Total Users', f"{total_users:,.0f}"])
+    
+    # Average Users
+    cur.execute("SELECT AVG(users) FROM dapps WHERE users > 0;")
+    avg_users = cur.fetchone()[0]
+    if avg_users:
+        stats.append(['Average Users', f"{avg_users:,.0f}"])
     
     headers = ['Statistic', 'Value']
     

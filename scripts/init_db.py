@@ -32,38 +32,7 @@ def create_database():
     cur.close()
     conn.close()
 
-def drop_existing_tables():
-    """Drop existing complex tables"""
-    conn = psycopg2.connect(
-        dbname=DB_NAME,
-        user=SUPERUSER,
-        password=PASSWORD,
-        host=HOST,
-        port=PORT
-    )
-    cur = conn.cursor()
-    
-    # Drop all existing tables
-    tables_to_drop = [
-        'dapp_activity', 'dapp_metric', 'dapp_governance', 'dapp_fee', 
-        'dapp_token', 'dapp_funding', 'dapp_protocol', 'dapp_l2', 
-        'dapp_chain', 'activity_type', 'metric_type', 'governance_model', 
-        'fee_type', 'token', 'token_format', 'funding_source', 'protocol', 
-        'l2_network', 'chain', 'industry', 'category', 'dapp'
-    ]
-    
-    for table in tables_to_drop:
-        try:
-            cur.execute(f"DROP TABLE IF EXISTS {table} CASCADE;")
-            print(f"✅ Dropped table: {table}")
-        except Exception as e:
-            print(f"⚠️ Could not drop {table}: {e}")
-    
-    conn.commit()
-    cur.close()
-    conn.close()
-
-def create_simple_schema():
+def create_schema():
     # Connect to the database
     conn = psycopg2.connect(
         dbname=DB_NAME,
@@ -74,13 +43,19 @@ def create_simple_schema():
     )
     cur = conn.cursor()
     ddl = """
-    -- Simple lookup table for categories
+    -- Categories lookup table
     CREATE TABLE IF NOT EXISTS categories (
       id SERIAL PRIMARY KEY,
       name VARCHAR(100) UNIQUE NOT NULL
     );
 
-    -- Main DApp table with most data flattened
+    -- Industries lookup table  
+    CREATE TABLE IF NOT EXISTS industries (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100) UNIQUE NOT NULL
+    );
+
+    -- Main DApp table with extended columns
     CREATE TABLE IF NOT EXISTS dapps (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -89,11 +64,11 @@ def create_simple_schema():
       
       -- Basic info
       status VARCHAR(50) DEFAULT 'active',
-      industry VARCHAR(100),
+      industry_id INTEGER REFERENCES industries(id),
       description TEXT,
       website VARCHAR(500),
       
-      -- Blockchain info (simplified - store as comma-separated for multi-chain)
+      -- Blockchain info
       chains TEXT,  -- e.g., "Ethereum,Polygon,BSC"
       multi_chain BOOLEAN DEFAULT FALSE,
       
@@ -106,106 +81,67 @@ def create_simple_schema():
       capital_raised NUMERIC DEFAULT 0,
       showcase_fun BOOLEAN DEFAULT FALSE,
       
-      -- Tokens (simplified - store main token info)
+      -- Tokens
       token_name VARCHAR(100),
       token_symbol VARCHAR(20),
       token_format VARCHAR(50),
       
-      -- Governance (simplified)
+      -- Governance
       governance_type VARCHAR(100),  -- e.g., "DAO", "Centralized", "Multi-sig"
       
       -- Social & Links
       twitter VARCHAR(200),
       discord VARCHAR(200),
       
+      -- DApp Metrics
+      tvl NUMERIC DEFAULT 0,
+      users BIGINT DEFAULT 0,
+      volume NUMERIC DEFAULT 0,
+      transactions BIGINT DEFAULT 0,
+      market_cap NUMERIC DEFAULT 0,
+      circulating_supply NUMERIC DEFAULT 0,
+      total_supply NUMERIC DEFAULT 0,
+      max_supply NUMERIC DEFAULT 0,
+      
+      -- Price and Market Data
+      price NUMERIC DEFAULT 0,
+      volume_24h NUMERIC DEFAULT 0,
+      volume_change_24h NUMERIC DEFAULT 0,
+      percent_change_1h NUMERIC DEFAULT 0,
+      percent_change_24h NUMERIC DEFAULT 0,
+      percent_change_7d NUMERIC DEFAULT 0,
+      percent_change_30d NUMERIC DEFAULT 0,
+      market_cap_dominance NUMERIC DEFAULT 0,
+      fully_diluted_market_cap NUMERIC DEFAULT 0,
+      
       -- Timestamps
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 
-    -- Metrics table for key-value metrics
-    CREATE TABLE IF NOT EXISTS dapp_metrics (
-      id SERIAL PRIMARY KEY,
-      dapp_id INTEGER REFERENCES dapps(id) ON DELETE CASCADE,
-      metric_name VARCHAR(100) NOT NULL,
-      metric_value NUMERIC,
-      metric_date DATE DEFAULT CURRENT_DATE,
-      UNIQUE(dapp_id, metric_name, metric_date)
-    );
-
-    -- Simplified fees table
-    CREATE TABLE IF NOT EXISTS dapp_fees (
-      id SERIAL PRIMARY KEY,
-      dapp_id INTEGER REFERENCES dapps(id) ON DELETE CASCADE,
-      fee_type VARCHAR(100) NOT NULL,
-      rate NUMERIC,
-      charged_to VARCHAR(100),
-      recipient VARCHAR(100)
-    );
-
-    -- Insert some default categories
-    INSERT INTO categories (name) VALUES 
-      ('DeFi'), ('Gaming'), ('Marketplaces'), ('Social'), ('Wallets'), 
-      ('Infrastructure'), ('DAO'), ('NFT'), ('Yield Farming'), ('DEX'),
-      ('Lending'), ('Insurance'), ('Analytics'), ('Bridge'), ('Staking')
-    ON CONFLICT (name) DO NOTHING;
-
     -- Create indexes for better performance
     CREATE INDEX IF NOT EXISTS idx_dapps_category ON dapps(category_id);
+    CREATE INDEX IF NOT EXISTS idx_dapps_industry ON dapps(industry_id);
     CREATE INDEX IF NOT EXISTS idx_dapps_chains ON dapps USING gin(to_tsvector('english', chains));
-    CREATE INDEX IF NOT EXISTS idx_dapps_industry ON dapps(industry);
-    CREATE INDEX IF NOT EXISTS idx_metrics_dapp ON dapp_metrics(dapp_id);
-    CREATE INDEX IF NOT EXISTS idx_metrics_name ON dapp_metrics(metric_name);
-    CREATE INDEX IF NOT EXISTS idx_fees_dapp ON dapp_fees(dapp_id);
-
-    -- Create view for easy querying
-    CREATE OR REPLACE VIEW dapp_summary AS
-    SELECT 
-      d.id,
-      d.name,
-      d.slug,
-      c.name as category,
-      d.industry,
-      d.chains,
-      d.multi_chain,
-      d.status,
-      d.ownership_status,
-      d.decentralisation_lvl,
-      d.token_symbol,
-      d.governance_type,
-      d.birth_date,
-      d.capital_raised,
-      d.website,
-      -- Get key metrics in columns
-      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'tvl' ORDER BY metric_date DESC LIMIT 1) as tvl,
-      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'users' ORDER BY metric_date DESC LIMIT 1) as users,
-      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'volume' ORDER BY metric_date DESC LIMIT 1) as volume,
-      (SELECT metric_value FROM dapp_metrics WHERE dapp_id = d.id AND metric_name = 'transactions' ORDER BY metric_date DESC LIMIT 1) as transactions
-    FROM dapps d
-    LEFT JOIN categories c ON d.category_id = c.id;
+    CREATE INDEX IF NOT EXISTS idx_dapps_tvl ON dapps(tvl);
+    CREATE INDEX IF NOT EXISTS idx_dapps_users ON dapps(users);
+    CREATE INDEX IF NOT EXISTS idx_dapps_volume ON dapps(volume);
+    CREATE INDEX IF NOT EXISTS idx_dapps_market_cap ON dapps(market_cap);
     """
     cur.execute(ddl)
     conn.commit()
-    print("→ Simplified schema created in", DB_NAME)
+    print("→ Extended schema created in", DB_NAME)
     cur.close()
     conn.close()
 
 if __name__ == "__main__":
-    print("🗃️ Creating Simplified Database Schema")
+    print("🗃️ Creating Extended Database Schema")
     print("=" * 40)
     
     create_database()
-    
-    choice = input("⚠️ This will DROP all existing tables and create new simplified ones. Continue? (y/N): ")
-    if choice.lower() == 'y':
-        drop_existing_tables()
-        create_simple_schema()
-        print("\n✅ Simplified database schema created!")
-        print("📋 Tables created:")
-        print("  • categories - DApp categories")
-        print("  • dapps - Main DApp information (flattened)")
-        print("  • dapp_metrics - Key-value metrics")
-        print("  • dapp_fees - Fee information")
-        print("  • dapp_summary - Easy query view")
-    else:
-        print("❌ Operation cancelled.") 
+    create_schema()
+    print("\n✅ Extended database schema created!")
+    print("📋 Tables created:")
+    print("  • categories - DApp categories lookup")
+    print("  • industries - DApp industries lookup")
+    print("  • dapps - Extended DApp information with all metrics") 

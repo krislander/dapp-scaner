@@ -18,7 +18,7 @@ A streamlined tool for gathering and analyzing Decentralized Application (DApp) 
 
 🗃️ **PostgreSQL Database**
 - Simple, flattened schema for easy analysis
-- 4 core tables: categories, dapps, dapp_metrics, dapp_fees
+- 4 core tables: categories, dapps, categories, industries
 - Fast queries and straightforward CSV exports
 
 📈 **Analysis Tools**
@@ -85,8 +85,8 @@ python scripts/init_db.py
 This creates the simplified database schema with 4 tables:
 - `categories` - DApp categories lookup
 - `dapps` - Main DApp information (flattened)
-- `dapp_metrics` - Key-value metrics storage
-- `dapp_fees` - Fee information
+- `Industries` - Dapp industries lookup
+
 
 ```
 

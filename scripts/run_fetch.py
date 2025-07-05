@@ -74,34 +74,58 @@ def enrich_database_records():
         # Try to get CMC data
         cmc_data = fetch_single_project_coinmarketcap(name, token_symbol)
         if cmc_data:
-            # Add CMC metrics to dapp_metrics table
-            for metric_name, value in cmc_data.items():
-                if value and value != 0:
-                    try:
-                        cur.execute("""
-                            INSERT INTO dapp_metrics (dapp_id, metric_name, metric_value, metric_date)
-                            VALUES (%s, %s, %s, CURRENT_DATE)
-                            ON CONFLICT (dapp_id, metric_name, metric_date)
-                            DO UPDATE SET metric_value = EXCLUDED.metric_value
-                        """, (dapp_id, metric_name, float(value)))
-                    except (ValueError, TypeError):
-                        pass
+            # Extract CMC data for direct column updates
+            price = cmc_data.get('price', 0)
+            volume_24h = cmc_data.get('volume_24h', 0)
+            volume_change_24h = cmc_data.get('volume_change_24h', 0)
+            percent_change_1h = cmc_data.get('percent_change_1h', 0)
+            percent_change_24h = cmc_data.get('percent_change_24h', 0)
+            percent_change_7d = cmc_data.get('percent_change_7d', 0)
+            percent_change_30d = cmc_data.get('percent_change_30d', 0)
+            market_cap = cmc_data.get('market_cap', 0)
+            market_cap_dominance = cmc_data.get('market_cap_dominance', 0)
+            fully_diluted_market_cap = cmc_data.get('fully_diluted_market_cap', 0)
+            circulating_supply = cmc_data.get('circulating_supply', 0)
+            total_supply = cmc_data.get('total_supply', 0)
+            max_supply = cmc_data.get('max_supply', 0)
+            
+            # Update dapps table with CMC data
+            cur.execute("""
+                UPDATE dapps SET
+                    price = %s,
+                    volume_24h = %s,
+                    volume_change_24h = %s,
+                    percent_change_1h = %s,
+                    percent_change_24h = %s,
+                    percent_change_7d = %s,
+                    percent_change_30d = %s,
+                    market_cap = %s,
+                    market_cap_dominance = %s,
+                    fully_diluted_market_cap = %s,
+                    circulating_supply = %s,
+                    total_supply = %s,
+                    max_supply = %s,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s
+            """, (price, volume_24h, volume_change_24h, percent_change_1h, percent_change_24h,
+                  percent_change_7d, percent_change_30d, market_cap, market_cap_dominance,
+                  fully_diluted_market_cap, circulating_supply, total_supply, max_supply, dapp_id))
         
         # Try to get DeFiLlama data
         defillama_data = fetch_single_project_defillama(name, slug)
         if defillama_data:
-            # Add DeFiLlama metrics to dapp_metrics table
-            for metric_name, value in defillama_data.items():
-                if value and value != 0:
-                    try:
-                        cur.execute("""
-                            INSERT INTO dapp_metrics (dapp_id, metric_name, metric_value, metric_date)
-                            VALUES (%s, %s, %s, CURRENT_DATE)
-                            ON CONFLICT (dapp_id, metric_name, metric_date)
-                            DO UPDATE SET metric_value = EXCLUDED.metric_value
-                        """, (dapp_id, metric_name, float(value)))
-                    except (ValueError, TypeError):
-                        pass
+            # Extract DeFiLlama data for direct column updates
+            tvl = defillama_data.get('tvl', 0)
+            volume = defillama_data.get('volume', 0)
+            
+            # Update dapps table with DeFiLlama data
+            cur.execute("""
+                UPDATE dapps SET
+                    tvl = %s,
+                    volume = %s,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s
+            """, (tvl, volume, dapp_id))
         
         if cmc_data or defillama_data:
             enriched_count += 1
