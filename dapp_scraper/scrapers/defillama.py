@@ -2,6 +2,8 @@ import requests
 from datetime import datetime
 import time
 
+from dapp_scraper.utils import make_rate_limited_request
+
 def fetch_single_project_defillama(project_name, project_slug=None):
     """
     Fetch data for a single project from DeFiLlama API
@@ -20,7 +22,7 @@ def fetch_single_project_defillama(project_name, project_slug=None):
             slug_to_try = project_name.lower().replace(" ", "-").replace(".", "")
         
         # Get protocol specific data
-        detail_resp = requests.get(f"https://api.llama.fi/protocol/{slug_to_try}")
+        detail_resp = make_rate_limited_request(f"https://api.llama.fi/protocol/{slug_to_try}", headers={}, params={})
         if detail_resp.status_code == 200:
             detail_data = detail_resp.json()
             

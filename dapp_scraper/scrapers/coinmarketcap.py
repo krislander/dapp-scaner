@@ -2,6 +2,8 @@ import requests
 from configparser import ConfigParser
 import os
 
+from dapp_scraper.utils import make_rate_limited_request
+
 # Load API key and base URL
 _cfg = ConfigParser()
 _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.ini'))
@@ -27,7 +29,7 @@ def fetch_single_project_coinmarketcap(project_name, token_symbol=None):
         url = f"{API_ORIGIN}/v1/cryptocurrency/quotes/latest"
         params = {"symbol": search_term} if token_symbol else {"slug": project_name.lower().replace(" ", "-")}
         
-        resp = requests.get(url, headers=headers, params=params)
+        resp = make_rate_limited_request(url, headers=headers, params=params)
         
         if resp.status_code == 200:
             data = resp.json().get("data", {})

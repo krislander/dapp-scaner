@@ -2,6 +2,7 @@ import requests
 from configparser import ConfigParser
 import os
 
+from dapp_scraper.utils import make_rate_limited_request
 from scripts import rate_limiter
 
 # load API key
@@ -9,15 +10,6 @@ _cfg = ConfigParser()
 _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.ini'))
 API_KEY = _cfg["dappradar"]["api_key"]
 API_ORIGIN = _cfg["dappradar"]["api_origin"]
-
-rate_limiter = rate_limiter.DappRadarRateLimiter()
-
-def make_rate_limited_request(url, headers, params=None):
-    """
-    Make a rate-limited request to DappRadar API
-    """
-    rate_limiter.wait_if_needed()
-    return requests.get(url, headers=headers, params=params)
 
 def fetch_dappradar(limit):
     """

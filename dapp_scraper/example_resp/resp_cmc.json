@@ -1,0 +1,193 @@
+{
+    "status": {},
+    "data": {
+        "AAVE": [
+            {
+                "id": 7278,
+                "name": "Aave",
+                "symbol": "AAVE",
+                "slug": "aave",
+                "num_market_pairs": 1118,
+                "date_added": "2020-10-02T00:00:00.000Z",
+                "tags": [
+                    {
+                        "slug": "defi",
+                        "name": "DeFi",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "dao",
+                        "name": "DAO",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "ethereum-ecosystem",
+                        "name": "Ethereum Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "yield-farming",
+                        "name": "Yield Farming",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "three-arrows-capital-portfolio",
+                        "name": "Three Arrows Capital Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "governance",
+                        "name": "Governance",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "heco-ecosystem",
+                        "name": "HECO Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "avalanche-ecosystem",
+                        "name": "Avalanche Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "solana-ecosystem",
+                        "name": "Solana Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "lending-borowing",
+                        "name": "Lending & Borrowing",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "blockchain-capital-portfolio",
+                        "name": "Blockchain Capital Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "defiance-capital-portfolio",
+                        "name": "DeFiance Capital Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "framework-ventures-portfolio",
+                        "name": "Framework Ventures Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "alameda-research-portfolio",
+                        "name": "Alameda Research Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "pantera-capital-portfolio",
+                        "name": "Pantera Capital Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "parafi-capital",
+                        "name": "ParaFi Capital",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "polygon-ecosystem",
+                        "name": "Polygon Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "fantom-ecosystem",
+                        "name": "Fantom Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "near-protocol-ecosystem",
+                        "name": "Near Protocol Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "arbitrum-ecosystem",
+                        "name": "Arbitrum Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "optimism-ecosystem",
+                        "name": "Optimism Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "standard-crypto-portfolio",
+                        "name": "Standard Crypto Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "gnosis-chain-ecosystem",
+                        "name": "Gnosis Chain Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "sora-ecosystem",
+                        "name": "Sora Ecosystem",
+                        "category": "PLATFORM"
+                    },
+                    {
+                        "slug": "made-in-america",
+                        "name": "Made in America",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "world-liberty-financial-portfolio",
+                        "name": "World Liberty Financial Portfolio",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "binance-ecosystem",
+                        "name": "Binance Ecosystem",
+                        "category": "CATEGORY"
+                    },
+                    {
+                        "slug": "binance-listing",
+                        "name": "Binance Listing",
+                        "category": "CATEGORY"
+                    }
+                ],
+                "max_supply": null,
+                "circulating_supply": 15194102.54747561,
+                "total_supply": 16000000,
+                "platform": {
+                    "id": 1027,
+                    "name": "Ethereum",
+                    "symbol": "ETH",
+                    "slug": "ethereum",
+                    "token_address": "0x7Fc66500c84A76Ad7e9c93437bFc5Ac33E2DDaE9"
+                },
+                "is_active": 1,
+                "infinite_supply": false,
+                "cmc_rank": 29,
+                "is_fiat": 0,
+                "self_reported_circulating_supply": null,
+                "self_reported_market_cap": null,
+                "tvl_ratio": 0.16137807,
+                "last_updated": "2025-07-13T13:29:00.000Z",
+                "quote": {
+                    "USD": {
+                        "price": 306.09653133428526,
+                        "volume_24h": 367540327.69912195,
+                        "volume_change_24h": -40.625,
+                        "percent_change_1h": 0.50057115,
+                        "percent_change_24h": 2.64245519,
+                        "percent_change_7d": 11.6370702,
+                        "percent_change_30d": 8.51697484,
+                        "percent_change_60d": 32.7492316,
+                        "percent_change_90d": 110.85920328,
+                        "market_cap": 4650862086.5197115,
+                        "market_cap_dominance": 0.1257,
+                        "fully_diluted_market_cap": 4897544501.35,
+                        "tvl": 28819665540.246628,
+                        "last_updated": "2025-07-13T13:29:00.000Z"
+                    }
+                }
+            }
+        ]
+    }
+}

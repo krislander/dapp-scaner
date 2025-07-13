@@ -1,0 +1,37 @@
+{
+    "id": "parent#aave",
+    "name": "AAVE",
+    "url": "https://aave.com",
+    "description": "Aave is an Open Source and Non-Custodial protocol to earn interest on deposits and borrow assets",
+    "logo": "https://icons.llama.fi/aave.png",
+    "chains": [],
+    "gecko_id": "aave",
+    "cmcId": "7278",
+    "treasury": "aave.js",
+    "twitter": "aave",
+    "governanceID": [
+        "snapshot:aave.eth",
+        "eip155:1:0xEC568fffba86c094cf06b22134B23074DFE2252c"
+    ],
+    "wrongLiquidity": true,
+    "github": [
+        "aave",
+        "bgd-labs"
+    ],
+    "symbol": "AAVE",
+    "address": "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    "tvl": [
+        {
+            "date": 1589932800,
+            "totalLiquidityUSD": 54026260.37322
+        }
+    ],
+    "mcap": 4595030897.904291,
+    "otherProtocols": [
+        "AAVE",
+        "AAVE V3",
+        "AAVE V2",
+        "AAVE V1",
+        "Aave Arc"
+    ]
+}

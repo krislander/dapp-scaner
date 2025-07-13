@@ -1,0 +1,788 @@
+{
+    "success": true,
+    "chain": null,
+    "category": "games",
+    "range": "24h",
+    "top": 10,
+    "results": [
+        {
+            "dappId": 36059,
+            "name": "World of Dypians",
+            "description": "Experience unique gameplay and explore a world without end in a quest to form your destiny.",
+            "fullDescription": "<p>The World of Dypians (WoD) is a massive multiplayer online role-playing game that is &nbsp;set in a vast digital environment. Its target audience is individuals who enjoy playing &nbsp;online games and exploring immersive digital environments. The goals of the game &nbsp;are to provide players with a rich and engaging experience that allows them to &nbsp;interact with others, complete quests, and engage in battles. WoD's unique &nbsp;combination of fantasy and blockchain technology creates an exciting and dynamic &nbsp;environment for players to explore and experience. The ultimate goal of the game is &nbsp;to create a virtual world that is alive with activity, where players can form &nbsp;communities, create their own content, and engage in meaningful interactions with &nbsp;one another. &nbsp;&nbsp;&nbsp;World of Dypians is built to support multiple blockchains, making it accessible and &nbsp;interoperable with a wider audience. We aim to have a sustainable ecosystem where &nbsp;users can contribute to the growth and development of the world. The multi-chain &nbsp;integration and the wide range of offerings, including next-gen integrations like other &nbsp;chains, tokens, NFTs, and a marketplace, make World of Dypians a cutting-edge &nbsp;solution in the DeFi and metaverse space.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/36059/worldofdypians-dapp-games-ethereum-logo_7a79c95eeaa777ec0575448dbde0ff47.png",
+            "link": "https://dappradar.com/dapp/world-of-dypians",
+            "website": "https://www.worldofdypians.com/",
+            "isActive": true,
+            "chains": [
+                "base",
+                "bnb-chain",
+                "core",
+                "ethereum",
+                "immutablezkevm",
+                "matchain",
+                "opbnb",
+                "other",
+                "sei",
+                "skale-nebula",
+                "viction"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "blog",
+                    "url": "https://www.worldofdypians.com/",
+                    "type": "blog"
+                },
+                {
+                    "title": "cmc",
+                    "url": "https://coinmarketcap.com/currencies/world-of-dypians/",
+                    "type": "cmc"
+                },
+                {
+                    "title": "coingecko",
+                    "url": "https://www.coingecko.com/en/coins/world-of-dypians",
+                    "type": "coingecko"
+                },
+                {
+                    "title": "discord",
+                    "url": "https://discord.gg/worldofdypians",
+                    "type": "discord"
+                },
+                {
+                    "title": "facebook",
+                    "url": "https://www.facebook.com/worldofdypians",
+                    "type": "facebook"
+                },
+                {
+                    "title": "github",
+                    "url": "https://github.com/worldofdypians/Metaverse",
+                    "type": "github"
+                },
+                {
+                    "title": "instagram",
+                    "url": "https://www.instagram.com/worldofdypians/",
+                    "type": "instagram"
+                },
+                {
+                    "title": "medium",
+                    "url": "https://medium.com/@worldofdypians",
+                    "type": "medium"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/worldofdypians",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/worldofdypians",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/@Dypius",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "22",
+                    "name": "Metaverse",
+                    "slug": "metaverse"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 1410037,
+                "transactionsPercentageChange": -1.27,
+                "uaw": 1390549,
+                "uawPercentageChange": -0.82,
+                "volume": 34.71,
+                "volumePercentageChange": -75.12,
+                "balance": 46623728.74,
+                "balancePercentageChange": 1577878.82
+            }
+        },
+        {
+            "dappId": 49533,
+            "name": "Lumiterra",
+            "description": "A multiplayer, open-world survival crafting game where you can ⚔️battle, 👩‍🌾farm with your friends🧑‍🤝‍🧑 or mysterious collected creatures in a vast world!",
+            "fullDescription": "<p><strong>A multiplayer, open-world survival crafting game</strong>&nbsp;where you can&nbsp;<strong>⚔️battle</strong>,&nbsp;<strong>👩‍🌾farm</strong>&nbsp;with&nbsp;<strong>your friends🧑‍🤝‍🧑</strong>&nbsp;or mysterious collected creatures in a vast world🗺️!</p>\n<p><br></p>\n<ul>\n  <li><strong>Multiplayer:</strong>&nbsp;Play alone or with your friends.</li>\n  <li><strong>Battle:</strong>&nbsp;Fight monsters with various weapons and skills in a vast world.</li>\n  <li><strong>Farming:</strong>&nbsp;Grow crops, catch and feed monsters on your farm.</li>\n  <li><strong>Collecting:</strong>&nbsp;Collect grass, wood, rock in different areas of the world.</li>\n  <li><strong>Crafting:</strong>&nbsp;Use different materials from battle, farming, or collecting to craft weapons, equipment, totem, potion, etc.</li>\n</ul>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/49533/lumiterra-project-games-49533-logo_a2c89b0cbe473c6c7440a573136a4fc5.png",
+            "link": "https://dappradar.com/dapp/lumiterra",
+            "website": "https://lumiterra.net/",
+            "isActive": true,
+            "chains": [
+                "arbitrum",
+                "ronin"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.gg/lumiterra",
+                    "type": "discord"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/LumiterraGame",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/@Lumiterra",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "22",
+                    "name": "Metaverse",
+                    "slug": "metaverse"
+                },
+                {
+                    "id": "24",
+                    "name": "Social",
+                    "slug": "social"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 533099,
+                "transactionsPercentageChange": -16.86,
+                "uaw": 519579,
+                "uawPercentageChange": -15.4,
+                "volume": 0,
+                "volumePercentageChange": 0,
+                "balance": 220143.1,
+                "balancePercentageChange": 0.28
+            }
+        },
+        {
+            "dappId": 37892,
+            "name": "KGeN",
+            "description": "KGeN is building the world's largest verified distribution protocol driving UA, commerce, and loyalty.",
+            "fullDescription": "<p>KGeN is building the world's largest verified distribution protocol powered by Web3, driving UA, commerce, and loyalty ecosystems. Our proprietary POG engine allows users to build, own, flex &amp; monetise their reputation onchain.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/37892/kratosstudios-project-games-37892-logo_5920502cda6d9a165cdd0939679db939.png",
+            "link": "https://dappradar.com/dapp/kgen",
+            "website": "https://kgen.io",
+            "isActive": true,
+            "chains": [
+                "base",
+                "bnb-chain",
+                "ethereum",
+                "kaia",
+                "kroma",
+                "optimism",
+                "polygon",
+                "zksync-era"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "blog",
+                    "url": "https://substack.com/@indiggresearch",
+                    "type": "blog"
+                },
+                {
+                    "title": "coingecko",
+                    "url": "https://www.coingecko.com/en/coins/indigg-kratos-cash",
+                    "type": "coingecko"
+                },
+                {
+                    "title": "discord",
+                    "url": "https://discord.com/invite/indigg",
+                    "type": "discord"
+                },
+                {
+                    "title": "instagram",
+                    "url": "https://www.instagram.com/indigg_dao/",
+                    "type": "instagram"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/theindigg",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/KGeN_io",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/@indiggdao",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "24",
+                    "name": "Social",
+                    "slug": "social"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                },
+                {
+                    "id": "8",
+                    "name": "Marketplaces",
+                    "slug": "marketplaces"
+                }
+            ],
+            "metrics": {
+                "transactions": 300988,
+                "transactionsPercentageChange": -18.72,
+                "uaw": 273539,
+                "uawPercentageChange": -17.37,
+                "volume": 162252.43,
+                "volumePercentageChange": 308393.38,
+                "balance": 638.79,
+                "balancePercentageChange": 37.08
+            }
+        },
+        {
+            "dappId": 46670,
+            "name": "Pixudi",
+            "description": "Pixudi is a Web 2.5 race board game built on the blockchain technology. Players compete with each other to collect more treasures.  Retro nostalgia and new age.",
+            "fullDescription": "<p>Pixudi is a race board game built on the blockchain technology. Players compete with each other to collect more treasures<strong> </strong>than others by overcoming obstacles that come their way and completing missions. While the concept of the game is pretty old, the technologies used to implement it are cutting-edge:</p>\n<ul>\n  <li>All characters and multiple items are NFTs minted on our partner blockchains;</li>\n  <li>All NFTs can be improved and evolved</li>\n  <li>Many mechanics implemented on different networks</li>\n</ul>\n<p>In Pixudi, traditional mechanics of a board game intertwine with a customized game economy, animation and quick mini games. Playing on a board is fun, but you can also play mini games to get advantage of your opponents, complete quests to get resources, interact with your pet, boost your character, and many other things. Once in every few weeks, a new seasonal event is released, bringing new story, board, characters, pets, items, quests and other stuff.<br>\n<br>\nPixudi combines 2 business models: <strong>Free2Play</strong> and <strong>Play2Collect</strong>. It means that players don't need to pay any money to start playing but they can purchase Mystery Packs to enhance their gaming experience: get nicer characters and boost them, receive items, etc. Important note: there is <strong>no Pay-to-Win</strong> mechanics in Pixudi. No matter how many Mystery Packs you buy, victory is not guaranteed. All characters and items can be sold on a marketplace.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/46670/pixudi-project-games-46670-logo_d5b1ab03616430e038db2d01336c80c1.png",
+            "link": "https://dappradar.com/dapp/pixudi",
+            "website": "https://game.pixudi.com",
+            "isActive": true,
+            "chains": [
+                "core",
+                "near",
+                "oasis-sapphire",
+                "polygon",
+                "sei",
+                "skale-calypso"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "blog",
+                    "url": "https://docs.pixudi.com/pixudi-manual/introduction/game-concept",
+                    "type": "blog"
+                },
+                {
+                    "title": "discord",
+                    "url": "https://discord.com/invite/W4QGHh9FRX",
+                    "type": "discord"
+                },
+                {
+                    "title": "github",
+                    "url": "https://github.com/kapcrew",
+                    "type": "github"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/pixudi",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/thepixudi",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/@pixudi",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "22",
+                    "name": "Metaverse",
+                    "slug": "metaverse"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                }
+            ],
+            "metrics": {
+                "transactions": 326663,
+                "transactionsPercentageChange": -17.24,
+                "uaw": 269263,
+                "uawPercentageChange": -18.64,
+                "volume": 0,
+                "volumePercentageChange": 0,
+                "balance": 25.83,
+                "balancePercentageChange": -0.42
+            }
+        },
+        {
+            "dappId": 49205,
+            "name": "SERAPH: In The Darkness",
+            "description": "SERAPH: In the Darkness is a PC & mobile game with loot-based gameplay deployed on the blockchain.",
+            "fullDescription": "<p>The SOUL series is a collection of right-based NFTs, as an integral part of the SERAPH world, holding abundant benefits in the forthcoming future, reflecting the long-lasting creativity of the SERAPH IP. &nbsp;It mainly features human heroes such as Barbarians, Valkyries, Sorceresses, Necromancers, along with a few Angels, Demons, and otherworldly races, showcasing the many story characters developed in the game so far.</p>\n<p><br></p>\n<p>This Unique NFT series is part of the core NFT lineup in SERAPH, providing the capability to secure even rarer in-game drops.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/49205/seraphinthedarkness-project-games-49205-logo_b769a14e9ff8a531947d04aba045d6ed.png",
+            "link": "https://dappradar.com/dapp/seraph-in-the-darkness",
+            "website": "https://www.seraph.game",
+            "isActive": true,
+            "chains": [
+                "arbitrum",
+                "bnb-chain",
+                "ethereum",
+                "opbnb"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.com/invite/seraphgame",
+                    "type": "discord"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/seraph_crypto",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://x.com/Seraph_global",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/@seraphcryptogame",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "11",
+                    "name": "Content Creation",
+                    "slug": "content-creation"
+                },
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "24",
+                    "name": "Social",
+                    "slug": "social"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 195450,
+                "transactionsPercentageChange": 0.09,
+                "uaw": 195552,
+                "uawPercentageChange": 0.7,
+                "volume": 0,
+                "volumePercentageChange": 0,
+                "balance": 379700.61,
+                "balancePercentageChange": 0.97
+            }
+        },
+        {
+            "dappId": 5314,
+            "name": "Alien Worlds",
+            "description": "Innovative Metaverse where everything is tokenized",
+            "fullDescription": "<p>Alien Worlds</p>\n<p>What would you do, if you could create anything in the world?</p>\n<p>Join the Alien Worlds simulation of Earth’s economy using the Trilium (TLM) game token.</p>\n<p>Seek your fortune and thrive in the Trilium and NFT-based Social Metaverse.</p>\n<p>Get started by going through the Wormhole…</p>\n<p>Welcome to Alien Worlds!&nbsp;</p>\n<p>#buildingbetterworlds #thrive #Metaverse #NFTs #TLM</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/5314/alienworlds-dapp-games-wax-logo_7600163693ac8760ff743d394a47b974.png",
+            "link": "https://dappradar.com/dapp/alien-worlds",
+            "website": "https://alienworlds.io",
+            "isActive": true,
+            "chains": [
+                "bnb-chain",
+                "wax"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.gg/alienworlds",
+                    "type": "discord"
+                },
+                {
+                    "title": "instagram",
+                    "url": "https://www.instagram.com/alienworlds.io/",
+                    "type": "instagram"
+                },
+                {
+                    "title": "medium",
+                    "url": "http://medium.com/@alienworlds",
+                    "type": "medium"
+                },
+                {
+                    "title": "reddit",
+                    "url": "https://www.reddit.com/r/AlienWorldsOfficial",
+                    "type": "reddit"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/AlienWorldsOffical",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "http://twitter.com/alienworlds",
+                    "type": "twitter"
+                },
+                {
+                    "title": "youtube",
+                    "url": "https://www.youtube.com/c/AlienWorlds",
+                    "type": "youtube"
+                }
+            ],
+            "tags": [],
+            "metrics": {
+                "transactions": 6468888,
+                "transactionsPercentageChange": -0.12,
+                "uaw": 119222,
+                "uawPercentageChange": -6.76,
+                "volume": 28069.77,
+                "volumePercentageChange": -38.69,
+                "balance": 451185.6,
+                "balancePercentageChange": 16.69
+            }
+        },
+        {
+            "dappId": 52296,
+            "name": "Kawaii Puzzle",
+            "description": "Kawaii Puzzle is a dreamy casual puzzle x home decorating simulation game — soft, sweet, powered by Sei Network and backed by Nika Labs.",
+            "fullDescription": "<p>&nbsp;Kawaii Puzzle is a dreamy casual puzzle x home decorating simulation game — soft, sweet, powered by Sei Network and backed by Nika Labs. Available for iOS and Android with 2M+ installs.</p>\n<p><br></p>\n<p>A cozy and creative puzzle simulation where players complete design orders, unlock themed furniture collections, and build uniquely styled rooms through drag-and-drop mechanics.&nbsp;</p>\n<p><br></p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/52296/kawaiipuzzle-project-games-52296-logo_fae5925a5f4c217cae11b216542b0e24.png",
+            "link": "https://dappradar.com/dapp/kawaii-puzzle",
+            "website": "https://kawaiipuzzle.games/",
+            "isActive": true,
+            "chains": [
+                "sei"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.gg/uUwkwgnW",
+                    "type": "discord"
+                },
+                {
+                    "title": "gitbook",
+                    "url": "https://nikalabs.gitbook.io/kawaii-puzzle",
+                    "type": "gitbook"
+                },
+                {
+                    "title": "telegram",
+                    "url": "https://t.me/Kawaii_Puzzle",
+                    "type": "telegram"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://x.com/kawaiipuzzle_HQ",
+                    "type": "twitter"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "24",
+                    "name": "Social",
+                    "slug": "social"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 225750,
+                "transactionsPercentageChange": 87,
+                "uaw": 109483,
+                "uawPercentageChange": 83.09,
+                "volume": 0,
+                "volumePercentageChange": 0,
+                "balance": 0,
+                "balancePercentageChange": 0
+            }
+        },
+        {
+            "dappId": 19869,
+            "name": "PlayEmber",
+            "description": "Top 3 Web3 Game Studio 🔥 | 120M+ Downloads 🎮 | 5M+ MAU | Backed by Shima Capital , Big Brain, Hyperithm and many more!",
+            "fullDescription": "<p>Mobile Game Studio with over 100 Million Downloads Making web3 easy &amp; rewarding for players, developers &amp; creators</p>\n<p>Our experienced team has over 1 Billion Career Downloads – and published multiple hit games with the likes of Voodoo, Lion Studios, and BoomBit. As well as hit IP Games with global brands and entertainment companies.</p>\n<p><br></p>\n<p>Our web3 team are building the infrastructure and games to mass onboard web2 games into web3. We are already a Top 5 Blockchain Game and still in private beta.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/19869/playember-project-games-19869-logo_8cb2b9bf2d97a34d4deacd98a5e94191.png",
+            "link": "https://dappradar.com/dapp/playember",
+            "website": "https://playember.com/",
+            "isActive": true,
+            "chains": [
+                "ethereum",
+                "immutablezkevm",
+                "near"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/play_ember",
+                    "type": "twitter"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "22",
+                    "name": "Metaverse",
+                    "slug": "metaverse"
+                },
+                {
+                    "id": "3",
+                    "name": "Staking",
+                    "slug": "staking"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 118358,
+                "transactionsPercentageChange": 39.89,
+                "uaw": 107969,
+                "uawPercentageChange": 38.99,
+                "volume": 0.01,
+                "volumePercentageChange": 0,
+                "balance": 15327.46,
+                "balancePercentageChange": -0.09
+            }
+        },
+        {
+            "dappId": 9495,
+            "name": "Axie Infinity",
+            "description": "🏹 Battle ✨ Collect ⟠ Earn // Freedom for Gamers.",
+            "fullDescription": "<p>Axie Infinity is a Pokemon-inspired digital pet universe where players use their cute characters called Axies in various games. The Axie Infinity Universe highlights the benefits of blockchain technology through \"Free to Play to Earn\" gameplay and a player-owned economy.</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/9495/axieinfinity-dapp-games-ronin-logo_1ec806d57fd80ab68d351658cb8d146a.png",
+            "link": "https://dappradar.com/dapp/axie-infinity",
+            "website": "https://axieinfinity.com/",
+            "isActive": true,
+            "chains": [
+                "ethereum",
+                "ronin"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.gg/qT8vQjJ",
+                    "type": "discord"
+                },
+                {
+                    "title": "medium",
+                    "url": "https://axie.substack.com/",
+                    "type": "medium"
+                },
+                {
+                    "title": "other",
+                    "url": "https://www.youtube.com/watch?v=oMa8cc6YxSI",
+                    "type": "other"
+                },
+                {
+                    "title": "reddit",
+                    "url": "https://www.reddit.com/r/AxieInfinity/",
+                    "type": "reddit"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://twitter.com/AxieInfinity",
+                    "type": "twitter"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                },
+                {
+                    "id": "8",
+                    "name": "Marketplaces",
+                    "slug": "marketplaces"
+                }
+            ],
+            "metrics": {
+                "transactions": 139223,
+                "transactionsPercentageChange": 4.74,
+                "uaw": 102880,
+                "uawPercentageChange": 2.69,
+                "volume": 126078.43,
+                "volumePercentageChange": -82.37,
+                "balance": 157018671.2,
+                "balancePercentageChange": -1.26
+            }
+        },
+        {
+            "dappId": 48927,
+            "name": "Moonveil",
+            "description": "Moonveil is a Gamer-first ecosystem, building the Moonveil L2 powered by $MORE.",
+            "fullDescription": "<p>Moonveil is building a gamer-first ecosystem building a strong user-centric reward system and diverse achievement-based player profile, alongside a multi-game economy on top of the Moonveil L2 with Polygon CDK powered by $MORE. Moonveil's team consists of proven gaming industry professionals dedicated to creating a gaming ecosystem and building a decentralized player network on top of the Moonveil L2. Prepare to explore the vibrant gaming landscape with AstrArk, Bushwhack, and many more exciting games!</p>",
+            "logo": "https://dashboard-assets.dappradar.com/geRRcWz9IdTwSrm1/document/48927/moonveil-project-games-48927-logo_e6b5fca8a3965426efe1d5fe228cccbd.png",
+            "link": "https://dappradar.com/dapp/moonveil",
+            "website": "https://moonveil.gg/",
+            "isActive": true,
+            "chains": [
+                "polygon"
+            ],
+            "categories": [
+                "games"
+            ],
+            "socialLinks": [
+                {
+                    "title": "discord",
+                    "url": "https://discord.com/invite/moonveil",
+                    "type": "discord"
+                },
+                {
+                    "title": "medium",
+                    "url": "https://medium.com/@Moonveil_Studio",
+                    "type": "medium"
+                },
+                {
+                    "title": "twitter",
+                    "url": "https://x.com/Moonveil_Studio",
+                    "type": "twitter"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "10",
+                    "name": "Layer 2",
+                    "slug": "layer-2"
+                },
+                {
+                    "id": "1",
+                    "name": "NFT",
+                    "slug": "nft"
+                },
+                {
+                    "id": "6",
+                    "name": "Games",
+                    "slug": "games"
+                },
+                {
+                    "id": "7",
+                    "name": "Play to Earn",
+                    "slug": "play-to-earn"
+                }
+            ],
+            "metrics": {
+                "transactions": 93310,
+                "transactionsPercentageChange": 118.48,
+                "uaw": 88351,
+                "uawPercentageChange": 106.94,
+                "volume": 0,
+                "volumePercentageChange": 0,
+                "balance": 85102.91,
+                "balancePercentageChange": 0.53
+            }
+        }
+    ]
+}
