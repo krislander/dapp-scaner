@@ -34,14 +34,14 @@ def enrich_database_records():
     """
     Go through each record in database and enrich with CMC and DeFiLlama data
     """
-    from dapp_scraper.store import get_conn
+    from dapp_scraper.store import get_conn, combine_tags
     
     conn = get_conn()
     cur = conn.cursor()
     
     # Get all DApps that need enrichment
     cur.execute("""
-        SELECT id, name, slug, token_symbol, token_name 
+        SELECT id, name, slug, token_symbol, token_name, tags 
         FROM dapps 
         ORDER BY id
     """)
@@ -52,10 +52,11 @@ def enrich_database_records():
     
     print(f"🎯 Enriching {total_dapps} DApps...")
     
-    for i, (dapp_id, name, slug, token_symbol, token_name) in enumerate(dapps, 1):
+    for i, (dapp_id, name, slug, token_symbol, token_name, existing_tags) in enumerate(dapps, 1):
         print(f"[{i}/{total_dapps}] {name}")
         
         enrichment_data = {}
+        updated_tags = existing_tags  # Start with existing tags
         
         # Try to get CMC data
         cmc_data = fetch_single_project_coinmarketcap(name, token_symbol)
@@ -68,12 +69,21 @@ def enrich_database_records():
             percent_change_24h = cmc_data.get('percent_change_24h', 0)
             percent_change_7d = cmc_data.get('percent_change_7d', 0)
             percent_change_30d = cmc_data.get('percent_change_30d', 0)
+            percent_change_60d = cmc_data.get('percent_change_60d', 0)
+            percent_change_90d = cmc_data.get('percent_change_90d', 0)
             market_cap = cmc_data.get('market_cap', 0)
             market_cap_dominance = cmc_data.get('market_cap_dominance', 0)
             fully_diluted_market_cap = cmc_data.get('fully_diluted_market_cap', 0)
             circulating_supply = cmc_data.get('circulating_supply', 0)
             total_supply = cmc_data.get('total_supply', 0)
             max_supply = cmc_data.get('max_supply', 0)
+            cmc_rank = cmc_data.get('cmc_rank', 0)
+            tvl_ratio = cmc_data.get('tvl_ratio', 0)
+            
+            # Combine tags from CMC with existing DappRadar tags
+            cmc_tags = cmc_data.get('cmc_tags', '')
+            if cmc_tags:
+                updated_tags = combine_tags(existing_tags, cmc_tags)
             
             # Update dapps table with CMC data
             cur.execute("""
@@ -85,24 +95,44 @@ def enrich_database_records():
                     percent_change_24h = %s,
                     percent_change_7d = %s,
                     percent_change_30d = %s,
+                    percent_change_60d = %s,
+                    percent_change_90d = %s,
                     market_cap = %s,
                     market_cap_dominance = %s,
                     fully_diluted_market_cap = %s,
                     circulating_supply = %s,
                     total_supply = %s,
                     max_supply = %s,
+                    cmc_rank = %s,
+                    tvl_ratio = %s,
+                    tags = %s,
                     updated_at = CURRENT_TIMESTAMP
                 WHERE id = %s
             """, (price, volume_24h, volume_change_24h, percent_change_1h, percent_change_24h,
-                  percent_change_7d, percent_change_30d, market_cap, market_cap_dominance,
-                  fully_diluted_market_cap, circulating_supply, total_supply, max_supply, dapp_id))
+                  percent_change_7d, percent_change_30d, percent_change_60d, percent_change_90d,
+                  market_cap, market_cap_dominance, fully_diluted_market_cap, circulating_supply, 
+                  total_supply, max_supply, cmc_rank, tvl_ratio, updated_tags, dapp_id))
         
         # Try to get DeFiLlama data
         defillama_data = fetch_single_project_defillama(name, slug)
         if defillama_data:
-            # Extract DeFiLlama data for direct column updates
-            tvl = defillama_data.get('tvl', 0)
-            volume = defillama_data.get('volume', 0)
+            # Extract DeFiLlama data for direct column updates with safe conversion
+            def safe_numeric(value, default=0):
+                """Safely convert value to numeric, handling dicts and other types"""
+                if value is None:
+                    return default
+                if isinstance(value, (int, float)):
+                    return float(value)
+                if isinstance(value, str):
+                    try:
+                        return float(value)
+                    except (ValueError, TypeError):
+                        return default
+                # If it's a dict or other type, return default
+                return default
+            
+            tvl = safe_numeric(defillama_data.get('tvl'), 0)
+            volume = safe_numeric(defillama_data.get('volume'), 0)
             
             # Update dapps table with DeFiLlama data
             cur.execute("""
@@ -112,6 +142,16 @@ def enrich_database_records():
                     updated_at = CURRENT_TIMESTAMP
                 WHERE id = %s
             """, (tvl, volume, dapp_id))
+            
+            # Store TVL historical data if present
+            if defillama_data.get('tvl_historical'):
+                from dapp_scraper.store import store_tvl_historical
+                store_tvl_historical(cur, dapp_id, defillama_data['tvl_historical'])
+            
+            # Store raises data if present
+            if defillama_data.get('raises'):
+                from dapp_scraper.store import store_raises
+                store_raises(cur, dapp_id, defillama_data['raises'])
         
         if cmc_data or defillama_data:
             enriched_count += 1

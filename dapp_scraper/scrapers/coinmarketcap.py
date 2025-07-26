@@ -42,18 +42,36 @@ def fetch_single_project_coinmarketcap(project_name, token_symbol=None):
                     coin_data = data
                 
                 if coin_data:
+                    # Extract tags
+                    tags_list = coin_data.get("tags", [])
+                    tags_str = ", ".join([tag.get("name", "") for tag in tags_list if tag.get("name")])
+                    
+                    # Get full quote USD data
+                    quote_usd = coin_data.get("quote", {}).get("USD", {})
+                    
                     return {
                         "cmc_id": coin_data.get("id"),
                         "cmc_name": coin_data.get("name"),
                         "cmc_symbol": coin_data.get("symbol"),
                         "cmc_slug": coin_data.get("slug"),
-                        "market_cap": coin_data.get("quote", {}).get("USD", {}).get("market_cap", 0),
-                        "price": coin_data.get("quote", {}).get("USD", {}).get("price", 0),
-                        "volume_24h": coin_data.get("quote", {}).get("USD", {}).get("volume_24h", 0),
-                        "percent_change_24h": coin_data.get("quote", {}).get("USD", {}).get("percent_change_24h", 0),
+                        "cmc_tags": tags_str,
+                        "market_cap": quote_usd.get("market_cap", 0),
+                        "price": quote_usd.get("price", 0),
+                        "volume_24h": quote_usd.get("volume_24h", 0),
+                        "volume_change_24h": quote_usd.get("volume_change_24h", 0),
+                        "percent_change_1h": quote_usd.get("percent_change_1h", 0),
+                        "percent_change_24h": quote_usd.get("percent_change_24h", 0),
+                        "percent_change_7d": quote_usd.get("percent_change_7d", 0),
+                        "percent_change_30d": quote_usd.get("percent_change_30d", 0),
+                        "percent_change_60d": quote_usd.get("percent_change_60d", 0),
+                        "percent_change_90d": quote_usd.get("percent_change_90d", 0),
+                        "market_cap_dominance": quote_usd.get("market_cap_dominance", 0),
+                        "fully_diluted_market_cap": quote_usd.get("fully_diluted_market_cap", 0),
                         "circulating_supply": coin_data.get("circulating_supply", 0),
                         "total_supply": coin_data.get("total_supply", 0),
                         "max_supply": coin_data.get("max_supply", 0),
+                        "cmc_rank": coin_data.get("cmc_rank", 0),
+                        "tvl_ratio": coin_data.get("tvl_ratio", 0),
                     }
         
         return None

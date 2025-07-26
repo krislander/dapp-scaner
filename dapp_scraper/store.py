@@ -46,6 +46,74 @@ def get_or_create_industry(cur, industry_name):
     result = cur.fetchone()
     return result[0] if result else None
 
+def store_tvl_historical(cur, dapp_id, tvl_data):
+    """Store TVL historical data for a DApp"""
+    if not tvl_data:
+        return
+    
+    for tvl_entry in tvl_data:
+        try:
+            cur.execute(
+                """
+                INSERT INTO tvl_historical (dapp_id, date, total_liquidity_usd)
+                VALUES (%s, %s, %s)
+                ON CONFLICT DO NOTHING;
+                """,
+                (dapp_id, tvl_entry["date"], tvl_entry["total_liquidity_usd"])
+            )
+        except Exception as e:
+            print(f"❌ Error storing TVL historical data: {e}")
+
+def store_raises(cur, dapp_id, raises_data):
+    """Store raises/funding data for a DApp"""
+    if not raises_data:
+        return
+    
+    for raise_entry in raises_data:
+        try:
+            cur.execute(
+                """
+                INSERT INTO raises (
+                    dapp_id, date, name, round, amount, chains, sector, 
+                    category, category_group, source, lead_investors, 
+                    other_investors, valuation, defillama_id
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT DO NOTHING;
+                """,
+                (
+                    dapp_id, raise_entry["date"], raise_entry["name"], 
+                    raise_entry["round"], raise_entry["amount"], raise_entry["chains"],
+                    raise_entry["sector"], raise_entry["category"], raise_entry["category_group"],
+                    raise_entry["source"], raise_entry["lead_investors"], 
+                    raise_entry["other_investors"], raise_entry["valuation"], 
+                    raise_entry["defillama_id"]
+                )
+            )
+        except Exception as e:
+            print(f"❌ Error storing raises data: {e}")
+
+def combine_tags(dappradar_tags, cmc_tags):
+    """Combine tags from DappRadar and CoinMarketCap, removing duplicates"""
+    all_tags = []
+    
+    if dappradar_tags:
+        all_tags.extend([tag.strip() for tag in dappradar_tags.split(",") if tag.strip()])
+    
+    if cmc_tags:
+        all_tags.extend([tag.strip() for tag in cmc_tags.split(",") if tag.strip()])
+    
+    # Remove duplicates while preserving order
+    unique_tags = []
+    seen = set()
+    for tag in all_tags:
+        tag_lower = tag.lower()
+        if tag_lower not in seen:
+            unique_tags.append(tag)
+            seen.add(tag_lower)
+    
+    return ", ".join(unique_tags)
+
 def store_records(records):
     """
     Store records in the extended database schema
@@ -69,6 +137,9 @@ def store_records(records):
             
             # Prepare chains as comma-separated string
             chains_str = ",".join(rec.get("chains", [])) if rec.get("chains") else ""
+            
+            # Combine tags from DappRadar and CoinMarketCap
+            combined_tags = combine_tags(rec.get("tags"), rec.get("cmc_tags"))
             
             # Get token info (first token if multiple)
             token_name = None
@@ -135,23 +206,27 @@ def store_records(records):
                         name = %s,
                         slug = %s,
                         category_id = %s,
-                        status = %s,
+                        is_active = %s,
                         industry_id = %s,
                         description = %s,
                         website = %s,
+                        tags = %s,
                         chains = %s,
                         multi_chain = %s,
                         birth_date = %s,
                         ownership_status = %s,
                         decentralisation_lvl = %s,
                         capital_raised = %s,
-                        showcase_fun = %s,
                         token_name = %s,
                         token_symbol = %s,
                         token_format = %s,
                         governance_type = %s,
                         twitter = %s,
                         discord = %s,
+                        telegram = %s,
+                        github = %s,
+                        youtube = %s,
+                        instagram = %s,
                         tvl = %s,
                         users = %s,
                         volume = %s,
@@ -167,23 +242,28 @@ def store_records(records):
                         percent_change_24h = %s,
                         percent_change_7d = %s,
                         percent_change_30d = %s,
+                        percent_change_60d = %s,
+                        percent_change_90d = %s,
+                        cmc_rank = %s,
                         market_cap_dominance = %s,
                         fully_diluted_market_cap = %s,
                         updated_at = CURRENT_TIMESTAMP
                     WHERE id = %s;
                     """,
                     (
-                        rec["name"], rec["slug"], category_id, rec.get("status", "active"),
-                        industry_id, rec.get("description"), rec.get("website"),
+                        rec["name"], rec["slug"], category_id, rec.get("is_active", True),
+                        industry_id, rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
-                        rec.get("capital_raised", 0), rec.get("showcase_fun", False),
+                        rec.get("capital_raised", 0),
                         token_name, token_symbol, token_format, governance_type,
-                        rec.get("twitter"), rec.get("discord"),
+                        rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
+                        rec.get("github"), rec.get("youtube"), rec.get("instagram"),
                         tvl, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
                         percent_change_1h, percent_change_24h, percent_change_7d, percent_change_30d,
+                        0.0, 0.0, 0,
                         market_cap_dominance, fully_diluted_market_cap,
                         existing_id
                     )
@@ -194,37 +274,53 @@ def store_records(records):
                 cur.execute(
                     """
                     INSERT INTO dapps (
-                        name, slug, category_id, status, industry_id, description, website,
-                        chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
-                        capital_raised, showcase_fun, token_name, token_symbol, token_format,
-                        governance_type, twitter, discord,
-                        tvl, users, volume, transactions, market_cap,
+                        name, slug, category_id, is_active, industry_id, description, website,
+                        tags, chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
+                        capital_raised, token_name, token_symbol, token_format,
+                        governance_type, twitter, discord, telegram, github, youtube, instagram,
+                        tvl, tvl_ratio, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
                         percent_change_1h, percent_change_24h, percent_change_7d, percent_change_30d,
+                        percent_change_60d, percent_change_90d, cmc_rank,
                         market_cap_dominance, fully_diluted_market_cap
                     ) VALUES (
                         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s
                     )
                     RETURNING id;
                     """,
                     (
-                        rec["name"], rec["slug"], category_id, rec.get("status", "active"),
-                        industry_id, rec.get("description"), rec.get("website"),
+                        rec["name"], rec["slug"], category_id, rec.get("is_active", True),
+                        industry_id, rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
-                        rec.get("capital_raised", 0), rec.get("showcase_fun", False),
+                        rec.get("capital_raised", 0),
                         token_name, token_symbol, token_format, governance_type,
-                        rec.get("twitter"), rec.get("discord"),
-                        tvl, users, volume, transactions, market_cap,
+                        rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
+                        rec.get("github"), rec.get("youtube"), rec.get("instagram"),
+                        tvl, 0.0, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
                         percent_change_1h, percent_change_24h, percent_change_7d, percent_change_30d,
+                        0.0, 0.0, 0,
                         market_cap_dominance, fully_diluted_market_cap
                     )
                 )
-                dapp_id = cur.fetchone()[0]
+                dapp_id = cur.fetchone()
+                if dapp_id:
+                    dapp_id = dapp_id[0]
+                else:
+                    dapp_id = None
+            
+            # Store TVL historical data if present
+            if dapp_id and rec.get("tvl_historical"):
+                store_tvl_historical(cur, dapp_id, rec["tvl_historical"])
+            
+            # Store raises data if present
+            if dapp_id and rec.get("raises"):
+                store_raises(cur, dapp_id, rec["raises"])
             
             print(f"✅ Successfully stored DApp: {rec['name']}")
             
@@ -246,7 +342,11 @@ def get_dapp_count():
     conn = get_conn()
     cur = conn.cursor()
     cur.execute("SELECT COUNT(*) FROM dapps;")
-    count = cur.fetchone()[0]
+    count = cur.fetchone()
+    if count:
+        count = count[0]
+    else:
+        count = 0
     cur.close()
     conn.close()
     return count

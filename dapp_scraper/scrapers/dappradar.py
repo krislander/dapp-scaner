@@ -17,7 +17,9 @@ def fetch_dappradar(limit):
     Makes exactly 9 requests (one per category) and returns normalized data
     """
     headers = {"x-api-key": API_KEY}
-    categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
+    # categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
+    categories = ['games']
+
     
     print(f"🚀 Fetching DApps from {len(categories)} categories...")
     
@@ -30,6 +32,7 @@ def fetch_dappradar(limit):
             
             params = {
                 "category": category,
+                "range": "7d",
                 "top": limit
             }
             
@@ -59,6 +62,26 @@ def fetch_dappradar(limit):
                     # Extract categories - they are directly an array of strings
                     categories_list = result.get("categories", [])
                     
+                    # Extract tags - array of objects with id, name, slug
+                    tags_list = result.get("tags", [])
+                    tags_str = ", ".join([tag.get("name", "") for tag in tags_list if tag.get("name")])
+                    
+                    # Extract isActive
+                    is_active = result.get("isActive", True)
+                    
+                    # Extract description and website
+                    description = result.get("description", "")
+                    website = result.get("website", "")
+                    
+                    # Extract social links
+                    social_links = result.get("socialLinks", [])
+                    social_dict = {}
+                    for link in social_links:
+                        link_type = link.get("type", "")
+                        link_url = link.get("url", "")
+                        if link_type and link_url:
+                            social_dict[link_type] = link_url
+                    
                     # Get metrics
                     metrics = result.get("metrics", {})
                     
@@ -84,17 +107,24 @@ def fetch_dappradar(limit):
                         "slug": dapp_slug,
                         "category": categories_list[0] if categories_list else category,
                         "chains": chains,
-                        "status": "active",
+                        "is_active": is_active,
+                        "tags": tags_str,
+                        "description": description,
+                        "website": website,
+                        "twitter": social_dict.get("twitter", ""),
+                        "discord": social_dict.get("discord", ""),
+                        "telegram": social_dict.get("telegram", ""),
+                        "github": social_dict.get("github", ""),
+                        "youtube": social_dict.get("youtube", ""),
+                        "instagram": social_dict.get("instagram", ""),
                         "multi_chain": len(chains) > 1,
                         "birth_date": None,
                         "ownership_status": None,
                         "capital_raised": 0,
-                        "showcase_fun": False,
                         "decentralisation_lvl": None,
                         "industry": categories_list[0] if categories_list else "",
                         "source_chain": chains[0] if chains else "",
                         "metrics": {
-                            "tvl": 0,  # Not available in this endpoint
                             "users": safe_int(metrics.get("uaw")),
                             "volume": safe_float(metrics.get("volume")),
                             "transactions": safe_int(metrics.get("transactions")),

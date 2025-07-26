@@ -24,6 +24,69 @@
         {
             "date": 1589932800,
             "totalLiquidityUSD": 54026260.37322
+        },
+        {
+            "date": 1590019200,
+            "totalLiquidityUSD": 57638725.85491
+        },
+        {
+            "date": 1590105600,
+            "totalLiquidityUSD": 56713126.58431
+        }
+    ],
+    "raises": [
+        {
+            "date": 1594771200,
+            "name": "Aave",
+            "round": "Private token sale",
+            "amount": 3,
+            "chains": [
+                "Ethereum",
+                "Polygon",
+                "Avalanche",
+                "Fantom",
+                "Harmony",
+                "Optimism",
+                "Arbitrum"
+            ],
+            "sector": "Aave is an open source non-custodial protocol on Ethereum for decentralized lending and borrowing.",
+            "category": "DeFi",
+            "categoryGroup": "DeFi & CeFi",
+            "source": "https://www.dcforecasts.com/altcoin-news/aave-raises-3m-from-three-arrows-capital-and-framework-ventures/",
+            "leadInvestors": [
+                "Framework Ventures",
+                "3AC"
+            ],
+            "otherInvestors": [],
+            "valuation": null,
+            "defillamaId": "111"
+        },
+        {
+            "date": 1602460800,
+            "name": "Aave",
+            "round": "Strategic ",
+            "amount": 25,
+            "chains": [
+                "Ethereum",
+                "Polygon",
+                "Avalanche",
+                "Fantom",
+                "Harmony",
+                "Optimism",
+                "Arbitrum"
+            ],
+            "sector": "Aave is an open source non-custodial protocol on Ethereum for decentralized lending and borrowing.",
+            "category": "DeFi",
+            "categoryGroup": "DeFi & CeFi",
+            "source": "https://decrypt.co/44653/aave-raises-25-million-to-bring-defi-to-institutions",
+            "leadInvestors": [
+                "Blockchain Capital",
+                "Blockchain.com Ventures",
+                "Standard Crypto"
+            ],
+            "otherInvestors": [],
+            "valuation": null,
+            "defillamaId": "111"
         }
     ],
     "mcap": 4595030897.904291,
