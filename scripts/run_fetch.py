@@ -1,7 +1,9 @@
 import sys
 import os
+
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
+from dapp_scraper.utils import safe_numeric
 from dapp_scraper.scrapers.defillama import fetch_single_project_defillama
 from dapp_scraper.scrapers.dappradar import fetch_dappradar
 from dapp_scraper.scrapers.coinmarketcap import fetch_single_project_coinmarketcap
@@ -73,7 +75,12 @@ def enrich_database_records():
         updated_tags = existing_tags  # Start with existing tags
         
         # Try to get CMC data
-        cmc_data = fetch_single_project_coinmarketcap(name, token_symbol)
+        if token_symbol:
+            cmc_params = {"symbol": token_symbol}
+        else:
+            cmc_params = {"slug": slug}
+        
+        cmc_data = fetch_single_project_coinmarketcap(name, cmc_params)
         if cmc_data:
             # Extract CMC data for direct column updates
             price = cmc_data.get('price', 0)
@@ -129,22 +136,7 @@ def enrich_database_records():
         
         # Try to get DeFiLlama data
         defillama_data = fetch_single_project_defillama(name, slug)
-        if defillama_data:
-            # Extract DeFiLlama data for direct column updates with safe conversion
-            def safe_numeric(value, default=0):
-                """Safely convert value to numeric, handling dicts and other types"""
-                if value is None:
-                    return default
-                if isinstance(value, (int, float)):
-                    return float(value)
-                if isinstance(value, str):
-                    try:
-                        return float(value)
-                    except (ValueError, TypeError):
-                        return default
-                # If it's a dict or other type, return default
-                return default
-            
+        if defillama_data:            
             tvl = safe_numeric(defillama_data.get('tvl'), 0)
             volume = safe_numeric(defillama_data.get('volume'), 0)
             

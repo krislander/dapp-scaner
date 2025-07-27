@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 import time
 
-from dapp_scraper.utils import make_rate_limited_request
+from dapp_scraper.utils import make_rate_limited_request, safe_numeric
 
 def fetch_single_project_defillama(project_name, project_slug=None):
     """
@@ -13,22 +13,7 @@ def fetch_single_project_defillama(project_name, project_slug=None):
     Returns:
         dict: Enriched project data with tvl_historical and raises data or None if not found
     """
-    try:
-        # Helper function for safe numeric conversion
-        def safe_numeric(value, default=0):
-            """Safely convert value to numeric, handling dicts and other types"""
-            if value is None:
-                return default
-            if isinstance(value, (int, float)):
-                return float(value)
-            if isinstance(value, str):
-                try:
-                    return float(value)
-                except (ValueError, TypeError):
-                    return default
-            # If it's a dict or other type, return default
-            return default
-        
+    try:        
         # Try to find the project by slug first
         if project_slug:
             slug_to_try = project_slug
@@ -42,14 +27,11 @@ def fetch_single_project_defillama(project_name, project_slug=None):
             detail_data = detail_resp.json()
             
             enriched_data = {
-                "slug": detail_data.get("slug"),
                 "name": detail_data.get("name"),
-                "category": detail_data.get("category"),
-                "tvl": safe_numeric(detail_data.get("tvl"), 0),
-                "change_1d": safe_numeric(detail_data.get("change_1d"), 0),
-                "change_7d": safe_numeric(detail_data.get("change_7d"), 0),
-                "change_1m": safe_numeric(detail_data.get("change_1m"), 0),
                 "mcap": safe_numeric(detail_data.get("mcap"), 0),
+                "gecko_id": detail_data.get("geckoId"),
+                "cmc_id": detail_data.get("cmcId"),
+                "token_symbol": detail_data.get("symbol"),
                 "volume": safe_numeric(detail_data.get("volume"), 0),
             }
             

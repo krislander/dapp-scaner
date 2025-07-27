@@ -87,7 +87,7 @@ def fetch_dappradar(limit):
                     
                     # Generate slug from name if not available
                     dapp_name = result.get("name", "")
-                    dapp_slug = dapp_name.lower().replace(" ", "-").replace(".", "") if dapp_name else ""
+                    dapp_slug = dapp_name.lower().replace(" ", "-").replace(".", "").replace(":", "") if dapp_name else ""
                     
                     # Helper function to safely convert to int/float
                     def safe_int(value, default=0):

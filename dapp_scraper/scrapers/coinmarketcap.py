@@ -10,24 +10,24 @@ _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.
 API_KEY = _cfg["coinmarketcap"]["api_key"]
 API_ORIGIN = _cfg["coinmarketcap"]["api_origin"]
 
-def fetch_single_project_coinmarketcap(project_name, token_symbol=None):
+def fetch_single_project_coinmarketcap(project_name, params=None):
     """
     Fetch data for a single project from CoinMarketCap API
     Args:
         project_name: Name of the project/DApp
-        token_symbol: Token symbol if available
+        params: Dict with search parameters - {"id": id} or {"symbol": symbol} or {"slug": slug}
     Returns:
         dict: Enriched project data or None if not found
     """
     headers = {"X-CMC_PRO_API_KEY": API_KEY}
     
-    try:
-        # Try to find the project by symbol first, then by name
-        search_term = token_symbol if token_symbol else project_name
+    try:        
+        # Use provided params or fallback to slug-based search
+        if params is None:
+            return None
         
         # Search for cryptocurrency
         url = f"{API_ORIGIN}/v1/cryptocurrency/quotes/latest"
-        params = {"symbol": search_term} if token_symbol else {"slug": project_name.lower().replace(" ", "-")}
         
         resp = make_rate_limited_request(url, headers=headers, params=params)
         
@@ -35,16 +35,27 @@ def fetch_single_project_coinmarketcap(project_name, token_symbol=None):
             data = resp.json().get("data", {})
             
             if data:
-                # Get the first result if searching by symbol
-                if token_symbol and isinstance(data, dict):
+                # Handle different response formats based on search type
+                if "symbol" in params:
+                    # Symbol search returns dict with symbol as key
+                    coin_data = list(data.values())[0] if data else None
+                elif "id" in params:
+                    # ID search returns dict with id as key  
                     coin_data = list(data.values())[0] if data else None
                 else:
-                    coin_data = data
+                    # Slug search returns single object or dict
+                    coin_data = data if isinstance(data, dict) and "id" in data else list(data.values())[0] if data else None
                 
                 if coin_data:
-                    # Extract tags
+                    # Extract tags with proper type checking
                     tags_list = coin_data.get("tags", [])
-                    tags_str = ", ".join([tag.get("name", "") for tag in tags_list if tag.get("name")])
+                    tag_names = []
+                    for tag in tags_list:
+                        if isinstance(tag, dict) and tag.get("name"):
+                            tag_names.append(tag.get("name"))
+                        elif isinstance(tag, str):
+                            tag_names.append(tag)
+                    tags_str = ", ".join(tag_names)
                     
                     # Get full quote USD data
                     quote_usd = coin_data.get("quote", {}).get("USD", {})

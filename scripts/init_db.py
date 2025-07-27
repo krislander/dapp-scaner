@@ -61,6 +61,8 @@ def create_schema():
       name VARCHAR(255) NOT NULL,
       slug VARCHAR(255) UNIQUE NOT NULL,
       category_id INTEGER REFERENCES categories(id),
+      gecko_id VARCHAR(100),
+      cmc_id VARCHAR(100),
       
       -- Basic info
       is_active BOOLEAN DEFAULT TRUE,
@@ -94,6 +96,10 @@ def create_schema():
       token_symbol VARCHAR(20),
       token_format VARCHAR(50),
       
+      -- External IDs
+      gecko_id VARCHAR(100),
+      cmc_id VARCHAR(20),
+      
       -- Governance
       governance_type VARCHAR(100),  -- e.g., "DAO", "Centralized", "Multi-sig"
       
@@ -104,6 +110,7 @@ def create_schema():
       volume NUMERIC DEFAULT 0,
       transactions BIGINT DEFAULT 0,
       market_cap NUMERIC DEFAULT 0,
+      mcap NUMERIC DEFAULT 0,
       circulating_supply NUMERIC DEFAULT 0,
       total_supply NUMERIC DEFAULT 0,
       max_supply NUMERIC DEFAULT 0,
