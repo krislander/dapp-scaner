@@ -82,6 +82,7 @@ def fetch_single_project_coinmarketcap(project_name, params=None):
                         "total_supply": coin_data.get("total_supply", 0),
                         "max_supply": coin_data.get("max_supply", 0),
                         "cmc_rank": coin_data.get("cmc_rank", 0),
+                        "tvl": quote_usd.get("tvl", 0),
                         "tvl_ratio": coin_data.get("tvl_ratio", 0),
                     }
         

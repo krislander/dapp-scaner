@@ -17,8 +17,8 @@ def fetch_dappradar(limit):
     Makes exactly 9 requests (one per category) and returns normalized data
     """
     headers = {"x-api-key": API_KEY}
-    # categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
-    categories = ['games']
+    categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
+    # categories = ['games']
 
     
     print(f"🚀 Fetching DApps from {len(categories)} categories...")
@@ -32,7 +32,7 @@ def fetch_dappradar(limit):
             
             params = {
                 "category": category,
-                "range": "7d",
+                "range": "30d",
                 "top": limit
             }
             
@@ -122,7 +122,6 @@ def fetch_dappradar(limit):
                         "ownership_status": None,
                         "capital_raised": 0,
                         "decentralisation_lvl": None,
-                        "industry": categories_list[0] if categories_list else "",
                         "source_chain": chains[0] if chains else "",
                         "metrics": {
                             "users": safe_int(metrics.get("uaw")),

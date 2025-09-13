@@ -33,18 +33,6 @@ def get_or_create_category(cur, category_name):
     result = cur.fetchone()
     return result[0] if result else None
 
-def get_or_create_industry(cur, industry_name):
-    """Get or create industry ID"""
-    if not industry_name or industry_name.strip() == "":
-        return None
-        
-    cur.execute(
-        "INSERT INTO industries (name) VALUES (%s) ON CONFLICT (name) DO NOTHING;",
-        (industry_name,)
-    )
-    cur.execute("SELECT id FROM industries WHERE name = %s;", (industry_name,))
-    result = cur.fetchone()
-    return result[0] if result else None
 
 def store_tvl_historical(cur, dapp_id, tvl_data):
     """Store TVL historical data for a DApp"""
@@ -130,11 +118,6 @@ def store_records(records):
             if rec.get("category"):
                 category_id = get_or_create_category(cur, rec["category"])
             
-            # Get industry ID
-            industry_id = None
-            if rec.get("industry"):
-                industry_id = get_or_create_industry(cur, rec["industry"])
-            
             # Prepare chains as comma-separated string
             chains_str = ",".join(rec.get("chains", [])) if rec.get("chains") else ""
             
@@ -142,12 +125,10 @@ def store_records(records):
             combined_tags = combine_tags(rec.get("tags"), rec.get("cmc_tags"))
             
             # Get token info (first token if multiple)
-            token_name = None
             token_symbol = None
             token_format = None
             if rec.get("tokens") and len(rec["tokens"]) > 0:
                 first_token = rec["tokens"][0]
-                token_name = first_token.get("name")
                 token_symbol = first_token.get("symbol")
                 token_format = first_token.get("format")
             
@@ -207,7 +188,6 @@ def store_records(records):
                         slug = %s,
                         category_id = %s,
                         is_active = %s,
-                        industry_id = %s,
                         description = %s,
                         website = %s,
                         tags = %s,
@@ -217,7 +197,6 @@ def store_records(records):
                         ownership_status = %s,
                         decentralisation_lvl = %s,
                         capital_raised = %s,
-                        token_name = %s,
                         token_symbol = %s,
                         token_format = %s,
                         governance_type = %s,
@@ -252,11 +231,11 @@ def store_records(records):
                     """,
                     (
                         rec["name"], rec["slug"], category_id, rec.get("is_active", True),
-                        industry_id, rec.get("description"), rec.get("website"), combined_tags,
+                        rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
                         rec.get("capital_raised", 0),
-                        token_name, token_symbol, token_format, governance_type,
+                        token_symbol, token_format, governance_type,
                         rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
                         rec.get("github"), rec.get("youtube"), rec.get("instagram"),
                         tvl, users, volume, transactions, market_cap,
@@ -274,9 +253,9 @@ def store_records(records):
                 cur.execute(
                     """
                     INSERT INTO dapps (
-                        name, slug, category_id, is_active, industry_id, description, website,
+                        name, slug, category_id, is_active, description, website,
                         tags, chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
-                        capital_raised, token_name, token_symbol, token_format,
+                        capital_raised, token_symbol, token_format,
                         governance_type, twitter, discord, telegram, github, youtube, instagram,
                         tvl, tvl_ratio, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
@@ -285,19 +264,19 @@ def store_records(records):
                         percent_change_60d, percent_change_90d, cmc_rank,
                         market_cap_dominance, fully_diluted_market_cap
                     ) VALUES (
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                         %s, %s, %s, %s, %s
                     )
                     RETURNING id;
                     """,
                     (
                         rec["name"], rec["slug"], category_id, rec.get("is_active", True),
-                        industry_id, rec.get("description"), rec.get("website"), combined_tags,
+                        rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
                         rec.get("capital_raised", 0),
-                        token_name, token_symbol, token_format, governance_type,
+                        token_symbol, token_format, governance_type,
                         rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
                         rec.get("github"), rec.get("youtube"), rec.get("instagram"),
                         tvl, 0.0, users, volume, transactions, market_cap,

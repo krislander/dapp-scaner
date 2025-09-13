@@ -49,12 +49,6 @@ def create_schema():
       name VARCHAR(100) UNIQUE NOT NULL
     );
 
-    -- Industries lookup table  
-    CREATE TABLE IF NOT EXISTS industries (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(100) UNIQUE NOT NULL
-    );
-
     -- Main DApp table with extended columns
     CREATE TABLE IF NOT EXISTS dapps (
       id SERIAL PRIMARY KEY,
@@ -66,7 +60,6 @@ def create_schema():
       
       -- Basic info
       is_active BOOLEAN DEFAULT TRUE,
-      industry_id INTEGER REFERENCES industries(id),
       description TEXT,
       website VARCHAR(500),
       tags TEXT,  -- Combined tags from DappRadar and CoinMarketCap
@@ -165,7 +158,6 @@ def create_schema():
 
     -- Create indexes for better performance
     CREATE INDEX IF NOT EXISTS idx_dapps_category ON dapps(category_id);
-    CREATE INDEX IF NOT EXISTS idx_dapps_industry ON dapps(industry_id);
     CREATE INDEX IF NOT EXISTS idx_dapps_chains ON dapps USING gin(to_tsvector('english', chains));
     CREATE INDEX IF NOT EXISTS idx_dapps_tvl ON dapps(tvl);
     CREATE INDEX IF NOT EXISTS idx_dapps_users ON dapps(users);
@@ -195,7 +187,6 @@ if __name__ == "__main__":
     print("\n✅ Extended database schema created!")
     print("📋 Tables created:")
     print("  • categories - DApp categories lookup")
-    print("  • industries - DApp industries lookup")
     print("  • dapps - Extended DApp information with all metrics")
     print("  • tvl_historical - Historical TVL data from DeFiLlama")
     print("  • raises - Funding/raises data from DeFiLlama") 

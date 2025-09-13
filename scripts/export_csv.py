@@ -23,174 +23,213 @@ def get_conn():
         port=PORT
     )
 
-def export_dapps_to_csv(output_file="dapps_export.csv"):
-    """Export all DApps to a single CSV file"""
+def export_pilot_dataset(output_file="pilot_dataset.csv"):
+    """Export 500 DApps with maximum non-null fields including TVL historical data"""
     
     conn = get_conn()
     cur = conn.cursor()
     
-    # Query to get all DApp data from the new structure
-    query = """
+    # First, get the main DApp data with completeness scoring
+    main_query = """
     SELECT 
         d.id,
         d.name,
-        d.slug,
         c.name as category,
-        i.name as industry,
-        d.status,
-        d.chains,
+        d.is_active,
         d.multi_chain,
+        d.governance_type,
         d.ownership_status,
         d.decentralisation_lvl,
-        d.birth_date,
-        d.capital_raised,
-        d.showcase_fun,
-        d.token_name,
+        d.tags,
         d.token_symbol,
         d.token_format,
-        d.governance_type,
         d.website,
+        d.telegram,
         d.twitter,
         d.discord,
-        d.description,
-        d.created_at,
-        d.updated_at,
-        -- Direct metrics from dapps table
+        d.github,
+        d.youtube,
+        d.instagram,
+        d.birth_date as launch_date,
+        COALESCE(
+            (SELECT SUM(r.amount) 
+             FROM raises r 
+             WHERE r.dapp_id = d.id AND r.amount IS NOT NULL), 
+            0
+        ) as raised_capital,
         d.tvl,
+        d.tvl_ratio,
+        d.mcap as market_cap,
+        d.circulating_supply,
+        d.total_supply,
+        d.price,
         d.users,
         d.volume,
         d.transactions,
-        d.market_cap,
-        d.circulating_supply,
-        d.total_supply,
-        d.max_supply,
-        d.price,
-        d.volume_24h,
-        d.volume_change_24h,
         d.percent_change_1h,
         d.percent_change_24h,
         d.percent_change_7d,
         d.percent_change_30d,
-        d.market_cap_dominance,
-        d.fully_diluted_market_cap
-    FROM dapps d
-    LEFT JOIN categories c ON d.category_id = c.id
-    LEFT JOIN industries i ON d.industry_id = i.id
-    ORDER BY d.name;
-    """
-    
-    cur.execute(query)
-    rows = cur.fetchall()
-    
-    # Column headers
-    headers = [
-        'id', 'name', 'slug', 'category', 'industry', 'status', 'chains', 'multi_chain',
-        'ownership_status', 'decentralisation_lvl', 'birth_date', 'capital_raised', 
-        'showcase_fun', 'token_name', 'token_symbol', 'token_format', 'governance_type',
-        'website', 'twitter', 'discord', 'description', 'created_at', 'updated_at',
-        'tvl', 'users', 'volume', 'transactions', 'market_cap', 'circulating_supply',
-        'total_supply', 'max_supply', 'price', 'volume_24h', 'volume_change_24h',
-        'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'percent_change_30d',
-        'market_cap_dominance', 'fully_diluted_market_cap'
-    ]
-    
-    # Write to CSV
-    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(headers)
-        writer.writerows(rows)
-    
-    cur.close()
-    conn.close()
-    
-    print(f"✅ Exported {len(rows)} DApps to {output_file}")
-    return len(rows)
-
-def export_pilot_dataset(output_file="pilot_dataset.csv"):
-    """Export a pilot dataset of 30 DApps with maximum non-null fields from specified categories"""
-    
-    conn = get_conn()
-    cur = conn.cursor()
-    
-    # Define target categories
-    target_categories = ['games', 'defi', 'collectibles', 'marketplaces', 'high-risk', 'gambling', 'exchanges', 'social', 'other']
-    
-    # Query to get 30 DApps with most complete data from target categories
-    query = """
-    SELECT 
-        d.id,
-        d.name,
-        d.slug,
-        c.name as category,
-        i.name as industry,
-        d.status,
-        d.chains,
-        d.multi_chain,
-        d.ownership_status,
-        d.decentralisation_lvl,
-        d.birth_date,
-        d.capital_raised,
-        d.showcase_fun,
-        d.token_name,
-        d.token_symbol,
-        d.token_format,
-        d.governance_type,
-        d.website,
-        d.twitter,
-        d.discord,
-        d.description,
-        d.created_at,
-        d.updated_at,
-        -- Direct metrics from dapps table
-        d.tvl,
-        d.users,
-        d.volume,
-        d.transactions,
-        d.market_cap,
-        d.price,
-        d.volume_24h,
-        d.percent_change_24h,
-        d.percent_change_7d,
+        d.percent_change_60d,
+        d.percent_change_90d,
         -- Count non-null fields for ordering (prioritize complete records)
         (
             CASE WHEN d.name IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN i.name IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.chains IS NOT NULL AND d.chains != '' THEN 1 ELSE 0 END +
+            CASE WHEN c.name IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.tags IS NOT NULL AND d.tags != '' THEN 1 ELSE 0 END +
             CASE WHEN d.ownership_status IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.decentralisation_lvl IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.birth_date IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.capital_raised IS NOT NULL AND d.capital_raised > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.token_name IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN (SELECT SUM(r.amount) FROM raises r WHERE r.dapp_id = d.id AND r.amount IS NOT NULL) > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.website IS NOT NULL AND d.website != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.telegram IS NOT NULL AND d.telegram != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.twitter IS NOT NULL AND d.twitter != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.discord IS NOT NULL AND d.discord != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.github IS NOT NULL AND d.github != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.youtube IS NOT NULL AND d.youtube != '' THEN 1 ELSE 0 END +
+            CASE WHEN d.instagram IS NOT NULL AND d.instagram != '' THEN 1 ELSE 0 END +
             CASE WHEN d.token_symbol IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.token_format IS NOT NULL THEN 1 ELSE 0 END +
             CASE WHEN d.governance_type IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.website IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.twitter IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.discord IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.description IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.tvl IS NOT NULL AND d.tvl > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.tvl_ratio IS NOT NULL AND d.tvl_ratio > 0 THEN 1 ELSE 0 END +
             CASE WHEN d.users IS NOT NULL AND d.users > 0 THEN 1 ELSE 0 END +
             CASE WHEN d.volume IS NOT NULL AND d.volume > 0 THEN 1 ELSE 0 END +
             CASE WHEN d.transactions IS NOT NULL AND d.transactions > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.tvl IS NOT NULL AND d.tvl > 0 THEN 1 ELSE 0 END
+            CASE WHEN d.mcap IS NOT NULL AND d.mcap > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.price IS NOT NULL AND d.price > 0 THEN 1 ELSE 0 END +
+            CASE WHEN d.percent_change_24h IS NOT NULL THEN 1 ELSE 0 END +
+            CASE WHEN d.percent_change_7d IS NOT NULL THEN 1 ELSE 0 END
         ) as completeness_score
     FROM dapps d
     LEFT JOIN categories c ON d.category_id = c.id
-    LEFT JOIN industries i ON d.industry_id = i.id
-    WHERE c.name = ANY(%s)
     ORDER BY completeness_score DESC, d.name
-    LIMIT 30;
+    LIMIT 500;
     """
     
-    cur.execute(query, (target_categories,))
+    cur.execute(main_query)
+    main_rows = cur.fetchall()
+    
+    if not main_rows:
+        print("No DApps found in database")
+        return 0
+    
+    # Get DApp IDs for TVL historical queries
+    dapp_ids = [row[0] for row in main_rows]
+    
+    # Get most recent TVL historical data for these DApps
+    tvl_historical_query = """
+    SELECT DISTINCT ON (dapp_id)
+        dapp_id,
+        total_liquidity_usd
+    FROM tvl_historical 
+    WHERE dapp_id = ANY(%s)
+    ORDER BY dapp_id, date DESC;
+    """
+    
+    cur.execute(tvl_historical_query, (dapp_ids,))
+    tvl_historical_data = dict(cur.fetchall())
+    
+    # Build headers with separate token and social media fields
+    headers = [
+        'name', 'dapp_category', 'is_active', 'is_multi_chain', 'governance_type',
+        'ownership_status', 'level_of_decentralisation', 'tags', 
+        'token_symbol', 'token_format',
+        'website', 'telegram', 'twitter', 'discord', 'github', 'youtube', 'instagram',
+        'launch_date', 'raised_capital', 'tvl', 'tvl_ratio', 'market_cap', 'circulating_supply', 
+        'total_supply', 'price', 'users', 'volume', 'transactions', 'total_liquidity_usd',
+        'percent_change_1h', 'percent_change_24h', 'percent_change_7d', 'percent_change_30d', 
+        'percent_change_60d', 'percent_change_90d'
+    ]
+    
+    # Build output rows
+    output_rows = []
+    for row in main_rows:
+        dapp_id = row[0]
+        
+        # Basic row data (excluding id and completeness_score)
+        output_row = list(row[1:-1])  # Skip id (first) and completeness_score (last)
+        
+        # Add TVL historical data
+        output_row.append(tvl_historical_data.get(dapp_id, ''))
+        
+        output_rows.append(output_row)
+    
+    # Write to CSV
+    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(headers)
+        writer.writerows(output_rows)
+    
+    cur.close()
+    conn.close()
+    
+    # Print summary
+    print(f"✅ Exported {len(output_rows)} DApps to {output_file}")
+    
+    # Count by category
+    category_counts = {}
+    for row in output_rows:
+        category = row[1]  # dapp_category column
+        if category:
+            category_counts[category] = category_counts.get(category, 0) + 1
+    
+    print("📊 Dataset Breakdown:")
+    for category, count in sorted(category_counts.items()):
+        print(f"  • {category}: {count} DApps")
+    
+    if len(output_rows) > 0:
+        avg_completeness = sum(main_row[-1] for main_row in main_rows) / len(main_rows)
+        print(f"  • Average completeness score: {avg_completeness:.1f}/26 fields")
+        print(f"  • DApps with TVL historical data: {len(tvl_historical_data)}")
+    
+    return len(output_rows)
+
+def export_raises_data(output_file="dapp_raises.csv"):
+    """Export all raises/funding data from the raises table"""
+    
+    conn = get_conn()
+    cur = conn.cursor()
+    
+    # Query to get all raises data with DApp names
+    raises_query = """
+    SELECT 
+        r.id,
+        d.name as dapp_name,
+        d.slug as dapp_slug,
+        c.name as dapp_category,
+        r.date,
+        r.name as round_name,
+        r.round,
+        r.amount,
+        r.chains,
+        r.sector,
+        r.category,
+        r.category_group,
+        r.source,
+        r.lead_investors,
+        r.other_investors,
+        r.valuation,
+        r.defillama_id,
+        r.created_at
+    FROM raises r
+    LEFT JOIN dapps d ON r.dapp_id = d.id
+    LEFT JOIN categories c ON d.category_id = c.id
+    ORDER BY r.date DESC, d.name, r.amount DESC;
+    """
+    
+    cur.execute(raises_query)
     rows = cur.fetchall()
     
-    # Column headers (excluding the completeness_score which is just for ordering)
+    if not rows:
+        print("No raises data found in database")
+        return 0
+    
+    # Headers for raises CSV
     headers = [
-        'id', 'name', 'slug', 'category', 'industry', 'status', 'chains', 'multi_chain',
-        'ownership_status', 'decentralisation_lvl', 'birth_date', 'capital_raised', 
-        'showcase_fun', 'token_name', 'token_symbol', 'token_format', 'governance_type',
-        'website', 'twitter', 'discord', 'description', 'created_at', 'updated_at',
-        'tvl', 'users', 'volume', 'transactions', 'market_cap', 'price', 'volume_24h',
-        'percent_change_24h', 'percent_change_7d', 'completeness_score'
+        'id', 'dapp_name', 'dapp_slug', 'dapp_category', 'date', 'round_name', 'round', 'amount',
+        'chains', 'sector', 'category', 'category_group', 'source', 'lead_investors', 
+        'other_investors', 'valuation', 'defillama_id', 'created_at'
     ]
     
     # Write to CSV
@@ -202,143 +241,47 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
     cur.close()
     conn.close()
     
-    # Print summary by category
-    print(f"✅ Exported {len(rows)} DApps to {output_file}")
+    # Print summary
+    print(f"✅ Exported {len(rows)} funding rounds to {output_file}")
     
-    # Count by category
-    category_counts = {}
+    # Count by DApp
+    dapp_counts = {}
+    total_funding = 0
     for row in rows:
-        category = row[3]  # category column
-        category_counts[category] = category_counts.get(category, 0) + 1
+        dapp_name = row[1]  # dapp_name column
+        amount = row[7]     # amount column
+        
+        if dapp_name:
+            dapp_counts[dapp_name] = dapp_counts.get(dapp_name, 0) + 1
+        
+        if amount and amount > 0:
+            total_funding += float(amount)
     
-    print("📊 Pilot Dataset Breakdown:")
-    for category, count in sorted(category_counts.items()):
-        print(f"  • {category}: {count} DApps")
+    print("📊 Raises Data Summary:")
+    print(f"  • Total funding rounds: {len(rows)}")
+    print(f"  • Unique DApps with funding: {len(dapp_counts)}")
+    print(f"  • Total funding amount: ${total_funding:,.0f}")
     
-    if len(rows) > 0:
-        avg_completeness = sum(row[-1] for row in rows) / len(rows)  # completeness_score is last column
-        print(f"  • Average completeness score: {avg_completeness:.1f}/18 fields")
+    # Top 5 DApps by number of rounds
+    top_dapps = sorted(dapp_counts.items(), key=lambda x: x[1], reverse=True)[:5]
+    print("  • Top DApps by funding rounds:")
+    for dapp, count in top_dapps:
+        print(f"    - {dapp}: {count} rounds")
     
     return len(rows)
 
-def export_summary_stats(output_file="dapp_summary_stats.csv"):
-    """Export summary statistics"""
-    
-    conn = get_conn()
-    cur = conn.cursor()
-    
-    # Collect various statistics
-    stats = []
-    
-    # Total DApps
-    cur.execute("SELECT COUNT(*) FROM dapps;")
-    stats.append(['Total DApps', cur.fetchone()[0]])
-    
-    # By category
-    cur.execute("""
-        SELECT c.name, COUNT(d.id) 
-        FROM categories c 
-        LEFT JOIN dapps d ON c.id = d.category_id 
-        WHERE d.id IS NOT NULL
-        GROUP BY c.name 
-        ORDER BY COUNT(d.id) DESC;
-    """)
-    for category, count in cur.fetchall():
-        stats.append([f'DApps in {category}', count])
-    
-    # Multi-chain DApps
-    cur.execute("SELECT COUNT(*) FROM dapps WHERE multi_chain = true;")
-    stats.append(['Multi-chain DApps', cur.fetchone()[0]])
-    
-    # DApps with tokens
-    cur.execute("SELECT COUNT(*) FROM dapps WHERE token_symbol IS NOT NULL;")
-    stats.append(['DApps with tokens', cur.fetchone()[0]])
-    
-    # Total TVL
-    cur.execute("SELECT SUM(tvl) FROM dapps WHERE tvl > 0;")
-    total_tvl = cur.fetchone()[0]
-    if total_tvl:
-        stats.append(['Total TVL', f"${total_tvl:,.0f}"])
-    
-    # Average TVL
-    cur.execute("SELECT AVG(tvl) FROM dapps WHERE tvl > 0;")
-    avg_tvl = cur.fetchone()[0]
-    if avg_tvl:
-        stats.append(['Average TVL', f"${avg_tvl:,.0f}"])
-    
-    # Total Market Cap
-    cur.execute("SELECT SUM(market_cap) FROM dapps WHERE market_cap > 0;")
-    total_market_cap = cur.fetchone()[0]
-    if total_market_cap:
-        stats.append(['Total Market Cap', f"${total_market_cap:,.0f}"])
-    
-    # Average Market Cap
-    cur.execute("SELECT AVG(market_cap) FROM dapps WHERE market_cap > 0;")
-    avg_market_cap = cur.fetchone()[0]
-    if avg_market_cap:
-        stats.append(['Average Market Cap', f"${avg_market_cap:,.0f}"])
-    
-    # Total Users
-    cur.execute("SELECT SUM(users) FROM dapps WHERE users > 0;")
-    total_users = cur.fetchone()[0]
-    if total_users:
-        stats.append(['Total Users', f"{total_users:,.0f}"])
-    
-    # Average Users
-    cur.execute("SELECT AVG(users) FROM dapps WHERE users > 0;")
-    avg_users = cur.fetchone()[0]
-    if avg_users:
-        stats.append(['Average Users', f"{avg_users:,.0f}"])
-    
-    headers = ['Statistic', 'Value']
-    
-    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(headers)
-        writer.writerows(stats)
-    
-    cur.close()
-    conn.close()
-    
-    print(f"✅ Exported {len(stats)} statistics to {output_file}")
-    return len(stats)
-
-def main():
-    """Export all data to CSV files"""
-    print("📤 Exporting DApp data to CSV files...")
+if __name__ == "__main__":
+    print("📤 Exporting DApp data...")
     print("=" * 40)
     
-    export_dir = f"exports"
+    # Export main dataset
+    dapp_count = export_pilot_dataset("pilot_dataset.csv")
+    print()
     
-    # Create export directory
-    if not os.path.exists(export_dir):
-        os.makedirs(export_dir)
-    
-    # Export main DApp data
-    dapp_count = export_dapps_to_csv(os.path.join(export_dir, "dapps.csv"))
-    
-    # Export pilot dataset
-    pilot_count = export_pilot_dataset(os.path.join(export_dir, "pilot_dataset.csv"))
-    
-    # Export summary stats
-    stats_count = export_summary_stats(os.path.join(export_dir, "summary_stats.csv"))
+    # Export raises data
+    raises_count = export_raises_data("dapp_raises.csv")
     
     print(f"\n🎉 Export complete!")
-    print(f"📂 Files saved to: {export_dir}/")
     print(f"📊 Summary:")
-    print(f"  • {dapp_count} DApps (full dataset)")
-    print(f"  • {pilot_count} DApps (pilot dataset)")
-    print(f"  • {stats_count} summary statistics")
-
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        if sys.argv[1] == "dapps":
-            export_dapps_to_csv("dapps.csv")
-        elif sys.argv[1] == "pilot":
-            export_pilot_dataset("pilot_dataset.csv")
-        elif sys.argv[1] == "stats":
-            export_summary_stats("stats.csv")
-        else:
-            print("Usage: python export_csv.py [dapps|pilot|stats]")
-    else:
-        main() 
+    print(f"  • {dapp_count} DApps exported to pilot_dataset.csv")
+    print(f"  • {raises_count} funding rounds exported to dapp_raises.csv") 

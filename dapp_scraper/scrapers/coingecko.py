@@ -8,7 +8,7 @@ from dapp_scraper.utils import make_rate_limited_request, safe_numeric
 _cfg = ConfigParser()
 _cfg.read(os.path.join(os.path.dirname(__file__), '..', '..', 'config', 'config.ini'))
 
-# CoinGecko uses free public API, but we can add API key support for Pro plans
+# CoinGecko uses free public API
 try:
     API_KEY = _cfg["coingecko"]["api_key"]
     API_ORIGIN = _cfg["coingecko"]["api_origin"]
@@ -17,59 +17,58 @@ except:
     API_KEY = None
     API_ORIGIN = "https://api.coingecko.com/api/v3"
 
+def fetch_coingecko_public_list():
+    """
+    Fetch public list of CoinGecko projects
+    Returns:
+        list: List of CoinGecko projects
+    """
+    url = f"{API_ORIGIN}/coins/list"
+    headers = {}
+    if API_KEY:
+        headers["x-cg-demo-api-key"] = API_KEY
+
+    try:
+        resp = make_rate_limited_request(url, headers=headers, params={})
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return None
+    except Exception as e:
+        print(f"❌ Error fetching CoinGecko public list: {e}")
+        return None
+
 def fetch_single_project_coingecko(project_name, params=None):
     """
-    Fetch data for a single project from CoinGecko API
+    Fetch data for a single project from CoinGecko API using gecko_id
     Args:
         project_name: Name of the project/DApp
-        params: Dict with search parameters - {"gecko_id": id} or {"symbol": symbol} or {"slug": slug}
+        params: Dict with gecko_id - {"gecko_id": id}
     Returns:
         dict: Enriched project data or None if not found
     """
     headers = {}
     if API_KEY:
-        headers["x-cg-pro-api-key"] = API_KEY
+        headers["x-cg-demo-api-key"] = API_KEY
     
     try:
-        # Use provided params or fallback to slug-based search
-        if params is None:
-            params = {"slug": project_name.lower().replace(" ", "-")}
+        # Only work with gecko_id parameter
+        if not params or "gecko_id" not in params:
+            print(f"❌ No gecko_id provided for {project_name}")
+            return None
         
-        # Strategy 1: Direct access by gecko_id (most accurate)
-        if "gecko_id" in params:
-            gecko_id = params["gecko_id"]
-            url = f"{API_ORIGIN}/coins/{gecko_id}"
-            
-            resp = make_rate_limited_request(url, headers=headers, params={})
-            
-            if resp.status_code == 200:
-                coin_data = resp.json()
-                return parse_coingecko_data(coin_data)
+        gecko_id = params["gecko_id"]
+        url = f"{API_ORIGIN}/coins/{gecko_id}"
         
-        # Strategy 2 & 3: Search by symbol or slug
-        search_term = params.get("symbol") or params.get("slug") or project_name
-        search_url = f"{API_ORIGIN}/search"
-        search_params = {"query": search_term}
+        resp = make_rate_limited_request(url, headers=headers, params={})
         
-        search_resp = make_rate_limited_request(search_url, headers=headers, params=search_params)
-        
-        if search_resp.status_code == 200:
-            search_data = search_resp.json()
-            coins = search_data.get("coins", [])
-            
-            if coins:
-                # Get the first/best match
-                best_match = coins[0]
-                gecko_id = best_match.get("id")
-                
-                if gecko_id:
-                    # Get full coin data
-                    url = f"{API_ORIGIN}/coins/{gecko_id}"
-                    resp = make_rate_limited_request(url, headers=headers, params={})
-                    
-                    if resp.status_code == 200:
-                        coin_data = resp.json()
-                        return parse_coingecko_data(coin_data)
+        if resp.status_code == 200:
+            coin_data = resp.json()
+            return parse_coingecko_data(coin_data)
+        elif resp.status_code == 404:
+            print(f"❌ CoinGecko project not found: {gecko_id}")
+        else:
+            print(f"❌ CoinGecko API error for {gecko_id}: {resp.status_code}")
         
         return None
         
@@ -109,6 +108,8 @@ def parse_coingecko_data(coin_data):
         
         # Volume data
         total_volume = market_data.get("total_volume", {})
+        total_value_locked = market_data.get("total_value_locked", {})
+        tvl = safe_numeric(total_value_locked.get("usd"), 0)
         volume_24h_usd = safe_numeric(total_volume.get("usd"), 0)
         
         # Price change data
@@ -145,6 +146,7 @@ def parse_coingecko_data(coin_data):
             
             # Market data
             "market_cap": market_cap_usd,
+            "tvl": tvl,
             "market_cap_rank": market_cap_rank,
             "market_cap_change_24h": market_cap_change_24h,
             "fully_diluted_valuation": fdv_usd,

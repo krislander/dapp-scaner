@@ -31,20 +31,6 @@ def analyze_database():
         if count > 0:
             print(f"  • {category}: {count}")
     
-    # By industry
-    cur.execute("""
-        SELECT i.name, COUNT(d.id) 
-        FROM industries i 
-        LEFT JOIN dapps d ON i.id = d.industry_id 
-        GROUP BY i.name 
-        ORDER BY COUNT(d.id) DESC 
-        LIMIT 10;
-    """)
-    print(f"\n🏢 Top Industries:")
-    for industry, count in cur.fetchall():
-        if count > 0:
-            print(f"  • {industry}: {count}")
-    
     # Multi-chain DApps
     cur.execute("SELECT COUNT(*) FROM dapps WHERE multi_chain = true;")
     multi_chain = cur.fetchone()[0]
