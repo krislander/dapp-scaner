@@ -43,6 +43,44 @@ def create_schema():
     )
     cur = conn.cursor()
     ddl = """
+    -- Create ENUM types for standardized values
+    DO $$ BEGIN
+        CREATE TYPE ownership_status_enum AS ENUM (
+            'COMPANY_OWNED',
+            'FOUNDATION_OWNED', 
+            'DAO_OWNED',
+            'MULTISIG_COUNCIL',
+            'HYBRID',
+            'ORPHANED_IMMUTABLE',
+            'UNKNOWN'
+        );
+    EXCEPTION
+        WHEN duplicate_object THEN null;
+    END $$;
+
+    DO $$ BEGIN
+        CREATE TYPE governance_type_enum AS ENUM (
+            'NONE',
+            'TEAM_CONTROLLED',
+            'COMMUNITY_MULTISIG',
+            'OFFCHAIN_TOKEN_VOTING',
+            'ONCHAIN_GOVERNANCE',
+            'ONCHAIN_GOV_WITH_TIMELOCK'
+        );
+    EXCEPTION
+        WHEN duplicate_object THEN null;
+    END $$;
+
+    DO $$ BEGIN
+        CREATE TYPE decentralisation_level_enum AS ENUM (
+            'CENTRALIZED',
+            'SEMI_CENTRALIZED',
+            'DECENTRALIZED'
+        );
+    EXCEPTION
+        WHEN duplicate_object THEN null;
+    END $$;
+
     -- Categories lookup table
     CREATE TABLE IF NOT EXISTS categories (
       id SERIAL PRIMARY KEY,
@@ -70,19 +108,12 @@ def create_schema():
       
       -- Dates and ownership
       birth_date DATE,
-      ownership_status VARCHAR(100),
-      decentralisation_lvl VARCHAR(50),
       
       -- Financial data
       capital_raised NUMERIC DEFAULT 0,
 
-      -- Social & Links
-      telegram VARCHAR(100),
-      twitter VARCHAR(100),
-      discord VARCHAR(100),
-      github VARCHAR(100),
-      youtube VARCHAR(100),
-      instagram VARCHAR(100),      
+      -- Social Presence Count (aggregated from all sources)
+      social_presence INTEGER DEFAULT 0,      
       
       -- Tokens
       token_name VARCHAR(100),
@@ -94,7 +125,16 @@ def create_schema():
       cmc_id VARCHAR(20),
       
       -- Governance
-      governance_type VARCHAR(100),  -- e.g., "DAO", "Centralized", "Multi-sig"
+      governance_type governance_type_enum,
+      
+      -- Feature Engineered Scores (calculated/aggregated later)
+      ownership_status ownership_status_enum,
+      decentralisation_lvl decentralisation_level_enum,
+      governance_score NUMERIC DEFAULT 0,  -- Calculated governance quality score (0-100)
+      control_score NUMERIC DEFAULT 0,     -- Calculated control decentralization score (0-100)  
+      decentralisation_score NUMERIC DEFAULT 0,  -- Calculated decentralization score (0-100)
+      popularity_score NUMERIC DEFAULT 0,   -- Calculated popularity based on social metrics (0-100)
+      usage_score NUMERIC DEFAULT 0,       -- Calculated usage score based on users/volume/txns (0-100)
       
       -- DApp Metrics
       tvl NUMERIC DEFAULT 0,
@@ -165,6 +205,13 @@ def create_schema():
     CREATE INDEX IF NOT EXISTS idx_dapps_market_cap ON dapps(market_cap);
     CREATE INDEX IF NOT EXISTS idx_dapps_is_active ON dapps(is_active);
     CREATE INDEX IF NOT EXISTS idx_dapps_tags ON dapps USING gin(to_tsvector('english', tags));
+    
+    -- Indexes for feature engineered score columns
+    CREATE INDEX IF NOT EXISTS idx_dapps_governance_score ON dapps(governance_score);
+    CREATE INDEX IF NOT EXISTS idx_dapps_control_score ON dapps(control_score);
+    CREATE INDEX IF NOT EXISTS idx_dapps_decentralisation_score ON dapps(decentralisation_score);
+    CREATE INDEX IF NOT EXISTS idx_dapps_popularity_score ON dapps(popularity_score);
+    CREATE INDEX IF NOT EXISTS idx_dapps_usage_score ON dapps(usage_score);
     
     -- Indexes for new tables
     CREATE INDEX IF NOT EXISTS idx_tvl_historical_dapp_id ON tvl_historical(dapp_id);

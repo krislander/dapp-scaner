@@ -81,15 +81,16 @@ def store_raises(cur, dapp_id, raises_data):
         except Exception as e:
             print(f"❌ Error storing raises data: {e}")
 
-def combine_tags(dappradar_tags, cmc_tags):
-    """Combine tags from DappRadar and CoinMarketCap, removing duplicates"""
+def combine_tags(*tag_sources):
+    """Combine tags from multiple sources (DappRadar, CoinMarketCap, CoinGecko, DeFiLlama), removing duplicates"""
     all_tags = []
     
-    if dappradar_tags:
-        all_tags.extend([tag.strip() for tag in dappradar_tags.split(",") if tag.strip()])
-    
-    if cmc_tags:
-        all_tags.extend([tag.strip() for tag in cmc_tags.split(",") if tag.strip()])
+    for tags in tag_sources:
+        if tags:
+            if isinstance(tags, str):
+                all_tags.extend([tag.strip() for tag in tags.split(",") if tag.strip()])
+            elif isinstance(tags, list):
+                all_tags.extend([str(tag).strip() for tag in tags if tag])
     
     # Remove duplicates while preserving order
     unique_tags = []
@@ -101,6 +102,27 @@ def combine_tags(dappradar_tags, cmc_tags):
             seen.add(tag_lower)
     
     return ", ".join(unique_tags)
+
+def calculate_social_presence(*social_sources):
+    """Calculate the maximum number of social media platforms available across all sources"""
+    max_count = 0
+    
+    for source in social_sources:
+        count = 0
+        if isinstance(source, dict):
+            # Count non-empty social media fields
+            social_fields = ['twitter', 'discord', 'telegram', 'github', 'youtube', 'instagram', 
+                           'medium', 'facebook', 'blog', 'reddit', 'linkedin']
+            for field in social_fields:
+                if source.get(field) and str(source.get(field)).strip():
+                    count += 1
+        elif isinstance(source, int):
+            # Direct count passed from scraper
+            count = source
+            
+        max_count = max(max_count, count)
+    
+    return max_count
 
 def store_records(records):
     """
@@ -121,8 +143,20 @@ def store_records(records):
             # Prepare chains as comma-separated string
             chains_str = ",".join(rec.get("chains", [])) if rec.get("chains") else ""
             
-            # Combine tags from DappRadar and CoinMarketCap
-            combined_tags = combine_tags(rec.get("tags"), rec.get("cmc_tags"))
+            # Combine tags from all sources (DappRadar, CoinMarketCap, CoinGecko, DeFiLlama)
+            combined_tags = combine_tags(
+                rec.get("tags"), 
+                rec.get("cmc_tags"),
+                rec.get("gecko_categories"),
+                rec.get("defillama_tags")
+            )
+            
+            # Calculate social presence from all sources
+            social_presence = calculate_social_presence(
+                rec.get("dappradar_social_count", 0),
+                rec.get("coingecko_social_count", 0),
+                rec.get("defillama_social_count", 0)
+            )
             
             # Get token info (first token if multiple)
             token_symbol = None
@@ -197,15 +231,10 @@ def store_records(records):
                         ownership_status = %s,
                         decentralisation_lvl = %s,
                         capital_raised = %s,
+                        social_presence = %s,
                         token_symbol = %s,
                         token_format = %s,
                         governance_type = %s,
-                        twitter = %s,
-                        discord = %s,
-                        telegram = %s,
-                        github = %s,
-                        youtube = %s,
-                        instagram = %s,
                         tvl = %s,
                         users = %s,
                         volume = %s,
@@ -235,9 +264,8 @@ def store_records(records):
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
                         rec.get("capital_raised", 0),
+                        social_presence,
                         token_symbol, token_format, governance_type,
-                        rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
-                        rec.get("github"), rec.get("youtube"), rec.get("instagram"),
                         tvl, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
@@ -255,9 +283,8 @@ def store_records(records):
                     INSERT INTO dapps (
                         name, slug, category_id, is_active, description, website,
                         tags, chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
-                        capital_raised, token_symbol, token_format,
-                        governance_type, twitter, discord, telegram, github, youtube, instagram,
-                        tvl, tvl_ratio, users, volume, transactions, market_cap,
+                        capital_raised, social_presence, token_symbol, token_format,
+                        governance_type, tvl, tvl_ratio, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
                         percent_change_1h, percent_change_24h, percent_change_7d, percent_change_30d,
@@ -265,8 +292,7 @@ def store_records(records):
                         market_cap_dominance, fully_diluted_market_cap
                     ) VALUES (
                         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                        %s, %s, %s, %s, %s
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
                     )
                     RETURNING id;
                     """,
@@ -276,9 +302,8 @@ def store_records(records):
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
                         rec.get("ownership_status"), rec.get("decentralisation_lvl"),
                         rec.get("capital_raised", 0),
+                        social_presence,
                         token_symbol, token_format, governance_type,
-                        rec.get("twitter"), rec.get("discord"), rec.get("telegram"), 
-                        rec.get("github"), rec.get("youtube"), rec.get("instagram"),
                         tvl, 0.0, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,

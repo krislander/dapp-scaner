@@ -26,6 +26,23 @@ def fetch_single_project_defillama(project_name, project_slug=None):
         if detail_resp.status_code == 200:
             detail_data = detail_resp.json()
             
+            # Count social presence from available social links
+            social_count = 0
+            if detail_data.get("twitter"):
+                social_count += 1
+            if detail_data.get("github"):
+                # GitHub can be array or string
+                github = detail_data.get("github")
+                if isinstance(github, list) and github:
+                    social_count += 1
+                elif isinstance(github, str) and github.strip():
+                    social_count += 1
+            if detail_data.get("url"):
+                social_count += 1  # Website
+            
+            # Extract category as tags
+            category = detail_data.get("category", "")
+            
             enriched_data = {
                 "name": detail_data.get("name"),
                 "mcap": safe_numeric(detail_data.get("mcap"), 0),
@@ -33,6 +50,8 @@ def fetch_single_project_defillama(project_name, project_slug=None):
                 "cmc_id": detail_data.get("cmcId"),
                 "token_symbol": detail_data.get("symbol"),
                 "volume": safe_numeric(detail_data.get("volume"), 0),
+                "defillama_social_count": social_count,
+                "defillama_tags": category,
             }
             
             # Extract chain information

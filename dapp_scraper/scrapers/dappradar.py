@@ -73,14 +73,9 @@ def fetch_dappradar(limit):
                     description = result.get("description", "")
                     website = result.get("website", "")
                     
-                    # Extract social links
+                    # Extract social links and count them
                     social_links = result.get("socialLinks", [])
-                    social_dict = {}
-                    for link in social_links:
-                        link_type = link.get("type", "")
-                        link_url = link.get("url", "")
-                        if link_type and link_url:
-                            social_dict[link_type] = link_url
+                    social_count = len([link for link in social_links if link.get("type") and link.get("url")])
                     
                     # Get metrics
                     metrics = result.get("metrics", {})
@@ -111,12 +106,7 @@ def fetch_dappradar(limit):
                         "tags": tags_str,
                         "description": description,
                         "website": website,
-                        "twitter": social_dict.get("twitter", ""),
-                        "discord": social_dict.get("discord", ""),
-                        "telegram": social_dict.get("telegram", ""),
-                        "github": social_dict.get("github", ""),
-                        "youtube": social_dict.get("youtube", ""),
-                        "instagram": social_dict.get("instagram", ""),
+                        "dappradar_social_count": social_count,
                         "multi_chain": len(chains) > 1,
                         "birth_date": None,
                         "ownership_status": None,
