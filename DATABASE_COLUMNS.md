@@ -17,6 +17,7 @@
 | `description` | TEXT | | Detailed description of the DApp | DappRadar |
 | `website` | VARCHAR(500) | | Official website URL | DappRadar |
 | `tags` | TEXT | | **Combined tags from all sources** | **DappRadar/CMC/CoinGecko/DeFiLlama** |
+| `sub_category` | TEXT | | Sub-category for more granular classification | Manual/Research |
 | **Blockchain Information** |||||
 | `chains` | TEXT | | Blockchain networks (comma-separated) | DappRadar |
 | `multi_chain` | BOOLEAN | DEFAULT FALSE | Whether DApp operates on multiple chains | Calculated |
@@ -24,22 +25,15 @@
 | `birth_date` | DATE | | Launch date of the DApp | DappRadar |
 | **Financial Data** |||||
 | `capital_raised` | NUMERIC | DEFAULT 0 | Amount of capital raised | DeFiLlama |
-| **Social Presence** |||||
-| `social_presence` | INTEGER | DEFAULT 0 | **Count of available social media platforms across all sources** | **Aggregated from all sources** |
 | **Token Information** |||||
 | `token_name` | VARCHAR(100) | | Primary token name | DappRadar |
 | `token_symbol` | VARCHAR(20) | | Primary token symbol | DappRadar |
 | `token_format` | VARCHAR(50) | | Token format (ERC-20, BEP-20, etc.) | DappRadar |
 | **🏛️ Governance & Ownership (ENUM Types)** |||||
-| `governance_type` | governance_type_enum | | **Governance model** (see values below) | DappRadar |
-| `ownership_status` | ownership_status_enum | | **Ownership structure** (see values below) | DappRadar |
-| `decentralisation_lvl` | decentralisation_level_enum | | **Decentralization level** (see values below) | DappRadar |
-| **🔥 Feature Engineered Scores** |||||
-| `governance_score` | NUMERIC | DEFAULT 0 | **Calculated governance quality score (0-100)** | **Feature Engineered** |
-| `control_score` | NUMERIC | DEFAULT 0 | **Calculated control decentralization score (0-100)** | **Feature Engineered** |
-| `decentralisation_score` | NUMERIC | DEFAULT 0 | **Calculated decentralization score (0-100)** | **Feature Engineered** |
-| `popularity_score` | NUMERIC | DEFAULT 0 | **Calculated popularity from social metrics (0-100)** | **Feature Engineered** |
-| `usage_score` | NUMERIC | DEFAULT 0 | **Calculated usage score from users/volume/txns (0-100)** | **Feature Engineered** |
+| `governance_type` | governance_type_enum | | **Governance model** (see values below) | Manual/Research |
+| `ownership_status` | ownership_status_enum | | **Ownership structure** (see values below) | Manual/Research |
+| `level_of_decentralisation` | decentralisation_level_enum | | **Decentralization level** (see values below) | Manual/Research |
+| `research_comments` | TEXT | | Research notes and comments about the DApp | Manual/Research |
 | **DApp Metrics** |||||
 | `tvl` | NUMERIC | DEFAULT 0 | Total Value Locked in USD | DeFiLlama |
 | `tvl_ratio` | NUMERIC | DEFAULT 0 | TVL ratio metric | Calculated |
@@ -69,21 +63,6 @@
 | `created_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Record creation timestamp | Auto-generated |
 | `updated_at` | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | Last update timestamp | Auto-generated |
 
-## 🔥 Feature Engineered Columns Explained
-
-The following columns are **calculated/aggregated** based on other data in the database and do not come directly from external APIs:
-
-### Governance & Control Scores
-- **`governance_score`** (0-100): Calculated from `governance_type`, token distribution, and community participation metrics
-- **`control_score`** (0-100): Derived from `ownership_status`, multi-sig configuration, and governance token distribution
-- **`decentralisation_score`** (0-100): Composite score based on `decentralisation_lvl`, governance structure, and token economics
-
-### Usage & Popularity Scores  
-- **`popularity_score`** (0-100): Calculated from `social_presence` count and community engagement metrics
-- **`usage_score`** (0-100): Calculated from normalized `users`, `volume`, `transactions`, and `tvl` metrics
-
-These scores are populated by running `scripts/calculate_feature_columns.py` after data collection.
-
 ## 🏛️ ENUM Type Values Explained
 
 The database uses PostgreSQL ENUM types to enforce data integrity for governance-related fields:
@@ -94,26 +73,26 @@ The database uses PostgreSQL ENUM types to enforce data integrity for governance
 | `COMPANY_OWNED` | Contracts/treasury controlled by a private company |
 | `FOUNDATION_OWNED` | Primary control via non-profit foundation |
 | `DAO_OWNED` | Admin + treasury controlled by on-chain DAO |
-| `MULTISIG_COUNCIL` | n-of-m signer council (not a full DAO) |
-| `HYBRID` | Split control (e.g., DAO governs; company upgrades frontend) |
-| `ORPHANED_IMMUTABLE` | No maintainer; contracts immutable or abandoned |
 | `UNKNOWN` | Insufficient evidence to determine ownership |
+| `MIXED` | Mixed ownership structure with multiple parties |
+| `ORPHANED` | Abandoned or no clear maintainer |
 
 ### governance_type_enum
 | Value | Description |
 |-------|-------------|
 | `NONE` | No formal governance structure |
 | `TEAM_CONTROLLED` | Core team decides without external input |
-| `COMMUNITY_MULTISIG` | Council/multisig executes; open community input |
-| `OFFCHAIN_TOKEN_VOTING` | Snapshot-style; advisory/manual execution |
-| `ONCHAIN_GOVERNANCE` | Binding execution (e.g., Governor modules) |
-| `ONCHAIN_GOV_WITH_TIMELOCK` | Binding governance + timelock/guard rails |
+| `SNAPSHOT_OFFCHAIN` | Off-chain snapshot voting for governance |
+| `ONCHAIN_TOKEN_GOVERNANCE` | On-chain token-based governance |
+| `HYBRID` | Hybrid governance combining multiple mechanisms |
+| `MULTISIG_WITH_COMMUNITY_INPUT` | Multisig execution with community input |
+| `DAO_WITH_TIMELOCK` | DAO governance with timelock protection |
 
 ### decentralisation_level_enum
 | Value | Description |
 |-------|-------------|
 | `CENTRALIZED` | Centralized control and decision-making |
-| `SEMI_CENTRALIZED` | Mixed centralized and decentralized elements |
+| `SEMI_DECENTRALIZED` | Mixed centralized and decentralized elements |
 | `DECENTRALIZED` | Fully decentralized governance and control |
 
 ## Other Database Tables
@@ -160,24 +139,15 @@ The database uses PostgreSQL ENUM types to enforce data integrity for governance
   - CoinMarketCap (market data, price info)
   - CoinGecko (alternative market data)  
   - DeFiLlama (TVL data, funding information)
-
-## Feature Engineering Process
-
-1. **Data Collection**: Raw data from APIs stored in base columns
-2. **Score Calculation**: Run `scripts/calculate_feature_columns.py` to compute feature scores
-3. **Normalization**: All scores normalized to 0-100 scale for consistency
-4. **Updates**: Scores recalculated periodically as underlying data changes
+- **Manual Research**: Governance, ownership, and decentralization data added via manual research
 
 ## Notes
 
 - Some columns have duplicates (e.g., `gecko_id`, `cmc_id`) due to schema evolution - will be cleaned up
 - Missing values default to 0 or NULL depending on column type
-- Feature scores start at 0 and are populated by calculation scripts
-- Indexes are created on all score columns for efficient querying and sorting
-- **ENUM Types**: `ownership_status`, `governance_type`, and `decentralisation_lvl` use PostgreSQL ENUMs for data integrity
-- **Social Presence**: Aggregated count from DappRadar, CoinGecko, CoinMarketCap, and DeFiLlama sources (takes maximum count)
+- **ENUM Types**: `ownership_status`, `governance_type`, and `level_of_decentralisation` use PostgreSQL ENUMs for data integrity
 - **Tags**: Combined from all sources with deduplication (DappRadar tags, CMC tags, CoinGecko categories, DeFiLlama categories)
-- **Migration**: Use `migrations/social_presence_refactor.py` to convert from individual social columns to aggregated count
+- **Research Data**: Governance, ownership, and decentralization fields are populated via manual research and enrichment
 
 ## Database Migration Instructions
 
@@ -185,13 +155,12 @@ The database uses PostgreSQL ENUM types to enforce data integrity for governance
 Simply run: `python scripts/init_db.py`
 
 ### For Existing Databases
-1. **First**, run the social presence refactor migration:
-   ```bash
-   python migrations/social_presence_refactor.py
-   ```
-2. **Then**, run the ENUM conversion migration (if needed):
-   ```bash
-   python migrations/convert_to_enum_types.py
-   ```
+To update the schema with the latest changes (new columns, removed score columns, etc.):
+```bash
+python migrations/migrate_schema_updates.py
+```
 
-This ensures proper consolidation of social media data and maintains data integrity during the upgrade process.
+To ingest manually enriched data from a CSV file:
+```bash
+python scripts/ingest_pilot_data.py [path/to/csv_file.csv]
+```

@@ -85,30 +85,30 @@ def parse_coingecko_data(coin_data):
         dict: Parsed and standardized data
     """
     try:
-        # Extract market data
-        market_data = coin_data.get("market_data", {})
+        # Extract market data - prevent None errors
+        market_data = coin_data.get("market_data") or {}
         
         # Extract categories/tags
         categories = coin_data.get("categories", [])
         categories_str = ", ".join([cat for cat in categories if cat]) if categories else ""
         
-        # Extract links and social data
-        links = coin_data.get("links", {})
+        # Extract links and social data - prevent None errors
+        links = coin_data.get("links") or {}
         
         # Extract platform/contract data
-        platforms = coin_data.get("platforms", {})
+        platforms = coin_data.get("platforms") or {}
         
         # Current price data
-        current_price = market_data.get("current_price", {})
+        current_price = market_data.get("current_price") or {}
         price_usd = safe_numeric(current_price.get("usd"), 0)
         
         # Market cap data
-        market_cap = market_data.get("market_cap", {})
+        market_cap = market_data.get("market_cap") or {}
         market_cap_usd = safe_numeric(market_cap.get("usd"), 0)
         
         # Volume data
-        total_volume = market_data.get("total_volume", {})
-        total_value_locked = market_data.get("total_value_locked", {})
+        total_volume = market_data.get("total_volume") or {}
+        total_value_locked = market_data.get("total_value_locked") or {}
         tvl = safe_numeric(total_value_locked.get("usd"), 0)
         volume_24h_usd = safe_numeric(total_volume.get("usd"), 0)
         
@@ -125,34 +125,39 @@ def parse_coingecko_data(coin_data):
         
         # Market metrics
         market_cap_rank = safe_numeric(coin_data.get("market_cap_rank"), 0)
-        fully_diluted_valuation = market_data.get("fully_diluted_valuation", {})
+        fully_diluted_valuation = market_data.get("fully_diluted_valuation") or {}
         fdv_usd = safe_numeric(fully_diluted_valuation.get("usd"), 0)
         
         # Additional metrics
         market_cap_change_24h = safe_numeric(market_data.get("market_cap_change_percentage_24h"), 0)
         
-        # Count social media presence
+        # Count social media presence - simple and bulletproof
         social_count = 0
+        
+        # Count basic social links
         if links.get("homepage"):
             social_count += 1
         if links.get("twitter_screen_name"):
             social_count += 1
         if links.get("telegram_channel_identifier"):
             social_count += 1
-        if links.get("repos_url", {}).get("github"):
-            social_count += 1
         
-        # Add community and developer data if available
-        community_data = coin_data.get("community_data", {})
-        if community_data.get("reddit_subscribers", 0) > 0:
-            social_count += 1
-        if community_data.get("telegram_channel_user_count", 0) > 0:
+        # Count GitHub
+        repos = (links.get("repos_url") or {}).get("github") or []
+        if repos:
             social_count += 1
             
-        # Extract all available links for social count
-        announcement_urls = links.get("announcement_url", [])
-        if announcement_urls:
-            social_count += len([url for url in announcement_urls if url])
+        # Count announcement URLs 
+        announcements = links.get("announcement_url") or []
+        if announcements:
+            social_count += 1
+        
+        # Add community data
+        community_data = coin_data.get("community_data") or {}
+        if (community_data.get("reddit_subscribers") or 0) > 0:
+            social_count += 1
+        if (community_data.get("telegram_channel_user_count") or 0) > 0 and not links.get("telegram_channel_identifier"):
+            social_count += 1
         
         return {
             "gecko_id": coin_data.get("id"),

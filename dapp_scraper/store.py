@@ -103,26 +103,6 @@ def combine_tags(*tag_sources):
     
     return ", ".join(unique_tags)
 
-def calculate_social_presence(*social_sources):
-    """Calculate the maximum number of social media platforms available across all sources"""
-    max_count = 0
-    
-    for source in social_sources:
-        count = 0
-        if isinstance(source, dict):
-            # Count non-empty social media fields
-            social_fields = ['twitter', 'discord', 'telegram', 'github', 'youtube', 'instagram', 
-                           'medium', 'facebook', 'blog', 'reddit', 'linkedin']
-            for field in social_fields:
-                if source.get(field) and str(source.get(field)).strip():
-                    count += 1
-        elif isinstance(source, int):
-            # Direct count passed from scraper
-            count = source
-            
-        max_count = max(max_count, count)
-    
-    return max_count
 
 def store_records(records):
     """
@@ -149,13 +129,6 @@ def store_records(records):
                 rec.get("cmc_tags"),
                 rec.get("gecko_categories"),
                 rec.get("defillama_tags")
-            )
-            
-            # Calculate social presence from all sources
-            social_presence = calculate_social_presence(
-                rec.get("dappradar_social_count", 0),
-                rec.get("coingecko_social_count", 0),
-                rec.get("defillama_social_count", 0)
             )
             
             # Get token info (first token if multiple)
@@ -229,9 +202,8 @@ def store_records(records):
                         multi_chain = %s,
                         birth_date = %s,
                         ownership_status = %s,
-                        decentralisation_lvl = %s,
+                        level_of_decentralisation = %s,
                         capital_raised = %s,
-                        social_presence = %s,
                         token_symbol = %s,
                         token_format = %s,
                         governance_type = %s,
@@ -262,9 +234,8 @@ def store_records(records):
                         rec["name"], rec["slug"], category_id, rec.get("is_active", True),
                         rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
-                        rec.get("ownership_status"), rec.get("decentralisation_lvl"),
+                        rec.get("ownership_status"), rec.get("level_of_decentralisation"),
                         rec.get("capital_raised", 0),
-                        social_presence,
                         token_symbol, token_format, governance_type,
                         tvl, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
@@ -282,8 +253,8 @@ def store_records(records):
                     """
                     INSERT INTO dapps (
                         name, slug, category_id, is_active, description, website,
-                        tags, chains, multi_chain, birth_date, ownership_status, decentralisation_lvl,
-                        capital_raised, social_presence, token_symbol, token_format,
+                        tags, chains, multi_chain, birth_date, ownership_status, level_of_decentralisation,
+                        capital_raised, token_symbol, token_format,
                         governance_type, tvl, tvl_ratio, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,
                         price, volume_24h, volume_change_24h,
@@ -291,7 +262,7 @@ def store_records(records):
                         percent_change_60d, percent_change_90d, cmc_rank,
                         market_cap_dominance, fully_diluted_market_cap
                     ) VALUES (
-                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
+                        %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                         %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
                     )
                     RETURNING id;
@@ -300,9 +271,8 @@ def store_records(records):
                         rec["name"], rec["slug"], category_id, rec.get("is_active", True),
                         rec.get("description"), rec.get("website"), combined_tags,
                         chains_str, rec.get("multi_chain", False), rec.get("birth_date"),
-                        rec.get("ownership_status"), rec.get("decentralisation_lvl"),
+                        rec.get("ownership_status"), rec.get("level_of_decentralisation"),
                         rec.get("capital_raised", 0),
-                        social_presence,
                         token_symbol, token_format, governance_type,
                         tvl, 0.0, users, volume, transactions, market_cap,
                         circulating_supply, total_supply, max_supply,

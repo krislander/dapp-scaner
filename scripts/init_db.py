@@ -101,6 +101,7 @@ def create_schema():
       description TEXT,
       website VARCHAR(500),
       tags TEXT,  -- Combined tags from DappRadar and CoinMarketCap
+      sub_category TEXT,  -- Sub-category for more granular classification
       
       -- Blockchain info
       chains TEXT,  -- e.g., "Ethereum,Polygon,BSC"
@@ -111,9 +112,6 @@ def create_schema():
       
       -- Financial data
       capital_raised NUMERIC DEFAULT 0,
-
-      -- Social Presence Count (aggregated from all sources)
-      social_presence INTEGER DEFAULT 0,      
       
       -- Tokens
       token_name VARCHAR(100),
@@ -124,17 +122,11 @@ def create_schema():
       gecko_id VARCHAR(100),
       cmc_id VARCHAR(20),
       
-      -- Governance
+      -- Governance and Decentralization
       governance_type governance_type_enum,
-      
-      -- Feature Engineered Scores (calculated/aggregated later)
       ownership_status ownership_status_enum,
-      decentralisation_lvl decentralisation_level_enum,
-      governance_score NUMERIC DEFAULT 0,  -- Calculated governance quality score (0-100)
-      control_score NUMERIC DEFAULT 0,     -- Calculated control decentralization score (0-100)  
-      decentralisation_score NUMERIC DEFAULT 0,  -- Calculated decentralization score (0-100)
-      popularity_score NUMERIC DEFAULT 0,   -- Calculated popularity based on social metrics (0-100)
-      usage_score NUMERIC DEFAULT 0,       -- Calculated usage score based on users/volume/txns (0-100)
+      level_of_decentralisation decentralisation_level_enum,
+      research_comments TEXT  -- Research notes and comments
       
       -- DApp Metrics
       tvl NUMERIC DEFAULT 0,
@@ -205,13 +197,9 @@ def create_schema():
     CREATE INDEX IF NOT EXISTS idx_dapps_market_cap ON dapps(market_cap);
     CREATE INDEX IF NOT EXISTS idx_dapps_is_active ON dapps(is_active);
     CREATE INDEX IF NOT EXISTS idx_dapps_tags ON dapps USING gin(to_tsvector('english', tags));
-    
-    -- Indexes for feature engineered score columns
-    CREATE INDEX IF NOT EXISTS idx_dapps_governance_score ON dapps(governance_score);
-    CREATE INDEX IF NOT EXISTS idx_dapps_control_score ON dapps(control_score);
-    CREATE INDEX IF NOT EXISTS idx_dapps_decentralisation_score ON dapps(decentralisation_score);
-    CREATE INDEX IF NOT EXISTS idx_dapps_popularity_score ON dapps(popularity_score);
-    CREATE INDEX IF NOT EXISTS idx_dapps_usage_score ON dapps(usage_score);
+    CREATE INDEX IF NOT EXISTS idx_dapps_governance_type ON dapps(governance_type);
+    CREATE INDEX IF NOT EXISTS idx_dapps_ownership_status ON dapps(ownership_status);
+    CREATE INDEX IF NOT EXISTS idx_dapps_level_of_decentralisation ON dapps(level_of_decentralisation);
     
     -- Indexes for new tables
     CREATE INDEX IF NOT EXISTS idx_tvl_historical_dapp_id ON tvl_historical(dapp_id);
@@ -234,6 +222,10 @@ if __name__ == "__main__":
     print("\n✅ Extended database schema created!")
     print("📋 Tables created:")
     print("  • categories - DApp categories lookup")
-    print("  • dapps - Extended DApp information with all metrics")
+    print("  • dapps - Extended DApp information with governance & metrics")
     print("  • tvl_historical - Historical TVL data from DeFiLlama")
-    print("  • raises - Funding/raises data from DeFiLlama") 
+    print("  • raises - Funding/raises data from DeFiLlama")
+    print("\n📝 Schema includes:")
+    print("  • Governance tracking (type, ownership, decentralisation)")
+    print("  • Sub-category and research comments")
+    print("  • Token information and metrics") 

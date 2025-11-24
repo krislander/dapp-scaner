@@ -23,13 +23,13 @@ def get_conn():
         port=PORT
     )
 
-def export_pilot_dataset(output_file="pilot_dataset.csv"):
-    """Export 500 DApps with maximum non-null fields including TVL historical data"""
+def export_pilot_dataset_base(output_file="pilot_dataset_base.csv"):
+    """Export all DApps without completeness scoring, ordered by name"""
     
     conn = get_conn()
     cur = conn.cursor()
     
-    # First, get the main DApp data with completeness scoring
+    # Get all DApp data without completeness scoring
     main_query = """
     SELECT 
         d.id,
@@ -68,37 +68,10 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
         d.percent_change_7d,
         d.percent_change_30d,
         d.percent_change_60d,
-        d.percent_change_90d,
-        -- Count non-null fields for ordering
-        (
-            CASE WHEN d.name IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN c.name IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.sub_category IS NOT NULL AND d.sub_category != '' THEN 1 ELSE 0 END +
-            CASE WHEN d.tags IS NOT NULL AND d.tags != '' THEN 1 ELSE 0 END +
-            CASE WHEN d.ownership_status IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.level_of_decentralisation IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.birth_date IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN (SELECT SUM(r.amount) FROM raises r WHERE r.dapp_id = d.id AND r.amount IS NOT NULL) > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.website IS NOT NULL AND d.website != '' THEN 1 ELSE 0 END +
-            CASE WHEN d.research_comments IS NOT NULL AND d.research_comments != '' THEN 1 ELSE 0 END +
-            CASE WHEN d.token_symbol IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.token_format IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.governance_type IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.chains IS NOT NULL AND d.chains != '' THEN 1 ELSE 0 END +
-            CASE WHEN d.tvl IS NOT NULL AND d.tvl > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.tvl_ratio IS NOT NULL AND d.tvl_ratio > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.users IS NOT NULL AND d.users > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.volume IS NOT NULL AND d.volume > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.transactions IS NOT NULL AND d.transactions > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.mcap IS NOT NULL AND d.mcap > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.price IS NOT NULL AND d.price > 0 THEN 1 ELSE 0 END +
-            CASE WHEN d.percent_change_24h IS NOT NULL THEN 1 ELSE 0 END +
-            CASE WHEN d.percent_change_7d IS NOT NULL THEN 1 ELSE 0 END
-        ) as completeness_score
+        d.percent_change_90d
     FROM dapps d
     LEFT JOIN categories c ON d.category_id = c.id
-    ORDER BY completeness_score DESC, d.name
-    LIMIT 500;
+    ORDER BY d.name;
     """
     
     cur.execute(main_query)
@@ -140,8 +113,8 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
     for row in main_rows:
         dapp_id = row[0]
         
-        # Basic row data (excluding id and completeness_score)
-        output_row = list(row[1:-1])  # Skip id (first) and completeness_score (last)
+        # Basic row data (excluding id)
+        output_row = list(row[1:])  # Skip id (first)
         
         # Add TVL historical data
         output_row.append(tvl_historical_data.get(dapp_id, ''))
@@ -172,13 +145,15 @@ def export_pilot_dataset(output_file="pilot_dataset.csv"):
         print(f"  • {category}: {count} DApps")
     
     if len(output_rows) > 0:
-        avg_completeness = sum(main_row[-1] for main_row in main_rows) / len(main_rows)
-        print(f"  • Average completeness score: {avg_completeness:.1f}/23 fields")
         print(f"  • DApps with TVL historical data: {len(tvl_historical_data)}")
+        
+        # Count non-empty chains
+        chains_count = sum(1 for row in output_rows if row[14])  # chains is at index 14
+        print(f"  • DApps with chains data: {chains_count}")
     
     return len(output_rows)
 
-def export_raises_data(output_file="dapp_raises.csv"):
+def export_raises_data_base(output_file="dapp_raises_base.csv"):
     """Export all raises/funding data from the raises table"""
     
     conn = get_conn()
@@ -208,7 +183,7 @@ def export_raises_data(output_file="dapp_raises.csv"):
     FROM raises r
     LEFT JOIN dapps d ON r.dapp_id = d.id
     LEFT JOIN categories c ON d.category_id = c.id
-    ORDER BY r.date DESC, d.name, r.amount DESC;
+    ORDER BY d.name, r.date DESC, r.amount DESC;
     """
     
     cur.execute(raises_query)
@@ -264,17 +239,19 @@ def export_raises_data(output_file="dapp_raises.csv"):
     return len(rows)
 
 if __name__ == "__main__":
-    print("📤 Exporting DApp data...")
-    print("=" * 40)
+    print("📤 Exporting DApp data (Base - No Completeness Scoring)...")
+    print("=" * 60)
     
     # Export main dataset
-    dapp_count = export_pilot_dataset("pilot_dataset.csv")
+    dapp_count = export_pilot_dataset_base("pilot_dataset_base.csv")
     print()
     
     # Export raises data
-    raises_count = export_raises_data("dapp_raises.csv")
+    raises_count = export_raises_data_base("dapp_raises_base.csv")
     
     print(f"\n🎉 Export complete!")
     print(f"📊 Summary:")
-    print(f"  • {dapp_count} DApps exported to pilot_dataset.csv")
-    print(f"  • {raises_count} funding rounds exported to dapp_raises.csv") 
+    print(f"  • {dapp_count} DApps exported to pilot_dataset_base.csv")
+    print(f"  • {raises_count} funding rounds exported to dapp_raises_base.csv")
+    print("\n💡 Tip: Compare with pilot_dataset.csv and dapp_raises.csv to see differences")
+

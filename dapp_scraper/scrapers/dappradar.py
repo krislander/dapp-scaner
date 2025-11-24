@@ -56,8 +56,13 @@ def fetch_dappradar(limit):
                     if not result:
                         continue
                     
-                    # Extract chains - they are directly an array of strings
-                    chains = result.get("chains", [])
+                    # Extract chains - array of objects like {"Chains": "ethereum"}
+                    chains_raw = result.get("chains", [])
+                    chains = []
+                    for chain_obj in chains_raw:
+                        # Pick value of each key in chain_obj (should be one key per object)
+                        for v in chain_obj.values():
+                            chains.append(v)
                     
                     # Extract categories - they are directly an array of strings
                     categories_list = result.get("categories", [])
@@ -110,8 +115,6 @@ def fetch_dappradar(limit):
                         "multi_chain": len(chains) > 1,
                         "birth_date": None,
                         "ownership_status": None,
-                        "capital_raised": 0,
-                        "decentralisation_lvl": None,
                         "source_chain": chains[0] if chains else "",
                         "metrics": {
                             "users": safe_int(metrics.get("uaw")),

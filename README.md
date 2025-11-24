@@ -114,19 +114,3 @@ The CSV export creates files with all DApp data flattened into single rows:
 - Web scraping from CMC website
 - Fallback to curated DAO data
 ## License
-
-
-next steps:
-If the dapp has been funded by traditional VCs or something else
-How do they make money, be sustainable and what business model they use?
-who relies on tokenomics, who relies on fees or other approaches?
-Governance type is important to determine
-
-top 500 dapps based on UAW (take all of this data)
-
-an output of csv with 500 dapps (based on metrics i scrape from APIs)
-a text document with the architecture of the variables
-what values can variables have?
-business model, revenue model, governance_type models, more qualititative data for each of the 500 dapps
-
-determine a methodology to analyze each dapp (step-by-step)
