@@ -90,6 +90,7 @@ def ingest_pilot_data(csv_file):
             dapp_id = result[0]
             
             # Prepare update data
+            dapp_category = clean_value(row.get('dapp_category'))
             sub_category = clean_value(row.get('sub_category'))
             governance_type = clean_value(row.get('governance_type'))
             ownership_status = clean_value(row.get('ownership_status'))
@@ -102,6 +103,10 @@ def ingest_pilot_data(csv_file):
             update_parts = []
             update_values = []
             
+            if dapp_category is not None:
+                update_parts.append("category_id = %s")
+                update_values.append(dapp_category)
+
             if sub_category is not None:
                 update_parts.append("sub_category = %s")
                 update_values.append(sub_category)
