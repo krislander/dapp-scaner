@@ -197,7 +197,6 @@ All analyses are fully reproducible:
 
 Meeting notes:
 - do an analysis of single ecosystems. define ecosystem very well, analyse specific dapps (e.g defi dapps, RWA, dePIN)
-- how many dapps have a native token. is it a governance token, utility token or something else. Add and fill the Token_type column and analyse that as well. Find some counterintuitive results
 - find and cross analyse strange results which pose more questions and challenges towards the sector. This can elevate the discussion part of the thesis
 - analyse prediction markets. specific dapps maybe. how they use governance tokens, native dapps, etc
 - analyse AI DAPPs. specific dapps maybe. how they use governance tokens, native dapps, etc
@@ -205,6 +204,70 @@ Meeting notes:
 - describe the whole ecosystem of dapps, point out main categories and give a general overview and abstract point of view
 - do the full contents and structure of the thesis (propose it and gather feedback)
 
-10 mins pitch
-5 mins for questions, doubts towards the supervisor (i should put them in a slide)
-10 mins for feedback
+
+Table of Contents
+Abstract
+1.1 Context and Motivation
+1.2 Objectives and Research Questions
+1.3 Methodology and Scope
+1.4 Structure of the Thesis
+
+Literature Review (2.4 to 2.8 are still not written, therefore they do not have sub headings)
+2.1 Decentralised Applications (DApps)
+   2.1.1 Growth and Adoption
+   2.1.2 Key Sectors
+2.2 Web3 and the Internet of Value
+   2.2.1 Internet of Value
+   2.2.2 Key principles
+   2.2.3 Current state
+2.3 Composability and Modular Architecture in DApps
+   2.3.1 Implications of Composability
+2.4 Governance Models in Decentralised Ecosystems
+2.5 Tokenomics and Funding Mechanisms
+2.6 Business Models and Value Creation in DApps
+2.7 Strategic and Competitive Dynamics in Web3 Ecosystems
+2.8 Gaps in Existing Literature and Research Opportunities
+
+Research Design and Methodology
+3.1 Framework and Scope
+3.2 Decentralized Applications Dataset
+   3.2.1 Automated scraping method
+   3.2.2 Manual data validation
+   3.2.3 Feature engineered columns
+3.4 Analytical Approach
+3.5 DApp Ecosystem Overview and Segmentation
+   3.5.1 Ecosystem Landscape and Market Composition
+   3.5.2 Sectoral Mapping: DeFi, Gaming, NFTs, RWA, AI, Social, Prediction Markets
+   3.5.3 Blockchain Layer Specialisation and Cross-Chain Deployments
+   3.5.4 Token Typologies and Governance Structures
+
+Analysis and Key Insights (here I plan to add all extracted key insights and dedicate one heading per each)
+4.1 Governance Centralisation Paradox
+4.2 Chain Ecosystem Specialisation
+4.3 Wealth and User Concentration Patterns
+4.4 The Engagement Dichotomy in DApp Usage
+4.5 TVL Distribution and Capital Efficiency Gaps
+
+Case Studies and Comparative Analysis (3-6 DAPP case studies in-depth. Choice for dapp motivated based on governance and ownership diversity and metrics)
+5.1 Uniswap: Governance and Strategy
+5.2 Aave: Lending Innovation and DAO Governance
+5.3 Compound: Tokenomics and Market Integration
+5.4 ...
+
+Qualitative Findings from Stakeholder Interviews
+I plan to conduct 1-2 interviews with DAPP founders from the Web3 space. I will use this heading to report my findings. I am still chasing possible fits and will update in future when i have something
+
+Discussion, Conclusions and Future Research
+6.1 The Strategic Tension Between Decentralisation and Coordination
+6.2 Reframing Governance as Competitive Differentiator
+6.3 Interoperability and Composability as Strategic Levers
+6.4 Sustainable Business Models in Tokenised Ecosystems
+6.5 Summary of Key Findings
+6.6 Managerial Implications
+6.7 Research Limitations
+6.8 Directions for Future Study
+
+Bibliography (in IEEE format)
+Transcripts
+Tables and Graphs
+Additional Frameworks and Definitions

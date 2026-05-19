@@ -67,7 +67,7 @@ def assess_data_quality(df):
     # Categorical columns
     print("\n--- Categorical Variables ---")
     categorical_cols = ['governance_type', 'ownership_status', 'level_of_decentralisation', 
-                       'dapp_sector', 'dapp_category']
+                       'dapp_sector', 'dapp_category', 'token_type']
     
     for col in categorical_cols:
         if col in df.columns:
@@ -188,6 +188,79 @@ def create_derived_features(df):
     print("\n7. Token identification...")
     df_enriched['has_token'] = df_enriched['token_symbol'].notna() & (df_enriched['token_symbol'] != '')
     print(f"   ✓ DApps with tokens: {df_enriched['has_token'].sum()} ({df_enriched['has_token'].mean()*100:.1f}%)")
+    
+    # 8. Token type processing
+    print("\n8. Token type processing...")
+    df_enriched['token_type_clean'] = df_enriched['token_type'].fillna('NONE')
+    # Extract primary token type (first in comma-separated list)
+    df_enriched['token_type_primary'] = df_enriched['token_type_clean'].apply(
+        lambda x: x.split(',')[0].strip() if x != 'NONE' else 'NONE'
+    )
+    # Boolean flags for each token type
+    df_enriched['is_governance_token'] = df_enriched['token_type_clean'].str.contains('GOVERNANCE', na=False)
+    df_enriched['is_utility_token'] = df_enriched['token_type_clean'].str.contains('UTILITY', na=False)
+    df_enriched['is_reward_token'] = df_enriched['token_type_clean'].str.contains('REWARD', na=False)
+    df_enriched['is_speculative_token'] = df_enriched['token_type_clean'].str.contains('SPECULATIVE', na=False)
+    df_enriched['is_social_token'] = df_enriched['token_type_clean'].str.contains('SOCIAL', na=False)
+    df_enriched['is_multi_type_token'] = df_enriched['token_type_clean'].str.contains(',', na=False)
+    
+    token_dist = df_enriched['token_type_primary'].value_counts()
+    print(f"   ✓ Token type distribution:")
+    for tt, count in token_dist.items():
+        print(f"     {tt}: {count} ({count/len(df_enriched)*100:.1f}%)")
+    
+    # 9. Sector identification flags for deep-dive analysis
+    print("\n9. Sector identification flags...")
+    tags_lower = df_enriched['tags'].fillna('').str.lower()
+    sub_cat = df_enriched['sub_category'].fillna('')
+    
+    # DeFi sector
+    defi_categories = ['DEX', 'Lending', 'Derivatives', 'Yield Aggregator']
+    df_enriched['is_defi'] = (
+        df_enriched['dapp_category'].isin(defi_categories) |
+        (df_enriched['dapp_sector'] == 'defi')
+    )
+    print(f"   ✓ DeFi DApps: {df_enriched['is_defi'].sum()}")
+    
+    # Prediction Markets
+    df_enriched['is_prediction_market'] = (
+        (df_enriched['dapp_category'] == 'Prediction Market') |
+        sub_cat.str.contains('Prediction Market', case=False, na=False)
+    )
+    print(f"   ✓ Prediction Market DApps: {df_enriched['is_prediction_market'].sum()}")
+    
+    # RWA (Real World Assets)
+    df_enriched['is_rwa'] = (
+        (df_enriched['dapp_category'] == 'Payments/RWA') |
+        tags_lower.str.contains('rwa', na=False)
+    )
+    print(f"   ✓ RWA DApps: {df_enriched['is_rwa'].sum()}")
+    
+    # AI DApps
+    df_enriched['is_ai'] = (
+        sub_cat.str.contains('AI', case=True, na=False) |
+        tags_lower.str.contains(r'\bai\b', na=False, regex=True)
+    )
+    print(f"   ✓ AI DApps: {df_enriched['is_ai'].sum()}")
+    
+    # DePIN
+    df_enriched['is_depin'] = tags_lower.str.contains('depin', na=False)
+    print(f"   ✓ DePIN DApps: {df_enriched['is_depin'].sum()}")
+    
+    # Gaming
+    df_enriched['is_gaming'] = (
+        (df_enriched['dapp_category'] == 'NFT Gaming') |
+        (df_enriched['dapp_category'] == 'Metaverse') |
+        (df_enriched['dapp_sector'] == 'games')
+    )
+    print(f"   ✓ Gaming DApps: {df_enriched['is_gaming'].sum()}")
+    
+    # Social
+    df_enriched['is_social'] = (
+        df_enriched['dapp_category'].isin(['Social Network', 'SocialFi']) |
+        (df_enriched['dapp_sector'] == 'social')
+    )
+    print(f"   ✓ Social DApps: {df_enriched['is_social'].sum()}")
     
     print(f"\n✓ Total features created: {len(df_enriched.columns) - len(df.columns)}")
     

@@ -164,3 +164,23 @@ To ingest manually enriched data from a CSV file:
 ```bash
 python scripts/ingest_pilot_data.py [path/to/csv_file.csv]
 ```
+
+
+### Codebook table for your new columns
+This is the minimum codebook you should include in Chapter 3 (appendix-friendly). The “Input fields” column helps prove the enrichment is non-destructive.
+
+v2_ column	Type	Allowed values	How to code (rule)	Input fields (read-only)
+ecosystem_focus	categorical	DEFI / AI / PREDICTION_MARKETS / RWA / DEPIN / GAMING / SOCIAL / NFT / INFRA / OTHER	Primary domain by value proposition; store v2_ecosystem_focus_basis and confidence	dapp_sector, category, sub_category, tags, description
+sustainment_model	categorical	TOKENOMICS / FEES / SUBSCRIPTION / MARKETPLACE_TAKE_RATE / SPREAD_ARB / INTEREST_YIELD / LICENSING_ENTERPRISE / HARDWARE_INFRA / ADS / DONATIONS_GRANTS / OTHER	Identify dominant sustainment mechanism; allow UNKNOWN if insufficient evidence	docs/website, fees, token docs
+go_to_market	categorical	B2C / B2B / B2B2C / C2C / DEVELOPER_PLATFORM	Code by primary customer + distribution channel	website/docs, app positioning
+main_revenue_generator	categorical	TX_FEE / TAKE_RATE / SPREAD / PERFORMANCE_FEE / SUBSCRIPTION / USAGE_METERING / INTEREST_MARGIN / LIQUIDATION_FEES / LISTING_FEES / LICENSING_ENTERPRISE / ADS / NONE_UNSET	Prefer explicit fee schedules; otherwise infer cautiously and mark confidence	fee docs, tokenomics, UI
+funding_type	categorical	BOOTSTRAPPED / VC_TRADITIONAL / VC_CRYPTO_NATIVE / TOKEN_SALE / GRANT_FOUNDATION / CROWDFUND_COMMUNITY / DAO_TREASURY / PUBLIC_COMPANY_BACKING	Use most dominant external backing mode	funding sheet/raises, press releases
+has_token	categorical	yes / no / unknown	yes if token_symbol/type exists or verified	token fields, CMC/CG listing
+governance_token_flag	categorical	yes / no / unknown	yes if token_type contains governance or docs say governance token	token docs, token_type
+fee_switch_or_value_accrual_to_tokenholders	categorical	yes / no / unknown	yes only if explicit value accrual mechanism exists	token docs, governance
+launch_year	numeric	YYYY	Parse from launch_date; else blank	launch_date
+primary_chain	categorical	chain name	first/most relevant chain; document rule	chains, is_multichain
+open_source_flag	categorical	yes / no / unknown	check repo presence + license	GitHub link/docs
+frontend_dependence	categorical	permissionless / front-end-dependent / unknown	if accessible only via controlled UI or KYC	access path, docs
+admin_key_risk	categorical	high / medium / low / unknown	proxy for effective centralization (upgrade keys, multisig, timelocks)	audits/docs
+oracle_or_external_dependency_intensity	categorical	low / medium / high / unknown

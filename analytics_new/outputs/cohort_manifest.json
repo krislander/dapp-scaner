@@ -1,0 +1,3875 @@
+{
+  "parameters": {
+    "COHORT_MIN_SIZE": 20,
+    "COHORT_MAX_SIZE": 50,
+    "SIGNAL_WEIGHTS": {
+      "users": 1.0,
+      "volume": 1.0,
+      "tvl": 0.8,
+      "market_cap": 0.8,
+      "transactions": 0.6
+    }
+  },
+  "primary_slices": [
+    {
+      "cohort_id": "collectibles::DEX",
+      "dapp_sector": "collectibles",
+      "dapp_category": "DEX",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SpaceFi"
+      ]
+    },
+    {
+      "cohort_id": "collectibles::NFT marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 55,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=55; selected top 50 by signal score",
+      "selected_names": [
+        "Dmail Network",
+        "Treasure",
+        "CorgiAI",
+        "TON Station",
+        "Ebisu's Bay",
+        "ZetaHub",
+        "Phi Protocol",
+        "HAiO",
+        "Apeiron",
+        "Honeyland",
+        "Sleepless AI",
+        "Cambria: Duel Arena",
+        "Micro3",
+        "Genopets",
+        "Puush.fun",
+        "Robots Farm",
+        "Cat Town",
+        "P-Link",
+        "Champignons of Arborethia",
+        "Roach Racing Club",
+        "Hello Pixel",
+        "Sweep",
+        "Chumbi Valley",
+        "BOSS FIGHTERS",
+        "Thrive on Mars",
+        "CELUVPLAY",
+        "Footium",
+        "Kingdom Story: Heroes War",
+        "Morkie",
+        "ArtRun",
+        "2184",
+        "Gaimin",
+        "NFTs2Me",
+        "QoWatt",
+        "art/peace",
+        "Infinity Heroes",
+        "Pixel Heroes Adventure",
+        "Ranchers Land",
+        "JetBolt",
+        "OverKnights",
+        "Echoes of Cryptalia",
+        "IMVU powered by MetaJuice",
+        "AVATARA",
+        "CryptoCarto",
+        "Freya: The Starfall",
+        "Syndicate of Vigilantes",
+        "Gunnies",
+        "Treeverse",
+        "BattleRise",
+        "IN - match3"
+      ]
+    },
+    {
+      "cohort_id": "collectibles::Payments/RWA",
+      "dapp_sector": "collectibles",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Briky Capital"
+      ]
+    },
+    {
+      "cohort_id": "defi::Analytics",
+      "dapp_sector": "defi",
+      "dapp_category": "Analytics",
+      "n_eligible": 10,
+      "n_selected": 10,
+      "cohort_size_note": "eligible_n=10 (<20): all eligible DApps included",
+      "selected_names": [
+        "Fragmetric",
+        "Jumper Exchange",
+        "Bungee",
+        "Maestro",
+        "Bitget Swap",
+        "SyncSwap",
+        "marginfi",
+        "UntitledBank",
+        "UTONIC",
+        "Karak"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "n_eligible": 9,
+      "n_selected": 9,
+      "cohort_size_note": "eligible_n=9 (<20): all eligible DApps included",
+      "selected_names": [
+        "DLN",
+        "Wormhole",
+        "Across",
+        "Stargate",
+        "HOT Protocol",
+        "Bridgers",
+        "Relay",
+        "Layerswap",
+        "Merkly"
+      ]
+    },
+    {
+      "cohort_id": "defi::DAO Tooling",
+      "dapp_sector": "defi",
+      "dapp_category": "DAO Tooling",
+      "n_eligible": 8,
+      "n_selected": 8,
+      "cohort_size_note": "eligible_n=8 (<20): all eligible DApps included",
+      "selected_names": [
+        "KernelDAO",
+        "EigenLayer",
+        "Mitosis",
+        "Venus Protocol",
+        "Ronin Staking",
+        "Sake Finance",
+        "CiaoTool",
+        "Polplus"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "n_eligible": 43,
+      "n_selected": 43,
+      "cohort_size_note": "eligible_n=43; selected top 43 by signal score",
+      "selected_names": [
+        "Pump.fun",
+        "THORChain",
+        "SaucerSwap",
+        "Etherex",
+        "SynFutures",
+        "1inch Network",
+        "Convex Finance",
+        "Orderly Network",
+        "Symbiosis",
+        "Orca",
+        "Minswap",
+        "OpenOcean",
+        "Helix",
+        "Rhea Finance",
+        "PancakeSwap V3",
+        "Velodrome",
+        "Jupiter Exchange",
+        "Superp",
+        "Rubic",
+        "MetaMask Swap",
+        "Superfluid",
+        "Rango Exchange",
+        "YEI",
+        "Socket",
+        "SpaceSwap",
+        "KYO finance",
+        "Meson",
+        "Mimic",
+        "BloomBot",
+        "Tama Meme",
+        "Mendi",
+        "AVNU",
+        "Magnetic",
+        "Zerion",
+        "Katana",
+        "Moonshot",
+        "Drift Protocol V2",
+        "Phoenix DeFi Hub",
+        "Alcor.exchange",
+        "Bullshot",
+        "zerg.zone",
+        "Nomiswap (NMX)",
+        "First Ledger"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pendle",
+        "Jito",
+        "LIDO",
+        "GMX",
+        "Fulcrom Finance"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Lending",
+      "n_eligible": 9,
+      "n_selected": 9,
+      "cohort_size_note": "eligible_n=9 (<20): all eligible DApps included",
+      "selected_names": [
+        "Morpho",
+        "Maple",
+        "Compound",
+        "Moonwell",
+        "Nostra",
+        "ZeroLend",
+        "Aave V3",
+        "Save (formerly Solend)",
+        "Folks Finance"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lottery",
+      "dapp_sector": "defi",
+      "dapp_category": "Lottery",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Xai Staking"
+      ]
+    },
+    {
+      "cohort_id": "defi::Metaverse",
+      "dapp_sector": "defi",
+      "dapp_category": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Virtuals Protocol"
+      ]
+    },
+    {
+      "cohort_id": "defi::NFT Gaming",
+      "dapp_sector": "defi",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFTMining - By Pentagon Games",
+        "Pitch Lucy"
+      ]
+    },
+    {
+      "cohort_id": "defi::NFT marketplace",
+      "dapp_sector": "defi",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Transit Swap"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 6,
+      "n_selected": 6,
+      "cohort_size_note": "eligible_n=6 (<20): all eligible DApps included",
+      "selected_names": [
+        "Ethena",
+        "Velo",
+        "Solayer",
+        "Zyfi",
+        "Courtyard",
+        "Fiat24"
+      ]
+    },
+    {
+      "cohort_id": "defi::Social Network",
+      "dapp_sector": "defi",
+      "dapp_category": "Social Network",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Banana Gun",
+        "Four Meme"
+      ]
+    },
+    {
+      "cohort_id": "defi::Wallet",
+      "dapp_sector": "defi",
+      "dapp_category": "Wallet",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "ZEROBASE",
+        "Tea-Fi",
+        "GoodDollar"
+      ]
+    },
+    {
+      "cohort_id": "defi::Yield Aggregator",
+      "dapp_sector": "defi",
+      "dapp_category": "Yield Aggregator",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Fluid",
+        "Etherfi",
+        "rhino.fi",
+        "UXUY",
+        "xPortal"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Analytics",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Analytics",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Wolfswap",
+        "INIT Capital",
+        "Akka"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "n_eligible": 70,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=70; selected top 50 by signal score",
+      "selected_names": [
+        "Raydium",
+        "QuickSwap",
+        "Balancer",
+        "DragonSwap",
+        "VVS Finance",
+        "Tokenlon",
+        "APX",
+        "xExchange",
+        "DODO",
+        "ApeBond",
+        "Lynex",
+        "iZUMi Finance",
+        "Storm Trade",
+        "Alien Base",
+        "Merchant Moe",
+        "Biswap",
+        "Saber",
+        "Aerodrome",
+        "SushiSwap",
+        "ODOS",
+        "Ekubo",
+        "Velora",
+        "THENA",
+        "Uniswap V3",
+        "DeDust",
+        "Uniswap V2",
+        "ParaSwap",
+        "PancakeSwap V2",
+        "Uniswap V4",
+        "Mento",
+        "WOOFi",
+        "BaseSwap",
+        "Camelot",
+        "Ramses Exchange",
+        "OKX DEX",
+        "CoW Swap",
+        "STON.fi",
+        "Interport Finance",
+        "Wingriders",
+        "BabySwap",
+        "SpookySwap",
+        "Koi Finance",
+        "MM Finance",
+        "CrossCurve",
+        "AGNI Finance",
+        "Let's F***ing Joe (Trader Joe)",
+        "Sailor Finance",
+        "NILE Exchange",
+        "Arbswap",
+        "Oku"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Infrastructure",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Infrastructure",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ETH2 Deposit Contract"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Lending",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Lending",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Kamino Finance"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Payments/RWA",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Ostium"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Analytics",
+      "dapp_sector": "gambling",
+      "dapp_category": "Analytics",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Azuro",
+        "Fomo3D"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "Casino",
+      "n_eligible": 39,
+      "n_selected": 39,
+      "cohort_size_note": "eligible_n=39; selected top 39 by signal score",
+      "selected_names": [
+        "Overtime",
+        "Polymarket",
+        "Runnit",
+        "Solpot",
+        "Solcasino",
+        "Oracl",
+        "Divvy",
+        "Bober Battle",
+        "OwlDAO",
+        "Moon Roll",
+        "Solana Casino",
+        "SuperVol",
+        "Candle Genie",
+        "Blockchain Bets",
+        "FOMO Thursday",
+        "Lotshot",
+        "FlipBNB Coin",
+        "BetHash",
+        "Kzyno",
+        "World Wide",
+        "Playw3",
+        "CroVegas",
+        "Waxcasino",
+        "Cronos Bet",
+        "0xRoulette",
+        "FEEN",
+        "X-PlayerOne",
+        "Sharkroll Casino",
+        "TheKey.Fun",
+        "LuckyChainLottery",
+        "Websport",
+        "Solana Coin Flip",
+        "BANZAI",
+        "BlockSpinGaming",
+        "Hive Lottery",
+        "Dicether",
+        "JustBet",
+        "Betswap",
+        "EpicDice"
+      ]
+    },
+    {
+      "cohort_id": "gambling::DEX",
+      "dapp_sector": "gambling",
+      "dapp_category": "DEX",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "BetDEX",
+        "Metavault"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Lottery",
+      "dapp_sector": "gambling",
+      "dapp_category": "Lottery",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "All For One (VfSE Lottery)"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 53,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=53; selected top 50 by signal score",
+      "selected_names": [
+        "Solpump",
+        "BetSwirl",
+        "Luck.io",
+        "HunnyPlay",
+        "Betmode",
+        "Gacha",
+        "Slotana Coin Flip",
+        "Flip.gg",
+        "LUMINOUS",
+        "DeathX.Fun",
+        "BetFury",
+        "SolBitGame",
+        "Degen Park",
+        "Ninja Blaze",
+        "FerdyFlip",
+        "SLM Games",
+        "LastMint",
+        "MetaWin",
+        "LuckySea",
+        "DogeBets",
+        "Preduck Games",
+        "HiveSlotGames.com",
+        "Polyflip",
+        "ChainPoker",
+        "RACE Poker",
+        "Krypto Gamers",
+        "CricSage",
+        "2p2e",
+        "EFIHUB",
+        "PlayRPS.fun",
+        "Meme Kombat",
+        "Bag win",
+        "ElrondBet.net",
+        "ChainWins",
+        "Bitfight",
+        "Lotto",
+        "Bitlex Games",
+        "BlokDuel",
+        "Duel Duck",
+        "Chain Game",
+        "BitUp Game",
+        "Pigmo",
+        "Predchain",
+        "Solspin",
+        "BvsB",
+        "BITPREDICTION",
+        "Arcadia Games",
+        "CasinoCronos.com",
+        "NFT Cock Fights",
+        "Soccersm"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT marketplace",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Trade signal",
+        "FORKAST"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Payments/RWA",
+      "dapp_sector": "gambling",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Cardano Casino",
+        "Solana Crash"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Prediction Market",
+      "dapp_sector": "gambling",
+      "dapp_category": "Prediction Market",
+      "n_eligible": 14,
+      "n_selected": 14,
+      "cohort_size_note": "eligible_n=14 (<20): all eligible DApps included",
+      "selected_names": [
+        "Limitless",
+        "Predictions (PRDT)",
+        "Myriad",
+        "SynStation",
+        "dripit",
+        "Mash",
+        "GFEX",
+        "Myriad Markets",
+        "Metafide",
+        "Zote",
+        "Predictr market",
+        "XParty USA",
+        "Rolarian",
+        "Catoff Gaming"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Yield Aggregator",
+      "dapp_sector": "gambling",
+      "dapp_category": "Yield Aggregator",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Betero Sports Betting Platform"
+      ]
+    },
+    {
+      "cohort_id": "games::Casino",
+      "dapp_sector": "games",
+      "dapp_category": "Casino",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "WcoinGame"
+      ]
+    },
+    {
+      "cohort_id": "games::DEX",
+      "dapp_sector": "games",
+      "dapp_category": "DEX",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "DeFi Kingdoms",
+        "Axie Infinity",
+        "motoDEX",
+        "dexGO"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT Gaming",
+      "dapp_sector": "games",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 85,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=85; selected top 50 by signal score",
+      "selected_names": [
+        "Pixels",
+        "Karat Galaxy",
+        "FishWar",
+        "Planet IX",
+        "Moonveil",
+        "RavenQuest",
+        "Alliance Games",
+        "MetaArena",
+        "Dypius",
+        "PlayEmber",
+        "DragonLand",
+        "Taco Studios",
+        "Archer Hunter",
+        "Sugar Senpai",
+        "Guild of Guardians",
+        "Arena of Faith",
+        "IDLE Glory",
+        "My Guardian Base",
+        "Miner's Rush",
+        "OnChainGM",
+        "PLAYZAP GAMES",
+        "Boredtopia",
+        "Gatto",
+        "Candy Dreams",
+        "Kawaii Puzzle",
+        "Hot Spring - The Cozy World",
+        "GOAT Gaming",
+        "GMonchain",
+        "Pixudi",
+        "Age of Dino",
+        "SERAPH: In The Darkness",
+        "Empire of SEI",
+        "Majyo Treasure",
+        "SeiBound",
+        "Sunflower Land",
+        "Miomi Game",
+        "PROSPECTORS",
+        "Piratopia",
+        "Lumiterra",
+        "Quizmatch",
+        "The Machines Arena",
+        "Chess Universe",
+        "Crypto Run",
+        "Focus Tree",
+        "Wild West Shooting",
+        "Boxing Star X",
+        "Donkey Hunt",
+        "Hurley Super Surfer™",
+        "Ragnarok Libre",
+        "SpinCity"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT marketplace",
+      "dapp_sector": "games",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 20,
+      "n_selected": 20,
+      "cohort_size_note": "eligible_n=20; selected top 20 by signal score",
+      "selected_names": [
+        "Alien Worlds",
+        "KGeN",
+        "World of Dypians",
+        "SuperWalk",
+        "Bit Hotel",
+        "Star Atlas",
+        "Sweat Economy",
+        "Football Fun",
+        "My Neighbor Alice",
+        "Nine Chronicles",
+        "MARBLEX",
+        "Overtake",
+        "QORPO WORLD",
+        "Iskra",
+        "CZ RUNZ",
+        "LiveArt",
+        "Token Tails",
+        "Pirate Nation",
+        "The Lost Glitches",
+        "Legends of Elumia"
+      ]
+    },
+    {
+      "cohort_id": "games::Payments/RWA",
+      "dapp_sector": "games",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "WorldShards",
+        "Anome",
+        "Lingo",
+        "SF Legends",
+        "Harvest Moon ~ Meteor Wallet"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Casino",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Casino",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "Flip Crypto",
+        "GGSOL",
+        "Bitlazer",
+        "Hits"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::DAO Tooling",
+      "dapp_sector": "high-risk",
+      "dapp_category": "DAO Tooling",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "FlashMoon",
+        "Polygon Income",
+        "BKOKFI",
+        "ARBITWHALE",
+        "Aim Finance Tech",
+        "Eggs",
+        "Doge Floki Coin"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::DEX",
+      "dapp_sector": "high-risk",
+      "dapp_category": "DEX",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "Sandclock",
+        "MintStakeShare",
+        "Crypto Bank 30",
+        "Dex Roi"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Infrastructure",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Infrastructure",
+      "n_eligible": 26,
+      "n_selected": 26,
+      "cohort_size_note": "eligible_n=26; selected top 26 by signal score",
+      "selected_names": [
+        "BigCoin",
+        "BullBNB",
+        "KALE",
+        "Hot Billionaire",
+        "Nexora Protocol",
+        "POLX-AI",
+        "Synergy Smart",
+        "BnbGift`s",
+        "Truepoi",
+        "Nodesbeat",
+        "Polxbinary",
+        "EthereumGold.io",
+        "My Shiba Inu",
+        "genius turtle",
+        "JOE Miner",
+        "Crypto Knights POL",
+        "NewStart",
+        "The Fortune Miner",
+        "Tewkenaire (ETH)",
+        "FragTycoon",
+        "BNBCapital",
+        "wDogecoin",
+        "HDX20",
+        "PoWH 3D",
+        "BABYQUICK",
+        "USDT Miner"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT Gaming",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 8,
+      "n_selected": 8,
+      "cohort_size_note": "eligible_n=8 (<20): all eligible DApps included",
+      "selected_names": [
+        "Random Bag",
+        "Brewed Beans",
+        "Doomsday Ark",
+        "Runecoin Network",
+        "Arbitrum Land",
+        "Universo Ancestral",
+        "JOJO",
+        "Rabbit Universe"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT marketplace",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "GTokenTool"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Payments/RWA",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "GemHive",
+        "PayNet Staking",
+        "Token Surfing"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Privacy/Security",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Privacy/Security",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ApeEscape Bananafarm"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Social Network",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Social Network",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Top Business Infinity",
+        "Thetherocean"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Yield Aggregator",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Yield Aggregator",
+      "n_eligible": 64,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=64; selected top 50 by signal score",
+      "selected_names": [
+        "Rocket Miner",
+        "Cluster Yield",
+        "U$DT ZONE",
+        "PolSpring",
+        "POLWUKONG",
+        "SmartCash V2",
+        "Grizzi Fi",
+        "TRX Machine",
+        "BNB ROSNEFT",
+        "Cloud Miner",
+        "The Black Vault",
+        "PasiveTon",
+        "Global Wealth Funds",
+        "PUDGY HARVEST",
+        "POL Revo Stake",
+        "PolyCash",
+        "Goldsand",
+        "ProteoDefi",
+        "POL Hives 2024",
+        "AZCoin",
+        "Million Pol",
+        "AutoPoolFund",
+        "CyberPOL",
+        "Stakin-gg | BULLRUN TAMER",
+        "PEPE Tubes",
+        "Beehive Miner",
+        "Titan Yield DAO",
+        "TRON EARN 2025",
+        "AirBNBs",
+        "U$DT STAKE",
+        "GIVERA BNB",
+        "Astro-POL",
+        "HOUR ROI",
+        "Pololinks",
+        "Thoreum ETH Miner",
+        "WhaleSyndicate",
+        "GoldenGoose",
+        "Cairo Finance",
+        "GainVault",
+        "SmartCash Network",
+        "TEM",
+        "StakeBitcoin",
+        "PolyGains",
+        "ZyberYield",
+        "OCTOPOL",
+        "Oracoin Farming",
+        "POL LION",
+        "Kimbo Trainer",
+        "BEMDEFI",
+        "Externity"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::DEX",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "DEX",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFTX",
+        "XPmarket",
+        "Sologenic"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Lending",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Lending",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Blur",
+        "Reservoir"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 61,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=61; selected top 50 by signal score",
+      "selected_names": [
+        "Magic Eden",
+        "Zora",
+        "Backroom",
+        "OpenSea",
+        "SuperRare",
+        "Rarible",
+        "MOBOX",
+        "ThetaDrop",
+        "fxhash",
+        "Ronin Market",
+        "NeftyBlocks",
+        "Element Market",
+        "xrp.cafe",
+        "LooksRare",
+        "bidds",
+        "XOXNO Network",
+        "objkt",
+        "OKX NFT Marketplace",
+        "AtomicHub",
+        "JPG Store",
+        "Tevaera",
+        "Spacebar",
+        "SentX",
+        "Moongate",
+        "Foundation",
+        "Hic et Nunc",
+        "MOOAR",
+        "ArenaVS",
+        "Bomb Crypto",
+        "Teia",
+        "BNBMafia",
+        "Matr1x",
+        "NEARnames",
+        "NFT Battle Miners",
+        "Getgems",
+        "Sonova",
+        "NMKR Minting",
+        "Genso Metaverse",
+        "Minted Network",
+        "QuestMe",
+        "NFTHive",
+        "OmniHub",
+        "Joepegs",
+        "The Game7 Platform",
+        "Bitte",
+        "Dinosaur Eggs",
+        "CoinFantasy",
+        "Kaidro Chronicle",
+        "AiBased",
+        "Bomb Crypto Marketplace"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Payments/RWA",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFPrompt",
+        "Manifold",
+        "Highlight",
+        "Marketapp",
+        "ADA Handle",
+        "Warsaken",
+        "Uranium.io"
+      ]
+    },
+    {
+      "cohort_id": "other::Analytics",
+      "dapp_sector": "other",
+      "dapp_category": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Stobix"
+      ]
+    },
+    {
+      "cohort_id": "other::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "DAO Tooling",
+      "n_eligible": 12,
+      "n_selected": 12,
+      "cohort_size_note": "eligible_n=12 (<20): all eligible DApps included",
+      "selected_names": [
+        "MorpheusAI",
+        "XPIN Network",
+        "LayerZero",
+        "Cronos ID",
+        "aixbt",
+        "Edelweis",
+        "RubyScore",
+        "Exorde",
+        "Morpheus",
+        "Tetra",
+        "OpenSource",
+        "SolSave"
+      ]
+    },
+    {
+      "cohort_id": "other::DEX",
+      "dapp_sector": "other",
+      "dapp_category": "DEX",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "SoSoValue",
+        "IoTAI",
+        "zkCodex"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "n_eligible": 20,
+      "n_selected": 20,
+      "cohort_size_note": "eligible_n=20; selected top 20 by signal score",
+      "selected_names": [
+        "ChainOpera AI",
+        "Agent Virtual Machine",
+        "Venice",
+        "Robora",
+        "Hey Anon",
+        "ZoRobotics",
+        "Squads",
+        "TradeOS",
+        "Bullbit AI",
+        "Sol Incinerator",
+        "GWAY",
+        "Nomis",
+        "Mysterium VPN",
+        "Actifit",
+        "Guild",
+        "FIO",
+        "0xAstra",
+        "Blast Deposit",
+        "Steemhunt",
+        "TimeSoul"
+      ]
+    },
+    {
+      "cohort_id": "other::Metaverse",
+      "dapp_sector": "other",
+      "dapp_category": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MEET48"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 14,
+      "n_selected": 14,
+      "cohort_size_note": "eligible_n=14 (<20): all eligible DApps included",
+      "selected_names": [
+        "WORLD3",
+        "The Innovation Game",
+        "NeuralAI",
+        "Boom",
+        "MiL.k",
+        "BANANA",
+        "Dropee",
+        "Balance",
+        "SKALE Manager",
+        "TriviAgent",
+        "HELLO",
+        "EARNM Rewards",
+        "Befriend AI by Xterio",
+        "Clash of Coins"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "SecondLive",
+        "AtomicAssets",
+        "Crestal Nation",
+        "Wagmi Defense"
+      ]
+    },
+    {
+      "cohort_id": "other::Oracles",
+      "dapp_sector": "other",
+      "dapp_category": "Oracles",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "zkPass"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "WiFi Map",
+        "Helio",
+        "Holyheld",
+        "PagCrypto",
+        "GoMining"
+      ]
+    },
+    {
+      "cohort_id": "other::Privacy/Security",
+      "dapp_sector": "other",
+      "dapp_category": "Privacy/Security",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainGPT",
+        "Ethereum Name Service",
+        "Tezos Domains",
+        "nCaptcha"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "n_eligible": 12,
+      "n_selected": 12,
+      "cohort_size_note": "eligible_n=12 (<20): all eligible DApps included",
+      "selected_names": [
+        "CUDIS",
+        "SubHub",
+        "Bad Idea AI",
+        "4EVERLAND",
+        "Sogni AI",
+        "Kaito",
+        "Alaya AI",
+        "Verax",
+        "OpenPad AI",
+        "Node AI",
+        "aigent.run",
+        "Burnify"
+      ]
+    },
+    {
+      "cohort_id": "other::SocialFi",
+      "dapp_sector": "other",
+      "dapp_category": "SocialFi",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Mint Club",
+        "Poolz Finance",
+        "Flap"
+      ]
+    },
+    {
+      "cohort_id": "other::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "Wallet",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Particle Network",
+        "zkBob Private Wallet",
+        "Abstract Global Wallet"
+      ]
+    },
+    {
+      "cohort_id": "other::Yield Aggregator",
+      "dapp_sector": "other",
+      "dapp_category": "Yield Aggregator",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Edubuk"
+      ]
+    },
+    {
+      "cohort_id": "social::DEX",
+      "dapp_sector": "social",
+      "dapp_category": "DEX",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Decentraland",
+        "Catecoin"
+      ]
+    },
+    {
+      "cohort_id": "social::Derivatives",
+      "dapp_sector": "social",
+      "dapp_category": "Derivatives",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Meta Pool"
+      ]
+    },
+    {
+      "cohort_id": "social::Metaverse",
+      "dapp_sector": "social",
+      "dapp_category": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MetaMap"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT Gaming",
+      "dapp_sector": "social",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 10,
+      "n_selected": 10,
+      "cohort_size_note": "eligible_n=10 (<20): all eligible DApps included",
+      "selected_names": [
+        "XRADERS",
+        "Hanafuda",
+        "Revox | ReadON",
+        "MomoAI(MetaOasis)",
+        "DistrictOne",
+        "Vortex Gaming",
+        "Circle of Games",
+        "DappRadar Quests",
+        "TENAMINT",
+        "ChainGun"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT marketplace",
+      "dapp_sector": "social",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 11,
+      "n_selected": 11,
+      "cohort_size_note": "eligible_n=11 (<20): all eligible DApps included",
+      "selected_names": [
+        "SPACE ID",
+        "GMGN",
+        "DIMO",
+        "Hooked",
+        "StarryNift",
+        "STEPN",
+        "Playbux",
+        "Skurpy",
+        "ZNS Connect",
+        "CDARI",
+        "iO Beats"
+      ]
+    },
+    {
+      "cohort_id": "social::Payments/RWA",
+      "dapp_sector": "social",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 9,
+      "n_selected": 9,
+      "cohort_size_note": "eligible_n=9 (<20): all eligible DApps included",
+      "selected_names": [
+        "Access Protocol",
+        "FanX Protocol",
+        "KlimaDao",
+        "azit",
+        "Sound.xyz",
+        "Rada Quest TCG",
+        "RabbitHole",
+        "QSTN",
+        "Farm Clicker"
+      ]
+    },
+    {
+      "cohort_id": "social::Social Network",
+      "dapp_sector": "social",
+      "dapp_category": "Social Network",
+      "n_eligible": 34,
+      "n_selected": 34,
+      "cohort_size_note": "eligible_n=34; selected top 34 by signal score",
+      "selected_names": [
+        "Layer3",
+        "Galxe",
+        "Common",
+        "TaskOn",
+        "Hushr",
+        "HAPI ID",
+        "Vibely",
+        "Learn NEAR Club",
+        "AlfaFrens",
+        "OverHerd",
+        "SoQuest",
+        "ShardDog",
+        "Bitget Red Packet",
+        "PeakD",
+        "poidh",
+        "XO",
+        "Blockchain Messages",
+        "QuestN",
+        "StoryChain",
+        "UneMeta",
+        "Ethereum Follow Protocol",
+        "Liketu",
+        "Ecency",
+        "Sarafu Network",
+        "Fanzee",
+        "H4LAB",
+        "DBuzz",
+        "iMe Messenger",
+        "TagAI",
+        "cXc.world",
+        "SendingMe",
+        "Lens Protocol",
+        "iMe Messenger & Crypto Wallet",
+        "STEMsocial"
+      ]
+    },
+    {
+      "cohort_id": "social::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "SocialFi",
+      "n_eligible": 20,
+      "n_selected": 20,
+      "cohort_size_note": "eligible_n=20; selected top 20 by signal score",
+      "selected_names": [
+        "The Arena",
+        "CARV",
+        "Friend.tech",
+        "Alt.town",
+        "UXLINK",
+        "Farcaster",
+        "Hype.fun",
+        "SOMESING",
+        "Arkada",
+        "XCAD Network",
+        "CyberConnect",
+        "Goat.Tech",
+        "Towns",
+        "Buddy",
+        "Chingari",
+        "OpenChat",
+        "Yup",
+        "Match",
+        "APPICS",
+        "Near Social"
+      ]
+    }
+  ],
+  "secondary_slices": [
+    {
+      "cohort_id": "collectibles::DEX::NFT Marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SpaceFi"
+      ]
+    },
+    {
+      "cohort_id": "collectibles::NFT marketplace::NFT Marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 55,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=55; selected top 50 by signal score",
+      "selected_names": [
+        "Dmail Network",
+        "Treasure",
+        "CorgiAI",
+        "TON Station",
+        "Ebisu's Bay",
+        "ZetaHub",
+        "Phi Protocol",
+        "HAiO",
+        "Apeiron",
+        "Honeyland",
+        "Sleepless AI",
+        "Cambria: Duel Arena",
+        "Micro3",
+        "Genopets",
+        "Puush.fun",
+        "Robots Farm",
+        "Cat Town",
+        "P-Link",
+        "Champignons of Arborethia",
+        "Roach Racing Club",
+        "Hello Pixel",
+        "Sweep",
+        "Chumbi Valley",
+        "BOSS FIGHTERS",
+        "Thrive on Mars",
+        "CELUVPLAY",
+        "Footium",
+        "Kingdom Story: Heroes War",
+        "Morkie",
+        "ArtRun",
+        "2184",
+        "Gaimin",
+        "NFTs2Me",
+        "QoWatt",
+        "art/peace",
+        "Infinity Heroes",
+        "Pixel Heroes Adventure",
+        "Ranchers Land",
+        "JetBolt",
+        "OverKnights",
+        "Echoes of Cryptalia",
+        "IMVU powered by MetaJuice",
+        "AVATARA",
+        "CryptoCarto",
+        "Freya: The Starfall",
+        "Syndicate of Vigilantes",
+        "Gunnies",
+        "Treeverse",
+        "BattleRise",
+        "IN - match3"
+      ]
+    },
+    {
+      "cohort_id": "collectibles::Payments/RWA::NFT Marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Briky Capital"
+      ]
+    },
+    {
+      "cohort_id": "defi::Analytics::Analytics",
+      "dapp_sector": "defi",
+      "dapp_category": "Analytics",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "Jumper Exchange",
+        "Bungee",
+        "Maestro",
+        "Bitget Swap",
+        "SyncSwap",
+        "UntitledBank",
+        "UTONIC"
+      ]
+    },
+    {
+      "cohort_id": "defi::Analytics::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Analytics",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Fragmetric",
+        "marginfi",
+        "Karak"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Bridge",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Bridge",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Across",
+        "HOT Protocol",
+        "Bridgers",
+        "Layerswap",
+        "Merkly"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Farming",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Stargate",
+        "Relay"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "DLN",
+        "Wormhole"
+      ]
+    },
+    {
+      "cohort_id": "defi::DAO Tooling::DAO Tooling",
+      "dapp_sector": "defi",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "CiaoTool"
+      ]
+    },
+    {
+      "cohort_id": "defi::DAO Tooling::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "KernelDAO",
+        "EigenLayer",
+        "Mitosis",
+        "Venus Protocol",
+        "Ronin Staking",
+        "Sake Finance",
+        "Polplus"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::AMM DEX",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pump.fun",
+        "1inch Network",
+        "PancakeSwap V3",
+        "SpaceSwap",
+        "Katana",
+        "Moonshot",
+        "Alcor.exchange"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Aggregator",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Aggregator",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Rubic",
+        "Rango Exchange"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Analytics",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Meson"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::DeFi",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "DeFi",
+      "n_eligible": 11,
+      "n_selected": 11,
+      "cohort_size_note": "eligible_n=11 (<20): all eligible DApps included",
+      "selected_names": [
+        "Jupiter Exchange",
+        "MetaMask Swap",
+        "Socket",
+        "Mimic",
+        "BloomBot",
+        "Tama Meme",
+        "Mendi",
+        "Zerion",
+        "Bullshot",
+        "zerg.zone",
+        "First Ledger"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "OpenOcean"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Farming",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Symbiosis",
+        "Magnetic"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Lending",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "YEI"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Perpetuals",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Perpetuals",
+      "n_eligible": 6,
+      "n_selected": 6,
+      "cohort_size_note": "eligible_n=6 (<20): all eligible DApps included",
+      "selected_names": [
+        "SynFutures",
+        "Orderly Network",
+        "Helix",
+        "Superp",
+        "Superfluid",
+        "Drift Protocol V2"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Velodrome",
+        "AVNU"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 10,
+      "n_selected": 10,
+      "cohort_size_note": "eligible_n=10 (<20): all eligible DApps included",
+      "selected_names": [
+        "THORChain",
+        "SaucerSwap",
+        "Etherex",
+        "Convex Finance",
+        "Orca",
+        "Minswap",
+        "Rhea Finance",
+        "KYO finance",
+        "Phoenix DeFi Hub",
+        "Nomiswap (NMX)"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Jito",
+        "LIDO"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Lending",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pendle"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives::Perpetuals",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Perpetuals",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "GMX",
+        "Fulcrom Finance"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lending::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "Lending",
+      "n_eligible": 8,
+      "n_selected": 8,
+      "cohort_size_note": "eligible_n=8 (<20): all eligible DApps included",
+      "selected_names": [
+        "Morpho",
+        "Maple",
+        "Compound",
+        "Moonwell",
+        "Nostra",
+        "ZeroLend",
+        "Aave V3",
+        "Save (formerly Solend)"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lending::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Folks Finance"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lottery::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "Lottery",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Xai Staking"
+      ]
+    },
+    {
+      "cohort_id": "defi::Metaverse::AI Agent Platform",
+      "dapp_sector": "defi",
+      "dapp_category": "Metaverse",
+      "primary_sub_tag": "AI Agent Platform",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Virtuals Protocol"
+      ]
+    },
+    {
+      "cohort_id": "defi::NFT Gaming::Casino",
+      "dapp_sector": "defi",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pitch Lucy"
+      ]
+    },
+    {
+      "cohort_id": "defi::NFT Gaming::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFTMining - By Pentagon Games"
+      ]
+    },
+    {
+      "cohort_id": "defi::NFT marketplace::Marketplace",
+      "dapp_sector": "defi",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Transit Swap"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Metaverse",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Courtyard"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Payments",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Payments",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Fiat24"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Stablecoin",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Stablecoin",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Ethena"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Solayer"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Velo",
+        "Zyfi"
+      ]
+    },
+    {
+      "cohort_id": "defi::Social Network::Social",
+      "dapp_sector": "defi",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Banana Gun",
+        "Four Meme"
+      ]
+    },
+    {
+      "cohort_id": "defi::Wallet::DAO Tooling",
+      "dapp_sector": "defi",
+      "dapp_category": "Wallet",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "GoodDollar"
+      ]
+    },
+    {
+      "cohort_id": "defi::Wallet::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Wallet",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "ZEROBASE",
+        "Tea-Fi"
+      ]
+    },
+    {
+      "cohort_id": "defi::Yield Aggregator::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Fluid",
+        "Etherfi",
+        "rhino.fi",
+        "UXUY",
+        "xPortal"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Analytics::Analytics",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Analytics",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Wolfswap",
+        "INIT Capital",
+        "Akka"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX::AMM DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 66,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=66; selected top 50 by signal score",
+      "selected_names": [
+        "Raydium",
+        "QuickSwap",
+        "Balancer",
+        "DragonSwap",
+        "VVS Finance",
+        "Tokenlon",
+        "APX",
+        "xExchange",
+        "DODO",
+        "ApeBond",
+        "Lynex",
+        "iZUMi Finance",
+        "Storm Trade",
+        "Alien Base",
+        "Merchant Moe",
+        "Biswap",
+        "Saber",
+        "Aerodrome",
+        "SushiSwap",
+        "ODOS",
+        "Ekubo",
+        "Velora",
+        "THENA",
+        "DeDust",
+        "Uniswap V2",
+        "ParaSwap",
+        "PancakeSwap V2",
+        "Uniswap V4",
+        "Mento",
+        "WOOFi",
+        "BaseSwap",
+        "Camelot",
+        "Ramses Exchange",
+        "OKX DEX",
+        "CoW Swap",
+        "STON.fi",
+        "Interport Finance",
+        "Wingriders",
+        "BabySwap",
+        "SpookySwap",
+        "Koi Finance",
+        "MM Finance",
+        "CrossCurve",
+        "Let's F***ing Joe (Trader Joe)",
+        "Sailor Finance",
+        "NILE Exchange",
+        "Arbswap",
+        "Oku",
+        "SunSwap V2",
+        "Pharaoh Exchange"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX::Analytics",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "AGNI Finance",
+        "FusionX Finance",
+        "waveX"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX::Cross-chain DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Cross-chain DEX",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Uniswap V3"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Infrastructure::AMM DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ETH2 Deposit Contract"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Lending::DAO Tooling",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Kamino Finance"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::Payments/RWA::Analytics",
+      "dapp_sector": "exchanges",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Ostium"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Analytics::Analytics",
+      "dapp_sector": "gambling",
+      "dapp_category": "Analytics",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Azuro",
+        "Fomo3D"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Casino::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "Casino",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 39,
+      "n_selected": 39,
+      "cohort_size_note": "eligible_n=39; selected top 39 by signal score",
+      "selected_names": [
+        "Overtime",
+        "Polymarket",
+        "Runnit",
+        "Solpot",
+        "Solcasino",
+        "Oracl",
+        "Divvy",
+        "Bober Battle",
+        "OwlDAO",
+        "Moon Roll",
+        "Solana Casino",
+        "SuperVol",
+        "Candle Genie",
+        "Blockchain Bets",
+        "FOMO Thursday",
+        "Lotshot",
+        "FlipBNB Coin",
+        "BetHash",
+        "Kzyno",
+        "World Wide",
+        "Playw3",
+        "CroVegas",
+        "Waxcasino",
+        "Cronos Bet",
+        "0xRoulette",
+        "FEEN",
+        "X-PlayerOne",
+        "Sharkroll Casino",
+        "TheKey.Fun",
+        "LuckyChainLottery",
+        "Websport",
+        "Solana Coin Flip",
+        "BANZAI",
+        "BlockSpinGaming",
+        "Hive Lottery",
+        "Dicether",
+        "JustBet",
+        "Betswap",
+        "EpicDice"
+      ]
+    },
+    {
+      "cohort_id": "gambling::DEX::AMM DEX",
+      "dapp_sector": "gambling",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "BetDEX",
+        "Metavault"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Lottery::Lottery",
+      "dapp_sector": "gambling",
+      "dapp_category": "Lottery",
+      "primary_sub_tag": "Lottery",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "All For One (VfSE Lottery)"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 42,
+      "n_selected": 42,
+      "cohort_size_note": "eligible_n=42; selected top 42 by signal score",
+      "selected_names": [
+        "Solpump",
+        "BetSwirl",
+        "Luck.io",
+        "HunnyPlay",
+        "Betmode",
+        "Gacha",
+        "Slotana Coin Flip",
+        "Flip.gg",
+        "LUMINOUS",
+        "DeathX.Fun",
+        "BetFury",
+        "SolBitGame",
+        "Degen Park",
+        "Ninja Blaze",
+        "FerdyFlip",
+        "SLM Games",
+        "LastMint",
+        "LuckySea",
+        "DogeBets",
+        "Preduck Games",
+        "HiveSlotGames.com",
+        "Polyflip",
+        "ChainPoker",
+        "RACE Poker",
+        "Krypto Gamers",
+        "2p2e",
+        "PlayRPS.fun",
+        "Meme Kombat",
+        "Bag win",
+        "ElrondBet.net",
+        "ChainWins",
+        "Bitfight",
+        "Lotto",
+        "BlokDuel",
+        "Duel Duck",
+        "Chain Game",
+        "Pigmo",
+        "Solspin",
+        "BvsB",
+        "BITPREDICTION",
+        "CasinoCronos.com",
+        "NFT Cock Fights"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming::DAO Tooling",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Dumont"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming::Lottery",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Lottery",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MetaWin"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming::Play 2 Earn",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "EFIHUB",
+        "Bitlex Games",
+        "Arcadia Games",
+        "Endblock",
+        "JuicyBet"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT Gaming::Prediction Market",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Prediction Market",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "CricSage",
+        "BitUp Game",
+        "Predchain",
+        "Soccersm"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT marketplace::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Trade signal"
+      ]
+    },
+    {
+      "cohort_id": "gambling::NFT marketplace::Prediction Market",
+      "dapp_sector": "gambling",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Prediction Market",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "FORKAST"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Payments/RWA::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Cardano Casino",
+        "Solana Crash"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Prediction Market::Prediction Market",
+      "dapp_sector": "gambling",
+      "dapp_category": "Prediction Market",
+      "primary_sub_tag": "Prediction Market",
+      "n_eligible": 14,
+      "n_selected": 14,
+      "cohort_size_note": "eligible_n=14 (<20): all eligible DApps included",
+      "selected_names": [
+        "Limitless",
+        "Predictions (PRDT)",
+        "Myriad",
+        "SynStation",
+        "dripit",
+        "Mash",
+        "GFEX",
+        "Myriad Markets",
+        "Metafide",
+        "Zote",
+        "Predictr market",
+        "XParty USA",
+        "Rolarian",
+        "Catoff Gaming"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Yield Aggregator::Staking",
+      "dapp_sector": "gambling",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Betero Sports Betting Platform"
+      ]
+    },
+    {
+      "cohort_id": "games::Casino::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "Casino",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "WcoinGame"
+      ]
+    },
+    {
+      "cohort_id": "games::DEX::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "DeFi Kingdoms",
+        "Axie Infinity",
+        "motoDEX",
+        "dexGO"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT Gaming::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 85,
+      "n_selected": 50,
+      "cohort_size_note": "eligible_n=85; selected top 50 by signal score",
+      "selected_names": [
+        "Pixels",
+        "Karat Galaxy",
+        "FishWar",
+        "Planet IX",
+        "Moonveil",
+        "RavenQuest",
+        "Alliance Games",
+        "MetaArena",
+        "Dypius",
+        "PlayEmber",
+        "DragonLand",
+        "Taco Studios",
+        "Archer Hunter",
+        "Sugar Senpai",
+        "Guild of Guardians",
+        "Arena of Faith",
+        "IDLE Glory",
+        "My Guardian Base",
+        "Miner's Rush",
+        "OnChainGM",
+        "PLAYZAP GAMES",
+        "Boredtopia",
+        "Gatto",
+        "Candy Dreams",
+        "Kawaii Puzzle",
+        "Hot Spring - The Cozy World",
+        "GOAT Gaming",
+        "GMonchain",
+        "Pixudi",
+        "Age of Dino",
+        "SERAPH: In The Darkness",
+        "Empire of SEI",
+        "Majyo Treasure",
+        "SeiBound",
+        "Sunflower Land",
+        "Miomi Game",
+        "PROSPECTORS",
+        "Piratopia",
+        "Lumiterra",
+        "Quizmatch",
+        "The Machines Arena",
+        "Chess Universe",
+        "Crypto Run",
+        "Focus Tree",
+        "Wild West Shooting",
+        "Boxing Star X",
+        "Donkey Hunt",
+        "Hurley Super Surfer™",
+        "Ragnarok Libre",
+        "SpinCity"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT marketplace::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 20,
+      "n_selected": 20,
+      "cohort_size_note": "eligible_n=20; selected top 20 by signal score",
+      "selected_names": [
+        "Alien Worlds",
+        "KGeN",
+        "World of Dypians",
+        "SuperWalk",
+        "Bit Hotel",
+        "Star Atlas",
+        "Sweat Economy",
+        "Football Fun",
+        "My Neighbor Alice",
+        "Nine Chronicles",
+        "MARBLEX",
+        "Overtake",
+        "QORPO WORLD",
+        "Iskra",
+        "CZ RUNZ",
+        "LiveArt",
+        "Token Tails",
+        "Pirate Nation",
+        "The Lost Glitches",
+        "Legends of Elumia"
+      ]
+    },
+    {
+      "cohort_id": "games::Payments/RWA::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "WorldShards",
+        "Anome",
+        "Lingo",
+        "SF Legends",
+        "Harvest Moon ~ Meteor Wallet"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Casino::Casino",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Casino",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "GGSOL",
+        "Bitlazer",
+        "Hits"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Casino::Derivatives",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Casino",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Flip Crypto"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::DAO Tooling::DAO Tooling",
+      "dapp_sector": "high-risk",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "FlashMoon",
+        "Polygon Income",
+        "BKOKFI",
+        "ARBITWHALE",
+        "Aim Finance Tech",
+        "Eggs",
+        "Doge Floki Coin"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::DEX::AMM DEX",
+      "dapp_sector": "high-risk",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "MintStakeShare",
+        "Crypto Bank 30",
+        "Dex Roi"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::DEX::Aggregator",
+      "dapp_sector": "high-risk",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Aggregator",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Sandclock"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Infrastructure::Derivatives",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 25,
+      "n_selected": 25,
+      "cohort_size_note": "eligible_n=25; selected top 25 by signal score",
+      "selected_names": [
+        "BigCoin",
+        "BullBNB",
+        "Hot Billionaire",
+        "Nexora Protocol",
+        "POLX-AI",
+        "Synergy Smart",
+        "BnbGift`s",
+        "Truepoi",
+        "Nodesbeat",
+        "Polxbinary",
+        "EthereumGold.io",
+        "My Shiba Inu",
+        "genius turtle",
+        "JOE Miner",
+        "Crypto Knights POL",
+        "NewStart",
+        "The Fortune Miner",
+        "Tewkenaire (ETH)",
+        "FragTycoon",
+        "BNBCapital",
+        "wDogecoin",
+        "HDX20",
+        "PoWH 3D",
+        "BABYQUICK",
+        "USDT Miner"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Infrastructure::Farming",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "KALE"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT Gaming::Analytics",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "JOJO"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT Gaming::Lottery",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Lottery",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Random Bag"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT Gaming::Play 2 Earn",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 6,
+      "n_selected": 6,
+      "cohort_size_note": "eligible_n=6 (<20): all eligible DApps included",
+      "selected_names": [
+        "Brewed Beans",
+        "Doomsday Ark",
+        "Runecoin Network",
+        "Arbitrum Land",
+        "Universo Ancestral",
+        "Rabbit Universe"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::NFT marketplace::Marketplace",
+      "dapp_sector": "high-risk",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "GTokenTool"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Payments/RWA::Farming",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "GemHive",
+        "PayNet Staking"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Payments/RWA::Staking",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Token Surfing"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Privacy/Security::Farming",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Privacy/Security",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ApeEscape Bananafarm"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Social Network::Social",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Top Business Infinity",
+        "Thetherocean"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Yield Aggregator::Farming",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 29,
+      "n_selected": 29,
+      "cohort_size_note": "eligible_n=29; selected top 29 by signal score",
+      "selected_names": [
+        "Rocket Miner",
+        "PolSpring",
+        "SmartCash V2",
+        "Grizzi Fi",
+        "TRX Machine",
+        "BNB ROSNEFT",
+        "POL Hives 2024",
+        "Million Pol",
+        "AutoPoolFund",
+        "Stakin-gg | BULLRUN TAMER",
+        "Beehive Miner",
+        "Titan Yield DAO",
+        "TRON EARN 2025",
+        "AirBNBs",
+        "HOUR ROI",
+        "Pololinks",
+        "Thoreum ETH Miner",
+        "GoldenGoose",
+        "Cairo Finance",
+        "Oracoin Farming",
+        "Kimbo Trainer",
+        "BEMDEFI",
+        "Externity",
+        "Moonshots Farm",
+        "BNB Pool by BNB Ocean",
+        "CAKE OF FORTUNE",
+        "POLKING",
+        "City of Dreams",
+        "STAKE TETHER"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Yield Aggregator::Staking",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 33,
+      "n_selected": 33,
+      "cohort_size_note": "eligible_n=33; selected top 33 by signal score",
+      "selected_names": [
+        "Cluster Yield",
+        "U$DT ZONE",
+        "POLWUKONG",
+        "Cloud Miner",
+        "The Black Vault",
+        "PasiveTon",
+        "Global Wealth Funds",
+        "PUDGY HARVEST",
+        "POL Revo Stake",
+        "PolyCash",
+        "Goldsand",
+        "ProteoDefi",
+        "AZCoin",
+        "CyberPOL",
+        "PEPE Tubes",
+        "U$DT STAKE",
+        "GIVERA BNB",
+        "Astro-POL",
+        "WhaleSyndicate",
+        "GainVault",
+        "SmartCash Network",
+        "TEM",
+        "StakeBitcoin",
+        "PolyGains",
+        "ZyberYield",
+        "OCTOPOL",
+        "POL LION",
+        "Ultimate Baked Beans",
+        "Sun Hero",
+        "OEX Finance",
+        "PiggyBank",
+        "corestake",
+        "BNB STORE"
+      ]
+    },
+    {
+      "cohort_id": "high-risk::Yield Aggregator::Yield Optimizer",
+      "dapp_sector": "high-risk",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Block Rewards",
+        "DRAGONIX"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::DEX::Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "XPmarket",
+        "Sologenic"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::DEX::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFTX"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Lending::Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Reservoir"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Lending::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Blur"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace::Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 33,
+      "n_selected": 33,
+      "cohort_size_note": "eligible_n=33; selected top 33 by signal score",
+      "selected_names": [
+        "Backroom",
+        "xrp.cafe",
+        "bidds",
+        "XOXNO Network",
+        "objkt",
+        "AtomicHub",
+        "Moongate",
+        "Foundation",
+        "Hic et Nunc",
+        "ArenaVS",
+        "Bomb Crypto",
+        "Teia",
+        "BNBMafia",
+        "Matr1x",
+        "NEARnames",
+        "NFT Battle Miners",
+        "Getgems",
+        "Genso Metaverse",
+        "QuestMe",
+        "The Game7 Platform",
+        "Bitte",
+        "Dinosaur Eggs",
+        "CoinFantasy",
+        "Kaidro Chronicle",
+        "Starknet ID",
+        "TokenTrove",
+        "Jump.trade",
+        "StrayShot",
+        "Get Mint",
+        "Outlaw Troopers",
+        "KOR Protocol",
+        "BLOCKLORDS Dynasty",
+        "MAFIAFOOT"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 28,
+      "n_selected": 28,
+      "cohort_size_note": "eligible_n=28; selected top 28 by signal score",
+      "selected_names": [
+        "Magic Eden",
+        "Zora",
+        "OpenSea",
+        "SuperRare",
+        "Rarible",
+        "MOBOX",
+        "ThetaDrop",
+        "fxhash",
+        "Ronin Market",
+        "NeftyBlocks",
+        "Element Market",
+        "LooksRare",
+        "OKX NFT Marketplace",
+        "JPG Store",
+        "Tevaera",
+        "Spacebar",
+        "SentX",
+        "MOOAR",
+        "Sonova",
+        "NMKR Minting",
+        "Minted Network",
+        "NFTHive",
+        "OmniHub",
+        "Joepegs",
+        "AiBased",
+        "Bomb Crypto Marketplace",
+        "EAPES",
+        "Biru"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Payments/RWA::Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Manifold",
+        "Highlight",
+        "ADA Handle",
+        "Warsaken",
+        "Uranium.io"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Payments/RWA::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "NFPrompt",
+        "Marketapp"
+      ]
+    },
+    {
+      "cohort_id": "other::Analytics::Analytics",
+      "dapp_sector": "other",
+      "dapp_category": "Analytics",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Stobix"
+      ]
+    },
+    {
+      "cohort_id": "other::DAO Tooling::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 12,
+      "n_selected": 12,
+      "cohort_size_note": "eligible_n=12 (<20): all eligible DApps included",
+      "selected_names": [
+        "MorpheusAI",
+        "XPIN Network",
+        "LayerZero",
+        "Cronos ID",
+        "aixbt",
+        "Edelweis",
+        "RubyScore",
+        "Exorde",
+        "Morpheus",
+        "Tetra",
+        "OpenSource",
+        "SolSave"
+      ]
+    },
+    {
+      "cohort_id": "other::DEX::AMM DEX",
+      "dapp_sector": "other",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "IoTAI"
+      ]
+    },
+    {
+      "cohort_id": "other::DEX::Identity",
+      "dapp_sector": "other",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Identity",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SoSoValue"
+      ]
+    },
+    {
+      "cohort_id": "other::DEX::Privacy",
+      "dapp_sector": "other",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Privacy",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "zkCodex"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::AI Agent Platform",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "AI Agent Platform",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Agent Virtual Machine",
+        "Robora",
+        "Hey Anon"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::AI DeFi",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "AI DeFi",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainOpera AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::AI Launchpad",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "AI Launchpad",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "ZoRobotics",
+        "Bullbit AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::Infrastructure",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "Infrastructure",
+      "n_eligible": 12,
+      "n_selected": 12,
+      "cohort_size_note": "eligible_n=12 (<20): all eligible DApps included",
+      "selected_names": [
+        "Venice",
+        "Squads",
+        "Sol Incinerator",
+        "GWAY",
+        "Nomis",
+        "Mysterium VPN",
+        "Actifit",
+        "Guild",
+        "0xAstra",
+        "Blast Deposit",
+        "Steemhunt",
+        "TimeSoul"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::Marketplace",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "TradeOS"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::Social",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "FIO"
+      ]
+    },
+    {
+      "cohort_id": "other::Metaverse::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "Metaverse",
+      "primary_sub_tag": "Wallet",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MEET48"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::AI Gaming",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "AI Gaming",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "NeuralAI",
+        "TriviAgent"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::AI Social",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "AI Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Befriend AI by Xterio"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "WORLD3",
+        "The Innovation Game",
+        "BANANA",
+        "Balance",
+        "SKALE Manager",
+        "HELLO",
+        "EARNM Rewards"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::Farming",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Dropee"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::Metaverse",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MiL.k"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::Play 2 Earn",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Clash of Coins"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT Gaming::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Wallet",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Boom"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace::AI Agent Platform",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "AI Agent Platform",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Crestal Nation"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SecondLive"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace::Marketplace",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Wagmi Defense"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace::NFT Tools",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "NFT Tools",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "AtomicAssets"
+      ]
+    },
+    {
+      "cohort_id": "other::Oracles::Oracle",
+      "dapp_sector": "other",
+      "dapp_category": "Oracles",
+      "primary_sub_tag": "Oracle",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "zkPass"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA::Analytics",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Helio"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "WiFi Map",
+        "Holyheld",
+        "GoMining"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA::Payments",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Payments",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "PagCrypto"
+      ]
+    },
+    {
+      "cohort_id": "other::Privacy/Security::Identity",
+      "dapp_sector": "other",
+      "dapp_category": "Privacy/Security",
+      "primary_sub_tag": "Identity",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainGPT",
+        "Ethereum Name Service",
+        "Tezos Domains",
+        "nCaptcha"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::AI Compute",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "AI Compute",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Node AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::AI Launchpad",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "AI Launchpad",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "OpenPad AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::AI Research",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "AI Research",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Alaya AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::Analytics",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SubHub"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "4EVERLAND",
+        "Sogni AI",
+        "Kaito"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::Farming",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Burnify"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::Identity",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Identity",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Bad Idea AI",
+        "Verax"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::Social",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "aigent.run"
+      ]
+    },
+    {
+      "cohort_id": "other::Social Network::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Wallet",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "CUDIS"
+      ]
+    },
+    {
+      "cohort_id": "other::SocialFi::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "SocialFi",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Poolz Finance",
+        "Flap"
+      ]
+    },
+    {
+      "cohort_id": "other::SocialFi::Social",
+      "dapp_sector": "other",
+      "dapp_category": "SocialFi",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Mint Club"
+      ]
+    },
+    {
+      "cohort_id": "other::Wallet::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "Wallet",
+      "primary_sub_tag": "Wallet",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Particle Network",
+        "zkBob Private Wallet",
+        "Abstract Global Wallet"
+      ]
+    },
+    {
+      "cohort_id": "other::Yield Aggregator::Staking",
+      "dapp_sector": "other",
+      "dapp_category": "Yield Aggregator",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Edubuk"
+      ]
+    },
+    {
+      "cohort_id": "social::DEX::Social",
+      "dapp_sector": "social",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Social",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Decentraland",
+        "Catecoin"
+      ]
+    },
+    {
+      "cohort_id": "social::Derivatives::Social",
+      "dapp_sector": "social",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Meta Pool"
+      ]
+    },
+    {
+      "cohort_id": "social::Metaverse::Social",
+      "dapp_sector": "social",
+      "dapp_category": "Metaverse",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MetaMap"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT Gaming::Social",
+      "dapp_sector": "social",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Social",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "XRADERS",
+        "Vortex Gaming",
+        "Circle of Games",
+        "DappRadar Quests",
+        "TENAMINT"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT Gaming::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "SocialFi",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Hanafuda",
+        "Revox | ReadON",
+        "MomoAI(MetaOasis)",
+        "DistrictOne",
+        "ChainGun"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT marketplace::Social",
+      "dapp_sector": "social",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Social",
+      "n_eligible": 10,
+      "n_selected": 10,
+      "cohort_size_note": "eligible_n=10 (<20): all eligible DApps included",
+      "selected_names": [
+        "SPACE ID",
+        "GMGN",
+        "DIMO",
+        "Hooked",
+        "STEPN",
+        "Playbux",
+        "Skurpy",
+        "ZNS Connect",
+        "CDARI",
+        "iO Beats"
+      ]
+    },
+    {
+      "cohort_id": "social::NFT marketplace::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "SocialFi",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "StarryNift"
+      ]
+    },
+    {
+      "cohort_id": "social::Payments/RWA::Social",
+      "dapp_sector": "social",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Social",
+      "n_eligible": 6,
+      "n_selected": 6,
+      "cohort_size_note": "eligible_n=6 (<20): all eligible DApps included",
+      "selected_names": [
+        "FanX Protocol",
+        "KlimaDao",
+        "Sound.xyz",
+        "Rada Quest TCG",
+        "QSTN",
+        "Farm Clicker"
+      ]
+    },
+    {
+      "cohort_id": "social::Payments/RWA::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "SocialFi",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Access Protocol",
+        "azit",
+        "RabbitHole"
+      ]
+    },
+    {
+      "cohort_id": "social::Social Network::Social",
+      "dapp_sector": "social",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 34,
+      "n_selected": 34,
+      "cohort_size_note": "eligible_n=34; selected top 34 by signal score",
+      "selected_names": [
+        "Layer3",
+        "Galxe",
+        "Common",
+        "TaskOn",
+        "Hushr",
+        "HAPI ID",
+        "Vibely",
+        "Learn NEAR Club",
+        "AlfaFrens",
+        "OverHerd",
+        "SoQuest",
+        "ShardDog",
+        "Bitget Red Packet",
+        "PeakD",
+        "poidh",
+        "XO",
+        "Blockchain Messages",
+        "QuestN",
+        "StoryChain",
+        "UneMeta",
+        "Ethereum Follow Protocol",
+        "Liketu",
+        "Ecency",
+        "Sarafu Network",
+        "Fanzee",
+        "H4LAB",
+        "DBuzz",
+        "iMe Messenger",
+        "TagAI",
+        "cXc.world",
+        "SendingMe",
+        "Lens Protocol",
+        "iMe Messenger & Crypto Wallet",
+        "STEMsocial"
+      ]
+    },
+    {
+      "cohort_id": "social::SocialFi::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "SocialFi",
+      "primary_sub_tag": "SocialFi",
+      "n_eligible": 20,
+      "n_selected": 20,
+      "cohort_size_note": "eligible_n=20; selected top 20 by signal score",
+      "selected_names": [
+        "The Arena",
+        "CARV",
+        "Friend.tech",
+        "Alt.town",
+        "UXLINK",
+        "Farcaster",
+        "Hype.fun",
+        "SOMESING",
+        "Arkada",
+        "XCAD Network",
+        "CyberConnect",
+        "Goat.Tech",
+        "Towns",
+        "Buddy",
+        "Chingari",
+        "OpenChat",
+        "Yup",
+        "Match",
+        "APPICS",
+        "Near Social"
+      ]
+    }
+  ],
+  "input_metadata": {
+    "source_file": "/Users/kristian.kirilov/Github/dapp-scaner/DAPP_Dataset_Nov_2025 - Final.csv",
+    "row_count_input": 855,
+    "columns": [
+      "name",
+      "dapp_sector",
+      "dapp_category",
+      "sub_category",
+      "is_active",
+      "is_multi_chain",
+      "governance_type",
+      "ownership_status",
+      "level_of_decentralisation",
+      "research_comments",
+      "tags",
+      "token_symbol",
+      "token_type",
+      "website",
+      "launch_date",
+      "chains",
+      "raised_capital",
+      "tvl",
+      "tvl_ratio",
+      "market_cap",
+      "circulating_supply",
+      "total_supply",
+      "price",
+      "users",
+      "volume",
+      "transactions",
+      "total_liquidity_usd",
+      "percent_change_1h",
+      "percent_change_24h",
+      "percent_change_7d",
+      "percent_change_30d",
+      "percent_change_60d",
+      "percent_change_90d",
+      "liquidity_usd"
+    ]
+  },
+  "analysis_eligible_count": 834
+}

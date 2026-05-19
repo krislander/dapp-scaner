@@ -1,0 +1,81 @@
+======================================================================
+  ANOMALY & CONTRADICTION REPORT
+  For thesis discussion section
+======================================================================
+
+1. GOVERNANCE PARADOXES
+----------------------------------------
+
+  Decentralized but Company-Owned: 1 DApps
+    - Quizmatch (Gov: TEAM_CONTROLLED, Own: COMPANY_OWNED, Dec: DECENTRALIZED)
+
+  Governance Token but Team-Controlled: 2 DApps
+    - Common (Gov: TEAM_CONTROLLED, Own: COMPANY_OWNED, Dec: SEMI_DECENTRALIZED)
+    - Pixel Heroes Adventure (Gov: TEAM_CONTROLLED, Own: COMPANY_OWNED, Dec: CENTRALIZED)
+
+  DAO-Owned but No Governance: 0 DApps
+
+  Centralized with On-Chain Governance: 1 DApps
+    - Virtuals Protocol (Gov: ONCHAIN_TOKEN_GOVERNANCE, Own: MIXED, Dec: CENTRALIZED)
+
+
+2. VALUATION ANOMALIES
+----------------------------------------
+
+  Highest MCap-per-User (top 15):
+    - STEPN: MCap $59,756,106, Users 15
+    - SoSoValue: MCap $167,434,569, Users 61
+    - Decentraland: MCap $611,483,995, Users 468
+    - Towns: MCap $55,717,372, Users 83
+    - Kaito: MCap $161,396,333, Users 273
+    - Blockchain Bets: MCap $1,108,359, Users 2
+    - DIMO: MCap $27,264,098, Users 82
+    - LayerZero: MCap $258,669,701, Users 811
+    - BigCoin: MCap $11,959,846, Users 57
+    - Ethena: MCap $1,830,805,611, Users 9,104
+    - Catecoin: MCap $11,221,151, Users 60
+
+  Unfunded outperformers: 57 DApps
+    - Pump.fun: MCap $1,918,265,106
+    - Ethena: MCap $1,830,805,611
+    - Morpho: MCap $797,206,832
+    - Ethereum Name Service: MCap $768,055,610
+    - Aerodrome: MCap $632,678,718
+    - Decentraland: MCap $611,483,995
+    - Virtuals Protocol: MCap $606,283,471
+    - THORChain: MCap $439,770,607
+    - Compound: MCap $413,303,620
+    - Raydium: MCap $294,254,884
+
+  Extreme TVL leverage (TVL > 10x MCap):
+    - Maple: TVL/MCap = 8120.0x
+    - BabySwap: TVL/MCap = 7271.2x
+    - QuickSwap: TVL/MCap = 54.7x
+    - KernelDAO: TVL/MCap = 51.9x
+    - EigenLayer: TVL/MCap = 44.9x
+    - LIDO: TVL/MCap = 41.9x
+    - ApeBond: TVL/MCap = 39.1x
+    - Pendle: TVL/MCap = 34.6x
+    - ZeroLend: TVL/MCap = 21.9x
+    - Nostra: TVL/MCap = 15.8x
+
+
+3. PERFORMANCE OUTLIERS
+----------------------------------------
+
+  Extremely high tx/user:
+    - BetDEX: 445975 tx/user
+    - Bitfight: 15977 tx/user
+    - BITPREDICTION: 12346 tx/user
+    - Helix: 8450 tx/user
+    - Trade signal: 7914 tx/user
+    - BvsB: 6742 tx/user
+    - KALE: 6077 tx/user
+    - Drift Protocol V2: 5964 tx/user
+    - BitUp Game: 4482 tx/user
+
+  High users, zero TVL: 185 DApps
+
+
+Date: 2026-02-17
+======================================================================

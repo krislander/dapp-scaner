@@ -1,0 +1,40 @@
+KEY NUMBERS – DApp Ecosystem Analysis
+==================================================
+
+Dataset: 855 DApps
+Categories: 20
+Blockchains: 77
+
+--- MARKET ---
+Total Market Cap: $14.9B
+Total TVL: $115.7B
+Total Users: 90.9M
+
+--- GOVERNANCE ---
+DECENTRALIZED: 4.6%
+SEMI_DECENTRALIZED: 38.6%
+CENTRALIZED: 56.8%
+
+--- TOKENS ---
+DApps with tokens: 419 (49.0%)
+  UTILITY: 202
+  REWARD: 108
+  GOVERNANCE: 78
+  SPECULATIVE: 27
+  NONE: 2
+  SOCIAL: 2
+
+--- SECTORS ---
+  DeFi: 268 DApps
+  Gaming: 209 DApps
+  Social: 108 DApps
+  Prediction Markets: 32 DApps
+  RWA: 43 DApps
+  AI: 59 DApps
+  DePIN: 10 DApps
+
+--- CONCENTRATION ---
+Top 10 DApps control 57.5% of market cap
+Top 10 DApps control 93.1% of TVL
+
+Date: 2026-02-17

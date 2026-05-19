@@ -387,6 +387,67 @@ def create_sankey_diagram(df):
     fig.write_html(output_path)
     print(f"✓ Saved interactive Sankey: {output_path}")
 
+def analyze_governance_token_type(df):
+    """Analyze how governance dimensions vary by token type."""
+    print("\n" + "="*60)
+    print("GOVERNANCE BY TOKEN TYPE ANALYSIS")
+    print("="*60)
+
+    df_tok = df[df['has_token']].dropna(
+        subset=['governance_type', 'level_of_decentralisation'])
+
+    if len(df_tok) < 10:
+        print("  Insufficient data for token type governance analysis")
+        return
+
+    print(f"Analyzing {len(df_tok)} DApps with tokens and governance data")
+
+    # Governance score by token type
+    gov_by_tt = df_tok.groupby('token_type_primary').agg({
+        'governance_score': ['mean', 'median', 'count']
+    })
+    gov_by_tt.columns = ['mean', 'median', 'count']
+    gov_by_tt = gov_by_tt.sort_values('mean', ascending=False)
+    print("\nGovernance Score by Token Type:")
+    print(gov_by_tt)
+
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+    fig.suptitle('Governance Patterns by Token Type', fontsize=14, fontweight='bold')
+
+    # 1. Governance score by token type
+    ax = axes[0]
+    colors = plt.cm.viridis(np.linspace(0, 1, len(gov_by_tt)))
+    ax.barh(range(len(gov_by_tt)), gov_by_tt['mean'], color=colors)
+    ax.set_yticks(range(len(gov_by_tt)))
+    ax.set_yticklabels(gov_by_tt.index)
+    ax.set_xlabel('Average Governance Score')
+    ax.set_title('Governance Score by Token Type', fontsize=12, fontweight='bold')
+    ax.invert_yaxis()
+    for i, (idx, row) in enumerate(gov_by_tt.iterrows()):
+        ax.text(row['mean'] + 0.005, i,
+                f"{row['mean']:.2f} (n={int(row['count'])})",
+                va='center', fontsize=9)
+
+    # 2. Decentralisation breakdown per token type
+    ax = axes[1]
+    ct = pd.crosstab(df_tok['token_type_primary'],
+                     df_tok['level_of_decentralisation'],
+                     normalize='index') * 100
+    dec_order = ['CENTRALIZED', 'SEMI_DECENTRALIZED', 'DECENTRALIZED']
+    dec_cols = [c for c in dec_order if c in ct.columns]
+    ct[dec_cols].plot(kind='barh', stacked=True, ax=ax,
+                     color=['#d62728', '#ff7f0e', '#2ca02c'])
+    ax.set_xlabel('Percentage (%)')
+    ax.set_title('Decentralisation by Token Type', fontsize=12, fontweight='bold')
+    ax.legend(title='Level', fontsize=8, bbox_to_anchor=(1.05, 1))
+
+    plt.tight_layout()
+    output_path = OUTPUT_DIR / '02_governance_token_type.png'
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    print(f"\n✓ Saved: {output_path}")
+    plt.close()
+
+
 def generate_governance_insights(df):
     """Generate key insights about governance."""
     print("\n" + "="*60)
@@ -455,6 +516,7 @@ def main():
     analyze_governance_by_category(df)
     analyze_governance_market_correlation(df)
     create_sankey_diagram(df)
+    analyze_governance_token_type(df)
     insights = generate_governance_insights(df)
     
     print("\n" + "="*60)

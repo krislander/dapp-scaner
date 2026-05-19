@@ -1,0 +1,804 @@
+{
+  "parameters": {
+    "COHORT_MIN_SIZE": 20,
+    "COHORT_MAX_SIZE": 50,
+    "SIGNAL_WEIGHTS": {
+      "users": 1.0,
+      "volume": 1.0,
+      "tvl": 0.8,
+      "market_cap": 0.8,
+      "transactions": 0.6
+    }
+  },
+  "primary_slices": [
+    {
+      "cohort_id": "collectibles::NFT marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Dmail Network"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "DLN",
+        "Across",
+        "Stargate"
+      ]
+    },
+    {
+      "cohort_id": "defi::DAO Tooling",
+      "dapp_sector": "defi",
+      "dapp_category": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Mitosis"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "n_eligible": 8,
+      "n_selected": 8,
+      "cohort_size_note": "eligible_n=8 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pump.fun",
+        "Etherex",
+        "SynFutures",
+        "1inch Network",
+        "OpenOcean",
+        "Helix",
+        "Rhea Finance",
+        "Rubic"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pendle",
+        "Jito"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Lending",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Morpho",
+        "Maple",
+        "Moonwell",
+        "ZeroLend",
+        "Aave V3"
+      ]
+    },
+    {
+      "cohort_id": "defi::Metaverse",
+      "dapp_sector": "defi",
+      "dapp_category": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Virtuals Protocol"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Velo"
+      ]
+    },
+    {
+      "cohort_id": "defi::Social Network",
+      "dapp_sector": "defi",
+      "dapp_category": "Social Network",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Banana Gun"
+      ]
+    },
+    {
+      "cohort_id": "defi::Wallet",
+      "dapp_sector": "defi",
+      "dapp_category": "Wallet",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "GoodDollar"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "n_eligible": 13,
+      "n_selected": 13,
+      "cohort_size_note": "eligible_n=13 (<20): all eligible DApps included",
+      "selected_names": [
+        "Raydium",
+        "QuickSwap",
+        "DragonSwap",
+        "VVS Finance",
+        "ApeBond",
+        "Merchant Moe",
+        "Aerodrome",
+        "SushiSwap",
+        "ODOS",
+        "Velora",
+        "DeDust",
+        "ParaSwap",
+        "Mento"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "Casino",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Overtime"
+      ]
+    },
+    {
+      "cohort_id": "games::DEX",
+      "dapp_sector": "games",
+      "dapp_category": "DEX",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "DeFi Kingdoms",
+        "Axie Infinity"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT Gaming",
+      "dapp_sector": "games",
+      "dapp_category": "NFT Gaming",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pixels",
+        "Karat Galaxy",
+        "FishWar",
+        "RavenQuest",
+        "Alliance Games",
+        "Dypius",
+        "Arena of Faith"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT marketplace",
+      "dapp_sector": "games",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "Alien Worlds",
+        "KGeN",
+        "World of Dypians",
+        "SuperWalk"
+      ]
+    },
+    {
+      "cohort_id": "games::Payments/RWA",
+      "dapp_sector": "games",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "WorldShards",
+        "Anome",
+        "Lingo"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Lending",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Lending",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Blur"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "Magic Eden",
+        "Zora",
+        "Backroom"
+      ]
+    },
+    {
+      "cohort_id": "other::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "XPIN Network"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainOpera AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Metaverse",
+      "dapp_sector": "other",
+      "dapp_category": "Metaverse",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MEET48"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SecondLive"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "WiFi Map",
+        "Helio"
+      ]
+    },
+    {
+      "cohort_id": "other::Privacy/Security",
+      "dapp_sector": "other",
+      "dapp_category": "Privacy/Security",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainGPT",
+        "Ethereum Name Service"
+      ]
+    },
+    {
+      "cohort_id": "social::Social Network",
+      "dapp_sector": "social",
+      "dapp_category": "Social Network",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Layer3"
+      ]
+    },
+    {
+      "cohort_id": "social::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "SocialFi",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "The Arena"
+      ]
+    }
+  ],
+  "secondary_slices": [
+    {
+      "cohort_id": "collectibles::NFT marketplace::NFT Marketplace",
+      "dapp_sector": "collectibles",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Dmail Network"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Bridge",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Bridge",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Across"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Farming",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Farming",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Stargate"
+      ]
+    },
+    {
+      "cohort_id": "defi::Bridge/Router::Staking",
+      "dapp_sector": "defi",
+      "dapp_category": "Bridge/Router",
+      "primary_sub_tag": "Staking",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "DLN"
+      ]
+    },
+    {
+      "cohort_id": "defi::DAO Tooling::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Mitosis"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::AMM DEX",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pump.fun",
+        "1inch Network"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Aggregator",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Aggregator",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Rubic"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "OpenOcean"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Perpetuals",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Perpetuals",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "SynFutures",
+        "Helix"
+      ]
+    },
+    {
+      "cohort_id": "defi::DEX::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Etherex",
+        "Rhea Finance"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives::Derivatives",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Derivatives",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Jito"
+      ]
+    },
+    {
+      "cohort_id": "defi::Derivatives::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Derivatives",
+      "primary_sub_tag": "Lending",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pendle"
+      ]
+    },
+    {
+      "cohort_id": "defi::Lending::Lending",
+      "dapp_sector": "defi",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "Lending",
+      "n_eligible": 5,
+      "n_selected": 5,
+      "cohort_size_note": "eligible_n=5 (<20): all eligible DApps included",
+      "selected_names": [
+        "Morpho",
+        "Maple",
+        "Moonwell",
+        "ZeroLend",
+        "Aave V3"
+      ]
+    },
+    {
+      "cohort_id": "defi::Metaverse::AI Agent Platform",
+      "dapp_sector": "defi",
+      "dapp_category": "Metaverse",
+      "primary_sub_tag": "AI Agent Platform",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Virtuals Protocol"
+      ]
+    },
+    {
+      "cohort_id": "defi::Payments/RWA::Yield Optimizer",
+      "dapp_sector": "defi",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Yield Optimizer",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Velo"
+      ]
+    },
+    {
+      "cohort_id": "defi::Social Network::Social",
+      "dapp_sector": "defi",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Banana Gun"
+      ]
+    },
+    {
+      "cohort_id": "defi::Wallet::DAO Tooling",
+      "dapp_sector": "defi",
+      "dapp_category": "Wallet",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "GoodDollar"
+      ]
+    },
+    {
+      "cohort_id": "exchanges::DEX::AMM DEX",
+      "dapp_sector": "exchanges",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "AMM DEX",
+      "n_eligible": 13,
+      "n_selected": 13,
+      "cohort_size_note": "eligible_n=13 (<20): all eligible DApps included",
+      "selected_names": [
+        "Raydium",
+        "QuickSwap",
+        "DragonSwap",
+        "VVS Finance",
+        "ApeBond",
+        "Merchant Moe",
+        "Aerodrome",
+        "SushiSwap",
+        "ODOS",
+        "Velora",
+        "DeDust",
+        "ParaSwap",
+        "Mento"
+      ]
+    },
+    {
+      "cohort_id": "gambling::Casino::Casino",
+      "dapp_sector": "gambling",
+      "dapp_category": "Casino",
+      "primary_sub_tag": "Casino",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Overtime"
+      ]
+    },
+    {
+      "cohort_id": "games::DEX::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "DEX",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "DeFi Kingdoms",
+        "Axie Infinity"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT Gaming::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "NFT Gaming",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 7,
+      "n_selected": 7,
+      "cohort_size_note": "eligible_n=7 (<20): all eligible DApps included",
+      "selected_names": [
+        "Pixels",
+        "Karat Galaxy",
+        "FishWar",
+        "RavenQuest",
+        "Alliance Games",
+        "Dypius",
+        "Arena of Faith"
+      ]
+    },
+    {
+      "cohort_id": "games::NFT marketplace::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 4,
+      "n_selected": 4,
+      "cohort_size_note": "eligible_n=4 (<20): all eligible DApps included",
+      "selected_names": [
+        "Alien Worlds",
+        "KGeN",
+        "World of Dypians",
+        "SuperWalk"
+      ]
+    },
+    {
+      "cohort_id": "games::Payments/RWA::Play 2 Earn",
+      "dapp_sector": "games",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Play 2 Earn",
+      "n_eligible": 3,
+      "n_selected": 3,
+      "cohort_size_note": "eligible_n=3 (<20): all eligible DApps included",
+      "selected_names": [
+        "WorldShards",
+        "Anome",
+        "Lingo"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::Lending::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "Lending",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Blur"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace::Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "Marketplace",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Backroom"
+      ]
+    },
+    {
+      "cohort_id": "marketplaces::NFT marketplace::NFT Marketplace",
+      "dapp_sector": "marketplaces",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "NFT Marketplace",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "Magic Eden",
+        "Zora"
+      ]
+    },
+    {
+      "cohort_id": "other::DAO Tooling::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "DAO Tooling",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "XPIN Network"
+      ]
+    },
+    {
+      "cohort_id": "other::Infrastructure::AI DeFi",
+      "dapp_sector": "other",
+      "dapp_category": "Infrastructure",
+      "primary_sub_tag": "AI DeFi",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainOpera AI"
+      ]
+    },
+    {
+      "cohort_id": "other::Metaverse::Wallet",
+      "dapp_sector": "other",
+      "dapp_category": "Metaverse",
+      "primary_sub_tag": "Wallet",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "MEET48"
+      ]
+    },
+    {
+      "cohort_id": "other::NFT marketplace::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "NFT marketplace",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "SecondLive"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA::Analytics",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "Analytics",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Helio"
+      ]
+    },
+    {
+      "cohort_id": "other::Payments/RWA::DAO Tooling",
+      "dapp_sector": "other",
+      "dapp_category": "Payments/RWA",
+      "primary_sub_tag": "DAO Tooling",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "WiFi Map"
+      ]
+    },
+    {
+      "cohort_id": "other::Privacy/Security::Identity",
+      "dapp_sector": "other",
+      "dapp_category": "Privacy/Security",
+      "primary_sub_tag": "Identity",
+      "n_eligible": 2,
+      "n_selected": 2,
+      "cohort_size_note": "eligible_n=2 (<20): all eligible DApps included",
+      "selected_names": [
+        "ChainGPT",
+        "Ethereum Name Service"
+      ]
+    },
+    {
+      "cohort_id": "social::Social Network::Social",
+      "dapp_sector": "social",
+      "dapp_category": "Social Network",
+      "primary_sub_tag": "Social",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "Layer3"
+      ]
+    },
+    {
+      "cohort_id": "social::SocialFi::SocialFi",
+      "dapp_sector": "social",
+      "dapp_category": "SocialFi",
+      "primary_sub_tag": "SocialFi",
+      "n_eligible": 1,
+      "n_selected": 1,
+      "cohort_size_note": "eligible_n=1 (<20): all eligible DApps included",
+      "selected_names": [
+        "The Arena"
+      ]
+    }
+  ],
+  "input_metadata": {
+    "source_file": "/Users/kristian.kirilov/Github/dapp-scaner/DAPP_Dataset_Nov_2025 - Final.csv",
+    "row_count_input": 855
+  },
+  "eligible_loose_n": 834,
+  "analysis_eligible_n": 68
+}

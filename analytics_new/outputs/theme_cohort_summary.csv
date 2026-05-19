@@ -1,0 +1,4 @@
+theme,description,n_all_matched,n_eligible_matched,pct_governance_token,top_governance_type
+prediction_markets,"dapp_category == Prediction Market OR text match (prediction, polymarket, augur, forecast)",32,32,0.0,TEAM_CONTROLLED
+ai_dapps,"regex on tags, sub_category, research_comments, name: ai, llm, machine learning, ai gaming, ai-big-data",66,66,0.12121212121212122,TEAM_CONTROLLED
+depin_rwa,"Payments/RWA category OR tags/text: depin, rwa, move to earn, tokenized real world",70,69,0.07246376811594203,TEAM_CONTROLLED

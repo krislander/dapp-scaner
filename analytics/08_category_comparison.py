@@ -156,6 +156,40 @@ def main():
     print(f"\n✓ Saved: {output_path}")
     plt.close()
     
+    # ── Additional: Token type breakdown by category ──
+    fig2, axes2 = plt.subplots(1, 2, figsize=(16, 7))
+    fig2.suptitle('Token Type & Sector Flags by Category', fontsize=14, fontweight='bold')
+
+    # Token type stacked bar per category
+    ax = axes2[0]
+    df_tok = df_top[df_top['has_token']].copy()
+    if 'token_type_primary' in df_tok.columns and len(df_tok) > 0:
+        ct = pd.crosstab(df_tok['dapp_category'], df_tok['token_type_primary'],
+                         normalize='index') * 100
+        type_cols = [c for c in ['GOVERNANCE', 'UTILITY', 'REWARD', 'SPECULATIVE', 'SOCIAL']
+                     if c in ct.columns]
+        ct[type_cols].plot(kind='barh', stacked=True, ax=ax)
+        ax.set_xlabel('Percentage (%)')
+        ax.set_title('Token Type Distribution by Category', fontsize=11, fontweight='bold')
+        ax.legend(title='Token Type', fontsize=8, bbox_to_anchor=(1.05, 1))
+
+    # Governance token adoption rate by category
+    ax = axes2[1]
+    if 'is_governance_token' in df_top.columns:
+        gov_rate = df_top.groupby('dapp_category')['is_governance_token'].mean() * 100
+        gov_rate = gov_rate.sort_values(ascending=True)
+        gov_rate.plot(kind='barh', ax=ax, color='coral', edgecolor='black')
+        ax.set_xlabel('Governance Token Adoption (%)')
+        ax.set_title('Governance Token Rate by Category', fontsize=11, fontweight='bold')
+        for i, v in enumerate(gov_rate.values):
+            ax.text(v + 0.5, i, f'{v:.1f}%', va='center', fontsize=9)
+
+    plt.tight_layout()
+    output_path2 = OUTPUT_DIR / '08_category_token_type.png'
+    plt.savefig(output_path2, dpi=300, bbox_inches='tight')
+    print(f"\n✓ Saved: {output_path2}")
+    plt.close()
+
     # Key category insights
     print("\n" + "="*60)
     print("KEY CATEGORY INSIGHTS")

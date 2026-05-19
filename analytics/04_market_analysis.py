@@ -448,6 +448,83 @@ def analyze_volume_metrics(df):
     print(f"\n✓ Saved: {output_path}")
     plt.close()
 
+def analyze_market_by_token_type(df):
+    """Market metrics breakdown by token type."""
+    print("\n" + "="*60)
+    print("MARKET METRICS BY TOKEN TYPE")
+    print("="*60)
+
+    df_mkt = df[(df['market_cap'] > 0) & (df['has_token'])].copy()
+    print(f"Analyzing {len(df_mkt)} DApps with tokens and market cap")
+
+    type_order = ['GOVERNANCE', 'UTILITY', 'REWARD', 'SPECULATIVE']
+    type_order = [t for t in type_order if t in df_mkt['token_type_primary'].values]
+
+    summary = df_mkt.groupby('token_type_primary').agg({
+        'market_cap': ['mean', 'median', 'count'],
+        'volume': 'median',
+        'volatility_index': 'median',
+    })
+    print("\nMarket summary by token type:")
+    print(summary)
+
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+    fig.suptitle('Market Dynamics by Token Type', fontsize=14, fontweight='bold')
+
+    # 1. Market cap distribution (violin plot)
+    ax = axes[0, 0]
+    plot_df = df_mkt[df_mkt['token_type_primary'].isin(type_order)]
+    if len(plot_df) > 10:
+        parts = ax.violinplot(
+            [np.log10(plot_df[plot_df['token_type_primary'] == t]['market_cap'].values)
+             for t in type_order],
+            positions=range(len(type_order)), showmedians=True)
+        ax.set_xticks(range(len(type_order)))
+        ax.set_xticklabels(type_order, rotation=30, ha='right')
+        ax.set_ylabel('Log10(Market Cap)')
+        ax.set_title('Market Cap Distribution by Token Type', fontsize=11, fontweight='bold')
+
+    # 2. Volume comparison
+    ax = axes[0, 1]
+    vol_data = df_mkt[df_mkt['volume'] > 0].groupby('token_type_primary')['volume'].median()
+    vol_data = vol_data.loc[[t for t in type_order if t in vol_data.index]].sort_values()
+    vol_data.plot(kind='barh', ax=ax, color='coral', edgecolor='black')
+    ax.set_xlabel('Median Trading Volume (USD)')
+    ax.set_title('Median Volume by Token Type', fontsize=11, fontweight='bold')
+    ax.xaxis.set_major_formatter(plt.FuncFormatter(
+        lambda x, _: f'${x/1e6:.1f}M' if x >= 1e6 else f'${x:,.0f}'))
+
+    # 3. Volatility comparison
+    ax = axes[1, 0]
+    vol_idx = df_mkt.groupby('token_type_primary')['volatility_index'].agg(['mean', 'median'])
+    vol_idx = vol_idx.loc[[t for t in type_order if t in vol_idx.index]]
+    x = np.arange(len(vol_idx))
+    ax.bar(x - 0.15, vol_idx['mean'], 0.3, label='Mean', color='#e74c3c')
+    ax.bar(x + 0.15, vol_idx['median'], 0.3, label='Median', color='#3498db')
+    ax.set_xticks(x)
+    ax.set_xticklabels(vol_idx.index, rotation=30, ha='right')
+    ax.set_ylabel('Volatility Index')
+    ax.set_title('Volatility by Token Type', fontsize=11, fontweight='bold')
+    ax.legend()
+
+    # 4. Supply ratio by token type
+    ax = axes[1, 1]
+    df_supply = df_mkt[(df_mkt['circulating_supply'] > 0) &
+                       (df_mkt['total_supply'] > 0)].copy()
+    df_supply['supply_ratio'] = df_supply['circulating_supply'] / df_supply['total_supply']
+    sr_by_type = df_supply.groupby('token_type_primary')['supply_ratio'].median()
+    sr_by_type = sr_by_type.loc[[t for t in type_order if t in sr_by_type.index]]
+    sr_by_type.plot(kind='barh', ax=ax, color='mediumpurple', edgecolor='black')
+    ax.set_xlabel('Median Circulating / Total Supply')
+    ax.set_title('Supply Ratio by Token Type', fontsize=11, fontweight='bold')
+
+    plt.tight_layout()
+    output_path = OUTPUT_DIR / '04_market_by_token_type.png'
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    print(f"\n✓ Saved: {output_path}")
+    plt.close()
+
+
 def generate_market_insights(df, top_10_pct):
     """Generate key insights about market dynamics."""
     print("\n" + "="*60)
@@ -500,6 +577,7 @@ def main():
     analyze_price_volatility(df)
     analyze_supply_dynamics(df)
     analyze_volume_metrics(df)
+    analyze_market_by_token_type(df)
     insights = generate_market_insights(df, top_10_pct)
     
     print("\n" + "="*60)

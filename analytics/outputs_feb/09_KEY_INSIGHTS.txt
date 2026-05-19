@@ -1,122 +1,99 @@
 ======================================================================
-               8 KEY INSIGHTS - DAPP ECOSYSTEM ANALYSIS
+          11 KEY INSIGHTS - DAPP ECOSYSTEM ANALYSIS
 ======================================================================
 
 
 KEY INSIGHT #1: THE GOVERNANCE CENTRALIZATION PARADOX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Despite the ethos of decentralization, the DApp ecosystem remains highly 
-centralized:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Only 4.6% of DApps are truly decentralized
 • 83.3% are company-owned despite blockchain foundation
-• 42% use team-controlled governance (no community input)
+• 63.5% use team-controlled governance
 • Gap between rhetoric and reality in "decentralized" applications
-
-IMPLICATION: The decentralization promise of blockchain is not being 
-fulfilled in practice. Most DApps retain traditional corporate control 
-structures.
 
 
 KEY INSIGHT #2: CHAIN ECOSYSTEM SPECIALIZATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Different blockchains serve distinct niches:
-
+• 77 unique blockchains hosting DApps
 • bnb-chain leads with 270 DApp deployments
-• Ethereum/Polygon/Base dominate DeFi (DEX focus)
-• Solana/Sei specialize in gaming applications
 • Only 35.6% of DApps deploy across multiple chains
-• Chain choice significantly impacts DApp category success
-
-IMPLICATION: Blockchain ecosystems are developing specialized strengths
-rather than becoming general-purpose platforms.
+• Chains developing specialized niches (DeFi vs Gaming vs Social)
 
 
 KEY INSIGHT #3: EXTREME WEALTH AND USER CONCENTRATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-The DApp economy exhibits severe concentration:
-
-• Top 10 DApps control 57.5% of total market capitalization
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Top 10 DApps control 57.5% of total market cap
 • Top 10 DApps attract 51.4% of all users
 • Power law distribution (winner-takes-all dynamics)
-• Bottom 50% of DApps are nearly irrelevant by metrics
 • Total market cap: $14.9B concentrated in few players
-
-IMPLICATION: The DApp ecosystem mirrors traditional tech monopolies
-despite decentralized infrastructure.
 
 
 KEY INSIGHT #4: THE ENGAGEMENT DICHOTOMY (Gaming vs DeFi)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Fundamentally different user engagement patterns by category:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Gaming: 23,848,576 users, $28M volume
 • DeFi/DEX: 36,756,501 users, $497.7B volume
-• Gaming has high user counts but minimal economic activity per user
-• DeFi has lower user counts but massive value per transaction
-• Median tx per user varies 1000x between categories
-
-IMPLICATION: "Success" metrics differ radically by DApp type. User count
-alone is misleading - value per user matters more for sustainability.
+• Gaming = high users, low economic activity per user
+• DeFi = fewer users, massive value per transaction
 
 
 KEY INSIGHT #5: TVL CONCENTRATION & EFFICIENCY GAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Total Value Locked shows extreme concentration:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Total TVL: $115.7B across ecosystem
 • Top 10 DApps control 93.1% of all TVL
-• Median TVL per user: $1,942
-• Wide variance in capital deployment efficiency
-• Most DApps struggle to attract meaningful liquidity
-
-IMPLICATION: Capital flows to established players. New DApps face
-severe competitive disadvantages in attracting liquidity.
+• Capital flows to established players
 
 
 KEY INSIGHT #6: THE FUNDING EFFICIENCY PARADOX
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Weak correlation between funding and market success:
-
 • Total capital raised: $14,328M across 38 DApps
 • Median market cap / funding ratio: 0.11x
-• Most DApps trading below their funding valuations
 • Funding does not guarantee success or adoption
-• Many unfunded DApps outperform funded competitors
-
-IMPLICATION: Capital is necessary but not sufficient. Product-market
-fit and genuine utility matter more than funding rounds.
 
 
 KEY INSIGHT #7: THE MULTI-CHAIN PREMIUM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Cross-chain deployment correlates with higher valuations:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Multi-chain DApps: avg market cap $80.2M
 • Single-chain DApps: avg market cap $62.1M
 • Multi-chain premium: 1.3x higher valuation
 • Only 35.6% of DApps deploy multi-chain
-• Multi-chain DApps average 5.7 chains
-
-IMPLICATION: Chain diversification strategy pays off. Multi-chain
-presence signals ambition and attracts more capital.
 
 
 KEY INSIGHT #8: GOVERNANCE-PERFORMANCE CORRELATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-More decentralized governance associates with better performance:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Governance score correlates 0.38 with log(market cap)
 • Decentralized DApps: median market cap $0.0M
 • Centralized DApps: median market cap $0.0M
-• Community governance attracts more engaged users
-• DAO-governed DApps show higher transaction intensity
 
-IMPLICATION: Despite rarity, genuine decentralization provides
-competitive advantages in adoption and valuation.
+
+KEY INSIGHT #9: TOKEN TYPE ECONOMY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Dominant token type: UTILITY (48.2% of tokenized DApps)
+• 82 DApps (9.6%) have governance tokens
+• Of governance-token DApps, only 36.6% are truly decentralized
+• Governance tokens: median MCap $22.4M
+• Utility tokens: median MCap $7.0M
+• Token type predicts governance model adoption patterns
+
+
+KEY INSIGHT #10: SECTOR SPECIALIZATION & EMERGING NICHES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• DeFi: 268 DApps, controlling 100.0% of total TVL
+• Gaming: 209 DApps (largest user base)
+• Prediction Markets: 32 DApps (emerging niche)
+• AI DApps: 59 DApps (nascent but growing)
+• RWA: 43 DApps (bridging traditional finance)
+• Each sector shows distinct governance and tokenomics patterns
+
+
+KEY INSIGHT #11: ECOSYSTEM CONTRADICTIONS & ANOMALIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 1 DApps labelled "Decentralized" but Company-Owned
+• 2 DApps have governance tokens but are Team-Controlled
+• 57 unfunded DApps outperform funded DApps' median MCap
+• These contradictions raise questions about labelling accuracy
+  and the real meaning of "decentralization" in the sector
 
 
 ======================================================================
 Analysis based on 855 DApps
-Date: 2026-02-16
+Date: 2026-02-17
 ======================================================================

@@ -1,7 +1,11 @@
+# Local matplotlib cache (optional dev)
+.mplconfig/
+
 # Python
 __pycache__/
 *.py[cod]
 venv/
+.venv/
 
 # PyCharm
 .idea/
