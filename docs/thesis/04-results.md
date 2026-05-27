@@ -660,7 +660,93 @@ This sector–governance co-structure is consistent with the positive governance
 
 ---
 
-## 4.9 Cross-Sectional Summary
+## 4.9 Anomalies, Contradictions, and Challenges to the DApp Narrative
+
+The preceding sections characterise the DApp landscape through systematic cross-sectional lenses. This section catalogues four categories of structural anomaly that emerge from the dataset and resist easy explanation within the dominant framings of DApp governance and market efficiency. Each anomaly is quantified, illustrated with representative examples, and cross-referenced to the interpretive discussion in Chapter 5. Together, they constitute an empirical challenge to four simplifying narratives — that governance tokens enable community control, that venture capital predicts market success, that user scale signals economic value, and that TVL is a reliable proxy for protocol importance — that pervade how the DApp ecosystem is publicly assessed.
+
+---
+
+### 4.9.1 Governance Tokens Without Governance Authority
+
+The first anomaly concerns the co-occurrence of governance token issuance with team-controlled governance processes. The dataset includes a `strange_governance_token_team_control` flag, identifying DApps that hold a token classified as a governance asset while the operational governance structure is coded `TEAM_CONTROLLED`. Two DApps in the strict eligible set meet this strict definition — both hold governance-type tokens yet retain all material decision-making authority within a founding team or core contributor group, without evidence of binding on-chain or off-chain community votes.
+
+The pattern becomes more pronounced under a broader definitional lens. In the strict sample (N=68), four DApps operating Snapshot off-chain governance hold governance tokens (§4.7.3), a configuration in which token holders can register preferences but execution authority rests with a team-operated multisig or founding committee rather than with an autonomous on-chain process. Beyond those, one DApp in the CENTRALIZED decentralisation tier holds on-chain token governance as its stated mechanism while remaining operationally centralised (ANO-GOV-03; prevalence: 1.47 per cent of the strict sample) — a configuration typically attributable to upgradeability keys, time-limited multisig overrides, or governance proposals authored and passed by team-controlled wallets without meaningful external participation.
+
+These cases represent a structural decoupling of token design from governance authority. The presence of a governance token does not transfer decision-making power to token holders if proposal thresholds, voting quorums, or execution keys remain team-controlled. In such configurations, the governance token functions primarily as a capital formation instrument — attracting investment and conferring nominal legitimacy — rather than as an effective community governance mechanism. Star Atlas illustrates the ambiguity: its POLIS ve-model and claimed on-chain execution signal formal governance architecture, yet research annotations document team-led execution of game-economy decisions and a retained foundation coordination role. The broader eligible population of 834 DApps would likely surface a materially larger cohort under a permissive screen that included Snapshot-governed DApps with concentrated team token holdings.
+
+This anomaly is examined interpretively in §5.3 (Labelling Versus Mechanics, DIS-02), where the gap between governance token design and governance authority is situated within the broader decentralisation paradox and its implications for regulatory framing are assessed.
+
+---
+
+### 4.9.2 Unfunded DApps Outperforming Venture-Backed Peers
+
+The second anomaly challenges the assumption that venture capital backing predicts long-term market performance. Among the strict eligible sample (N=68), 13 DApps raised documented venture capital. The median return on investment for those protocols — calculated as current market capitalisation divided by total capital raised — is 0.11×, meaning the median funded DApp in the strict sample is valued at approximately one-tenth of the aggregate investment made in it. At the same time, 29.4 per cent of the strict sample's unfunded DApps — approximately 20 protocols (ANO-MKT-03) — achieve market capitalisations that exceed the median funded DApp in the same universe.
+
+Across the broader 855-DApp dataset, $14.3 billion in documented capital was raised by 38 DApps; despite this concentrated investment, capital raised correlates only weakly with subsequent market performance. The directional relationship between capital raised and market capitalisation for funded DApps in the strict sample is negative — indicating that higher-funded projects are not systematically associated with proportionately higher market valuations at the time of data capture.
+
+This pattern is consistent across the loose universe, where the broad unfunded-outperformance dynamic holds even as the composition of the funded and unfunded cohorts changes. Several mechanisms are candidates: (1) selection timing, whereby VC capital entered the ecosystem during elevated speculative periods, compressing subsequent return multiples as prices reverted; (2) the structural open-source dynamics of DApps, which reduce the competitive moats that make institutional backing valuable in traditional startups — if any developer can fork the protocol, the technical exclusivity that justifies a high entry valuation erodes quickly; and (3) community-driven distribution paths that deliver user acquisition independently of the venture networks that typically provide distribution advantages in enterprise software.
+
+The anomaly does not imply that capital is without value in DApp development. Security audits, engineering hiring, and regulatory navigation all benefit from liquidity. What the data challenge is the stronger claim that capital raised serves as a reliable predictor of long-term market performance. This finding is developed interpretively in §5.7 (Funding Efficiency, DIS-06), where three competing causal mechanisms are assessed and the implications for DApp builders are considered.
+
+---
+
+### 4.9.3 High-User DApps with Zero Measurable TVL
+
+The third anomaly concerns the decoupling of user scale from economic substance, as measured by Total Value Locked. Thirty-three DApps in the eligible population of 834 are flagged under `strange_centralized_high_users` — identifying protocols with above-threshold active user counts combined with centralised governance classifications. Within this group, several of the most-used protocols by active wallet count report effectively zero TVL, a combination that directly contradicts the implicit model in which user scale predicts capital deployment.
+
+Representative cases from the strict and adjacent samples illustrate the pattern:
+
+- **Hot Spring — The Cozy World** (2,924,351 active users; TVL: not reported; volume: $0): an AI-native gaming application operating under HYBRID governance. User activity generates token distributions rather than on-chain liquidity; the protocol's economic throughput is not captured by DeFiLlama's TVL methodology.
+- **Alaya AI** (1,869,774 active users; TVL: not reported; volume: $0): a data-labelling protocol using reward tokens for task completion. Economic value is generated off-chain through data sales and captured by the protocol operator, with no on-chain TVL.
+- **Dmail Network** (2,088,315 active users; volume: $13,700; TVL: not reported): a decentralised messaging protocol under TEAM_CONTROLLED governance, with near-zero financial throughput despite a user base larger than many established DeFi protocols.
+- **FishWar** (560,738 active users; market cap: $0.3M; TVL: not reported): a gaming protocol distributing reward tokens under team-controlled governance with claimed governance voting but no evidence of binding DAO execution.
+
+Across the DePIN sector (N=29, loose universe), 4.9 million collective active users generate only $8.6 million in total volume — an average of $1.74 per user — and negligible TVL. Within the AI sector (N=67, loose universe), the four most-used DApps by wallet count (Hot Spring, Alaya AI, OpenPad AI, and Sleepless AI) report combined volume of approximately zero (ANO-AI-01, §4.6.3). Neither pattern represents operational failure within the reward-economy models of these protocols; both are structurally expected given business models that distribute token rewards rather than intermediate financial transactions.
+
+What makes the pattern anomalous is the category error it introduces when these protocols are evaluated against DeFi-calibrated metrics. A protocol with two million active users and zero TVL cannot be meaningfully ranked against a DeFi protocol with 50,000 users and $5 billion TVL using a composite metric that aggregates both dimensions. The two measurements index different economic logics, and their aggregation produces a distorted picture of relative importance in the DApp ecosystem. This methodological implication is developed in §5.5 (The Engagement Gap, DIS-04) and acknowledged explicitly in the limitations framework of §5.10.
+
+---
+
+### 4.9.4 Extreme TVL Leverage Cases
+
+The fourth anomaly concerns protocols in which TVL substantially exceeds the token market capitalisation — what this study terms the TVL leverage phenomenon. In the strict sample (N=68), 8.82 per cent of DApps (six protocols, ANO-MKT-02) exhibit TVL that materially exceeds their token market capitalisation. The most pronounced cases are:
+
+- **Morpho** (TVL approximately $187.5 billion; MCap materially lower; implied TVL/MCap approximately 3,437×): a modular DeFi lending protocol serving as infrastructure for other protocols' liquidity. TVL accumulates through recursive collateral loops where depositors use Morpho positions as collateral in secondary markets; the aggregate locked value therefore includes collateral committed by protocols building on Morpho, not only by end-users directly.
+- **EigenLayer** (large TVL from restaked ETH; MCap substantially lower): a restaking protocol in which ETH holders commit already-staked assets to additional security commitments, effectively enrolling existing security collateral in an additional system. DeFiLlama's TVL methodology counts the committed ETH as locked, producing TVL that substantially exceeds the protocol's token market capitalisation.
+- **LIDO** (TVL from staked ETH; MCap representing governance and fee rights over a fraction of staking yield): the dominant liquid staking protocol, where user deposits generate TVL through the staking mechanism while LDO token holders retain governance and fee-accrual rights proportional to the protocol's yield margin rather than the full deposited value.
+- **Ethena** (TVL: $14.2 billion; MCap: $1.8 billion; TVL/MCap ≈ 7.8×): a synthetic dollar protocol whose sUSDe deposits are backed by staked ETH and short perpetual futures positions. TVL represents depositor liabilities that Ethena services, not protocol equity; the ENA token captures governance and a share of the basis-trade yield, not ownership of the deposited collateral.
+- **KernelDAO** and **Pendle** exhibit moderate TVL/MCap inversions consistent with infrastructure and yield-market roles where fee capture is calibrated on a small fraction of managed value.
+
+Three distinct structural mechanisms produce the TVL leverage phenomenon. The first is *recursive collateral looping*: infrastructure-layer protocols accumulate TVL through other protocols' use of their facilities, not through direct deposits by retail or institutional end-users. The second is *staking and restaking economics*: liquid staking and restaking protocols capture committed ETH as TVL under DeFiLlama's methodology, producing figures that reflect security commitments rather than traditional financial lock-up. The third is *liability-side TVL*: in synthetic asset protocols, TVL represents user deposits backing a synthetic liability rather than protocol equity; the protocol's equity interest is the fee on the spread between yield components, not ownership of the deposited collateral.
+
+The analytical consequence is that TVL, like user count, is not a single-dimensional measure of economic weight. A protocol with TVL of $187 billion and MCap of tens of millions is not necessarily undervalued; it may instead reflect a business model in which the protocol captures a small fee percentage on managed value, and market capitalisation prices the present value of those fees rather than the face value of managed assets. Practitioners and researchers who use TVL as an unmodified proxy for protocol importance will systematically overstate the economic significance of infrastructure protocols relative to application-layer protocols where TVL/MCap ratios are more moderate.
+
+Note also the related but directionally inverse case documented in §4.6.4 (ANO-RWA-02): Maple's 30-day volume ($34.3 billion) exceeds its TVL ($2.6 billion) by approximately 13.1×, indicating capital velocity — the repeated recycling of institutional capital through short-tenor lending cycles — rather than the passive accumulation that TVL is conventionally taken to represent. TVL leverage and TVL velocity are therefore twin distortions, pulling in opposite directions relative to the naive interpretation of the TVL metric.
+
+This anomaly reinforces the broader argument developed in §5.4 (Concentration Mirrors Traditional Technology, DIS-03) that headline metrics in the DApp ecosystem require sector-aware and model-aware interpretation.
+
+---
+
+### 4.9.5 Synthesis: Challenges to the DApp Narrative
+
+The four anomalies documented in this section share a common structure: each exposes a divergence between a metric that the DApp ecosystem's dominant narrative treats as a reliable signal and the underlying economic or governance reality that metric purports to index.
+
+**Table 4.19 — Summary of anomaly categories, prevalence, and cross-references**
+
+| Anomaly category | Flag / identifier | N DApps affected | Cross-reference |
+|------------------|-------------------|:----------------:|:----------------|
+| Governance token with team-controlled governance | `strange_governance_token_team_control` | 2 (strict definition); broader under inclusive screen | §5.3 DIS-02 |
+| Unfunded DApps outperforming funded peers | ANO-MKT-03 | ~20 (29.4% of strict sample, N=68) | §5.7 DIS-06 |
+| High-user / zero TVL | `strange_centralized_high_users` | 33 (loose eligible, N=834) | §5.5 DIS-04 |
+| Extreme TVL leverage (TVL >> MCap) | ANO-MKT-02 | 6 (8.82% of strict sample, N=68) | §5.4 DIS-03 |
+
+*Source: `docs/analytics/latest/anomalies.md`, `docs/analytics/merged/anomalies.md`, and strict-sample analysis. DApp counts refer to the strict sample (N=68) unless otherwise noted.*
+
+Together, these anomalies constitute an empirical case for methodological caution in DApp research and practice. No single metric — governance label, token type, funding status, user count, or TVL — should be treated as a stand-alone indicator of DApp quality, governance authenticity, or economic significance. The interpretive weight given to any metric depends on the sector, business model, and revenue architecture of the DApp in question. This observation motivates the multi-dimensional evaluation framework proposed in §5.9 (Implications for Theory and Practice) and underpins the limitations discussed in §5.10.
+
+---
+
+## 4.10 Cross-Sectional Summary
 
 The results presented in this chapter address the thesis's three research questions: (RQ1) the current governance and ownership structure of the DApp ecosystem; (RQ2) the alignment between governance labels and observed economic structure; and (RQ3) sector-level differences characterising the ecosystem. The findings are summarised below.
 
