@@ -6,7 +6,7 @@ title: "Chapter 3: Methodology"
 
 ## 3.1 Research Design
 
-This thesis adopts an **exploratory, cross-sectional research design**. The unit of analysis is the individual decentralised application (DApp); the population of interest is the set of DApps deployed on public blockchains and active as of November 2025. Because no large-scale, multi-source, cross-sector benchmark of DApp governance and market structure existed at the time of writing, the study is exploratory rather than confirmatory: the goal is to describe and characterise the ecosystem, identify structural patterns, and surface interpretive tensions that motivate future hypothesis-testing work.
+This thesis adopts an **exploratory, cross-sectional research design**. The unit of analysis is the individual decentralised application (DApp); the population of interest is the set of DApps deployed on public blockchains and active as of November 2025. The scope of this population — spanning 77 blockchain networks, covering DeFi, Gaming, NFT, Social, and Infrastructure sectors under the DappRadar taxonomy, and excluding centralised exchanges, crypto wallets, and Layer-0/Layer-1 infrastructure protocols — is defined in full in §1.3 of this thesis. All methodology and sampling decisions in this chapter are bounded by that ecosystem definition. Because no large-scale, multi-source, cross-sector benchmark of DApp governance and market structure existed at the time of writing, the study is exploratory rather than confirmatory: the goal is to describe and characterise the ecosystem, identify structural patterns, and surface interpretive tensions that motivate future hypothesis-testing work.
 
 A cross-sectional design was chosen deliberately. Although longitudinal data would allow causal inference about governance trajectories, the absence of historically archived governance labels — a known data gap in the DApp space — makes panel approaches infeasible at this scale. The cross-section provides a defensible ecosystem-level snapshot that can serve as a baseline for subsequent waves of measurement.
 
@@ -39,6 +39,18 @@ Three secondary APIs enriched the dataset:
 Matching across four data sources required a multi-step record linkage procedure. The DappRadar slug served as the anchor key; secondary sources were joined using: (i) CoinGecko identifiers (`gecko_id`) and CoinMarketCap identifiers (`cmc_id`) stored during scraping; (ii) fuzzy string matching on protocol name and token symbol for records lacking explicit identifiers; and (iii) manual resolution for the approximately 3% of records where automated matching was ambiguous.
 
 Tags were consolidated from all four sources into a single comma-separated `tags` field using a deduplication routine that normalised case and removed near-duplicate labels (e.g., "DEX" and "Decentralized Exchange" were merged). The merged tag set was used downstream to derive theme flags (`is_defi`, `is_gaming`, `is_social`, `is_nft`) via keyword heuristics (`analytics/01_data_preparation.py`).
+
+### 3.2.4 Scraping Pipeline Architecture
+
+Data collection was executed by a custom Python scraping pipeline (`dapp_scraper/`) comprising four modular scrapers — one per primary data source (`scrapers/dappradar.py`, `scrapers/defillama.py`, `scrapers/coinmarketcap.py`, `scrapers/coingecko.py`) — coordinated through a shared store layer (`store.py`) and utility module (`utils.py`).
+
+**Technical stack.** The pipeline uses the `requests` library for all HTTP calls, `BeautifulSoup` for supplementary HTML parsing, `psycopg2` for PostgreSQL persistence, and a custom `DappRadarRateLimiter` class that enforces per-second and per-minute request caps to remain within each API's usage terms. API credentials and database connection parameters are stored in a `config.ini` configuration file external to the codebase and loaded at runtime, keeping secrets out of version control.
+
+**Execution schedule.** Data collection was performed as a single-batch run in November 2025, consistent with the cross-sectional design of the study. No incremental or rolling collection was attempted; the November snapshot constitutes the reference period for all analysis. This is noted as a limitation in §3.8: the absence of longitudinal collection means governance and market data cannot be tracked across time.
+
+**Error handling.** The pipeline implements record-level fault isolation: each DApp is processed inside an independent `try/except` block, and a database rollback is issued on any insertion failure before processing continues with the next record. Sub-tables (TVL historical series in `tvl_historical`; funding rounds in `raises`) use `ON CONFLICT DO NOTHING` semantics to ensure idempotency on re-runs. Failed records are logged to standard output with a diagnostic message prefixed `❌` but do not halt the pipeline. This design ensures that a malformed API response or a missing field for a single DApp does not corrupt or truncate the remainder of the dataset.
+
+**Upsert logic.** Before inserting a new record, the pipeline queries the `dapps` table by both name and slug. If a match is found, the record is updated in place with refreshed metric values; otherwise a new row is inserted. This upsert pattern allows the scraper to be re-run against the same database without creating duplicate entries, supporting future data refresh rounds without schema migration.
 
 ---
 
@@ -281,5 +293,45 @@ Market and user concentration are measured with:
 
 ---
 
-*Word count (Chapter 3): approx. 3,100 words*  
+## 3.9 Missing Data Treatment
+
+Missing values arise from three structurally distinct causes in this dataset, each treated differently.
+
+### 3.9.1 Structurally Absent Financial Metrics
+
+A large proportion of DApps in the full dataset (N = 855) have null values for `market_cap`, `tvl`, `price`, and related token metrics. In most cases this is not a data-collection failure: it reflects that the DApp has not issued a tradable token (so no CMC/CoinGecko entry exists) or does not custody user assets in smart contracts (so DeFiLlama reports no TVL). These nulls are therefore *structurally informative* and are preserved as null rather than imputed. The eligibility filters in §3.3 handle them explicitly: `market_cap > 0 OR tvl > 0` is required for strict eligibility, effectively restricting the primary analysis to DApps for which at least one financial stock variable can be observed.
+
+### 3.9.2 Partially Matched Records
+
+For DApps that issued a token but could not be matched to CoinMarketCap or CoinGecko by identifier or fuzzy name (approximately 12% of DApps with tokens), token market data fields remain null. These records are retained in the loose universe (provided the governance fields are complete) but are excluded from strict-universe analyses that require `market_cap > 0`. No imputation was applied because token market capitalisation is a substantive economic variable: substituting a modelled estimate for a missing market cap would obscure genuine data sparsity in the DApp ecosystem.
+
+### 3.9.3 Missing Governance Fields
+
+Missing values in the three governance ENUM variables (`governance_type`, `ownership_status`, `level_of_decentralisation`) reflect genuine uncertainty about a protocol's governance architecture after reasonable research effort (defined as approximately 30 minutes per DApp; see §3.5.2). Rather than imputing or omitting these cases, an explicit `UNKNOWN` category is used for `governance_type` and `ownership_status`. DApps coded as UNKNOWN on any governance field are excluded from strict-eligible analysis but are retained in the loose universe to preserve the full scale of the dataset.
+
+### 3.9.4 Activity Metrics
+
+For the five activity metrics (`users`, `volume`, `tvl`, `market_cap`, `transactions`), null values returned by the DappRadar API are stored as zero via the `safe_numeric()` utility function in `utils.py`, which converts null, non-numeric, and dict-typed API responses to a default of 0. This zero-substitution is consistent with the API's semantics: a null response for `users` indicates no recorded on-chain activity in the period, not an unobservable value. The `signal_count` variable (§3.6.4) reflects how many of these five signals are strictly positive (i.e., > 0 after substitution), serving as a built-in data-quality covariate throughout the analysis.
+
+---
+
+## 3.10 Outlier Treatment and Winsorisation
+
+Financial metrics in the DApp ecosystem are extremely right-skewed: market capitalisations span ten orders of magnitude, and TVL is concentrated in a handful of major DeFi protocols. Outlier handling is approached in two complementary ways.
+
+### 3.10.1 Log-Transformation for Analytical Methods
+
+All financial variables used as inputs to K-means clustering (§3.7.4), PCA (§3.7.5), and the cohort ranking score (§3.6.5) are log-transformed via `log1p` (i.e., log(1 + x)) before standardisation. Log-transformation compresses extreme values while preserving rank ordering and handling zeros (via the +1 shift). This approach is preferred over winsorisation for multivariate methods because it retains the full information in the distribution rather than replacing tail values with boundary constants.
+
+### 3.10.2 Winsorisation for Ratio Variables
+
+Two ratio variables — `tvl_ratio` (TVL / market cap) and `mcap_per_user` (market cap / users) — are subject to extreme inflation when the denominator approaches zero. For descriptive reporting of these ratios, values above the 99th percentile are winsorised to the 99th percentile value. This prevents a small number of degenerate cases (e.g., DApps with near-zero market cap inflating `tvl_ratio` to thousands) from dominating summary statistics. Winsorisation thresholds are computed within the strict sample (N = 68) to avoid contaminating the thresholds with the sparser data of the full dataset.
+
+### 3.10.3 Reporting
+
+For all continuous variables reported in Chapter 4, median and interquartile range are used as the primary summary statistics (§3.7.1), which are robust to extreme values by construction. Mean values are reported alongside medians where they aid comparison, with explicit footnotes when the mean departs substantially from the median (indicating a skewed distribution). No values are excluded from the sample solely on the basis of being outliers; extreme observations are retained and the distributional context is reported.
+
+---
+
+*Word count (Chapter 3): approx. 4,100 words*  
 *Status: First draft — pending review by Thesis Reviewer*
