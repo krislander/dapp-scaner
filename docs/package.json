@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "VitePress documentation for the MSc Thesis: Decentralised Applications in Focus",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",

@@ -77,6 +77,7 @@ export default defineConfig({
           text: 'Datasets',
           items: [
             { text: 'Dataset Inventory', link: '/datasets/' },
+            { text: 'Full DApp Dataset', link: '/datasets/full-dataset' },
           ],
         },
       ],
