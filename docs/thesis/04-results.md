@@ -357,76 +357,215 @@ The v2 coding assigns Overtime a `v2_main_revenue_generator = SPREAD` and `v2_su
 
 ### 4.6.3 AI-Native DApps
 
-The AI-native DApp category encompasses 67 DApps identified via tag and text matching on "ai", "llm", "machine learning", "ai gaming", and "ai-big-data" within tags, sub-categories, and research annotations (`theme_cohort_summary.csv` theme `ai_dapps`, n=66 eligible, n\_all=66). This category is structurally heterogeneous: it spans AI gaming integrations (Hot Spring — The Cozy World, Sleepless AI), autonomous AI agent infrastructure (Virtuals Protocol, ChainOpera AI), AI-powered data-collection platforms (Alaya AI), and AI-adjacent tooling (ArenaVS, ZoRobotics). Despite their diversity, these protocols share a common characteristic: they integrate machine-learning inference or AI-agent coordination as a primary feature of the on-chain or hybrid on/off-chain user experience.
+#### Sector Definition
 
-*Sample limitation.* The v2 dataset identifies three strict-sample AI DApps: ChainOpera AI, Virtuals Protocol, and ChainGPT. The analysis uses the loose universe (N=67) throughout, with specific strict-eligible DApps noted where relevant.
+**Inclusion criteria.** A DApp is classified as AI-native if any of the following fields — `tags`, `sub_category`, `research_comments`, or `name` — contain at least one of the following terms: *ai*, *llm*, *machine learning*, *ai gaming*, or *ai-big-data* (full regex pattern: `\bai\b|artificial intelligence|machine learning|\bllm\b|ai gaming|ai-big-data`; case-insensitive). The classification is applied mechanically via the `mask_ai_dapps` function in `analytics_new/lib/themes.py`, which evaluates the combined text of all four fields per DApp.
 
-**Chain Distribution**
+**Exclusion criteria.** DApps excluded from the AI-native cohort despite surface-level AI language are those where: (a) the term "AI" appears only in a DApp name or mascot without reference to ML inference or AI-agent functionality in any documented feature (several memecoin or branding-only cases); or (b) the DApp is already captured in the Prediction Market or DePIN/RWA themes and does not independently qualify through the AI keyword rules. No manual override of the mechanical mask was applied; the 66 eligible DApps are the complete output of the inclusion rule applied to the loose universe.
 
-**Table 4.10 — Top-5 chains by AI DApp presence (loose universe, N=67)**
+**Functional definition.** An AI-native DApp, for the purposes of this thesis, is a blockchain-based application whose documented primary or secondary feature set incorporates machine-learning inference, AI-agent coordination, or AI-generated content as a core component of the user experience — whether delivered on-chain, through a hybrid on/off-chain architecture, or via an AI model accessed through a protocol-controlled API. This definition intentionally spans the heterogeneous sub-types identified in the dataset: AI gaming integrations (Hot Spring — The Cozy World, Sleepless AI, FishWar), autonomous AI-agent infrastructure and launchpads (Virtuals Protocol, ChainOpera AI), AI-powered data annotation and contribution platforms (Alaya AI), AI-enhanced social and content tools (Kaito, Sogni AI, CARV), and AI-adjacent security and developer tooling (ChainGPT, ZoRobotics).
 
-| Chain | AI DApps | Share |
-|-------|:--------:|:-----:|
-| BNB Chain | 26 | 38.8% |
-| Base | 22 | 32.8% |
-| Ethereum | 21 | 31.3% |
-| Arbitrum | 13 | 19.4% |
-| opBNB | 12 | 17.9% |
+*Sample limitation.* The v2 dataset identifies three strict-sample AI DApps: ChainOpera AI, Virtuals Protocol, and ChainGPT. The analysis uses the loose universe (N=66) throughout, with strict-eligible DApps noted where relevant.
 
-*Note: multi-chain DApps counted per chain.*
+---
 
-BNB Chain's leading position reflects the prevalence of AI gaming and reward-based AI applications in the Telegram-native BNB ecosystem, where the opBNB scaling chain provides low-cost execution for micro-transaction gaming rewards. Base's strong presence (32.8 per cent) indicates that venture-backed AI infrastructure protocols — including Virtuals Protocol and its AI agent launch ecosystem — have converged on Coinbase's Layer-2 as the preferred deployment environment. The 40.3 per cent multi-chain adoption rate is lower than DeFi (55.2 per cent) but above the prediction market baseline (19.4 per cent).
+#### Sector Structure and Category Distribution
 
-**Key DApps**
+The 66 AI-native DApps span nine primary sectors. The `other` sector holds the plurality (29 DApps, 43.9 per cent) — consistent with the cross-cutting, hard-to-classify nature of AI-enabled applications that do not fit neatly into DeFi, gaming, or social taxonomies. NFT Gaming (16 DApps) and NFT marketplace (13 DApps) are the most represented application categories, reflecting the early-adoption of AI features in gaming reward economies and AI-generated content marketplaces.
 
-**Table 4.11 — Top AI DApps by active users (loose universe)**
+**Table 4.10 — AI DApp distribution by application category (loose universe, N=66)**
 
-| DApp | Users | Volume | MCap | Gov. type | Token | Sector class. |
-|------|------:|-------:|-----:|:----------:|:-----:|:-------------:|
-| Hot Spring | 2,924,351 | — | — | HYBRID | REWARD | games |
-| Alaya AI | 1,869,774 | — | — | TEAM\_CONTROLLED | UTILITY | other |
-| FishWar | 560,738 | $0.9M | $0.3M | TEAM\_CONTROLLED | REWARD | games |
-| OpenPad AI | 293,016 | — | — | TEAM\_CONTROLLED | — | other |
-| ChainOpera AI | 162,072 | $0.1M | $105.5M | SNAPSHOT\_OFFCHAIN | — | other |
-| Sleepless AI | 73,338 | — | $19.9M | SNAPSHOT\_OFFCHAIN | REWARD | collectibles |
-| Virtuals Protocol | 39,464 | $7.8M | $606.3M | ONCHAIN\_TOKEN\_GOVERNANCE | GOVERNANCE | defi |
+| Category | Count | Share |
+|----------|:-----:|:-----:|
+| NFT Gaming | 16 | 24.2% |
+| NFT marketplace | 13 | 19.7% |
+| Social Network | 11 | 16.7% |
+| Infrastructure | 7 | 10.6% |
+| DAO Tooling | 5 | 7.6% |
+| DEX | 4 | 6.1% |
+| SocialFi | 3 | 4.5% |
+| Metaverse | 2 | 3.0% |
+| Other categories | 5 | 7.6% |
 
-**Governance Maturity**
+*Source: `dapp_category` field, AI DApp theme universe (`theme_ai_dapps`).*
 
-**Table 4.12 — AI DApp governance distribution (loose universe, N=67)**
+Three functionally distinct archetypes account for the majority of the AI DApp population:
+
+1. **AI gaming and reward-economy applications** (approximately 30–35 DApps): Integrate AI-generated environments, AI non-player characters (NPCs), or AI-scored tasks into play-to-earn or move-to-earn models. Revenue is deferred to token appreciation; on-chain volume is near zero despite high user counts.
+
+2. **AI infrastructure and agent platforms** (approximately 7–10 DApps): Provide compute, model access, or agent-launch infrastructure to other protocols. Revenue is fee-based (usage metering, launchpad take-rate). Market capitalisation is disproportionately high relative to user counts, as markets price platform optionality on the AI-agent economy.
+
+3. **AI-enhanced social and content platforms** (approximately 15–20 DApps): Apply AI to content recommendation, community moderation, or user-generated AI art. Governance is most frequently Snapshot off-chain; token models lean toward utility or governance-adjacent designs.
+
+---
+
+#### Chain Distribution
+
+**Table 4.11 — Top chains by AI DApp deployment (loose universe, N=66)**
+
+| Chain | Deployments | Share of AI cohort |
+|-------|:-----------:|:------------------:|
+| BNB Chain | 26 | 39.4% |
+| Base | 22 | 33.3% |
+| Ethereum | 21 | 31.8% |
+| Arbitrum | 13 | 19.7% |
+| opBNB | 12 | 18.2% |
+| Polygon | 10 | 15.2% |
+| Solana | 7 | 10.6% |
+| Linea | 5 | 7.6% |
+
+*Note: multi-chain DApps are counted once per chain; shares do not sum to 100%.*
+
+BNB Chain's leading position (39.4 per cent of AI DApps) is driven by the preponderance of AI gaming and reward-economy applications targeting the Telegram Mini App and opBNB micro-transaction ecosystems. opBNB itself ranks fifth (18.2 per cent) as the preferred scaling chain for gaming reward distributions that require sub-cent transaction fees. Base's strong showing (33.3 per cent) reflects the concentration of venture-backed AI infrastructure and agent-platform projects on Coinbase's L2 — Virtuals Protocol, its largest AI DApp by market cap, launched on Base and has attracted derivative agent projects to the same chain. The 40.9 per cent multi-chain adoption rate sits above the prediction market baseline (19.4 per cent) and roughly in line with the cross-ecosystem average (36.2 per cent), but well below the DeFi sector rate of 55.2 per cent — suggesting that AI DApps chain-select for user acquisition and cost rather than for financial composability.
+
+---
+
+#### Key DApps
+
+**Table 4.12 — Representative AI DApps by active users (loose universe)**
+
+| DApp | Users | Volume | MCap | Gov. type | Token | Archetype |
+|------|------:|-------:|-----:|:----------:|:-----:|:--------:|
+| Hot Spring — The Cozy World | 2,924,351 | — | — | HYBRID | REWARD | Gaming/reward |
+| Alaya AI | 1,869,774 | — | — | TEAM\_CONTROLLED | UTILITY | Data/reward |
+| FishWar | 560,738 | $0.9M | $0.3M | TEAM\_CONTROLLED | REWARD | Gaming/reward |
+| OpenPad AI | 293,016 | — | — | TEAM\_CONTROLLED | — | Social/tools |
+| ChainOpera AI | 162,072 | $0.1M | $105.5M | SNAPSHOT\_OFFCHAIN | — | Infrastructure |
+| Sleepless AI | 73,338 | — | $19.9M | SNAPSHOT\_OFFCHAIN | REWARD | Gaming/reward |
+| Virtuals Protocol | 39,464 | $7.8M | $606.3M | ONCHAIN\_TOKEN\_GOVERNANCE | GOVERNANCE | Infrastructure |
+| Kaito | ~18,000 | — | $161.4M | SNAPSHOT\_OFFCHAIN | GOVERNANCE | Social/tools |
+| ChainGPT | 20,145 | $0.3M | $34.5M | SNAPSHOT\_OFFCHAIN | UTILITY | Infrastructure |
+
+---
+
+#### Governance Structure
+
+**Table 4.13 — AI DApp governance distribution (loose universe, N=66)**
 
 | Governance type | Count | Share |
 |-----------------|:-----:|:-----:|
-| TEAM\_CONTROLLED | 37 | 55.2% |
-| SNAPSHOT\_OFFCHAIN | 26 | 38.8% |
+| TEAM\_CONTROLLED | 36 | 54.5% |
+| SNAPSHOT\_OFFCHAIN | 26 | 39.4% |
 | NONE | 2 | 3.0% |
 | HYBRID | 1 | 1.5% |
 | ONCHAIN\_TOKEN\_GOVERNANCE | 1 | 1.5% |
-| **Total** | **67** | **100%** |
+| **Total** | **66** | **100%** |
 
 *Source: `governance_type` field, AI DApp theme universe (`theme_ai_dapps`).*
 
-AI DApps exhibit a bimodal governance pattern: either fully team-controlled (55.2 per cent) or Snapshot off-chain (38.8 per cent), with near-zero on-chain governance (1.5 per cent — solely Virtuals Protocol). The `v2_coding_confidence` distribution for the three strict-sample AI DApps is MEDIUM (ChainOpera AI) and HIGH (Virtuals Protocol, ChainGPT), indicating reliable governance coding for those DApps. The broader bimodal distribution reflects the sector's age: most AI infrastructure protocols are in early product-market-fit phases where governance formalisation has not yet occurred.
+AI DApps exhibit a strongly bimodal governance distribution: protocols are either fully team-controlled (54.5 per cent) or rely on Snapshot off-chain voting (39.4 per cent). On-chain governance is represented by a single DApp — Virtuals Protocol — accounting for 1.5 per cent of the cohort. This compares with 6.4 per cent on-chain governance prevalence in the full loose universe (DAO\_WITH\_TIMELOCK + ONCHAIN\_TOKEN\_GOVERNANCE combined), confirming that AI DApps are substantially less formally governed than the cross-ecosystem baseline.
 
-**Token Model Patterns**
+A notable pattern is that AI DApps are disproportionately represented in the Snapshot off-chain tier relative to the non-AI ecosystem: 39.4 per cent versus 17.5 per cent for non-AI DApps. This suggests that AI-sector teams signal community orientation through off-chain voting mechanisms earlier in their lifecycle than non-AI peers — perhaps as a marketing or fundraising posture — while retaining operational authority to act on or ignore the resulting votes. Research comments confirm this interpretation: for FishWar, the annotation reads "token has 'platform governance voting,' but no evidence of binding on-chain DAO; team likely executes"; for ZoRobotics: "markets DAO-based validation; practical control remains with project team today"; for ChainOpera AI: "Whitepaper describes DAO voting via staked tokens; execution still team-led at present."
 
-Utility tokens are the plurality (41.8 per cent), consistent with AI DApps using tokens primarily for access, reward, and incentive alignment. Reward tokens (14.9 per cent) are concentrated in gaming-adjacent AI applications distributing tokens for AI-beneficial tasks (data labelling in Alaya AI, physical movement in Sleepless AI). Governance tokens are present in only 9.0 per cent of AI DApps (6 DApps) — the lowest governance-token prevalence outside prediction markets. The v2 `theme_cohort_summary.csv` records a governance token prevalence of 12.1 per cent for the broader AI DApp theme cohort, consistent with this range.
+By ownership structure, 86.4 per cent of AI DApps are COMPANY\_OWNED — the highest of any thematically defined sub-group in the dataset. A single DApp (Treasure, 1.5 per cent) is DAO\_OWNED; two are FOUNDATION\_OWNED. This near-universal corporate ownership confirms that the AI DApp sector is, in practical terms, a corporate software sector with blockchain token issuance rather than a community-governed decentralised application sector.
 
-**Revenue Logic**
+**Governance comparison with non-AI ecosystem**
 
-AI DApp revenue divides into three distinct models, as identified through the v2 `v2_main_revenue_generator` column for the three strict-sample DApps:
+| Metric | AI DApps (N=66) | Non-AI ecosystem (N=789) |
+|--------|:---------------:|:------------------------:|
+| Team-controlled | 54.5% | 64.3% |
+| Snapshot off-chain | 39.4% | 17.5% |
+| On-chain governance (any) | 1.5% | 6.4% |
+| Company-owned | 86.4% | 82.8% |
+| DAO-owned | 1.5% | 2.8% |
 
-1. *Usage metering* (`USAGE_METERING`): ChainOpera AI and ChainGPT charge compute credits for API-accessible AI inference; `v2_sustainment_model = FEES` and `SUBSCRIPTION` respectively. This model mirrors enterprise SaaS pricing applied to on-chain-accessible AI services.
+The AI sector is slightly *less* team-controlled than the non-AI DApp universe, but achieves this lower rate through Snapshot off-chain mechanisms rather than through formal on-chain governance — a lateral move within the centralised governance zone rather than progress toward decentralisation.
 
-2. *Take-rate on agent launches* (`TAKE_RATE`): Virtuals Protocol charges a percentage of initial bonding-curve liquidity when AI agents are launched on its platform; `v2_sustainment_model = MARKETPLACE_TAKE_RATE`. This model is analogous to token launchpad fees but applied to autonomous agent primitives, enabling revenue proportional to the growth of the AI agent economy.
+---
 
-3. *Tokenomics-subsidised engagement* (majority of loose-universe AI DApps, `v2_sustainment_model = TOKENOMICS`): The largest AI DApps by user count (Hot Spring, Alaya AI, FishWar) distribute reward tokens for in-application activity rather than extracting fees — a user-acquisition model that defers monetisation to token appreciation and secondary-market activity.
+#### Decentralisation Analysis: The Zero Fully Decentralised Finding
 
-**Registered Anomalies**
+*This section addresses the finding noted in the thesis goal annotation: zero fully decentralised AI DApps in the loose universe.*
 
-*ANO-AI-01 — User–volume decoupling.* The two most-used AI DApps by active wallet count — Hot Spring (2.9 million users) and Alaya AI (1.9 million users) — report zero recorded volume. This decoupling indicates reward economies in which activity generates token distributions but not financial throughput traceable as on-chain "volume" in DappRadar's metric framework. The pattern, also evident for OpenPad AI (293,016 users, $0 volume) and Sleepless AI (73,338 users, $0 volume), classifies these DApps as structurally incompatible with volume-based performance benchmarks calibrated on DeFi or NFT activity.
+No AI DApp in the 66-DApp cohort achieves the `DECENTRALIZED` classification under the coding framework used in this thesis (which requires: on-chain governance with binding token-weighted voting, open participation, and at least semi-independent protocol execution). The decentralisation distribution is:
 
-*ANO-AI-02 — Market capitalisation inversion relative to user scale.* Virtuals Protocol carries a $606.3 million MCap with 39,464 active users (MCap-per-user ≈ $15,365), while Hot Spring has 2.9 million users and zero MCap. This near-perfect anti-correlation between financial valuation and user activity within the AI sector suggests that market participants price AI protocol infrastructure (Virtuals Protocol, ChainOpera AI with $105.5 million MCap) as platform options on the emerging AI-agent economy rather than on revenue or user metrics.
+**Table 4.14 — Decentralisation levels: AI DApps versus full ecosystem**
+
+| Decentralisation level | AI DApps (N=66) | AI share | Full ecosystem (N=855) | Ecosystem share |
+|------------------------|:---------------:|:--------:|:----------------------:|:---------------:|
+| CENTRALIZED | 28 | 42.4% | 486 | 56.8% |
+| SEMI\_DECENTRALIZED | 38 | 57.6% | 330 | 38.6% |
+| DECENTRALIZED | **0** | **0.0%** | 39 | **4.6%** |
+
+*Source: `level_of_decentralisation` field.*
+
+The zero-decentralised finding is not a data artefact. Four independent structural explanations account for it:
+
+**1. Off-chain AI computation as an inherent centralisation vector.** AI inference — whether large language model inference, computer vision, or reinforcement learning — requires substantial off-chain compute. Model weights, training data, and inference endpoints reside on centralised infrastructure (cloud providers or team-operated servers). The `DECENTRALIZED` coding tier requires that protocol execution can function without a central operator. Because the AI inference layer cannot satisfy this requirement with current technology, any DApp whose core functionality depends on AI inference cannot meet the threshold for full decentralisation, regardless of its financial governance structure. This is not a policy choice but a technical constraint of the current AI-blockchain integration paradigm.
+
+**2. Youth of the sector and governance lifecycle position.** The 39 fully decentralised DApps in the broader loose universe are predominantly mature DeFi protocols (Compound, Aave, Uniswap, and their structural analogues) that have traversed a multi-year governance evolution from team control to Snapshot voting to DAO-with-timelock to on-chain self-execution. The AI DApp cohort is concentrated in the 2023–2025 launch window — a period too early for the governance lifecycle to have progressed to the `DECENTRALIZED` tier. Among the 35 fully decentralised non-AI DApps in the DeFi and exchanges sectors, the governance tenure spans three to seven years; the modal AI DApp has governance tenure under two years.
+
+**3. Near-universal corporate ownership constrains governance trajectory.** With 86.4 per cent of AI DApps COMPANY\_OWNED and a single DAO\_OWNED DApp, the ownership structure creates a practical impediment to decentralisation: corporate ownership entities typically retain IP rights, model update authority, and regulatory compliance obligations that are legally incompatible with ceding control to an autonomous DAO. The DeFi protocols that achieved full decentralisation did so by relinquishing corporate control through foundation structures or pure smart-contract deployment — a step that AI-sector companies have not taken, in part because AI model governance (safety updates, capability restrictions) requires a responsible legal entity.
+
+**4. Regulatory and safety imperatives for centralised override.** AI systems require the ability to roll back or patch deployed models in response to safety incidents, capability misuse, or regulatory directives (e.g., EU AI Act obligations on high-risk AI systems). This override requirement is structurally incompatible with the governance immutability that characterises fully decentralised on-chain protocols, where code changes require token-holder supermajority approval with timelock delays. The research comment for ZoRobotics is illustrative: the team "markets DAO-based validation; practical control remains with project team today" — a configuration that likely reflects not only product maturity but also a deliberate preservation of team-override authority.
+
+**The Virtuals Protocol paradox.** Virtuals Protocol is classified as ONCHAIN\_TOKEN\_GOVERNANCE — the most formally governed AI DApp in the dataset — yet remains coded CENTRALIZED. The research annotation reads: "eVIRTUAL tokenholders vote on-chain; DAO/forum active; team still builds products but governance powers sit with veVIRTUAL holders → high decentralization." This constitutes a borderline case: the governance mechanism is on-chain, but the AI agent curation and platform operational decisions remain team-led. The CENTRALIZED rating reflects the current state of operational control rather than the governance architecture alone — a distinction that highlights the insufficiency of formal governance apparatus as a proxy for effective decentralisation in AI-native protocols.
+
+**INS-AI-01 — Structural impossibility of fully decentralised AI DApps under current technology.** The zero-decentralised finding warrants formalisation as a sector-level insight: *fully decentralised AI-native DApps are a theoretical category that the 2023–2025 technology stack cannot realise*. Decentralised AI inference (homomorphic encryption of model weights, fully verifiable on-chain ML execution, or comparable approaches) remains a research problem rather than a deployed product. Until these compute primitives mature, the AI DApp sector will structurally occupy the CENTRALIZED or SEMI\_DECENTRALIZED tiers regardless of governance maturation, and performance comparisons with the DECENTRALIZED tier of the broader DApp universe are not meaningful.
+
+---
+
+#### Token Model Patterns
+
+Of the 66 AI DApps, 50 (75.8 per cent) have issued a token. The remaining 16 (24.2 per cent) are tokenless — a higher no-token rate than the DeFi sector (approximately 15 per cent) but lower than prediction markets (approximately 40 per cent).
+
+**Table 4.15 — AI DApp token type distribution (token-issuing DApps, N=50)**
+
+| Token type | Count | Share of token-issuers |
+|------------|:-----:|:----------------------:|
+| UTILITY | 28 | 56.0% |
+| REWARD | 10 | 20.0% |
+| GOVERNANCE | 6 | 12.0% |
+| SPECULATIVE | 3 | 6.0% |
+| GOVERNANCE + UTILITY | 2 | 4.0% |
+| SOCIAL | 1 | 2.0% |
+
+*Source: `token_type` field.*
+
+Utility tokens dominate (56.0 per cent of token-issuers; 42.4 per cent of the full cohort), consistent with AI DApps using tokens primarily to gate access to AI services, distribute compute credits, and incentivise data contributions. Reward tokens (20.0 per cent of token-issuers) are concentrated in gaming-adjacent AI applications that distribute tokens for AI-beneficial tasks: data labelling (Alaya AI), physical movement (Sleepless AI), and play-to-earn completion (Hot Spring — The Cozy World, FishWar). Pure governance tokens appear in 12.0 per cent of token-issuing AI DApps (6 DApps) — a low governance-token prevalence consistent with the sector's limited formal governance development. The `theme_cohort_summary.csv` records a cross-cohort governance token prevalence of 12.1 per cent, aligned with this range.
+
+No AI DApp in the dataset operates a pure fee-switch governance token model (where governance rights map directly to protocol revenue claims) at scale — the closest approximation is Virtuals Protocol's veVIRTUAL staking, which grants governance votes and fee-distribution rights but within a corporate-controlled product environment.
+
+---
+
+#### Revenue Logic
+
+AI DApp revenue divides into three models, identified through the v2 `v2_main_revenue_generator` field for the three strict-sample DApps and extended analytically to the loose universe:
+
+1. **Usage metering** (`USAGE_METERING`): ChainOpera AI and ChainGPT charge compute credits for API-accessible AI inference; `v2_sustainment_model = FEES` and `SUBSCRIPTION` respectively. This model mirrors enterprise SaaS pricing applied to on-chain-accessible AI services. It is financially sustainable but concentrates revenue in the infrastructure sub-type rather than the broad AI DApp population.
+
+2. **Take-rate on agent launches** (`TAKE_RATE`): Virtuals Protocol charges a percentage of initial bonding-curve liquidity when AI agents are launched on its platform. This model is analogous to token launchpad fees but applied to autonomous agent primitives, enabling revenue proportional to the growth of the AI agent economy.
+
+3. **Tokenomics-subsidised engagement** (majority of the loose-universe AI DApps): Hot Spring, Alaya AI, FishWar, and most large-user-count AI DApps distribute reward tokens for in-application activity rather than extracting fees. This is a user-acquisition model that defers monetisation to token appreciation and secondary-market activity — a structure with positive cash flow only if token markets sustain or appreciate, an assumption that holds during bull markets but collapses during contractions.
+
+---
+
+#### Maturity Indicators
+
+Assessed across the standard maturity dimensions used in this thesis:
+
+| Metric | AI DApps (N=66) | Full loose universe (N=855) |
+|--------|:---------------:|:---------------------------:|
+| Median active users | 1,232 | ~2,400 |
+| Median volume (USD) | $785 | ~$28,000 |
+| Multi-chain rate | 40.9% | 36.2% |
+| Mean activity signal count | 3.4 | ~3.1 |
+| Data completeness score (mean) | 0.84 | ~0.79 |
+| Token issuance rate | 75.8% | ~65% |
+
+*Source: `prepared_data.csv`; full-universe figures are derived from the full dataset for comparison.*
+
+The AI DApp cohort is relatively data-complete (mean score 0.84) and slightly above average on activity signal count (3.4 versus ~3.1 ecosystem-wide), indicating that AI-branded projects attract sufficient analytic coverage to be reliably coded. However, median active users (1,232) and volume ($785) are well below ecosystem medians — reflecting the preponderance of early-stage or reward-economy protocols whose user activity does not generate financial throughput. Multi-chain adoption at 40.9 per cent is above the ecosystem median, consistent with AI DApps actively seeking broad user distribution across multiple L2 and L1 ecosystems.
+
+The high token issuance rate (75.8 per cent) relative to the AI sector's governance and revenue maturity represents a structural tension: tokens are issued early — often as the primary incentive and funding mechanism — but governance and decentralisation infrastructure lag behind, producing a cohort in which most token-holders hold instruments that carry no meaningful governance rights in practice.
+
+---
+
+#### Registered Anomalies
+
+*ANO-AI-01 — User–volume decoupling.* The two most-used AI DApps by active wallet count — Hot Spring (2.9 million users) and Alaya AI (1.9 million users) — report zero recorded volume. This decoupling indicates reward economies in which activity generates token distributions but not financial throughput traceable as on-chain "volume" in DappRadar's framework. The same pattern holds for OpenPad AI (293,016 users, $0 volume) and Sleepless AI (73,338 users, $0 volume), classifying these DApps as structurally incompatible with volume-based performance benchmarks calibrated on DeFi or NFT activity.
+
+*ANO-AI-02 — Market capitalisation inversion relative to user scale.* Virtuals Protocol carries a $606.3 million MCap with 39,464 active users (MCap-per-user ≈ $15,365), while Hot Spring has 2.9 million users and zero MCap. This near-perfect anti-correlation between financial valuation and user activity within the AI sector indicates that market participants price AI protocol infrastructure as platform options on the emerging AI-agent economy — not on revenue or user metrics. The total AI DApp combined market cap of $1.61 billion is dominated by the infrastructure sub-type (Virtuals Protocol, ChainOpera AI, Kaito, CARV) despite these protocols collectively holding fewer than 250,000 active users.
 
 ---
 

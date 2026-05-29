@@ -25,6 +25,7 @@ export default defineConfig({
             { text: '2. Literature Review', link: '/thesis/02-literature-review' },
             { text: '3. Methodology', link: '/thesis/03-methodology' },
             { text: '4. Results', link: '/thesis/04-results' },
+            { text: '4c. Case Studies', link: '/thesis/04c-case-studies' },
             { text: '5. Discussion', link: '/thesis/05-discussion' },
             { text: '6. Conclusions', link: '/thesis/06-conclusions' },
             { text: 'References', link: '/thesis/references' },
