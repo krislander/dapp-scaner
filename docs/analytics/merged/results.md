@@ -42,18 +42,48 @@ Only 13 DApps in the strict sample raised venture capital (median funding ROI: 0
 
 
 ## Figure index
-- `figures/02_governance_distribution_cohort.png`
-- `figures/02_governance_distribution_loose_backtest.png`
-- `figures/02_governance_distribution_strict.png`
-- `figures/02_governance_heatmaps_cohort.png`
-- `figures/02_governance_heatmaps_loose_backtest.png`
-- `figures/02_governance_heatmaps_strict.png`
-- `figures/02_governance_token_heatmap_cohort.png`
-- `figures/02_governance_token_heatmap_loose_backtest.png`
-- `figures/02_governance_token_heatmap_strict.png`
-- `figures/03_market_dynamics_loose.png`
-- `figures/03_market_dynamics_strict.png`
-- `figures/04_chain_top15_loose.png`
-- `figures/04_chain_top15_strict.png`
-- `figures/05_performance_loose.png`
-- `figures/05_performance_strict.png`
+
+![Governance distribution — cohort](../../figures/02_governance_distribution_cohort.png)
+*Governance distribution — cohort*
+
+![Governance distribution — loose backtest universe](../../figures/02_governance_distribution_loose_backtest.png)
+*Governance distribution — loose backtest universe*
+
+![Governance distribution — strict sample](../../figures/02_governance_distribution_strict.png)
+*Governance distribution — strict sample*
+
+![Governance heatmaps — cohort](../../figures/02_governance_heatmaps_cohort.png)
+*Governance × ownership heatmap — cohort*
+
+![Governance heatmaps — loose backtest universe](../../figures/02_governance_heatmaps_loose_backtest.png)
+*Governance × ownership heatmap — loose backtest universe*
+
+![Governance heatmaps — strict sample](../../figures/02_governance_heatmaps_strict.png)
+*Governance × ownership heatmap — strict sample*
+
+![Governance × token heatmap — cohort](../../figures/02_governance_token_heatmap_cohort.png)
+*Governance × token type heatmap — cohort*
+
+![Governance × token heatmap — loose backtest universe](../../figures/02_governance_token_heatmap_loose_backtest.png)
+*Governance × token type heatmap — loose backtest universe*
+
+![Governance × token heatmap — strict sample](../../figures/02_governance_token_heatmap_strict.png)
+*Governance × token type heatmap — strict sample*
+
+![Market dynamics — loose universe](../../figures/03_market_dynamics_loose.png)
+*Market dynamics — loose universe*
+
+![Market dynamics — strict sample](../../figures/03_market_dynamics_strict.png)
+*Market dynamics — strict sample*
+
+![Top-15 chains — loose universe](../../figures/04_chain_top15_loose.png)
+*Top-15 blockchain deployments — loose universe*
+
+![Top-15 chains — strict sample](../../figures/04_chain_top15_strict.png)
+*Top-15 blockchain deployments — strict sample*
+
+![Sector performance — loose universe](../../figures/05_performance_loose.png)
+*Sector performance — loose universe*
+
+![Sector performance — strict sample](../../figures/05_performance_strict.png)
+*Sector performance — strict sample*

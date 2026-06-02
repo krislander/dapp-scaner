@@ -12,13 +12,27 @@ title: Latest Analysis — Results and Discussion
 4. **Ratio-based outliers highlight business-model diversity** — Evidence: `dapp_anomalies.csv` (volume per user, tx per user, TVL/market cap) with sector-relative robust z-scores.
 
 ## Figures generated
-- figures/eco_decentralisation_stacked_by_sector.png
-- figures/eco_sector_counts_eligible_vs_cohort.png
-- figures/heatmap_gov_token_cohort.png
-- figures/heatmap_gov_token_eligible.png
-- figures/theme_ai_users_volume.png
-- figures/theme_depin_rwa_users_volume.png
-- figures/theme_prediction_users_volume.png
+
+![Decentralisation stacked by sector](../../figures/eco_decentralisation_stacked_by_sector.png)
+*Decentralisation level distribution, stacked by sector*
+
+![Sector counts: eligible vs cohort](../../figures/eco_sector_counts_eligible_vs_cohort.png)
+*Sector DApp counts — eligible universe vs primary cohort*
+
+![Governance × token heatmap — cohort](../../figures/heatmap_gov_token_cohort.png)
+*Governance type × token type heatmap — primary cohort*
+
+![Governance × token heatmap — eligible universe](../../figures/heatmap_gov_token_eligible.png)
+*Governance type × token type heatmap — eligible universe*
+
+![AI DApps: users vs volume](../../figures/theme_ai_users_volume.png)
+*AI-native DApps — active users vs volume scatter*
+
+![DePIN/RWA DApps: users vs volume](../../figures/theme_depin_rwa_users_volume.png)
+*DePIN/RWA DApps — active users vs volume scatter*
+
+![Prediction market DApps: users vs volume](../../figures/theme_prediction_users_volume.png)
+*Prediction market DApps — active users vs volume scatter*
 
 ## Critical interpretation (thesis core)
 - **Labelling assumption:** `dapp_sector` is the operational definition of “ecosystem”; DeFi-like products may appear under `exchanges` — conclusions about “DeFi” must reference the sector filter used.

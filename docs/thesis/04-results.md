@@ -33,13 +33,19 @@ Several contrasts in Table 4.1 are analytically significant. The proportion of f
 
 Market concentration, paradoxically, *increases* in the strict sample: the top-10 market cap share rises from 57.5 per cent to 80.5 per cent. This inversion occurs because the strict filter retains only those protocols with non-trivial financial metrics, and those protocols are predominantly the large incumbents. The median governance score more than quadruples (0.067 to 0.283), consistent with the governance improvements just described.
 
-**[Figure 4.1: Governance label distribution — loose universe (N=834)]**
+![Governance label distribution — loose universe](../figures/02_governance_distribution_loose_backtest.png)
+
+*Figure 4.1: Governance label distribution — loose universe (N=834)*
 
 Figure 4.1 visualises the distribution of governance labels in the loose universe. The dominant category is company-owned, followed by team-controlled, with a small tail of DAO-governed and fully decentralised protocols. Figure 4.2 and Figure 4.3 present the corresponding governance × ownership and governance × token heatmaps for the loose universe, providing a visual baseline against which the strict-sample findings can be compared.
 
-**[Figure 4.2: Governance × ownership heatmap — loose backtest universe (N=834)]**
+![Governance × ownership heatmap — loose backtest universe](../figures/02_governance_heatmaps_loose_backtest.png)
 
-**[Figure 4.3: Governance × token type heatmap — loose backtest universe (N=834)]**
+*Figure 4.2: Governance × ownership heatmap — loose backtest universe (N=834)*
+
+![Governance × token type heatmap — loose backtest universe](../figures/02_governance_token_heatmap_loose_backtest.png)
+
+*Figure 4.3: Governance × token type heatmap — loose backtest universe (N=834)*
 
 ---
 
@@ -49,7 +55,9 @@ Figure 4.1 visualises the distribution of governance labels in the loose univers
 
 Among the 68 DApps in the strict sample, the distribution of governance labels is substantially more varied than in the loose universe but remains concentrated well away from the "fully decentralised" ideal. Figure 4.4 presents the complete breakdown.
 
-**[Figure 4.4: Governance label distribution — strict universe (N=68)]**
+![Governance label distribution — strict universe](../figures/02_governance_distribution_strict.png)
+
+*Figure 4.4: Governance label distribution — strict universe (N=68)*
 
 The data show that 13.24 per cent of the strict sample (nine DApps) are classified as fully decentralised (INS-GOV-01). A majority — 52.94 per cent (36 DApps) — are company-owned, meaning a corporate entity retains ultimate authority over the protocol's smart contracts and governance decisions. Team-controlled governance accounts for a further 26.47 per cent (18 DApps, INS-GOV-02), representing projects in which a founding team or core contributor group sets parameters informally rather than through a codified on-chain process. The remaining share occupies intermediate categories — semi-decentralised projects using snapshot-based off-chain governance, multisig-controlled protocols, and hybrids that combine multiple mechanisms.
 
@@ -61,7 +69,9 @@ The median governance score in the strict sample is 0.283 (on a normalised 0–1
 
 Figure 4.5 presents the two-way cross-tabulations of governance dimensions for the strict sample, illustrating the co-occurrence patterns between governance type, ownership status, and level of decentralisation.
 
-**[Figure 4.5: Governance × ownership heatmap — strict sample (N=68)]**
+![Governance × ownership heatmap — strict sample](../figures/02_governance_heatmaps_strict.png)
+
+*Figure 4.5: Governance × ownership heatmap — strict sample (N=68)*
 
 The heatmaps reveal systematic clustering in the governance space. Company-owned DApps are almost exclusively classified as team-controlled or founder-controlled in governance type; they rarely appear in DAO-governed or community-governed cells. Fully decentralised DApps, conversely, tend to be governed through on-chain token voting mechanisms (DAO with timelock or on-chain token governance) and lack a single company-owned identity. The off-diagonal cells — where ownership status and governance type diverge — are sparsely populated, indicating that these governance dimensions are largely co-determined rather than independent. This internal consistency supports the reliability of the manual coding procedure.
 
@@ -84,7 +94,9 @@ The cross-tabulation confirms that all nine fully decentralised DApps are govern
 
 Figure 4.6 extends the governance picture to include token classification, producing a view of how token design aligns with governance structure in the strict sample.
 
-**[Figure 4.6: Governance type × token type heatmap — strict sample (N=68)]**
+![Governance type × token type heatmap — strict sample](../figures/02_governance_token_heatmap_strict.png)
+
+*Figure 4.6: Governance type × token type heatmap — strict sample (N=68)*
 
 The heatmap reveals that on-chain token governance mechanisms are almost exclusively associated with governance-type tokens: all 12 DApps with ONCHAIN\_TOKEN\_GOVERNANCE governance type hold governance tokens, as does the sole DAO\_WITH\_TIMELOCK DApp. Conversely, team-controlled DApps hold no governance tokens — their tokens are classified as utility (n=7), reward (n=6), or absent (n=5). This alignment between governance token design and on-chain governance mechanisms represents an internal consistency that would be expected if token design tracks governance ambition.
 
@@ -100,9 +112,13 @@ The market capitalisation distribution of DApps in the full dataset is highly ri
 
 Figure 4.7 and Figure 4.8 illustrate the concentration and distributional structure of the strict and loose samples respectively.
 
-**[Figure 4.7: Market capitalisation and user concentration — strict sample (N=68)]**
+![Market capitalisation and user concentration — strict sample](../figures/03_market_dynamics_strict.png)
 
-**[Figure 4.8: Market dynamics — loose universe comparison (N=834)]**
+*Figure 4.7: Market capitalisation and user concentration — strict sample (N=68)*
+
+![Market dynamics — loose universe comparison](../figures/03_market_dynamics_loose.png)
+
+*Figure 4.8: Market dynamics — loose universe comparison (N=834)*
 
 ### 4.3.2 Top-10 Concentration Ratios
 
@@ -132,9 +148,13 @@ The full 855-DApp dataset spans 77 blockchain networks. The five leading chains 
 
 Figure 4.9 shows the top-15 chains by DApp presence in the strict sample, and Figure 4.10 presents the equivalent view for the loose universe.
 
-**[Figure 4.9: Top-15 blockchain deployments — strict sample (N=68)]**
+![Top-15 blockchain deployments — strict sample](../figures/04_chain_top15_strict.png)
 
-**[Figure 4.10: Top-15 blockchain deployments — loose universe (N=834)]**
+*Figure 4.9: Top-15 blockchain deployments — strict sample (N=68)*
+
+![Top-15 blockchain deployments — loose universe](../figures/04_chain_top15_loose.png)
+
+*Figure 4.10: Top-15 blockchain deployments — loose universe (N=834)*
 
 Chain specialisation is evident across sectors. Ethereum and its EVM-compatible Layer-2 networks (Arbitrum, Optimism, Base) dominate the DeFi segment, where composability with established liquidity protocols and Ethereum's security budget provide structural network advantages. BNB Chain hosts a large share of gaming and NFT-gaming DApps, reflecting lower transaction costs and the presence of major gaming ecosystems in the Binance ecosystem. Solana and Sei concentrate gaming and high-throughput applications where transaction latency is a binding operational constraint.
 
@@ -159,9 +179,13 @@ The strict sample of 68 DApps is dominated by DeFi-tagged applications. Based on
 
 Figure 4.11 presents the sector-level performance metrics for the strict sample, and Figure 4.12 provides the loose-universe comparison.
 
-**[Figure 4.11: Sector-level performance metrics — strict sample (N=68)]**
+![Sector-level performance metrics — strict sample](../figures/05_performance_strict.png)
 
-**[Figure 4.12: Sector performance — loose universe (N=834)]**
+*Figure 4.11: Sector-level performance metrics — strict sample (N=68)*
+
+![Sector performance — loose universe](../figures/05_performance_loose.png)
+
+*Figure 4.12: Sector performance — loose universe (N=834)*
 
 ### 4.5.2 The DeFi–Gaming Engagement Gap
 
@@ -752,11 +776,17 @@ The composite signal score weights the five core activity signals as follows: us
 
 In practice, no sector × category cell in the strict universe reaches the 20-DApp threshold for primary cohort selection — the largest cell (exchanges :: DEX) contains 13 eligible DApps and the next largest (defi :: DEX) contains eight. Consequently, all cohorts in the strict universe are secondary cohorts, retaining all eligible DApps within each cell. This means the cohort analysis is in effect a sector × category decomposition of the strict sample rather than a filtered top-K selection.
 
-**[Figure 4.13: Governance × ownership heatmap — primary cohort]**
+![Governance × ownership heatmap — primary cohort](../figures/02_governance_heatmaps_cohort.png)
 
-**[Figure 4.14: Governance × token type heatmap — primary cohort]**
+*Figure 4.13: Governance × ownership heatmap — primary cohort*
 
-**[Figure 4.15: Governance label distribution — primary cohort]**
+![Governance × token type heatmap — primary cohort](../figures/02_governance_token_heatmap_cohort.png)
+
+*Figure 4.14: Governance × token type heatmap — primary cohort*
+
+![Governance label distribution — primary cohort](../figures/02_governance_distribution_cohort.png)
+
+*Figure 4.15: Governance label distribution — primary cohort*
 
 ### 4.8.2 Performance Clustering (K-means)
 
