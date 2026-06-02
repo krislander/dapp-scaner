@@ -351,15 +351,13 @@ Spearman rank correlations (rather than Pearson) are computed between continuous
 
 ### 3.8.4 K-Means Clustering
 
-K-means clustering is applied to the strict sample to identify DApps that are similar across the joint governance–market–adoption space. Inputs are standardised (zero mean, unit variance) before clustering. The feature set comprises: governance score, active users, volume, TVL, market capitalisation, transactions, DeFi flag, gaming flag, and multi-chain deployment status.
+K-means clustering is applied to the full 855-DApp dataset to identify performance tiers across the joint governance–market–adoption space. Inputs are standardised (zero mean, unit variance) before clustering. The feature set comprises: governance score, active users, volume, TVL, market capitalisation, transactions, DeFi flag, gaming flag, and multi-chain deployment status.
 
-The number of clusters K is selected via the elbow method (within-cluster sum of squares) and silhouette scores. Given the small strict sample size (N=68), K is constrained to 3–6 to avoid over-segmentation. Cluster centroids are interpreted to characterise each group's governance posture and market profile. K-means is applied within each sector×category cohort slice to allow intra-cohort comparison.
+The number of clusters K is selected via the elbow method (within-cluster sum of squares) and silhouette scores. K is set to 4 to produce interpretable performance tiers without over-segmentation at the full-dataset scale. Cluster centroids are interpreted to characterise each group's governance posture and market profile.
 
-### 3.8.5 Principal Component Analysis
+*Note:* Principal component analysis (PCA) for dimensionality reduction was considered during exploratory analysis but is not reported as a standalone method. The strict sample (N=68) is too small for PCA results to be meaningfully interpreted, and the governance dimensions are already reduced to a single composite score (§3.7.1) that serves the same narrative purpose.
 
-PCA is applied to the same standardised feature matrix as K-means to assess the dimensionality of the governance–market space and to visualise cluster separation. The first two principal components are plotted with points colour-coded by K-means cluster assignment and shaped by decentralisation level. PCA is used for exploratory visualisation and dimension reduction, not for inference.
-
-### 3.8.6 Concentration Metrics
+### 3.8.5 Concentration Metrics
 
 Market and user concentration are measured with:
 
