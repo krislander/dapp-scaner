@@ -160,7 +160,67 @@ Tan and Shi (2023) provide longitudinal evidence that governance design choices 
 
 ---
 
-## 2.6 Research Gaps and Thesis Positioning
+## 2.6 Statistical Methods for Ecosystem Analysis
+
+Empirical studies of complex digital ecosystems routinely combine several distinct statistical techniques to characterise structure, measure relationships, and reduce dimensionality in data that are simultaneously high-dimensional, non-normal, and composed of heterogeneous variable types. This section situates the five analytical methods employed in this thesis — cross-tabulation, Spearman rank correlation, K-means clustering, principal component analysis, and general correlation analysis — within the relevant methodological literature, explaining what each technique does, under what conditions it is appropriate, and why it was selected for the present study.
+
+### 2.6.1 Cross-Tabulation Analysis
+
+Cross-tabulation (also termed contingency table analysis) is the foundational technique for examining the joint distribution of two or more categorical variables. A cross-tabulation presents the observed frequency of each combination of category values in a two-dimensional matrix; associated inferential statistics — Pearson's chi-squared test, Fisher's exact test for small cell counts, and Cramér's V as a standardised effect-size measure — allow the analyst to assess whether the association between the two variables is stronger than chance would predict (Agresti, 2002).
+
+The chi-squared statistic tests the null hypothesis that the two categorical variables are independent; Fisher's exact test is preferable when expected cell frequencies fall below five, a condition that frequently arises in modest-sized samples. Cramér's V maps the chi-squared statistic onto the [0, 1] interval regardless of table dimensions, making it directly comparable across tables of different sizes — a useful property when comparing the strength of several governance associations in the same dataset.
+
+Cross-tabulation is the natural method of choice whenever both variables are nominal or ordinal categorical variables and the research question concerns co-occurrence patterns rather than continuous relationships. For this thesis, cross-tabulation is used to examine how governance type, ownership status, and level of decentralisation co-vary with sector membership and with binary adoption variables. Because all three governance variables were coded as ordered or nominal categories, and because the sector taxonomy is nominal, cross-tabulation is methodologically appropriate and interpretatively transparent. The governance coding scheme of the thesis, with its three-tier decentralisation taxonomy, follows the categorical analysis tradition established by Hassan and De Filippi (2021) and Feichtinger et al. (2023), both of whom use contingency analysis to describe governance co-occurrence patterns.
+
+### 2.6.2 Spearman Rank Correlation
+
+Spearman's rank-order correlation coefficient (ρ) measures the strength and direction of the monotonic relationship between two variables by operating on their ranks rather than their raw values (Spearman, 1904). Because it is a rank-based non-parametric statistic, Spearman's ρ is robust to extreme values, does not assume normality, and is appropriate for ordinal variables and for interval or ratio variables whose distributions are highly skewed — all of which describe the financial and adoption metrics in the thesis dataset (market capitalisation, TVL, and active user counts are characteristically right-skewed to an extreme degree in digital asset markets).
+
+Pearson's *r*, the parametric alternative, assumes bivariate normality and is sensitive to outliers; both assumptions are systematically violated in DApp financial data, where a handful of protocols account for the vast majority of activity (Ante, 2021; Frontiers in Blockchain, 2023). Spearman's ρ sacrifices sensitivity to linear relationships in exchange for robustness to non-normality and extreme values, making it the appropriate choice for ecosystem-level analysis of DApp metrics. The governance score derived in this study is additionally ordinal rather than continuous, reinforcing the preference for a rank-based measure.
+
+Spearman correlation matrices are computed for the strict sample across the key financial variables (users, volume, TVL, market capitalisation, transactions, governance score, capital raised, TVL-to-market-cap ratio, and market cap per user) to characterise the association structure of the ecosystem without imposing parametric assumptions that the data cannot support.
+
+### 2.6.3 General Correlation Analysis
+
+Beyond the Spearman coefficient, this thesis applies correlation analysis as a general framework for exploring pairwise associations between continuous or ordinal variables in an exploratory mode. Correlation analysis — encompassing both the production of correlation matrices and their visualisation as heatmaps — is a standard first-pass technique in multivariate exploratory data analysis, recommended by Field (2018) precisely because it does not presuppose a causal model and does not require the analyst to specify a dependent variable. In the absence of prior theory that designates specific governance or financial variables as predictors, an unrestricted correlation matrix allows the data to reveal its own covariance structure.
+
+A key limitation of correlation analysis in this context is common to all cross-sectional association measures: correlation does not imply causation, and endogeneity — the likelihood that well-funded protocols simultaneously attract both formal governance and high TVL — prevents any directional interpretation of the associations. The thesis explicitly acknowledges this limitation (§3.9) and presents correlation findings as descriptive, not causal.
+
+### 2.6.4 K-Means Clustering
+
+K-means clustering is an unsupervised partitioning algorithm that assigns each observation to one of *K* clusters such that the within-cluster sum of squared distances to the cluster centroid is minimised (MacQueen, 1967). The algorithm iterates between two steps — reassigning each observation to its nearest centroid and recomputing centroids as the mean of the observations currently assigned to each cluster — until assignments stabilise. K-means is appropriate when the analyst seeks to identify natural groupings in a multivariate continuous feature space without imposing a priori class labels.
+
+K-means is particularly well-suited to exploratory ecosystem analysis because it makes no assumptions about cluster shape other than convexity, it scales well to the dimensionalities typical of governance-and-market feature sets, and its cluster centroids provide directly interpretable summaries of each group's profile (Everitt, Landau, Leese, & Stahl, 2011). The selection of *K* is a known limitation of the method; this thesis applies the elbow method — plotting within-cluster sum of squares against *K* — and silhouette scores to select a stable *K* in the range 3–6, consistent with the sample size constraint imposed by the strict sample (N=68).
+
+For this study, K-means clustering is applied to a standardised feature matrix comprising governance score, active users, volume, TVL, market capitalisation, transactions, sector flags, and multi-chain deployment status. The standardisation step (zero mean, unit variance) is essential because the financial variables span several orders of magnitude and would otherwise dominate the clustering solution. The resulting clusters characterise internally coherent DApp archetypes — combinations of governance posture and market performance that recur across the ecosystem — providing an interpretive complement to the univariate and bivariate analyses that dominate prior empirical work.
+
+### 2.6.5 Principal Component Analysis
+
+Principal component analysis (PCA) is a linear dimensionality-reduction technique that transforms a set of possibly correlated variables into a smaller set of uncorrelated linear combinations — principal components — ordered by the proportion of total variance they explain (Pearson, 1901; Jolliffe, 2002). The first principal component is the linear combination that captures the maximum variance in the data; each subsequent component captures the maximum remaining variance subject to orthogonality with all preceding components.
+
+PCA serves two distinct purposes in this study. First, it provides a diagnostic of the dimensionality of the governance–market space: if the first two or three components together explain a large share of total variance (typically ≥ 70%), the data's information content is effectively lower-dimensional than the raw feature count suggests, validating the interpretive value of two-dimensional visualisations. Second, PCA is used to project the K-means clustering solution onto a two-dimensional plane by plotting observations against their first and second principal component scores, with points colour-coded by cluster assignment. This visualisation assesses whether the clusters identified by K-means correspond to genuinely separated regions of the multivariate feature space or whether they reflect the algorithm's tendency to partition continuous distributions even when no natural clusters exist (Everitt et al., 2011).
+
+PCA is appropriate under the same conditions as K-means: continuous or interval input variables and an exploratory research objective. Because PCA is sensitive to scale differences, it is applied to the same standardised matrix used for K-means. Interpretation of principal components as substantive dimensions — such as a "scale" dimension or a "governance quality" dimension — proceeds from inspection of the variable loadings on each component, a standard interpretive convention in social-science PCA applications (Field, 2018). In this study, PCA is used as an exploratory visualisation and dimension-reduction tool, not as an inferential technique.
+
+### References for §2.6
+
+Agresti, A. (2002). *Categorical data analysis* (2nd ed.). Wiley.
+
+Everitt, B. S., Landau, S., Leese, M., & Stahl, D. (2011). *Cluster analysis* (5th ed.). Wiley.
+
+Field, A. (2018). *Discovering statistics using IBM SPSS statistics* (5th ed.). SAGE Publications.
+
+Jolliffe, I. T. (2002). *Principal component analysis* (2nd ed.). Springer.
+
+MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. *Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability, 1*, 281–297.
+
+Pearson, K. (1901). On lines and planes of closest fit to systems of points in space. *Philosophical Magazine, 2*(11), 559–572.
+
+Spearman, C. (1904). The proof and measurement of association between two things. *American Journal of Psychology, 15*(1), 72–101.
+
+---
+
+## 2.7 Research Gaps and Thesis Positioning
 
 The literature surveyed above, while growing rapidly, exhibits five systematic gaps that motivate the present study.
 
