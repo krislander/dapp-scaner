@@ -119,11 +119,11 @@ Together they cover the major governance archetypes identified in the literature
 
 Because RWA (N=14 in the full dataset) and DePIN (N=10) have relatively small eligible populations, a **data-sufficiency threshold** is applied per ecosystem before including it in the primary comparative analysis:
 
-> **Fallback rule:** If a target ecosystem yields fewer than **10 strict-eligible DApps** (as defined in §3.3.2 — `users ≥ 10,000`, ≥ 4 positive signals, `market_cap > 0` or `tvl > 0`), that ecosystem is **downgraded to a descriptive mention only** and excluded from the K-means clustering and cross-tabulation analyses. If three or more of the five ecosystems fail this threshold simultaneously, the comparative analysis is reduced to the **three largest qualifying ecosystems** by strict-eligible N.
+> **Fallback rule:** If a target ecosystem yields fewer than **10 strict-eligible DApps** (as defined in §3.3.2 — minimum 10,000 unique users, at least four positive governance signals, and positive market capitalisation or total value locked), that ecosystem is **downgraded to a descriptive mention only** and excluded from the K-means clustering and cross-tabulation analyses. If three or more of the five ecosystems fail this threshold simultaneously, the comparative analysis is reduced to the **three largest qualifying ecosystems** by strict-eligible N.
 
 Under this rule, the primary comparative analysis will proceed with all five ecosystems if sufficient data are confirmed during the analysis phase; otherwise the analysis defaults to **DeFi, Prediction Markets, and AI-enabled DApps** — the three ecosystems with the largest tag-identified populations in the full dataset (181, 41, and 32 respectively). RWA and DePIN will be retained as descriptive appendix material even in the fallback scenario.
 
-The threshold of 10 strict-eligible DApps is calibrated against the minimum cohort size for K-means (COHORT_MIN_SIZE = 20 in `analytics_new/config.py`): a full cohort analysis requires N ≥ 20, but a descriptive cross-tabulation and governance-score summary can be supported at N ≥ 10. Below 10, the sample is too sparse to draw ecosystem-level generalisations, and individual-DApp idiosyncrasies dominate the aggregate statistics.
+The threshold of 10 strict-eligible DApps is calibrated against the minimum cohort size required for K-means clustering (N ≥ 20): a full cohort analysis requires N ≥ 20, but a descriptive cross-tabulation and governance-score summary can be supported at N ≥ 10. Below 10, the sample is too sparse to draw ecosystem-level generalisations, and individual-DApp idiosyncrasies dominate the aggregate statistics.
 
 ---
 
