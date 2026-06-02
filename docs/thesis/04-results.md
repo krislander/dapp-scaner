@@ -239,7 +239,7 @@ The per-ecosystem sections below provide the contextual interpretation; quantita
 
 DeFi represents the most economically significant sector in the dataset, hosting protocols whose aggregate TVL ($112.7 billion) accounts for 97.4 per cent of all DApp TVL and whose total trading volume ($358.0 billion) constitutes 68.5 per cent of dataset-wide volume. The 105 DeFi DApps in the loose universe span DEXes (automated market makers, order-book exchanges, aggregators), lending protocols, derivatives, yield aggregators, bridge/router infrastructure, and DAO tooling. Despite subcategory diversity they share a common structural foundation: composable open-source smart contracts deployed on EVM-compatible networks, where permissionless interoperability creates pressure toward governance formalisation as protocols accumulate value.
 
-**Chain Distribution**
+#### Chain Distribution: Ethereum as Settlement Anchor, Solana for High-Throughput DeFi
 
 Table 4.4 presents the top-10 chains by DeFi DApp deployment count in the loose universe (N=105). Chains are counted per DApp per chain deployed; multi-chain DApps appear in each chain they occupy.
 
@@ -262,7 +262,7 @@ Table 4.4 presents the top-10 chains by DeFi DApp deployment count in the loose 
 
 Ethereum's primacy reflects its role as the canonical smart-contract environment — it serves as collateral, liquidity, and trust anchor for a large share of DeFi protocols even when execution migrates to Layer-2 rollups. Solana's entry at 19.0 per cent is driven primarily by high-throughput DEX aggregators (Jupiter Exchange, 3.0 million users) and launchpad protocols (Pump.fun, 7.1 million users) whose UX requirements favour sub-second finality. The 55.2 per cent multi-chain adoption rate in the DeFi universe (compared with 36.2 per cent across all sectors) confirms that DeFi protocols migrate aggressively toward capital and user density wherever it appears. See also Figure 4.9 for the chain distribution in the strict sample.
 
-**Key DApps**
+#### Key DApps: Spanning Launchpads, Aggregators, and Yield Markets
 
 Table 4.5 presents the top DeFi DApps by active users in the loose universe, illustrating the range of protocol types operating at scale.
 
@@ -279,7 +279,7 @@ Table 4.5 presents the top DeFi DApps by active users in the loose universe, ill
 | Pendle | 270,925 | $6.9B | $9.6B | ONCHAIN\_TOKEN\_GOVERNANCE | GOVERNANCE |
 | Aave V3 | — | — | — | ONCHAIN\_TOKEN\_GOVERNANCE | GOVERNANCE |
 
-**Governance Maturity**
+#### Governance Maturity: Highest On-Chain Rate Across All Ecosystems
 
 Among the 36 strict-sample DeFi DApps, governance is substantially more mature than the cross-ecosystem average. On-chain mechanisms (DAO with timelock and on-chain token governance) account for approximately 30 per cent of strict-sample DeFi protocols, compared with 19.1 per cent across the full strict sample. Table 4.6 presents the full governance distribution across the loose DeFi universe.
 
@@ -300,11 +300,11 @@ Among the 36 strict-sample DeFi DApps, governance is substantially more mature t
 
 DeFi has the highest fully decentralised rate of any ecosystem (13.3 %, see Table 4.20). This is consistent with competitive pressure to establish credible neutrality: protocols modifiable at will by their team face user flight to formally governed alternatives. The Snapshot off-chain plurality (25.7 %) represents an intermediate stage — token-holder voting is possible but execution remains operator-dependent (Figures 4.5 and 4.6).
 
-**Token Model Patterns**
+#### Token Model Patterns: Utility Plurality with Governance Token Minority
 
 Utility tokens dominate at 44.8 per cent, reflecting governance-adjacent but non-voting token designs used primarily for fee discounts, liquidity incentives, and staking rewards. Governance tokens appear in 19.0 per cent of DeFi DApps in the loose universe, rising to approximately 31 per cent in the strict sample, where the most financially mature protocols are concentrated. The analysis confirms that 55 per cent of strict-sample DeFi DApps have issued a governance token. Token-holder value accrual is present in approximately 44 per cent of those cases — a lower share, indicating that governance token issuance frequently precedes fee-switch activation.
 
-**Revenue Logic**
+#### Revenue Logic: Transaction Fees, Interest Margin, and Spread Arbitrage
 
 Three dominant DeFi revenue mechanisms are identified in the strict sample:
 
@@ -314,13 +314,19 @@ Three dominant DeFi revenue mechanisms are identified in the strict sample:
 
 3. *Spread arbitrage* (5/36 = 13.9 per cent): Aggregators and bridge protocols (1inch, Mento, Velora, ParaSwap, OpenOcean) capture positive price differences between routes during execution, booking the remainder as protocol revenue.
 
-**Registered Anomalies**
+#### Registered Anomalies
 
-*ANO-DeFi-01 — TVL-to-market-cap inversion.* Six strict-sample DeFi DApps (Pendle, Morpho, Maple, KernelDAO, EigenLayer, LIDO) exhibit TVL that materially exceeds their token market capitalisation, with Morpho reaching a TVL/MCap ratio of approximately 3,437× (TVL $187.5 billion vs MCap at data capture). This pattern is most acute for protocols serving as infrastructure for other protocols' liquidity — TVL accumulates through recursive collateral loops without commensurate token appreciation. The phenomenon is catalogued as ANO-MKT-02 in the broader dataset.
+**ANO-DeFi-01 — TVL-to-Market-Cap Inversion**
 
-*ANO-DeFi-02 — Team-controlled launchpad at scale.* Pump.fun is the most-used DeFi DApp by active users (7.1 million) yet operates under TEAM\_CONTROLLED governance with a utility token. This inversion of the assumed decentralisation-scale relationship reflects the economics of memecoin launchpads: rapid iteration, content moderation, and fee-structure changes require centralised authority to remain competitive. The protocol's $900 million monthly volume demonstrates that high revenue is achievable without governance formalisation.
+Six strict-sample DeFi DApps (Pendle, Morpho, Maple, KernelDAO, EigenLayer, LIDO) exhibit TVL that materially exceeds their token market capitalisation, with Morpho reaching a TVL/MCap ratio of approximately 3,437× (TVL $187.5 billion vs MCap at data capture). This pattern is most acute for protocols serving as infrastructure for other protocols' liquidity — TVL accumulates through recursive collateral loops without commensurate token appreciation. The phenomenon is catalogued as ANO-MKT-02 in the broader dataset.
 
-*ANO-DeFi-03 — Revenue concentration in non-governance protocols.* Among the five highest-volume DeFi DApps (Pump.fun, PancakeSwap V3, Jumper Exchange, Morpho, Helix), three are team-controlled or hybrid-governed. This indicates that revenue generation is not monotonically associated with governance maturity: the protocols capturing the greatest economic throughput are not necessarily those with the most formal governance structures.
+**ANO-DeFi-02 — Team-Controlled Launchpad at Scale**
+
+Pump.fun is the most-used DeFi DApp by active users (7.1 million) yet operates under TEAM\_CONTROLLED governance with a utility token. This inversion of the assumed decentralisation-scale relationship reflects the economics of memecoin launchpads: rapid iteration, content moderation, and fee-structure changes require centralised authority to remain competitive. The protocol's $900 million monthly volume demonstrates that high revenue is achievable without governance formalisation.
+
+**ANO-DeFi-03 — Revenue Concentration in Non-Governance Protocols**
+
+Among the five highest-volume DeFi DApps (Pump.fun, PancakeSwap V3, Jumper Exchange, Morpho, Helix), three are team-controlled or hybrid-governed. This indicates that revenue generation is not monotonically associated with governance maturity: the protocols capturing the greatest economic throughput are not necessarily those with the most formal governance structures.
 
 ---
 
@@ -330,7 +336,7 @@ Prediction markets constitute a small but analytically significant ecosystem: 31
 
 *Sample limitation.* Prediction market DApps overwhelmingly lack the financial metrics required for strict-sample inclusion. Polymarket — the dominant protocol — operates without a native token and without reportable TVL, disqualifying it from the strict filter. Only one strict-sample prediction market DApp is identified (Overtime Markets). The analysis uses the loose universe (N=31) throughout.
 
-**Chain Distribution**
+#### Chain Distribution: Polygon for Oracle-Dependent Resolution, BNB Chain for Broader Reach
 
 **Table 4.7 — Top-5 chains by prediction market DApp presence (loose universe, N=31)**
 
@@ -346,7 +352,7 @@ Prediction markets constitute a small but analytically significant ecosystem: 31
 
 Polygon hosts Polymarket — migrated from Ethereum in 2020 to reduce gas costs for individual resolution transactions. The multi-chain adoption rate for prediction markets (19.4 per cent) is the lowest of the five ecosystems examined, reflecting both the informational complexity of deploying oracle-dependent resolution across chains and the relative maturity barrier of the sector.
 
-**Key DApps**
+#### Key DApps: Polymarket Dominates with 66.6% of Sector Users
 
 **Table 4.8 — Top prediction market DApps by active users (loose universe)**
 
@@ -359,7 +365,7 @@ Polygon hosts Polymarket — migrated from Ethereum in 2020 to reduce gas costs 
 | Limitless | 3,153 | $3.6M | SNAPSHOT\_OFFCHAIN | UTILITY | Base |
 | BetSwirl | 1,663 | $0.4M | TEAM\_CONTROLLED | UTILITY | Multi-chain |
 
-**Governance Maturity**
+#### Governance Maturity: Most Centralised Ecosystem — 71.0% Team-Controlled
 
 **Table 4.9 — Prediction market governance distribution (loose universe, N=31)**
 
@@ -375,25 +381,29 @@ Polygon hosts Polymarket — migrated from Ethereum in 2020 to reduce gas costs 
 
 Prediction markets are the most centralised ecosystem (Table 4.20): 71.0 per cent team-controlled, zero DApps fully decentralised. This reflects a genuine operational constraint — outcome resolution requires rapid, authoritative intervention to correct oracles and arbitrate disputes, functions that slow token-governance processes cannot reliably provide.
 
-**Token Model Patterns**
+#### Token Model Patterns: Near-Total Absence of Governance Tokens (74.2% Tokenless)
 
 The sector is notable for near-total absence of governance tokens: 74.2 per cent of prediction market DApps carry no native token. Among tokenised protocols, utility tokens predominate (19.4 per cent). This token-free design is commercially rational: a native token would introduce speculative dynamics into a platform whose value proposition depends on price-neutral information aggregation. The single strict-sample prediction market DApp (Overtime) uses a utility token with multisig-guarded community input rather than on-chain token governance, consistent with the sector pattern.
 
-**Revenue Logic**
+#### Revenue Logic: Resolution Fees, Spread Arbitrage, and Oracle Services
 
 The dominant revenue mechanism for prediction market protocols is spread arbitrage. Protocols earn through: (1) *resolution fees* charged as a percentage of the settled market's volume (typically 2–5 per cent on winning positions); (2) *spread arbitrage* between taker and maker pricing in AMM-style prediction markets (Overtime's model); and (3) *oracle service fees* in protocols that route resolution through UMA, Chainlink, or other providers. Polymarket's $858.8 million in volume at a 2 per cent fee structure implies approximately $17.2 million in annual fee revenue for a tokenless, team-controlled operator.
 
-**Registered Anomalies**
+#### Registered Anomalies
 
-*ANO-PRED-01 — Volume-per-user concentration.* Polymarket's implied volume-per-user is $3,992, placing it in the high-volume-per-user outlier category alongside major institutional DeFi protocols. This ratio is driven by large-position wagering on high-stakes events — US elections, sports tournaments, macroeconomic releases — rather than retail participation breadth, and is not representative of the sector median.
+**ANO-PRED-01 — Volume-Per-User Concentration: Polymarket's Institutional Wagering Profile**
 
-*ANO-PRED-02 — "Trade signal" volume outlier.* One prediction-market-adjacent DApp ("Trade signal", classified within the gambling and NFT marketplace sectors) records $1.861 billion in volume against only 1,131 active users — a volume-per-user ratio of $1,645,485, the highest registered outlier in the dataset. This extreme ratio is consistent with a front-end routing institutional order flow rather than reflecting genuine broad user activity, and the DApp carries no formal governance mechanism and no token.
+Polymarket's implied volume-per-user is $3,992, placing it in the high-volume-per-user outlier category alongside major institutional DeFi protocols. This ratio is driven by large-position wagering on high-stakes events — US elections, sports tournaments, macroeconomic releases — rather than retail participation breadth, and is not representative of the sector median.
+
+**ANO-PRED-02 — Extreme Volume Outlier: "Trade Signal" Institutional Order Flow**
+
+One prediction-market-adjacent DApp ("Trade signal", classified within the gambling and NFT marketplace sectors) records $1.861 billion in volume against only 1,131 active users — a volume-per-user ratio of $1,645,485, the highest registered outlier in the dataset. This extreme ratio is consistent with a front-end routing institutional order flow rather than reflecting genuine broad user activity, and the DApp carries no formal governance mechanism and no token.
 
 ---
 
 ### 4.6.3 AI-Native DApps
 
-#### Sector Definition
+#### Sector Definition and Inclusion Criteria
 
 **Inclusion criteria.** A DApp is classified as AI-native if any combination of its descriptive text fields contains at least one of the following terms: *ai*, *llm*, *machine learning*, *ai gaming*, or *ai-big-data* (case-insensitive). The classification is applied mechanically, evaluating the combined text of all relevant descriptive fields per DApp.
 
@@ -405,7 +415,7 @@ The dominant revenue mechanism for prediction market protocols is spread arbitra
 
 ---
 
-#### Sector Structure and Category Distribution
+#### Sector Structure: NFT Gaming and Marketplace Lead, Cross-Cutting Classification Gap
 
 The 66 AI-native DApps span nine primary sectors. The "other" sector holds the plurality (29 DApps, 43.9 per cent) — consistent with the cross-cutting, hard-to-classify nature of AI-enabled applications that do not fit neatly into DeFi, gaming, or social taxonomies. NFT Gaming (16 DApps) and NFT marketplace (13 DApps) are the most represented application categories, reflecting the early-adoption of AI features in gaming reward economies and AI-generated content marketplaces.
 
@@ -435,7 +445,7 @@ Three functionally distinct archetypes account for the majority of the AI DApp p
 
 ---
 
-#### Chain Distribution
+#### Chain Distribution: BNB Chain for Gaming, Base for AI Infrastructure
 
 **Table 4.11 — Top chains by AI DApp deployment (loose universe, N=66)**
 
@@ -456,7 +466,7 @@ BNB Chain's leading position (39.4 per cent of AI DApps) is driven by the prepon
 
 ---
 
-#### Key DApps
+#### Key DApps: Extreme Scale Gaps Across AI Archetypes
 
 **Table 4.12 — Representative AI DApps by active users (loose universe)**
 
@@ -474,7 +484,7 @@ BNB Chain's leading position (39.4 per cent of AI DApps) is driven by the prepon
 
 ---
 
-#### Governance Structure
+#### Governance Structure: Bimodal Distribution — Team Control or Snapshot Off-Chain
 
 **Table 4.13 — AI DApp governance distribution (loose universe, N=66)**
 
@@ -539,7 +549,7 @@ The zero-decentralised finding is not a data artefact. Four independent structur
 
 ---
 
-#### Token Model Patterns
+#### Token Model Patterns: High Token Issuance (75.8%) Against Limited Governance Rights
 
 Of the 66 AI DApps, 50 (75.8 per cent) have issued a token. The remaining 16 (24.2 per cent) are tokenless — a higher no-token rate than the DeFi sector (approximately 15 per cent) but lower than prediction markets (approximately 40 per cent).
 
@@ -562,7 +572,7 @@ No AI DApp in the dataset operates a pure fee-switch governance token model (whe
 
 ---
 
-#### Revenue Logic
+#### Revenue Logic: Usage Metering, Agent Launch Take-Rate, and Tokenomics Subsidies
 
 AI DApp revenue divides into three models, identified for the three strict-sample DApps and extended analytically to the loose universe:
 
@@ -574,7 +584,7 @@ AI DApp revenue divides into three models, identified for the three strict-sampl
 
 ---
 
-#### Maturity Indicators
+#### Maturity Indicators: Data-Complete but Financially Thin
 
 Assessed across the standard maturity dimensions used in this thesis:
 
@@ -597,9 +607,13 @@ The high token issuance rate (75.8 per cent) relative to the AI sector's governa
 
 #### Registered Anomalies
 
-*ANO-AI-01 — User–volume decoupling.* The two most-used AI DApps by active wallet count — Hot Spring (2.9 million users) and Alaya AI (1.9 million users) — report zero recorded volume. This decoupling indicates reward economies in which activity generates token distributions but not financial throughput traceable as on-chain "volume" in DappRadar's framework. The same pattern holds for OpenPad AI (293,016 users, $0 volume) and Sleepless AI (73,338 users, $0 volume), classifying these DApps as structurally incompatible with volume-based performance benchmarks calibrated on DeFi or NFT activity.
+**ANO-AI-01 — User–Volume Decoupling: Reward Economies Generate Activity Without Financial Throughput**
 
-*ANO-AI-02 — Market capitalisation inversion relative to user scale.* Virtuals Protocol carries a $606.3 million MCap with 39,464 active users (MCap-per-user ≈ $15,365), while Hot Spring has 2.9 million users and zero MCap. This near-perfect anti-correlation between financial valuation and user activity within the AI sector indicates that market participants price AI protocol infrastructure as platform options on the emerging AI-agent economy — not on revenue or user metrics. The total AI DApp combined market cap of $1.61 billion is dominated by the infrastructure sub-type (Virtuals Protocol, ChainOpera AI, Kaito, CARV) despite these protocols collectively holding fewer than 250,000 active users.
+The two most-used AI DApps by active wallet count — Hot Spring (2.9 million users) and Alaya AI (1.9 million users) — report zero recorded volume. This decoupling indicates reward economies in which activity generates token distributions but not financial throughput traceable as on-chain "volume" in DappRadar's framework. The same pattern holds for OpenPad AI (293,016 users, $0 volume) and Sleepless AI (73,338 users, $0 volume), classifying these DApps as structurally incompatible with volume-based performance benchmarks calibrated on DeFi or NFT activity.
+
+**ANO-AI-02 — Market-Capitalisation Inversion Relative to User Scale: Infrastructure Priced as Platform Options**
+
+Virtuals Protocol carries a $606.3 million MCap with 39,464 active users (MCap-per-user ≈ $15,365), while Hot Spring has 2.9 million users and zero MCap. This near-perfect anti-correlation between financial valuation and user activity within the AI sector indicates that market participants price AI protocol infrastructure as platform options on the emerging AI-agent economy — not on revenue or user metrics. The total AI DApp combined market cap of $1.61 billion is dominated by the infrastructure sub-type (Virtuals Protocol, ChainOpera AI, Kaito, CARV) despite these protocols collectively holding fewer than 250,000 active users.
 
 ---
 
@@ -609,7 +623,7 @@ The RWA ecosystem encompasses DApps whose economic purpose involves bridging on-
 
 *Sample limitation.* The strict sample contains approximately three to five RWA-adjacent DApps. Ethena — classified in the DeFi sector with a Payments/RWA sub-category — is the most metrics-complete RWA DApp and is included via its sub-category classification. Velo and Maple operate in institutional yield and lending spaces that are functionally RWA-adjacent. The DePIN category additionally captures some infrastructure DApps with RWA characteristics (WiFi Map). The analysis uses the loose RWA universe (N=43) with these cross-coding notes.
 
-**Chain Distribution**
+#### Chain Distribution: Ethereum for Institutional Settlement, TON for Consumer Payments
 
 **Table 4.22 — Top-5 chains by RWA DApp presence (loose universe, N=43)**
 
@@ -625,7 +639,7 @@ The RWA ecosystem encompasses DApps whose economic purpose involves bridging on-
 
 Ethereum's leading position is expected: tokenised treasuries, institutional lending, and synthetic dollar protocols require the settlement finality and regulatory familiarity associated with Ethereum mainnet. TON's 18.6 per cent share reflects Telegram's strategy of integrating real-world payment and asset rails within its messaging ecosystem. The 37.2 per cent multi-chain adoption rate is lower than DeFi (55.2 per cent), consistent with the institutional focus of leading RWA protocols where single-chain deployment limits cross-chain composability risk.
 
-**Key DApps**
+#### Key DApps: Institutional Protocols and Tokenised Consumer Assets
 
 **Table 4.23 — Top RWA DApps by TVL and users (loose universe)**
 
@@ -640,7 +654,7 @@ Ethereum's leading position is expected: tokenised treasuries, institutional len
 | Fiat24 | 13,821 | $5.5M | — | — | NONE |
 | Solayer | 9,371 | $1.2K | $40.4M | $46.9M | SNAPSHOT\_OFFCHAIN |
 
-**Governance Maturity**
+#### Governance Maturity: Regulatory Constraints Drive 60.5% Team-Controlled Rate
 
 **Table 4.24 — RWA governance distribution (loose universe, N=43)**
 
@@ -657,11 +671,11 @@ Ethereum's leading position is expected: tokenised treasuries, institutional len
 
 RWA protocols are the second-most centralised ecosystem after prediction markets (60.5 % team-controlled; see Table 4.20). Only KlimaDAO operates a DAO\_WITH\_TIMELOCK. The fully decentralised rate is 2.3 % — tied for second-lowest with DePIN ahead of prediction markets and AI DApps at zero. This structural centralisation is partly regulatory: compliance for tokenised real-world assets typically requires a corporate entity as legal custodian, making full on-chain governance legally and operationally problematic. The contrast with DeFi's 13.3 % is stark and reflects the fundamentally different legal exposure of RWA versus pure on-chain DeFi protocols.
 
-**Token Model Patterns**
+#### Token Model Patterns: Highest No-Token Share (55.8%) Across All Ecosystems
 
 The no-token share (55.8 per cent) is the highest of the five ecosystems, reflecting institutional DeFi protocols (Maple, Fiat24) and payment infrastructure that derive value from financial execution rather than token-mediated incentives. Among tokenised protocols, utility tokens are the most common design (32.6 per cent), used primarily to access protocol services (Ethena's ENA for committee-based governance participation, WiFi Map's WIFI for hotspot data access). Governance tokens appear in only 2.3 per cent of RWA DApps (KlimaDAO alone), the lowest governance-token prevalence of the five ecosystems.
 
-**Revenue Logic**
+#### Revenue Logic: Yield Spread on Real-World Assets, Tokenised Asset Fees, and Performance Fees
 
 RWA revenue mechanisms are sector-specific, and the v2 coding captures three patterns for strict-adjacent DApps:
 
@@ -671,11 +685,15 @@ RWA revenue mechanisms are sector-specific, and the v2 coding captures three pat
 
 3. *Performance fees*: Mitosis (a yield coordination protocol operating at the boundary of DeFi and RWA) captures a share of yield generated above benchmark rates for depositors.
 
-**Registered Anomalies**
+#### Registered Anomalies
 
-*ANO-RWA-01 — Ethena TVL-to-MCap inversion.* Ethena's TVL ($14.2 billion) exceeds its token market capitalisation ($1.8 billion) by a factor of approximately 7.8×. This is an instance of the broad ANO-MKT-02 anomaly (§4.3.3) and is structurally explained by Ethena's model: sUSDe deposits are backed by staked ETH and short perpetual positions, generating TVL as depositor liability rather than equity value. The result is a protocol whose economic scale dwarfs its equity capitalisation by design.
+**ANO-RWA-01 — Ethena TVL-to-MCap Inversion: Depositor Liabilities Inflate TVL (7.8×)**
 
-*ANO-RWA-02 — Maple capital velocity.* Maple's 30-day volume ($34.3 billion) exceeds its TVL ($2.6 billion) by approximately 13.1×, indicating capital velocity — the repeated recycling of institutional capital through short-tenor lending cycles — rather than passive lock-up. This velocity ratio is the highest observed in the dataset for any lending-category protocol and identifies Maple as an active liquidity intermediary operating a revolving-door model rather than a static collateral warehouse.
+Ethena's TVL ($14.2 billion) exceeds its token market capitalisation ($1.8 billion) by a factor of approximately 7.8×. This is an instance of the broad ANO-MKT-02 anomaly (§4.3.3) and is structurally explained by Ethena's model: sUSDe deposits are backed by staked ETH and short perpetual positions, generating TVL as depositor liability rather than equity value. The result is a protocol whose economic scale dwarfs its equity capitalisation by design.
+
+**ANO-RWA-02 — Maple Capital Velocity: Volume-to-TVL Ratio of 13.1× from Revolving Lending Cycles**
+
+Maple's 30-day volume ($34.3 billion) exceeds its TVL ($2.6 billion) by approximately 13.1×, indicating capital velocity — the repeated recycling of institutional capital through short-tenor lending cycles — rather than passive lock-up. This velocity ratio is the highest observed in the dataset for any lending-category protocol and identifies Maple as an active liquidity intermediary operating a revolving-door model rather than a static collateral warehouse.
 
 ---
 
@@ -685,7 +703,7 @@ DePIN encompasses protocols that coordinate physical hardware or physical-world 
 
 *Sample limitation.* DePIN DApps rarely meet strict-sample financial criteria: most protocols report near-zero token market capitalisation and minimal volume, failing the strict filter. The v2 strict sample has only two DePIN DApps (both LOW-to-MEDIUM v2 coding confidence). The analysis uses the loose universe (N=29) throughout.
 
-**Chain Distribution**
+#### Chain Distribution: BNB Chain for Micro-Transactions, Highest Multi-Chain Adoption Rate
 
 **Table 4.16 — Top-5 chains by DePIN DApp presence (loose universe, N=29)**
 
@@ -701,7 +719,7 @@ DePIN encompasses protocols that coordinate physical hardware or physical-world 
 
 BNB Chain's dominance (44.8 per cent) reflects consumer hardware applications with frequent micro-transactions — a use pattern well-suited to BNB Chain's low gas fees and opBNB's further fee reduction. The 55.2 per cent multi-chain adoption rate is the highest of the non-DeFi ecosystems, indicating that DePIN protocols deploy across chains primarily to reach broader user and token-distribution networks rather than for financial composability.
 
-**Key DApps**
+#### Key DApps: Messaging, Fitness Tracking, Hardware Networks, and GPS Data Collection
 
 **Table 4.17 — Top DePIN DApps by active users (loose universe)**
 
@@ -716,7 +734,7 @@ BNB Chain's dominance (44.8 per cent) reflects consumer hardware applications wi
 | SuperWalk | 27,895 | $603.6K | SNAPSHOT\_OFFCHAIN | REWARD | Move-to-earn |
 | Gaimin | 9,765 | $12.5 | TEAM\_CONTROLLED | — | GPU compute |
 
-**Governance Maturity**
+#### Governance Maturity: Team-Controlled Majority with Physical Consensus as Corner Case
 
 **Table 4.18 — DePIN governance distribution (loose universe, N=29)**
 
@@ -733,11 +751,11 @@ BNB Chain's dominance (44.8 per cent) reflects consumer hardware applications wi
 
 Two DApps (6.9 per cent) achieve Decentralised status — the highest rate outside the DeFi and exchanges sectors. Sweat Economy achieves Hybrid decentralisation through a "one-person, one-vote" model enforced by physical activity verification rather than token weighting. The remaining 55.2 per cent semi-decentralised DApps typically operate Snapshot-based voting for token reward parameters while retaining centralised control over hardware onboarding and network topology. The DePIN-RWA theme cohort reports team-controlled governance as the top governance type (consistent with this distribution) and 7.2 per cent governance token prevalence.
 
-**Token Model Patterns**
+#### Token Model Patterns: Highest Reward Token Prevalence, Reflecting Participation Incentive Model
 
 The no-token share (37.9 per cent) is lower than RWA (55.8 per cent) and prediction markets (74.2 per cent) but higher than DeFi (30.5 per cent), reflecting the phase-specific token deployment of DePIN networks: protocols in pre-token phases attract participants with future token promises, while mature protocols use reward tokens to incentivise infrastructure provision. Reward tokens (20.7 per cent) are proportionally more common in DePIN than in any other ecosystem examined, consistent with the participation-reward model where tokens compensate hardware contribution rather than represent governance rights. Both strict-sample DePIN DApps rely on tokenomics-based sustainability; WiFi Map's primary cash-denominated revenue source is advertising.
 
-**Revenue Logic**
+#### Revenue Logic: Tokenomics-Based Reward Cycles, Data Monetisation, and Enterprise Compute
 
 DePIN revenue models differ structurally from DeFi and prediction markets:
 
@@ -747,11 +765,15 @@ DePIN revenue models differ structurally from DeFi and prediction markets:
 
 3. *Enterprise compute contracts* (Gaimin): Gaimin and similar GPU-compute DePIN protocols contract with AI/ML enterprises for burst compute capacity, distributing fees to hardware node operators. This model introduces direct enterprise revenue in addition to tokenomics-based incentives, though at small absolute scale ($12.5 monthly volume in the data period).
 
-**Registered Anomalies**
+#### Registered Anomalies
 
-*ANO-DEPIN-01 — Near-zero volume at large user scale.* The DePIN sector collectively records $8.6 million in volume against 4.9 million active users — an average volume-per-user of $1.74, the lowest of any sector in the dataset. This figure is not anomalous within DePIN's economic model (participation rewards rather than financial transactions generate activity), but it represents a categorical incompatibility with volume-based DApp performance metrics. DePIN protocols are misclassified as low-performing when evaluated against volume benchmarks calibrated on DeFi or NFT marketplace activity. The finding reinforces the broader argument (§4.5.2) that sector-disaggregated metrics are required for accurate ecosystem assessment.
+**ANO-DEPIN-01 — Near-Zero Volume at Large User Scale: Metric Incompatibility with DeFi Benchmarks**
 
-*ANO-DEPIN-02 — Decentralisation through physical consensus.* Sweat Economy (831,766 users) achieves Hybrid decentralisation status through a "one-person, one-vote" governance model enforced by physical activity verification rather than token-weighted voting — a mechanism with no precedent in the DeFi governance literature. This pattern indicates that DePIN protocols may develop effective decentralisation through physical-world verification architectures rather than through the token-based governance structures that define decentralisation in DeFi sectors. The cross-sector applicability of standard decentralisation metrics to DePIN governance is therefore an open methodological question.
+The DePIN sector collectively records $8.6 million in volume against 4.9 million active users — an average volume-per-user of $1.74, the lowest of any sector in the dataset. This figure is not anomalous within DePIN's economic model (participation rewards rather than financial transactions generate activity), but it represents a categorical incompatibility with volume-based DApp performance metrics. DePIN protocols are misclassified as low-performing when evaluated against volume benchmarks calibrated on DeFi or NFT marketplace activity. The finding reinforces the broader argument (§4.5.2) that sector-disaggregated metrics are required for accurate ecosystem assessment.
+
+**ANO-DEPIN-02 — Decentralisation Through Physical Consensus: Sweat Economy's Novel Governance Mechanism**
+
+Sweat Economy (831,766 users) achieves Hybrid decentralisation status through a "one-person, one-vote" governance model enforced by physical activity verification rather than token-weighted voting — a mechanism with no precedent in the DeFi governance literature. This pattern indicates that DePIN protocols may develop effective decentralisation through physical-world verification architectures rather than through the token-based governance structures that define decentralisation in DeFi sectors. The cross-sector applicability of standard decentralisation metrics to DePIN governance is therefore an open methodological question.
 
 ---
 
