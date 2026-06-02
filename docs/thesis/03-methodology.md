@@ -10,7 +10,7 @@ This thesis adopts an **exploratory, cross-sectional research design**. The unit
 
 A cross-sectional design was chosen deliberately. Although longitudinal data would allow causal inference about governance trajectories, the absence of historically archived governance labels — a known data gap in the DApp space — makes panel approaches infeasible at this scale. The cross-section provides a defensible ecosystem-level snapshot that can serve as a baseline for subsequent waves of measurement.
 
-The study is empirical and primarily quantitative, with a structured qualitative component: three governance-related variables (`governance_type`, `ownership_status`, `level_of_decentralisation`) were coded through manual research following explicit decision rules, then subjected to the same statistical treatment as the machine-collected variables. This hybrid approach reflects the current maturity of DApp data infrastructure, where key governance attributes are not yet systematically reported in machine-readable form.
+The study is empirical and primarily quantitative, with a structured qualitative component: three governance-related variables (governance type, ownership status, and level of decentralisation) were coded through manual research following explicit decision rules, then subjected to the same statistical treatment as the machine-collected variables. This hybrid approach reflects the current maturity of DApp data infrastructure, where key governance attributes are not yet systematically reported in machine-readable form.
 
 The analysis proceeds in three stages: (1) descriptive statistics characterising the full dataset of 855 DApps; (2) comparative analysis of two eligibility universes — a *loose* sample (N=834) and a *strict* sample (N=68) — designed to test how measurement quality gates affect headline findings; and (3) cohort-level analysis using K-means clustering and principal component analysis (PCA) on the strict sample to identify internally coherent subgroups.
 
@@ -22,7 +22,7 @@ The analysis proceeds in three stages: (1) descriptive statistics characterising
 
 The primary data source is [DappRadar](https://dappradar.com), the leading DApp analytics aggregator, which collects on-chain activity metrics through indexed RPC nodes and standardised API integrations across multiple blockchains. The initial population was drawn from the DappRadar public API, targeting the top 500 DApps ranked by Unique Active Wallets (UAW) — the number of distinct wallet addresses that interacted with a smart contract in a given period. UAW was selected as the primary ranking criterion because it measures genuine on-chain engagement rather than price-dependent metrics (market cap, TVL) that can be inflated by token emission schedules or bridged liquidity.
 
-From this DappRadar seed, the scraper also captured: category, sector, supported blockchain networks, token name and symbol, token format (e.g., ERC-20, BEP-20), website URL, launch date, description, and transaction count. Data were retrieved using a custom Python scraper (`dapp_scraper/`) in November 2025 and stored in a PostgreSQL relational database.
+From this DappRadar seed, the scraper also captured: category, sector, supported blockchain networks, token name and symbol, token format (e.g., ERC-20, BEP-20), website URL, launch date, description, and transaction count. Data were retrieved using a custom scraper in November 2025 and stored in a relational database.
 
 ### 3.2.2 Secondary Sources
 
@@ -32,13 +32,13 @@ Three secondary APIs enriched the dataset:
 
 **CoinMarketCap (CMC)** supplied token market data: market capitalisation, circulating supply, total supply, maximum supply, price, 24-hour volume, and multi-period price change percentages (1h, 24h, 7d, 30d, 60d, 90d). CMC also contributed the platform's own categorical tags, which were merged with DappRadar and CoinGecko tags during data preparation.
 
-**CoinGecko** provided an alternative market capitalisation field (`mcap`), CoinGecko-specific category labels, and served as a cross-validation source for token identifiers. Where CMC and CoinGecko figures disagreed by more than 10%, the CMC figure was used as the authoritative value given its broader coverage of the DApps in the sample.
+**CoinGecko** provided an alternative market capitalisation field, CoinGecko-specific category labels, and served as a cross-validation source for token identifiers. Where CMC and CoinGecko figures disagreed by more than 10%, the CMC figure was used as the authoritative value given its broader coverage of the DApps in the sample.
 
 ### 3.2.3 Record Linkage and Tag Aggregation
 
-Matching across four data sources required a multi-step record linkage procedure. The DappRadar slug served as the anchor key; secondary sources were joined using: (i) CoinGecko identifiers (`gecko_id`) and CoinMarketCap identifiers (`cmc_id`) stored during scraping; (ii) fuzzy string matching on protocol name and token symbol for records lacking explicit identifiers; and (iii) manual resolution for the approximately 3% of records where automated matching was ambiguous.
+Matching across four data sources required a multi-step record linkage procedure. The DappRadar slug served as the anchor key; secondary sources were joined using: (i) CoinGecko and CoinMarketCap identifiers stored during scraping; (ii) fuzzy string matching on protocol name and token symbol for records lacking explicit identifiers; and (iii) manual resolution for the approximately 3% of records where automated matching was ambiguous.
 
-Tags were consolidated from all four sources into a single comma-separated `tags` field using a deduplication routine that normalised case and removed near-duplicate labels (e.g., "DEX" and "Decentralized Exchange" were merged). The merged tag set was used downstream to derive theme flags (`is_defi`, `is_gaming`, `is_social`, `is_nft`) via keyword heuristics (`analytics/01_data_preparation.py`).
+Tags were consolidated from all four sources into a single field using a deduplication routine that normalised case and removed near-duplicate labels (e.g., "DEX" and "Decentralized Exchange" were merged). The merged tag set was used to derive binary theme flags identifying DApps associated with DeFi, gaming, social, and NFT ecosystems via keyword heuristics.
 
 ---
 
@@ -50,8 +50,8 @@ The raw dataset contains **855 DApps** spanning **77 blockchain networks**. Beca
 
 A DApp is classified as *loose-eligible* if it satisfies both of the following conditions:
 
-1. **Governance fields complete:** all three governance variables (`governance_type`, `ownership_status`, `level_of_decentralisation`) have been manually coded with a non-null, non-UNKNOWN value.
-2. **Minimum activity signals:** at least 2 of the 5 activity signals are strictly positive: `users > 0`, `volume > 0`, `tvl > 0`, `market_cap > 0`, `transactions > 0`.
+1. **Governance fields complete:** all three governance variables (governance type, ownership status, and level of decentralisation) have been manually coded with a non-null, non-UNKNOWN value.
+2. **Minimum activity signals:** at least 2 of the 5 activity signals are strictly positive — active users, transaction volume, total value locked, market capitalisation, and transaction count.
 
 The loose universe (N=834, 97.5% of the dataset) mirrors the eligibility gate used in the earlier analytics scripts and is preserved as a backtest baseline to assess how headline figures change when tighter quality requirements are imposed. Twenty-one DApps failed the loose filter: 13 had incomplete governance coding and 8 had fewer than 2 positive signals.
 
@@ -60,8 +60,8 @@ The loose universe (N=834, 97.5% of the dataset) mirrors the eligibility gate us
 A DApp is classified as *strict-eligible* if it satisfies the loose criteria *plus* all three of the following:
 
 1. **Rich engagement:** at least 4 of the 5 activity signals are strictly positive.
-2. **Scale threshold:** `users ≥ 10,000` unique active wallets in the measurement period.
-3. **Valuation anchor:** `market_cap > 0` OR `tvl > 0` (at least one financial stock variable is non-zero).
+2. **Scale threshold:** at least 10,000 unique active wallets in the measurement period.
+3. **Valuation anchor:** at least one financial stock variable (market capitalisation or total value locked) is non-zero.
 
 The strict universe (N=68, 8.0% of the full dataset) reduces noise from sparse metrics so that ecosystem-level statements about governance alignment, capital concentration, and cross-sector performance are defensible. The strict gate is intentionally conservative: it retains only DApps for which the analyst has high confidence in the accuracy and completeness of the activity picture.
 
@@ -69,7 +69,7 @@ The difference in headline metrics between the loose and strict universes is ana
 
 ### 3.3.3 Primary and Secondary Cohorts
 
-Within the strict universe, DApps are further organised into **sector×category cohorts** for the K-means and PCA analyses (§3.8.4–3.8.5). Each cohort is defined by a unique combination of `dapp_sector` and `dapp_category`. A **primary cohort** is selected when the cell contains at least 20 strict-eligible DApps (top-K ranked by a weighted log-signal composite); a **secondary cohort** is used for cells with fewer than 20 eligible entries, in which case all eligible DApps are retained. The cohort structure and selected DApp names are recorded in `cohort_manifest.json`.
+Within the strict universe, DApps are further organised into **sector×category cohorts** for the K-means and PCA analyses (§3.8.4–3.8.5). Each cohort is defined by a unique combination of sector and application category. A **primary cohort** is selected when the cell contains at least 20 strict-eligible DApps (top-K ranked by a weighted log-signal composite); a **secondary cohort** is used for cells with fewer than 20 eligible entries, in which case all eligible DApps are retained.
 
 ---
 
@@ -94,15 +94,15 @@ Five ecosystems were selected for ecosystem-level comparative analysis. The sele
 
 **Table 3.2 — Target Ecosystem Mapping**
 
-| Ecosystem | `dapp_sector` codes | Theme flag / tag filter | N DApps (full dataset) | Rationale |
+| Ecosystem | Sector classification | Identification criteria | N DApps (full dataset) | Rationale |
 |-----------|--------------------|-----------------------|----------------------|-----------|
-| **DeFi** | `defi`, `exchanges` | `is_defi` | 181 | Largest and most mature vertical; the reference class for on-chain governance research. High TVL, active token governance, and deep cross-chain presence make it the anchor ecosystem. |
-| **Prediction Markets** | `gambling` | tag: `Prediction Markets` | 32 | Structurally distinct value logic (information aggregation via stake-weighted outcome resolution) and acute oracle governance problems. Sufficient N for cohort-level comparison; Polymarket dominates activity volume. |
-| **AI-enabled DApps** | `other`, `collectibles`, `social`, `defi`, `exchanges`, `marketplaces` | tag: `ai-big-data` | 41 | Fastest-growing emergent segment; governance problems tied to model provenance and agent autonomy are novel and not yet formalised. Provides a forward-looking contrast case relative to mature verticals. |
-| **RWA (Real World Assets)** | `defi`, `exchanges`, `marketplaces`, `other`, `social`, `collectibles` | tag: `rwa` or `real-world-assets-*` | 14 | Represents the regulatory-interface frontier of DeFi; governance must satisfy both on-chain token holders and off-chain legal constraints. Low N flags a data-sufficiency risk (see §3.4.4). |
-| **DePIN (Decentralised Physical Infrastructure)** | `other`, `social`, `collectibles`, `defi` | tag: `depin` | 10 | Combines token-incentivised physical infrastructure with on-chain governance, creating a unique governance-market coupling. Lowest N of the five; subject to the fallback rule (see §3.4.4). |
+| **DeFi** | DeFi and exchanges | DeFi-related tags or description keywords | 181 | Largest and most mature vertical; the reference class for on-chain governance research. High TVL, active token governance, and deep cross-chain presence make it the anchor ecosystem. |
+| **Prediction Markets** | Gambling | Prediction markets tag | 32 | Structurally distinct value logic (information aggregation via stake-weighted outcome resolution) and acute oracle governance problems. Sufficient N for cohort-level comparison; Polymarket dominates activity volume. |
+| **AI-enabled DApps** | Other, collectibles, social, DeFi, exchanges, marketplaces | AI or big-data tag | 41 | Fastest-growing emergent segment; governance problems tied to model provenance and agent autonomy are novel and not yet formalised. Provides a forward-looking contrast case relative to mature verticals. |
+| **RWA (Real World Assets)** | DeFi, exchanges, marketplaces, other, social, collectibles | RWA or real-world-assets tag | 14 | Represents the regulatory-interface frontier of DeFi; governance must satisfy both on-chain token holders and off-chain legal constraints. Low N flags a data-sufficiency risk (see §3.4.4). |
+| **DePIN (Decentralised Physical Infrastructure)** | Other, social, collectibles, DeFi | DePIN tag | 10 | Combines token-incentivised physical infrastructure with on-chain governance, creating a unique governance-market coupling. Lowest N of the five; subject to the fallback rule (see §3.4.4). |
 
-*Note: `dapp_sector` codes reflect DappRadar's sector taxonomy. A single DApp is assigned to exactly one sector. Theme flags and tag filters are applied in `analytics/01_data_preparation.py` as documented in §3.7.2. DApps may satisfy the tag filter for an ecosystem regardless of their assigned `dapp_sector`, which is why sectors span multiple values for AI-enabled DApps, RWA, and DePIN.*
+*Note: Sector classifications reflect DappRadar's taxonomy. A single DApp is assigned to exactly one primary sector. Theme flags and tag filters are documented in §3.7.2. DApps may satisfy the tag filter for an ecosystem regardless of their primary sector classification, which is why sectors span multiple values for AI-enabled DApps, RWA, and DePIN.*
 
 ### 3.4.3 Case Selection Logic
 
@@ -144,20 +144,20 @@ The dataset contains **48 variables** across six categories. Table 3.3 summarise
 
 ### 3.5.1 Core Activity Variables
 
-- **`users`** (BIGINT): unique active wallets in the measurement period (DappRadar). Primary engagement proxy.
-- **`volume`** (NUMERIC, USD): total transaction/trading volume (DappRadar). Measures economic throughput.
-- **`tvl`** (NUMERIC, USD): total value locked in smart contracts (DeFiLlama). Relevant primarily for DeFi protocols.
-- **`transactions`** (BIGINT): total transaction count (DappRadar). Captures activity frequency independently of user count.
-- **`market_cap`** (NUMERIC, USD): token market capitalisation (CMC primary, CoinGecko fallback). Measures token-market valuation.
-- **`mcap`** (NUMERIC, USD): CoinGecko market cap field (used as cross-validation).
+- **Users**: unique active wallets in the measurement period (DappRadar). Primary engagement proxy.
+- **Volume**: total transaction/trading volume in USD (DappRadar). Measures economic throughput.
+- **TVL (Total Value Locked)**: total value locked in smart contracts in USD (DeFiLlama). Relevant primarily for DeFi protocols.
+- **Transactions**: total transaction count (DappRadar). Captures activity frequency independently of user count.
+- **Market capitalisation**: token market capitalisation in USD (CoinMarketCap primary, CoinGecko fallback). Measures token-market valuation.
+- **CoinGecko market capitalisation**: CoinGecko market cap (used as cross-validation).
 
 ### 3.5.2 Governance and Ownership Variables
 
 The three governance ENUM variables are described in full in §3.6. Additional derived variables used in the analysis:
 
-- **`governance_score`** (NUMERIC, 0–1): a numeric index scoring the governance architecture on a scale from fully centralised (0) to fully decentralised (1), derived from the three ENUM fields (§3.7.1).
-- **`governance_token_flag`** (categorical): whether the DApp's primary token is classified as a governance token.
-- **`multi_chain`** (BOOLEAN): whether the DApp is deployed on more than one blockchain.
+- **Governance score** (0–1): a numeric index scoring the governance architecture on a scale from fully centralised (0) to fully decentralised (1), derived from the three governance classification variables (§3.7.1).
+- **Governance token flag** (categorical): whether the DApp's primary token is classified as a governance token.
+- **Multi-chain deployment** (boolean): whether the DApp is deployed on more than one blockchain.
 
 ---
 
@@ -165,7 +165,7 @@ The three governance ENUM variables are described in full in §3.6. Additional d
 
 Three variables were populated through systematic manual research rather than automated data collection. This section documents the decision rules used to ensure coding consistency.
 
-### 3.6.1 `governance_type`
+### 3.6.1 Governance Type
 
 **Purpose:** captures the formal mechanism through which protocol upgrade and parameter decisions are made.
 
@@ -173,17 +173,17 @@ Three variables were populated through systematic manual research rather than au
 
 | Value | Decision rule |
 |-------|--------------|
-| `NONE` | No governance forum, vote, or documented change process; team deploys upgrades silently |
-| `TEAM_CONTROLLED` | Decisions documented as team-only; no external voting mechanism even if community forum exists |
-| `SNAPSHOT_OFFCHAIN` | Proposals and votes processed via Snapshot (or equivalent off-chain signalling tool) with documented precedent of influencing protocol decisions |
-| `ONCHAIN_TOKEN_GOVERNANCE` | Binding votes executed via on-chain governor contract (e.g., Governor Bravo, OpenZeppelin Governor); no team veto after vote passes |
-| `HYBRID` | Combination of two or more mechanisms at comparable weight (e.g., Snapshot for signalling + multisig execution) |
-| `MULTISIG_WITH_COMMUNITY_INPUT` | Execution via N-of-M multisig but proposals originate from community forum or off-chain poll |
-| `DAO_WITH_TIMELOCK` | On-chain DAO governance where passed proposals enter a mandatory timelock queue before execution |
+| None | No governance forum, vote, or documented change process; team deploys upgrades silently |
+| Team-controlled | Decisions documented as team-only; no external voting mechanism even if community forum exists |
+| Snapshot off-chain | Proposals and votes processed via Snapshot (or equivalent off-chain signalling tool) with documented precedent of influencing protocol decisions |
+| On-chain token governance | Binding votes executed via on-chain governor contract (e.g., Governor Bravo, OpenZeppelin Governor); no team veto after vote passes |
+| Hybrid | Combination of two or more mechanisms at comparable weight (e.g., Snapshot for signalling + multisig execution) |
+| Multisig with community input | Execution via N-of-M multisig but proposals originate from community forum or off-chain poll |
+| DAO with timelock | On-chain DAO governance where passed proposals enter a mandatory timelock queue before execution |
 
 **Sources consulted per DApp:** official documentation, governance portals (Tally, Boardroom, Snapshot), whitepaper, smart contract audit reports. When sources conflicted, the most recent publicly available document was used.
 
-### 3.6.2 `ownership_status`
+### 3.6.2 Ownership Status
 
 **Purpose:** captures who controls the treasury, contract admin keys, and upgrade authority.
 
@@ -191,14 +191,14 @@ Three variables were populated through systematic manual research rather than au
 
 | Value | Decision rule |
 |-------|--------------|
-| `COMPANY_OWNED` | A registered private company holds admin keys or the treasury multisig is controlled by company employees |
-| `FOUNDATION_OWNED` | A non-profit or public-benefit foundation holds primary control; company does not retain override rights |
-| `DAO_OWNED` | Admin keys and treasury are controlled by a DAO via on-chain votes; no single legal entity retains a unilateral veto |
-| `MIXED` | Multiple parties share ownership (e.g., company + foundation, or DAO + company with veto rights) |
-| `ORPHANED` | Protocol is deployed but no active team or DAO maintains it; no contact or update in > 12 months |
-| `UNKNOWN` | Insufficient public evidence to determine ownership after reasonable research effort (> 30 minutes per DApp) |
+| Company-owned | A registered private company holds admin keys or the treasury multisig is controlled by company employees |
+| Foundation-owned | A non-profit or public-benefit foundation holds primary control; company does not retain override rights |
+| DAO-owned | Admin keys and treasury are controlled by a DAO via on-chain votes; no single legal entity retains a unilateral veto |
+| Mixed | Multiple parties share ownership (e.g., company + foundation, or DAO + company with veto rights) |
+| Orphaned | Protocol is deployed but no active team or DAO maintains it; no contact or update in > 12 months |
+| Unknown | Insufficient public evidence to determine ownership after reasonable research effort (> 30 minutes per DApp) |
 
-### 3.6.3 `level_of_decentralisation`
+### 3.6.3 Level of Decentralisation
 
 **Purpose:** provides a summary ordinal assessment of the DApp's overall decentralisation posture, integrating governance, ownership, and operational signals.
 
@@ -206,15 +206,15 @@ Three variables were populated through systematic manual research rather than au
 
 | Value | Qualifying conditions |
 |-------|----------------------|
-| `CENTRALIZED` | Company-owned AND team-controlled OR NONE governance; no community override mechanism |
-| `SEMI_DECENTRALIZED` | At least one community-facing mechanism (Snapshot, multisig with input, or token governance) but company or foundation retains blocking power |
-| `DECENTRALIZED` | On-chain governance with no company veto, DAO-owned treasury, open smart contract upgradeability governed by token holders, AND active participation track record |
+| Centralised | Company-owned AND team-controlled OR no governance; no community override mechanism |
+| Semi-decentralised | At least one community-facing mechanism (Snapshot, multisig with input, or token governance) but company or foundation retains blocking power |
+| Decentralised | On-chain governance with no company veto, DAO-owned treasury, open smart contract upgradeability governed by token holders, AND active participation track record |
 
-The `DECENTRALIZED` label was applied conservatively: the existence of a governance token alone was not sufficient. The protocol must also exhibit: (i) documented community-driven governance decisions, (ii) no admin key held by a single company, and (iii) no proxy upgrade pattern that bypasses on-chain voting.
+The Decentralised label was applied conservatively: the existence of a governance token alone was not sufficient. The protocol must also exhibit: (i) documented community-driven governance decisions, (ii) no admin key held by a single company, and (iii) no proxy upgrade pattern that bypasses on-chain voting.
 
 ### 3.6.4 Intra-Coder Reliability
 
-All governance coding was performed by a single researcher (the thesis author). To test consistency, a random sample of 30 DApps (approximately 3.5% of the dataset) was re-coded independently after a two-week interval. This procedure measures *intra-coder* (test-retest) reliability — the consistency of a single coder across time — rather than inter-coder reliability, which would require an independent second coder. Cohen's kappa for `governance_type` was κ = 0.81 (substantial agreement); for `ownership_status`, κ = 0.79; for `level_of_decentralisation`, κ = 0.88. These values indicate that the coding scheme, while manually applied, is sufficiently operationalised to produce reproducible results. The `UNKNOWN` category absorbs residual uncertainty rather than forcing ambiguous cases into a definitive classification. The absence of a second independent coder is acknowledged as a limitation; see §3.9.
+All governance coding was performed by a single researcher (the thesis author). To test consistency, a random sample of 30 DApps (approximately 3.5% of the dataset) was re-coded independently after a two-week interval. This procedure measures *intra-coder* (test-retest) reliability — the consistency of a single coder across time — rather than inter-coder reliability, which would require an independent second coder. Cohen's kappa for governance type was κ = 0.81 (substantial agreement); for ownership status, κ = 0.79; for level of decentralisation, κ = 0.88. These values indicate that the coding scheme, while manually applied, is sufficiently operationalised to produce reproducible results. The UNKNOWN category absorbs residual uncertainty rather than forcing ambiguous cases into a definitive classification. The absence of a second independent coder is acknowledged as a limitation; see §3.9.
 
 ---
 
@@ -232,9 +232,9 @@ governance_score = (decentralisation_weight × 0.50)
 
 Weights reflect the theoretical primacy of the overall decentralisation assessment, with governance type as the strongest operational signal and ownership as a secondary anchor. Individual component scores:
 
-- `level_of_decentralisation`: CENTRALIZED=0, SEMI_DECENTRALIZED=0.5, DECENTRALIZED=1
-- `governance_type`: NONE=0, TEAM_CONTROLLED=0.1, SNAPSHOT_OFFCHAIN=0.4, MULTISIG_WITH_COMMUNITY_INPUT=0.5, HYBRID=0.6, ONCHAIN_TOKEN_GOVERNANCE=0.8, DAO_WITH_TIMELOCK=1.0
-- `ownership_status`: COMPANY_OWNED=0, FOUNDATION_OWNED=0.5, MIXED=0.5, DAO_OWNED=1, ORPHANED=0.2, UNKNOWN=0
+- Level of decentralisation: Centralised=0, Semi-decentralised=0.5, Decentralised=1
+- Governance type: None=0, Team-controlled=0.1, Snapshot off-chain=0.4, Multisig with community input=0.5, Hybrid=0.6, On-chain token governance=0.8, DAO with timelock=1.0
+- Ownership status: Company-owned=0, Foundation-owned=0.5, Mixed=0.5, DAO-owned=1, Orphaned=0.2, Unknown=0
 
 This index is ordinal in character: a higher score indicates a more community-facing governance architecture, but the absolute numeric differences should not be interpreted as interval distances. The score is used descriptively and as an input to clustering; it is not modelled as a dependent variable.
 
@@ -242,23 +242,23 @@ This index is ordinal in character: a higher score indicates a more community-fa
 
 Binary theme flags identify DApps associated with each major ecosystem vertical:
 
-- `is_defi`: tags or description contain DeFi-related keywords (DEX, lending, yield, stablecoin, liquidity, bridge, derivatives)
-- `is_gaming`: tags or description contain gaming keywords (game, GameFi, play-to-earn, NFT game, metaverse)
-- `is_social`: tags related to social networking, messaging, or content platforms
-- `is_nft`: NFT marketplace, collectibles, or digital art platform
+- **DeFi flag**: tags or description contain DeFi-related keywords (DEX, lending, yield, stablecoin, liquidity, bridge, derivatives)
+- **Gaming flag**: tags or description contain gaming keywords (game, GameFi, play-to-earn, NFT game, metaverse)
+- **Social flag**: tags related to social networking, messaging, or content platforms
+- **NFT flag**: NFT marketplace, collectibles, or digital art platform
 
-Flags are non-exclusive: a DApp may carry multiple flags. The heuristic was implemented in `analytics/01_data_preparation.py` and validated against DappRadar sector labels for a 50-DApp sample (accuracy: 93%).
+Flags are non-exclusive: a DApp may carry multiple flags. The heuristic was validated against DappRadar sector labels for a 50-DApp sample (accuracy: 93%).
 
 ### 3.7.3 Efficiency Ratios
 
 Two ratio variables proxy capital efficiency:
 
-- **`tvl_ratio`**: TVL divided by market capitalisation. Values > 1 indicate protocols where deposited capital exceeds token market value (common in early-stage or low-float DeFi protocols).
-- **`mcap_per_user`**: market capitalisation divided by active user count. Proxies per-user market valuation; used to identify valuation outliers in §4.3 (ANO-MKT-01).
+- **TVL ratio**: TVL divided by market capitalisation. Values greater than 1 indicate protocols where deposited capital exceeds token market value (common in early-stage or low-float DeFi protocols).
+- **Market cap per user**: market capitalisation divided by active user count. Proxies per-user market valuation; used to identify valuation outliers in §4.3 (ANO-MKT-01).
 
 ### 3.7.4 Signal Count
 
-`signal_count` (integer, 0–5) counts how many of the five activity signals (`users`, `volume`, `tvl`, `market_cap`, `transactions`) are strictly positive. This composite is used directly in the eligibility filters (§3.3) and as a data-quality covariate in the analysis.
+The activity signal count (integer, 0–5) counts how many of the five activity signals (users, volume, total value locked, market capitalisation, and transactions) are strictly positive. This composite is used directly in the eligibility filters (§3.3) and as a data-quality covariate in the analysis.
 
 ### 3.7.5 Cohort Ranking Score
 
@@ -272,7 +272,7 @@ cohort_score = 1.0 × log1p(users)
              + 0.6 × log1p(transactions)
 ```
 
-Log-transformation compresses the extremely right-skewed distributions of all five financial variables while preserving rank ordering. The weights (specified in `cohort_manifest.json`) reflect the theoretical importance of user engagement (1.0) over purely financial stock variables (0.6–0.8). For cohorts with fewer than 20 eligible DApps, all members are included without truncation.
+Log-transformation compresses the extremely right-skewed distributions of all five financial variables while preserving rank ordering. The weights reflect the theoretical importance of user engagement (1.0) over purely financial stock variables (0.6–0.8). For cohorts with fewer than 20 eligible DApps, all members are included without truncation.
 
 ---
 
@@ -282,31 +282,31 @@ Log-transformation compresses the extremely right-skewed distributions of all fi
 
 Standard summary statistics (mean, median, standard deviation, interquartile range, minimum, maximum) are computed for all continuous variables in both the loose and strict universes. Because all financial variables are extremely right-skewed, median and IQR are reported as primary central tendency and spread statistics; means are presented where relevant for comparison.
 
-Frequency tables and proportions are reported for all categorical variables (`governance_type`, `ownership_status`, `level_of_decentralisation`, `multi_chain`, `is_defi`, etc.). The difference in proportions between the loose and strict universes is used as a sensitivity analysis (the "backtest" in `backtest_headline_metrics.csv`): if headline figures are robust across eligibility gates, this increases confidence in the structural interpretation.
+Frequency tables and proportions are reported for all categorical variables (governance type, ownership status, level of decentralisation, multi-chain deployment, DeFi flag, etc.). The difference in proportions between the loose and strict universes is used as a sensitivity analysis (the "backtest"): if headline figures are robust across eligibility gates, this increases confidence in the structural interpretation.
 
 ### 3.8.2 Cross-Tabulation Analysis
 
 Cross-tabulations examine the joint distributions of governance variables with each other and with selected market and adoption variables. Key cross-tabs produced:
 
-- `level_of_decentralisation` × `governance_type` (loose, strict, cohort)
-- `level_of_decentralisation` × `ownership_status` (loose, strict, cohort)
-- `governance_type` × `governance_token_flag` (loose, strict, cohort)
+- Level of decentralisation × governance type (loose, strict, cohort)
+- Level of decentralisation × ownership status (loose, strict, cohort)
+- Governance type × governance token flag (loose, strict, cohort)
 
 Because several cells are sparse in the strict sample (N=68), chi-squared tests are supplemented with exact Fisher tests for 2×2 sub-tables and interpreted with reference to effect size (Cramér's V) rather than p-values alone. Statistical significance is used as a filtering heuristic, not as a causal claim.
 
 ### 3.8.3 Correlation Analysis
 
-Spearman rank correlations (rather than Pearson) are computed between continuous variables because the distributions are non-normal. The correlation matrix covers the key financial variables (`users`, `volume`, `tvl`, `market_cap`, `transactions`, `governance_score`, `capital_raised`, `tvl_ratio`, `mcap_per_user`) in the strict sample. Heatmap visualisations of the correlation matrix were produced in Matplotlib/Seaborn.
+Spearman rank correlations (rather than Pearson) are computed between continuous variables because the distributions are non-normal. The correlation matrix covers the key financial variables (users, volume, TVL, market capitalisation, transactions, governance score, capital raised, TVL ratio, and market cap per user) in the strict sample. Heatmap visualisations of the correlation matrix were produced using standard statistical libraries.
 
 ### 3.8.4 K-Means Clustering
 
-K-means clustering is applied to the strict sample to identify DApps that are similar across the joint governance–market–adoption space. Inputs are standardised (zero mean, unit variance) before clustering. The feature set comprises: `governance_score`, `users`, `volume`, `tvl`, `market_cap`, `transactions`, `is_defi`, `is_gaming`, `multi_chain`.
+K-means clustering is applied to the strict sample to identify DApps that are similar across the joint governance–market–adoption space. Inputs are standardised (zero mean, unit variance) before clustering. The feature set comprises: governance score, active users, volume, TVL, market capitalisation, transactions, DeFi flag, gaming flag, and multi-chain deployment status.
 
-The number of clusters K is selected via the elbow method (within-cluster sum of squares) and silhouette scores. Given the small strict sample size (N=68), K is constrained to 3–6 to avoid over-segmentation. Cluster centroids are interpreted to characterise each group's governance posture and market profile. K-means is applied within each sector×category cohort slice (as captured in `cohort_manifest.json`) to allow intra-cohort comparison.
+The number of clusters K is selected via the elbow method (within-cluster sum of squares) and silhouette scores. Given the small strict sample size (N=68), K is constrained to 3–6 to avoid over-segmentation. Cluster centroids are interpreted to characterise each group's governance posture and market profile. K-means is applied within each sector×category cohort slice to allow intra-cohort comparison.
 
 ### 3.8.5 Principal Component Analysis
 
-PCA is applied to the same standardised feature matrix as K-means to assess the dimensionality of the governance–market space and to visualise cluster separation. The first two principal components are plotted with points colour-coded by K-means cluster assignment and shaped by `level_of_decentralisation`. PCA is used for exploratory visualisation and dimension reduction, not for inference.
+PCA is applied to the same standardised feature matrix as K-means to assess the dimensionality of the governance–market space and to visualise cluster separation. The first two principal components are plotted with points colour-coded by K-means cluster assignment and shaped by decentralisation level. PCA is used for exploratory visualisation and dimension reduction, not for inference.
 
 ### 3.8.6 Concentration Metrics
 
@@ -325,7 +325,7 @@ Market and user concentration are measured with:
 
 **Self-reported and third-party data.** DappRadar relies on protocol teams to register and maintain accurate metadata. Category and sector labels may reflect team self-classification rather than objective assessment. CMC and CoinGecko data quality varies by token, with some smaller tokens having stale or missing price data.
 
-**Manual governance coding.** Despite the operationalised decision rules documented in §3.6, the three governance ENUM variables are ultimately the result of human judgment applied to heterogeneous documentation quality. Some protocols have extensive public governance documentation; others have none. The `UNKNOWN` category (used in `governance_type` and `ownership_status`) absorbs ambiguous cases, but coding error cannot be fully eliminated. The intra-coder reliability analysis (§3.6.4) provides an estimate of the noise introduced, but does not eliminate it. A single-coder design cannot provide inter-rater reliability estimates.
+**Manual governance coding.** Despite the operationalised decision rules documented in §3.6, the three governance classification variables are ultimately the result of human judgment applied to heterogeneous documentation quality. Some protocols have extensive public governance documentation; others have none. The UNKNOWN category absorbs ambiguous cases, but coding error cannot be fully eliminated. The intra-coder reliability analysis (§3.6.4) provides an estimate of the noise introduced, but does not eliminate it. A single-coder design cannot provide inter-rater reliability estimates.
 
 **Metric definition heterogeneity.** "Users" means different things across chains: on Ethereum, a user is a unique externally owned account (EOA); on Solana, it may include program-derived addresses. DappRadar normalises to wallet addresses but the underlying definition varies. Similarly, TVL measurement conventions differ between DeFiLlama protocols (some double-count bridged assets; some net out protocol-owned liquidity).
 
