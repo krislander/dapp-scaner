@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: 'DApp Thesis — Politecnico di Milano',
   description: "Master's Thesis: Decentralised Applications in Focus — Governance, Market Structure, and Adoption Patterns",
 
@@ -105,4 +106,4 @@ export default defineConfig({
       copyright: 'Decentralised Applications in Focus: Governance, Market Structure, and Adoption Patterns',
     },
   },
-})
+}))

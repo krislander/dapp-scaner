@@ -18,6 +18,27 @@ The analysis proceeds in three stages: (1) descriptive statistics characterising
 
 ## 3.2 Data Collection and Sources
 
+**Figure 3.1 — Data collection and linkage pipeline**
+
+```mermaid
+flowchart TD
+    A["**DappRadar API**<br/>Top 500 by UAW<br/><em>seed population</em>"]
+    B["**DeFiLlama**<br/>TVL, fees, revenue<br/>funding database"]
+    C["**CoinMarketCap**<br/>Token market data<br/>category tags"]
+    D["**CoinGecko**<br/>Alt market cap<br/>cross-validation"]
+    E["**Raw Dataset**<br/>855 DApps · 48 variables<br/>77 blockchain networks"]
+    F["**Record Linkage**<br/>Slug + fuzzy join<br/>~3 % manual resolution"]
+    G["**Tag Aggregation**<br/>Dedup + theme flags<br/>DeFi / Gaming / Social / NFT"]
+    H["**Manual Governance Coding**<br/>Governance type · Ownership<br/>Decentralisation level"]
+    A --> E
+    B --> E
+    C --> E
+    D --> E
+    E --> F --> G --> H
+```
+
+*Sources and matching procedure are detailed in §§3.2.1–3.2.3.*
+
 ### 3.2.1 Primary Source: DappRadar
 
 The primary data source is [DappRadar](https://dappradar.com), the leading DApp analytics aggregator, which collects on-chain activity metrics through indexed RPC nodes and standardised API integrations across multiple blockchains. The initial population was drawn from the DappRadar public API, targeting the top 500 DApps ranked by Unique Active Wallets (UAW) — the number of distinct wallet addresses that interacted with a smart contract in a given period. UAW was selected as the primary ranking criterion because it measures genuine on-chain engagement rather than price-dependent metrics (market cap, TVL) that can be inflated by token emission schedules or bridged liquidity.
@@ -45,6 +66,25 @@ Tags were consolidated from all four sources into a single field using a dedupli
 ## 3.3 Sample Construction
 
 The raw dataset contains **855 DApps** spanning **77 blockchain networks**. Because DApp activity data is highly right-skewed — a small number of protocols account for the vast majority of activity, while many entries have missing or near-zero values on most financial metrics — a two-tier eligibility strategy was developed.
+
+**Figure 3.2 — Sample construction funnel**
+
+```mermaid
+flowchart TD
+    A["**Full dataset**<br/>N = 855 DApps<br/>77 blockchain networks · 48 variables"]
+    B["**Loose universe** — N = 834 (97.5 %)<br/>−21 excluded: 13 incomplete governance + 8 below ≥2 signals<br/><em>Baseline for sensitivity tests (§4.1.2)</em>"]
+    C["**Strict universe** — N = 68 (8.0 %)<br/>−766 excluded: &lt;4 signals, &lt;10 k UAW, or no MCap/TVL<br/><em>Primary analysis universe (Chapters 4–5)</em>"]
+    A -->|"Governance ENUM complete<br/>≥ 2 / 5 activity signals positive"| B
+    B -->|"≥ 4 / 5 activity signals positive<br/>≥ 10,000 unique active wallets<br/>MCap or TVL &gt; 0"| C
+```
+
+**Table 3.1 — Sample construction at a glance**
+
+| Universe | N | Share | Primary use |
+|----------|:-:|:-----:|-------------|
+| Full dataset | 855 | 100% | Descriptive totals; chain counts |
+| Loose universe | 834 | 97.5% | Governance label distributions; sensitivity tests |
+| Strict universe | 68 | 8.0% | All primary findings; clustering; correlations |
 
 ### 3.3.1 Loose Universe (N=834)
 
@@ -222,21 +262,32 @@ All governance coding was performed by a single researcher (the thesis author). 
 
 ### 3.7.1 Governance Score
 
-A numeric governance score is derived from the three ENUM variables to support correlation and clustering analyses:
+A composite governance score (0–1) is derived from the three ENUM variables to support correlation and clustering analyses. The formula and component weights are:
 
-```
-governance_score = (decentralisation_weight × 0.50)
-                 + (governance_type_weight × 0.35)
-                 + (ownership_weight × 0.15)
-```
+$$\text{governance\_score} = 0.50 \times w_{\text{decentralisation}} + 0.35 \times w_{\text{governance\_type}} + 0.15 \times w_{\text{ownership}}$$
 
-Weights reflect the theoretical primacy of the overall decentralisation assessment, with governance type as the strongest operational signal and ownership as a secondary anchor. Individual component scores:
+**Table 3.2 — Governance score component weights**
 
-- Level of decentralisation: Centralised=0, Semi-decentralised=0.5, Decentralised=1
-- Governance type: None=0, Team-controlled=0.1, Snapshot off-chain=0.4, Multisig with community input=0.5, Hybrid=0.6, On-chain token governance=0.8, DAO with timelock=1.0
-- Ownership status: Company-owned=0, Foundation-owned=0.5, Mixed=0.5, DAO-owned=1, Orphaned=0.2, Unknown=0
+| Dimension | Value | Component weight |
+|-----------|-------|:----------------:|
+| **Level of decentralisation** (weight 0.50) | Centralised | 0.00 |
+| | Semi-decentralised | 0.50 |
+| | Decentralised | 1.00 |
+| **Governance type** (weight 0.35) | None | 0.00 |
+| | Team-controlled | 0.10 |
+| | Snapshot off-chain | 0.40 |
+| | Multisig with community input | 0.50 |
+| | Hybrid | 0.60 |
+| | On-chain token governance | 0.80 |
+| | DAO with timelock | 1.00 |
+| **Ownership status** (weight 0.15) | Company-owned | 0.00 |
+| | Unknown | 0.00 |
+| | Orphaned | 0.20 |
+| | Foundation-owned | 0.50 |
+| | Mixed | 0.50 |
+| | DAO-owned | 1.00 |
 
-This index is ordinal in character: a higher score indicates a more community-facing governance architecture, but the absolute numeric differences should not be interpreted as interval distances. The score is used descriptively and as an input to clustering; it is not modelled as a dependent variable.
+Weights reflect the theoretical primacy of the overall decentralisation assessment, with governance type as the strongest operational signal and ownership as a secondary anchor. This index is ordinal in character: a higher score indicates a more community-facing architecture, but absolute numeric differences should not be interpreted as interval distances. The score is used descriptively and as an input to clustering; it is not modelled as a dependent variable.
 
 ### 3.7.2 Theme Flags
 

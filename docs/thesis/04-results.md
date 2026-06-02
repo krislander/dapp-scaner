@@ -59,11 +59,9 @@ Among the 68 DApps in the strict sample, the distribution of governance labels i
 
 *Figure 4.4: Governance label distribution — strict universe (N=68)*
 
-The data show that 13.24 per cent of the strict sample (nine DApps) are classified as fully decentralised (INS-GOV-01). A majority — 52.94 per cent (36 DApps) — are company-owned, meaning a corporate entity retains ultimate authority over the protocol's smart contracts and governance decisions. Team-controlled governance accounts for a further 26.47 per cent (18 DApps, INS-GOV-02), representing projects in which a founding team or core contributor group sets parameters informally rather than through a codified on-chain process. The remaining share occupies intermediate categories — semi-decentralised projects using snapshot-based off-chain governance, multisig-controlled protocols, and hybrids that combine multiple mechanisms.
+As shown in Table 4.1 and Figure 4.4, the strict sample is substantially more varied in governance structure than the loose universe but remains concentrated well away from the fully decentralised ideal. Key findings (INS-GOV-01, INS-GOV-02): 13.24 per cent fully decentralised (nine DApps), 52.94 per cent company-owned, 26.47 per cent team-controlled — together meaning **86.8 per cent of the strict sample are not fully decentralised**. This is the central empirical finding of the governance analysis: application-layer centralisation is the norm, not the exception, among DApps with sufficient scale and data quality.
 
-In aggregate, 86.8 per cent of the strict sample (59 DApps) are not fully decentralised. This figure is the central empirical finding of the governance analysis: application-layer centralisation is the norm, not the exception, among DApps with sufficient scale and data quality to be included in the strict sample.
-
-The median governance score in the strict sample is 0.283 (on a normalised 0–1 scale), substantially higher than the loose-universe median of 0.067 but still well below the maximum value that would correspond to full decentralisation across all sub-dimensions.
+The median governance score is 0.283 — more than four times the loose-universe median of 0.067 — yet still well below full decentralisation.
 
 ### 4.2.2 Ownership Concentration and Governance Type
 
@@ -170,14 +168,21 @@ Across the full 855-DApp dataset, multi-chain DApps report an average market cap
 
 ### 4.5.1 Sector Composition of the Strict Sample
 
-The strict sample of 68 DApps is dominated by DeFi-tagged applications. Based on the theme-flag analysis derived from consolidated tag heuristics, the sector composition of the strict sample is as follows:
+The strict sample of 68 DApps is dominated by DeFi-tagged applications. Based on the theme-flag analysis, Table 4.21 summarises the sector composition and relative user share.
 
-- **DeFi**: 57.35 per cent of strict DApps, accounting for 54.33 per cent of strict-sample users *(strict sample, N=68)*
-- **Gaming**: 26.47 per cent of strict DApps, accounting for 34.54 per cent of strict-sample users *(strict sample, N=68)*
-- **Social**: 4.41 per cent of strict DApps, accounting for 0.70 per cent of strict-sample users *(strict sample, N=68)*
-- **Other / uncategorised**: residual share, predominantly NFT marketplace and infrastructure-adjacent protocols
+**Table 4.21 — Sector composition of the strict sample (N=68)**
 
-Figure 4.11 presents the sector-level performance metrics for the strict sample, and Figure 4.12 provides the loose-universe comparison.
+| Sector | DApps | Share of strict sample | Share of strict-sample users |
+|--------|:-----:|:----------------------:|:----------------------------:|
+| DeFi | 39 | 57.35% | 54.33% |
+| Gaming | 18 | 26.47% | 34.54% |
+| Social | 3 | 4.41% | 0.70% |
+| Other / uncategorised | 8 | 11.76% | 10.43% |
+| **Total** | **68** | **100%** | **100%** |
+
+*Other = NFT marketplace and infrastructure-adjacent protocols. User share computed from strict-sample active wallet totals.*
+
+DeFi leads in protocol count but the Gaming sector punches above its weight in user share, foreshadowing the engagement gap discussed below. Figure 4.11 presents full sector-level performance metrics and Figure 4.12 provides the loose-universe comparison.
 
 ![Sector-level performance metrics — strict sample](../figures/05_performance_strict.png)
 
@@ -206,6 +211,27 @@ Social-tagged DApps represent the smallest sector in the strict sample both by c
 The preceding sections characterise the DApp landscape through cross-sectional lenses — governance structure, market concentration, chain deployment, and sector-level performance gaps. This section provides complementary depth by examining five thematically distinct ecosystems: Decentralised Finance (DeFi), Prediction Markets, AI-native DApps, Real-World Assets (RWA), and Decentralised Physical Infrastructure (DePIN). Each ecosystem is governed by a distinct economic logic, user base, and governance trajectory; treating them as a homogeneous "DApp sector" would obscure the structural differences that aggregate analyses can only partially reveal.
 
 *Sample note.* DeFi analysis draws on the 36 DApps in the strict high-signal sample classified under the DeFi ecosystem focus, supplemented by the 105-DApp loose-universe DeFi population where noted. Prediction Markets, AI-native DApps, RWA, and DePIN each contain fewer than 10 DApps in the strict sample (prediction markets: 1, AI: 3, DePIN: 2; RWA is embedded within DeFi and gaming categories); accordingly, the analysis for these four ecosystems uses the loose universe throughout and results should be interpreted in light of the correspondingly broader data-quality range.
+
+**Table 4.20 — Cross-ecosystem structural comparison (loose universe)**
+
+| Metric | DeFi (N=105) | Pred. Markets (N=31) | AI DApps (N=66) | RWA (N=43) | DePIN (N=29) |
+|--------|:---:|:---:|:---:|:---:|:---:|
+| % Team-controlled governance | 38.1% | **71.0%** | 54.5% | 60.5% | 55.2% |
+| % Snapshot off-chain | 25.7% | 19.4% | **39.4%** | 20.9% | 34.5% |
+| % On-chain governance | **17.1%** | 0% | 1.5% | 2.3% | 3.4% |
+| % Fully decentralised (level) | **13.3%** | 0% | 0% | 2.3% | 6.9% |
+| % Multi-chain deployment | **55.2%** | 19.4% | 40.9% | 37.2% | **55.2%** |
+| % No native token | ~15% | **74.2%** | 24.2% | 55.8% | 37.9% |
+
+*On-chain governance = DAO with timelock + on-chain token governance. Fully decentralised = DECENTRALIZED level classification. Bold = highest value in row. DeFi on-chain: 13.3 % OTG + 3.8 % DAO timelock = 17.1 %.*
+
+The table shows three structural contrasts that recur throughout the ecosystem analyses:
+
+1. **DeFi is the governance outlier** — highest on-chain governance prevalence (17.1 %) and the only ecosystem with a material fully-decentralised share (13.3 %).
+2. **Prediction markets are the centralisation extreme** — 71.0 % team-controlled, zero fully decentralised DApps, the lowest multi-chain rate, and by far the highest no-token share (74.2 %).
+3. **AI DApps trade team control for Snapshot signalling** — only 1.5 % on-chain, yet 39.4 % Snapshot off-chain, a configuration that signals community orientation while retaining operational authority.
+
+The per-ecosystem sections below provide the contextual interpretation; quantitative comparisons should be read in conjunction with this table.
 
 ---
 
@@ -272,7 +298,7 @@ Among the 36 strict-sample DeFi DApps, governance is substantially more mature t
 
 *Source: governance type classification, loose DeFi universe.*
 
-The 13.3 per cent fully decentralised rate (14 DApps) is nearly three times the cross-ecosystem average of 4.7 per cent in the full loose universe and the highest of any sector. This elevated rate is consistent with DeFi protocols' competitive pressure to establish credible neutrality: a protocol modifiable at will by its team faces user flight to formally governed alternatives. The Snapshot off-chain plurality (25.7 per cent) represents an intermediate governance stage — token-holder voting is possible but execution remains operator-dependent, as documented in the governance heatmaps (Figures 4.5 and 4.6).
+DeFi has the highest fully decentralised rate of any ecosystem (13.3 %, see Table 4.20). This is consistent with competitive pressure to establish credible neutrality: protocols modifiable at will by their team face user flight to formally governed alternatives. The Snapshot off-chain plurality (25.7 %) represents an intermediate stage — token-holder voting is possible but execution remains operator-dependent (Figures 4.5 and 4.6).
 
 **Token Model Patterns**
 
@@ -347,7 +373,7 @@ Polygon hosts Polymarket — migrated from Ethereum in 2020 to reduce gas costs 
 
 *Source: governance type classification, loose prediction market universe.*
 
-Prediction markets are the most centralised of the five ecosystems: 71.0 per cent team-controlled and 100 per cent classified as either Centralized (71.0 per cent) or Semi-Decentralised (29.0 per cent); no prediction market DApp achieves a Decentralised classification. This structural centralisation reflects operational requirements: outcome resolution depends on oracle accuracy and dispute arbitration that necessitate rapid, authoritative intervention — functions difficult to implement through slow token-governance processes.
+Prediction markets are the most centralised ecosystem (Table 4.20): 71.0 per cent team-controlled, zero DApps fully decentralised. This reflects a genuine operational constraint — outcome resolution requires rapid, authoritative intervention to correct oracles and arbitrate disputes, functions that slow token-governance processes cannot reliably provide.
 
 **Token Model Patterns**
 
@@ -463,9 +489,7 @@ BNB Chain's leading position (39.4 per cent of AI DApps) is driven by the prepon
 
 *Source: governance type classification, AI DApp theme universe.*
 
-AI DApps exhibit a strongly bimodal governance distribution: protocols are either fully team-controlled (54.5 per cent) or rely on Snapshot off-chain voting (39.4 per cent). On-chain governance is represented by a single DApp — Virtuals Protocol — accounting for 1.5 per cent of the cohort. This compares with 6.4 per cent on-chain governance prevalence in the full loose universe (DAO\_WITH\_TIMELOCK + ONCHAIN\_TOKEN\_GOVERNANCE combined), confirming that AI DApps are substantially less formally governed than the cross-ecosystem baseline.
-
-A notable pattern is that AI DApps are disproportionately represented in the Snapshot off-chain tier relative to the non-AI ecosystem: 39.4 per cent versus 17.5 per cent for non-AI DApps. This suggests that AI-sector teams signal community orientation through off-chain voting mechanisms earlier in their lifecycle than non-AI peers — perhaps as a marketing or fundraising posture — while retaining operational authority to act on or ignore the resulting votes. Research comments confirm this interpretation: for FishWar, the annotation reads "token has 'platform governance voting,' but no evidence of binding on-chain DAO; team likely executes"; for ZoRobotics: "markets DAO-based validation; practical control remains with project team today"; for ChainOpera AI: "Whitepaper describes DAO voting via staked tokens; execution still team-led at present."
+AI DApps exhibit a strongly bimodal governance distribution: protocols are either fully team-controlled (54.5 %) or rely on Snapshot off-chain voting (39.4 %). On-chain governance is represented by a single DApp (Virtuals Protocol, 1.5 %) — well below the 6.4 % cross-ecosystem baseline (Table 4.20). The disproportionate Snapshot share (39.4 % versus 17.5 % for non-AI DApps) suggests teams signal community orientation through off-chain voting while retaining operational authority. Research annotations confirm: FishWar — "no evidence of binding on-chain DAO; team likely executes"; ZoRobotics — "practical control remains with project team today"; ChainOpera AI — "execution still team-led at present."
 
 By ownership structure, 86.4 per cent of AI DApps are COMPANY\_OWNED — the highest of any thematically defined sub-group in the dataset. A single DApp (Treasure, 1.5 per cent) is DAO\_OWNED; two are FOUNDATION\_OWNED. This near-universal corporate ownership confirms that the AI DApp sector is, in practical terms, a corporate software sector with blockchain token issuance rather than a community-governed decentralised application sector.
 
@@ -587,7 +611,7 @@ The RWA ecosystem encompasses DApps whose economic purpose involves bridging on-
 
 **Chain Distribution**
 
-**Table 4.13 — Top-5 chains by RWA DApp presence (loose universe, N=43)**
+**Table 4.22 — Top-5 chains by RWA DApp presence (loose universe, N=43)**
 
 | Chain | RWA DApps | Share |
 |-------|:---------:|:-----:|
@@ -603,7 +627,7 @@ Ethereum's leading position is expected: tokenised treasuries, institutional len
 
 **Key DApps**
 
-**Table 4.14 — Top RWA DApps by TVL and users (loose universe)**
+**Table 4.23 — Top RWA DApps by TVL and users (loose universe)**
 
 | DApp | Users | Volume | TVL | MCap | Gov. type |
 |------|------:|-------:|----:|-----:|:----------:|
@@ -618,7 +642,7 @@ Ethereum's leading position is expected: tokenised treasuries, institutional len
 
 **Governance Maturity**
 
-**Table 4.15 — RWA governance distribution (loose universe, N=43)**
+**Table 4.24 — RWA governance distribution (loose universe, N=43)**
 
 | Governance type | Count | Share |
 |-----------------|:-----:|:-----:|
@@ -629,9 +653,9 @@ Ethereum's leading position is expected: tokenised treasuries, institutional len
 | DAO\_WITH\_TIMELOCK | 1 | 2.3% |
 | **Total** | **43** | **100%** |
 
-*Source: governance type classification, loose RWA universe. Theme cohort governance token prevalence: 7.2%; top governance type: team-controlled.*
+*Source: governance type classification, loose RWA universe.*
 
-RWA protocols are the second-most centralised ecosystem (60.5 per cent team-controlled) after prediction markets. Only KlimaDAO (carbon-credit tokenisation) operates a DAO\_WITH\_TIMELOCK. The decentralisation rate (2.3 per cent) is the lowest of the five ecosystems. This structural centralisation is partly regulatory: compliance for tokenised real-world assets frequently requires a corporate entity as legal custodian, making full on-chain governance legally and operationally problematic. The contrast with DeFi's 13.3 per cent decentralisation rate is stark and reflects the fundamentally different legal exposure of RWA versus pure on-chain DeFi protocols.
+RWA protocols are the second-most centralised ecosystem after prediction markets (60.5 % team-controlled; see Table 4.20). Only KlimaDAO operates a DAO\_WITH\_TIMELOCK. The fully decentralised rate is 2.3 % — tied for second-lowest with DePIN ahead of prediction markets and AI DApps at zero. This structural centralisation is partly regulatory: compliance for tokenised real-world assets typically requires a corporate entity as legal custodian, making full on-chain governance legally and operationally problematic. The contrast with DeFi's 13.3 % is stark and reflects the fundamentally different legal exposure of RWA versus pure on-chain DeFi protocols.
 
 **Token Model Patterns**
 
