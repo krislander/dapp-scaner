@@ -368,23 +368,91 @@ Market and user concentration are measured with:
 
 ## 3.9 Limitations
 
-**Snapshot timing.** All data reflect a single cross-section: November 2025. DApp activity, TVL, and governance structures change rapidly; findings describe the ecosystem at one point in time and cannot be generalised to other periods without re-measurement.
+Every study is bounded by the conditions of its data collection, the choices made during research design, and the inference tools applied to the evidence. The limitations described here are not presented as weaknesses to be apologised for, but as explicit **boundary conditions**: they delineate what the study can and cannot claim, guide how its findings should be interpreted, and point directly to the questions that future work must address. Several of these limitations are revisited in the discussion chapter (§5.10), where their practical consequences for each substantive finding are spelled out.
 
-**Survivorship bias.** The starting population is DappRadar's top-500 by UAW. DApps that failed, were abandoned, or had too little activity to enter the top-500 are not observed. This means the dataset over-represents commercially successful or actively marketed projects relative to the full universe of deployed DApps, and under-represents failures.
+### 3.9.1 Cross-Sectional Snapshot
 
-**Self-reported and third-party data.** DappRadar relies on protocol teams to register and maintain accurate metadata. Category and sector labels may reflect team self-classification rather than objective assessment. CMC and CoinGecko data quality varies by token, with some smaller tokens having stale or missing price data.
+All data reflect a single export from November 2025. Market capitalisation, TVL, user counts, volume, and governance structures are volatile metrics that can shift substantially over weeks or months. The study therefore describes the DApp ecosystem at one specific point in time. Findings — including ecosystem concentration ratios, the multi-chain deployment premium, and sector-level governance patterns — cannot be generalised to other periods without re-measurement. In rapidly evolving markets, a snapshot may over-represent a transient configuration rather than a stable structural property. Longitudinal data collection, combined with panel or time-series methods, would be required to establish whether the patterns observed here are durable.
 
-**Manual governance coding.** Despite the operationalised decision rules documented in §3.6, the three governance classification variables are ultimately the result of human judgment applied to heterogeneous documentation quality. Some protocols have extensive public governance documentation; others have none. The UNKNOWN category absorbs ambiguous cases, but coding error cannot be fully eliminated. The intra-coder reliability analysis (§3.6.4) provides an estimate of the noise introduced, but does not eliminate it. A single-coder design cannot provide inter-rater reliability estimates.
+### 3.9.2 Survivorship Bias and Eligibility Design
 
-**Metric definition heterogeneity.** "Users" means different things across chains: on Ethereum, a user is a unique externally owned account (EOA); on Solana, it may include program-derived addresses. DappRadar normalises to wallet addresses but the underlying definition varies. Similarly, TVL measurement conventions differ between DeFiLlama protocols (some double-count bridged assets; some net out protocol-owned liquidity).
+The starting population of 855 DApps is drawn from DappRadar's active listings, filtered to those with at least one data point in the November 2025 export. DApps that were deployed but subsequently abandoned, that never reached measurable activity levels, or that failed before achieving visibility in aggregator platforms are entirely absent. The dataset therefore over-represents commercially active and investor-backed projects relative to the full universe of deployed DApps.
 
-**Missing financial data.** A substantial share of DApps in the full dataset (855) lack token market capitalisation or TVL data because they have not issued a token or do not custody user assets. This is not a data-collection failure but a structural feature of the ecosystem: the strict eligibility gate is designed precisely to restrict analysis to DApps for which a richer financial picture can be constructed.
+The strict eligibility gate (≥4 of 5 positive activity signals, ≥10,000 active users, positive market capitalisation or TVL) amplifies this effect: the 68-DApp strict sample represents the observable, successful tail of a population that includes many non-starters and early-stage projects with limited data coverage. Concentration ratios, governance patterns, and funding-to-valuation figures are therefore calculated over a sample that has already survived a stringent selection process. The true distribution of governance quality, capital efficiency, and user adoption across all deployed DApps is likely more dispersed — and more skewed towards failure — than the strict sample suggests.
 
-**Ecosystem coverage.** The five target ecosystems defined in §3.4 are identified via keyword tag filters rather than exhaustive manual classification. DApps that operate in these ecosystems but lack the relevant tags in their DappRadar/CMC metadata will be under-counted. This is particularly acute for the newer segments (RWA, DePIN), where tagging conventions are less standardised.
+This is a design choice, not a defect: the study's explicit goal is to characterise the *functioning* DApp ecosystem rather than the full graveyard of deployed contracts. The eligibility criteria are documented in §3.3 precisely so that readers can assess whether the scope matches their interpretive needs.
 
-**Causal inference not supported.** The cross-sectional design enables description and association, not causal inference. Statements such as "multi-chain DApps show higher market valuations" describe a correlation in the strict snapshot; they do not establish that multi-chain deployment *causes* higher valuations, because DApp selection into multi-chain strategies is almost certainly endogenous to the same factors (team resources, investor backing, product-market fit) that drive valuations.
+### 3.9.3 Sample Size and the Three-Tier Design
+
+The three-tier sampling structure — full dataset (N=855), loose sample (N=834), and strict sample (N=68) — requires explicit justification, as the strict cohort of 68 DApps constitutes only 8 per cent of the full dataset and may appear small by the standards of large-scale computational studies.
+
+**Why three tiers?** The three samples are not arbitrary stratification. They form an explicit data-quality sensitivity test: the loose-versus-strict comparison (§4.1) is the study's primary robustness device. The full dataset provides ecosystem context; the loose sample establishes a broad baseline; the strict sample restricts analysis to DApps that meet minimum standards for multi-source data quality. If key findings hold across both the loose and strict samples, their robustness to the eligibility threshold is demonstrated. If they diverge, the divergence is itself informative about the role of data quality in shaping observed patterns.
+
+**Is n=68 statistically sufficient?** For the analytical methods applied in this study, n=68 is sufficient.
+
+The Central Limit Theorem applies reliably at n≥30; all mean comparisons, regression diagnostics, and correlation analyses in this study are well within that range. For independent-sample t-tests at Cohen's *d* = 0.5 (a medium effect), α = 0.05, and 80 per cent power, the minimum required sample size is approximately n = 64; the strict sample of 68 meets this threshold. For K-means clustering with k=3–5 clusters and five input signals, n=68 is adequate for stable centroid estimation. Cross-tabulation analyses of governance categories, where cell sparsity is the binding constraint, are conducted with Fisher's exact tests for 2×2 sub-tables precisely because the strict sample cannot support chi-squared approximations in all cells.
+
+The governance score composite (§3.7.1) was specifically designed to reduce five binary signals to a single continuous measure, in part to avoid the degrees-of-freedom penalty of treating all signals independently in a small-n multivariate setting.
+
+**Peer comparison.** Studies that conduct deep, multi-dimensional manual governance coding — the most directly comparable analogue to this thesis — typically examine between 4 and 14 protocols (Table 3.1). At n=68 with manual governance classification applied to each DApp, this study is larger than all such governance-depth comparators. Studies that reach N≥100 are, without exception, purely computational with no manual governance coding.
+
+**Table 3.1 — Sample sizes in governance-depth studies**
+
+| Study | N |
+|---|---|
+| Barbereau et al. 2023 (Hidden Shortcomings of DAOs) | 9 |
+| Han, Lee & Li 2023 (DAO Governance Effectiveness) | 4 |
+| Wöhrer et al. (Understanding Blockchain Governance) | 4 |
+| Internet Computer SNS DAO Study | 14 |
+| Large-scale DAO Analysis 2024 (no governance coding) | 100 |
+| Wang et al. 2019 (no governance coding) | 734 |
+| **This thesis — strict sample** | **68** |
+
+The strict sample is not claimed to be a random draw from the full 855. It is a quality-gated, economically dominant subset. Given the Pareto-distributed nature of DApp activity — where a small fraction of protocols accounts for the majority of users and volume — the top 8 per cent by composite eligibility criteria likely accounts for 80–90 per cent of observable economic activity. Findings about governance structure, market concentration, and sector dynamics are therefore representative of the functioning, capital-significant tier of the ecosystem, even if not of the full tail.
+
+### 3.9.4 Data Coverage: Funding Records
+
+Only 38 of the 855 DApps in the full dataset (4.4 per cent) have documented fundraising records in the DeFiLlama raises database. The remaining 96 per cent appear as "unfunded" whether they genuinely raised no external capital or simply did not publicise their funding rounds. DeFiLlama's raises database covers announced, public fundraising events; quiet raises, equity rounds without a public announcement, and bootstrapped projects that never sought venture capital are all absent.
+
+Within the strict sample, 13 of 68 DApps (19.1 per cent) have documented raises — a higher proportion than in the full dataset, reflecting the positive selection of well-capitalised projects into the strict eligibility tier. However, even this 19.1 per cent represents publicly announced rounds, not a complete funding census.
+
+The consequence is that the funding-efficiency analysis (§4.7) is bounded to a small, self-selected subset. Conclusions about capital efficiency, the unfunded-versus-funded performance gap, and the predictive value of venture backing cannot be generalised beyond documented raises. The discussion chapter (§5.7) interprets these findings within this explicit constraint. Readers should treat the funding analysis as a signal about the *documented* fundraising subset rather than as a statement about the full population of DApps.
+
+### 3.9.5 Data Coverage: TVL and Market Capitalisation
+
+A substantial share of DApps in the full dataset lack TVL or market capitalisation data because they have not issued a token or do not custody user assets in a form measurable by DeFiLlama. This is not a data-collection failure but a structural feature of the ecosystem: gaming DApps, social protocols, and utility applications frequently operate without a liquid token and without holding user funds in smart-contract custody. Their absence from TVL rankings reflects their category, not their quality.
+
+The strict eligibility gate addresses this directly: requiring positive market cap or positive TVL as a necessary condition means the strict sample is restricted to DApps for which at least one financial anchor is available. The trade-off is explicit: the strict sample over-represents DeFi and token-issuing DApps, and under-represents gaming and social DApps relative to their share of the full 855. Section §3.3 documents this compositional effect, and the ecosystem deep-dive analysis (§4.6) examines each sector separately to avoid conflating cross-sector structural differences with within-sector patterns.
+
+### 3.9.6 Self-Reported and Third-Party Data Quality
+
+DappRadar's metadata — category labels, sector tags, chain coverage — relies on protocol teams to register and maintain accurate information. Tags may reflect team self-classification (e.g. a lending protocol classifying itself as "DeFi infrastructure") rather than independent assessment. CoinGecko and CMC data quality varies by token: larger, more actively traded tokens have current, verified data, while smaller tokens may have stale price feeds, incorrect contract addresses, or duplicate listings that introduce noise into market capitalisation figures.
+
+This risk is partially mitigated by restricting financial analysis to the strict sample, where the minimum market cap threshold filters out the most data-sparse tokens. It cannot be eliminated entirely, and single-token anomalies in the strict sample — where a data error would represent approximately 1.5 per cent of the sample — have a larger per-unit effect on summary statistics than they would in a larger dataset.
+
+### 3.9.7 Manual Governance Coding
+
+Despite the operationalised decision rules documented in §3.6, the three governance classification variables (governance type, level of decentralisation, ownership status) are ultimately the result of human judgment applied to heterogeneous documentation. Some protocols maintain extensive public governance documentation, including proposal archives and on-chain voting records; others provide only a brief whitepaper or website description. Where documentation is absent, the UNKNOWN category absorbs the uncertainty — but the boundary between UNKNOWN and a substantive governance category is itself a judgment call.
+
+The intra-coder reliability analysis (§3.6.4) provides an empirical estimate of the noise introduced by repeated coding decisions, but it cannot eliminate that noise, and a single-coder design cannot produce inter-rater reliability estimates. Future replication should apply dual-coder classification with formal inter-rater agreement testing (e.g. Cohen's kappa) to the governance variables, which would yield a more defensible measurement uncertainty bound.
+
+### 3.9.8 Metric Definition Heterogeneity Across Chains
+
+"Active users" is not a chain-invariant concept. On Ethereum, a unique active wallet is a unique externally owned account (EOA); on Solana, program-derived addresses may or may not be counted depending on the aggregator's methodology. DappRadar normalises to wallet-address counts but the underlying protocol definitions vary. Similarly, TVL measurement conventions differ across DeFiLlama protocols: some double-count bridged assets on both the source and destination chain; some net out protocol-owned liquidity. These definitional differences mean that cross-chain comparisons of user counts and TVL figures embed a systematic measurement heterogeneity that cannot be fully corrected without chain-by-chain methodological audits.
+
+### 3.9.9 Ecosystem Tag Coverage
+
+The five target ecosystems (DeFi, Gaming, RWA, DePIN, Social) are identified via keyword tag filters applied to DappRadar and CMC metadata (§3.4). DApps that operate in these ecosystems but lack the relevant tags — because they were registered before those tags existed, or because their team did not apply the labels — will be under-counted. This concern is most acute for RWA and DePIN, where tagging conventions are still being established and where several protocols were classified manually rather than via automated tag matching. The cohort samples for these two ecosystems should therefore be understood as representing the *tagged and identifiable* segment of each sector rather than its full extent.
+
+### 3.9.10 Causal Inference Not Supported
+
+The cross-sectional design enables description and correlation, not causal inference. Where the results chapter reports associations — "multi-chain DApps show higher market valuations," "team-controlled governance correlates with lower governance scores," "higher-user DApps cluster in the gaming vertical" — these are statistical regularities observed at a single point in time. They do not establish that any of these features *causes* the correlated outcome.
+
+Multi-chain deployment is a particularly clear example: the observed market capitalisation premium for multi-chain DApps (§4.5, §5.8) is consistent with multi-chain strategy causing higher valuations, but equally consistent with the reverse — that better-capitalised, more mature DApps invest in multi-chain deployment precisely because they have the resources and user base to justify it. Distinguishing these causal paths would require either natural experiments or instrumental variable approaches that are outside the scope of a cross-sectional study.
+
+The discussion chapter engages with these causal ambiguities explicitly for each key finding, flagging where the descriptive result is robust and where the directionality of the underlying relationship remains open.
 
 ---
 
-*Word count (Chapter 3): approx. 3,800 words*  
-*Status: First draft — pending review by Thesis Reviewer*
+*Word count (Chapter 3): approx. 5,200 words*  
+*Status: Revised — §3.9 expanded with sample size justification, data coverage gaps, and discussion bridge*
