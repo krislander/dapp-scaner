@@ -266,7 +266,7 @@ A composite governance score (0–1) is derived from the three ENUM variables to
 
 $$\text{governance\_score} = 0.50 \times w_{\text{decentralisation}} + 0.35 \times w_{\text{governance\_type}} + 0.15 \times w_{\text{ownership}}$$
 
-**Table 3.2 — Governance score component weights**
+**Table 3.4 — Governance score component weights**
 
 | Dimension | Value | Component weight |
 |-----------|-------|:----------------:|
@@ -305,7 +305,7 @@ Flags are non-exclusive: a DApp may carry multiple flags. The heuristic was vali
 Two ratio variables proxy capital efficiency:
 
 - **TVL ratio**: TVL divided by market capitalisation. Values greater than 1 indicate protocols where deposited capital exceeds token market value (common in early-stage or low-float DeFi protocols).
-- **Market cap per user**: market capitalisation divided by active user count. Proxies per-user market valuation; used to identify valuation outliers in §4.3 (ANO-MKT-01).
+- **Market cap per user**: market capitalisation divided by active user count. Proxies per-user market valuation; used to identify valuation outliers in §4.3.
 
 ### 3.7.4 Signal Count
 
@@ -394,9 +394,9 @@ However, two-sample t-tests at Cohen's *d* = 0.5 (α = 0.05, 80% power) require 
 
 The governance score composite (§3.7.1) consolidates five binary signals into one continuous measure, reducing the degrees-of-freedom penalty in a small-n multivariate setting.
 
-**Peer comparison.** Studies combining deep manual governance coding with comparable analytical scope typically examine 4–9 protocols (Table 3.1). At n=68 with full manual classification, this study is larger than all governance-depth comparators; studies reaching N≥100 are purely computational.
+**Peer comparison.** Studies combining deep manual governance coding with comparable analytical scope typically examine 4–9 protocols (Table 3.5). At n=68 with full manual classification, this study is larger than all governance-depth comparators; studies reaching N≥100 are purely computational.
 
-**Table 3.1 — Sample sizes in governance-depth studies**
+**Table 3.5 — Sample sizes in governance-depth studies**
 
 | Study | N |
 |---|---|

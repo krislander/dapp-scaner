@@ -194,7 +194,7 @@ This study is subject to several limitations that constrain generalisability.
 
 **Data source coverage.** The dataset integrates DappRadar, CoinGecko, and DeFiLlama, each with its own eligibility and measurement conventions. Protocols not indexed by these platforms — particularly those on newer or less-covered chains — are absent from the analysis.
 
-**Reverse causality.** Several findings involve relationships where causal direction is ambiguous — most clearly the multi-chain deployment premium, but also the governance-score/market-cap correlation reported in §4.8. These associations are descriptive; causal inference would require instrumental variable approaches beyond the scope of this cross-sectional study.
+**Reverse causality.** Several findings involve relationships where causal direction is ambiguous — most clearly the multi-chain deployment premium, but also the governance-score/market-cap correlation reported in §4.3.4. These associations are descriptive; causal inference would require instrumental variable approaches beyond the scope of this cross-sectional study.
 
 ---
 

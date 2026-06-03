@@ -16,7 +16,7 @@ Governance fields (governance type, ownership status, and level of decentralisat
 
 ### 4.1.2 Loose versus Strict Universe Comparison
 
-Table 4.1 presents the headline metrics comparison between the full loose universe (N=834) and the strict high-signal sample (N=68). The strict filter selects DApps with high confidence in the accuracy and completeness of all major metric categories simultaneously (see §3.4 for selection criteria), producing meaningful shifts in headline indicators.
+Table 4.1 presents the headline metrics comparison between the full loose universe (N=834) and the strict high-signal sample (N=68). The strict filter selects DApps with high confidence in the accuracy and completeness of all major metric categories simultaneously (see §3.3 for selection criteria), producing meaningful shifts in headline indicators.
 
 **Table 4.1 — Headline metrics comparison: loose universe versus strict high-signal sample**
 
