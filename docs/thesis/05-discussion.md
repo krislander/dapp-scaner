@@ -72,6 +72,8 @@ xychart-beta horizontal
 
 Permissionless infrastructure relocates, rather than flattens, winner-takes-most dynamics. Network effects are as powerful in DeFi liquidity pools as in social networks: a DEX with deeper liquidity attracts more traders, which deepens liquidity further. Trust amplifies this further — in an environment of smart contract exploits and rug pulls, users concentrate on protocols with established track records and high TVL, since size functions as a credibility signal.
 
+Concentration measurement is further distorted by the TVL leverage phenomenon (§4.9.4, ANO-MKT-02): six strict-sample protocols exhibit TVL that materially exceeds token market capitalisation, driven by recursive collateral looping, staking economics, and liability-side TVL. These protocols are not undervalued — their capitalisation prices fee income, not managed assets. The inverse case, Maple's capital velocity (ANO-RWA-02), confirms that TVL leverage and TVL velocity are twin distortions requiring sector-aware interpretation: observed concentration ratios overstate infrastructure-protocol dominance when TVL is used as an unmodified proxy for economic weight.
+
 The implication: decentralised infrastructure is necessary but not sufficient for a decentralised application economy. Without active intervention — through protocol design, regulatory constraint, or shifts in user behaviour — the DApp economy reproduces the concentration patterns of the industries it set out to disrupt.
 
 ---
