@@ -12,7 +12,7 @@ A cross-sectional design was chosen deliberately. Although longitudinal data wou
 
 The study is empirical and primarily quantitative, with a structured qualitative component: three governance-related variables (governance type, ownership status, and level of decentralisation) were coded through manual research following explicit decision rules, then subjected to the same statistical treatment as the machine-collected variables. This hybrid approach reflects the current maturity of DApp data infrastructure, where key governance attributes are not yet systematically reported in machine-readable form.
 
-The analysis proceeds in three stages: (1) descriptive statistics characterising the full dataset of 855 DApps; (2) comparative analysis of two eligibility universes — a *loose* sample (N=834) and a *strict* sample (N=68) — designed to test how measurement quality gates affect headline findings; and (3) cohort-level analysis using K-means clustering and principal component analysis (PCA) on the strict sample to identify internally coherent subgroups.
+The analysis proceeds in three stages: (1) descriptive statistics characterising the full dataset of 855 DApps; (2) comparative analysis of two eligibility universes — a *loose* sample (N=834) and a *strict* sample (N=68) — designed to test how measurement quality gates affect headline findings; and (3) cohort-level analysis using K-means clustering on the strict sample to identify internally coherent subgroups.
 
 ---
 
@@ -105,7 +105,7 @@ A DApp is classified as *strict-eligible* if it satisfies the loose criteria *pl
 
 The strict universe (N=68, 8.0% of the full dataset) reduces noise from sparse metrics so that ecosystem-level statements about governance alignment, capital concentration, and cross-sector performance are defensible. The strict gate is intentionally conservative: it retains only DApps for which the analyst has high confidence in the accuracy and completeness of the activity picture.
 
-The difference in headline metrics between the loose and strict universes is analysed explicitly in §4.1 as a data-quality sensitivity test. The strict sample is used for all primary findings in Chapters 4 and 5.
+Loose/strict sensitivity analysis is in §4.1. The strict sample is used for all primary findings in Chapters 4 and 5.
 
 ### 3.3.3 Primary and Secondary Cohorts
 
@@ -136,11 +136,11 @@ Five ecosystems were selected for ecosystem-level comparative analysis. The sele
 
 | Ecosystem | Sector classification | Identification criteria | N DApps (full dataset) | Rationale |
 |-----------|--------------------|-----------------------|----------------------|-----------|
-| **DeFi** | DeFi and exchanges | DeFi-related tags or description keywords | 181 | Largest and most mature vertical; the reference class for on-chain governance research. High TVL, active token governance, and deep cross-chain presence make it the anchor ecosystem. |
-| **Prediction Markets** | Gambling | Prediction markets tag | 32 | Structurally distinct value logic (information aggregation via stake-weighted outcome resolution) and acute oracle governance problems. Sufficient N for cohort-level comparison; Polymarket dominates activity volume. |
-| **AI-enabled DApps** | Other, collectibles, social, DeFi, exchanges, marketplaces | AI or big-data tag | 41 | Fastest-growing emergent segment; governance problems tied to model provenance and agent autonomy are novel and not yet formalised. Provides a forward-looking contrast case relative to mature verticals. |
-| **RWA (Real World Assets)** | DeFi, exchanges, marketplaces, other, social, collectibles | RWA or real-world-assets tag | 14 | Represents the regulatory-interface frontier of DeFi; governance must satisfy both on-chain token holders and off-chain legal constraints. Low N flags a data-sufficiency risk (see §3.4.4). |
-| **DePIN (Decentralised Physical Infrastructure)** | Other, social, collectibles, DeFi | DePIN tag | 10 | Combines token-incentivised physical infrastructure with on-chain governance, creating a unique governance-market coupling. Lowest N of the five; subject to the fallback rule (see §3.4.4). |
+| **DeFi** | DeFi and exchanges | DeFi-related tags or description keywords | 181 | Largest and most mature vertical; the reference class for on-chain governance research. Anchor ecosystem. |
+| **Prediction Markets** | Gambling | Prediction markets tag | 32 | Distinct value logic (stake-weighted outcome resolution) and acute oracle governance problems. Polymarket dominates activity. |
+| **AI-enabled DApps** | Other, collectibles, social, DeFi, exchanges, marketplaces | AI or big-data tag | 41 | Fastest-growing emergent segment; governance problems around model provenance and agent autonomy are not yet formalised. |
+| **RWA (Real World Assets)** | DeFi, exchanges, marketplaces, other, social, collectibles | RWA or real-world-assets tag | 14 | Regulatory-interface frontier of DeFi; governance must satisfy both on-chain holders and off-chain legal constraints. Data-sufficiency risk (see §3.4.4). |
+| **DePIN (Decentralised Physical Infrastructure)** | Other, social, collectibles, DeFi | DePIN tag | 10 | Token-incentivised physical infrastructure with on-chain governance. Lowest N; subject to the fallback rule (see §3.4.4). |
 
 *Note: Sector classifications reflect DappRadar's taxonomy. A single DApp is assigned to exactly one primary sector. Theme flags and tag filters are documented in §3.7.2. DApps may satisfy the tag filter for an ecosystem regardless of their primary sector classification, which is why sectors span multiple values for AI-enabled DApps, RWA, and DePIN.*
 
@@ -163,7 +163,7 @@ Because RWA (N=14 in the full dataset) and DePIN (N=10) have relatively small el
 
 Under this rule, the primary comparative analysis will proceed with all five ecosystems if sufficient data are confirmed during the analysis phase; otherwise the analysis defaults to **DeFi, Prediction Markets, and AI-enabled DApps** — the three ecosystems with the largest tag-identified populations in the full dataset (181, 41, and 32 respectively). RWA and DePIN will be retained as descriptive appendix material even in the fallback scenario.
 
-The threshold of 10 strict-eligible DApps is calibrated against the minimum cohort size required for K-means clustering (N ≥ 20): a full cohort analysis requires N ≥ 20, but a descriptive cross-tabulation and governance-score summary can be supported at N ≥ 10. Below 10, the sample is too sparse to draw ecosystem-level generalisations, and individual-DApp idiosyncrasies dominate the aggregate statistics.
+The threshold of 10 is calibrated so that descriptive cross-tabulation and governance-score summaries remain supportable; below 10, individual-DApp idiosyncrasies dominate aggregate statistics and ecosystem-level generalisations are not defensible.
 
 ---
 
@@ -333,7 +333,7 @@ Log-transformation compresses the extremely right-skewed distributions of all fi
 
 Standard summary statistics (mean, median, standard deviation, interquartile range, minimum, maximum) are computed for all continuous variables in both the loose and strict universes. Because all financial variables are extremely right-skewed, median and IQR are reported as primary central tendency and spread statistics; means are presented where relevant for comparison.
 
-Frequency tables and proportions are reported for all categorical variables (governance type, ownership status, level of decentralisation, multi-chain deployment, DeFi flag, etc.). The difference in proportions between the loose and strict universes is used as a sensitivity analysis (the "backtest"): if headline figures are robust across eligibility gates, this increases confidence in the structural interpretation.
+Frequency tables and proportions are reported for all categorical variables (governance type, ownership status, level of decentralisation, multi-chain deployment, DeFi flag, etc.). Loose/strict differences serve as a sensitivity analysis ("backtest") for headline proportions.
 
 ### 3.8.2 Cross-Tabulation Analysis
 
@@ -380,25 +380,21 @@ The starting population of 855 DApps is drawn from DappRadar's active listings, 
 
 The strict eligibility gate (≥4 of 5 positive activity signals, ≥10,000 active users, positive market capitalisation or TVL) amplifies this effect: the 68-DApp strict sample represents the observable, successful tail of a population that includes many non-starters and early-stage projects with limited data coverage. Governance patterns, concentration ratios, and funding-to-valuation figures are therefore calculated over a sample that has already survived a stringent selection process. Concentration ratios and capital-efficiency metrics are likely overstated relative to the full population, which includes many failed and non-performing projects that would dilute the top-tier figures.
 
-This is a design choice, not a defect: the study's explicit goal is to characterise the *functioning* DApp ecosystem rather than the full graveyard of deployed contracts. The eligibility criteria are documented in §3.3 precisely so that readers can assess whether the scope matches their interpretive needs.
+This is a design choice: the study characterises the *functioning* DApp ecosystem, not the full population of deployed contracts. The eligibility criteria in §3.3 allow readers to assess whether the scope matches their interpretive needs.
 
 ### 3.9.3 Sample Size and the Three-Tier Design
 
 The three-tier sampling structure — full dataset (N=855), loose sample (N=834), and strict sample (N=68) — requires explicit justification, as the strict cohort of 68 DApps constitutes only 8 per cent of the full dataset and may appear small by the standards of large-scale computational studies.
 
-**Why three tiers?** The three samples are not arbitrary stratification. They form an explicit data-quality sensitivity test: the loose-versus-strict comparison (§4.1) is the study's primary robustness device. The full dataset provides ecosystem context; the loose sample establishes a broad baseline; the strict sample restricts analysis to DApps that meet minimum standards for multi-source data quality. If key findings hold across both the loose and strict samples, their robustness to the eligibility threshold is demonstrated. If they diverge, the divergence is itself informative about the role of data quality in shaping observed patterns.
+**Why three tiers?** The three samples form an explicit data-quality sensitivity test (§4.1): the full dataset provides ecosystem context; the loose sample establishes a broad baseline; the strict sample restricts analysis to DApps meeting minimum multi-source quality standards. Agreement across tiers confirms robustness; divergence is itself informative about the role of data quality.
 
-**Is n=68 statistically sufficient?** For the analytical methods applied in this study, n=68 is sufficient.
+**Is n=68 statistically sufficient?** For most methods applied, yes. The Central Limit Theorem applies reliably at n≥30; K-means with k=3–5 clusters and five signals is stable at n=68; cross-tabulations use Fisher's exact tests where chi-squared approximations are inappropriate.
 
-The Central Limit Theorem applies reliably at n≥30; all full-sample mean estimates, regression diagnostics, and correlation analyses in this study are well within that range. For K-means clustering with k=3–5 clusters and five input signals, n=68 is adequate for stable centroid estimation. Cross-tabulation analyses of governance categories, where cell sparsity is the binding constraint, are conducted with Fisher's exact tests for 2×2 sub-tables precisely because the strict sample cannot support chi-squared approximations in all cells.
+However, two-sample t-tests at Cohen's *d* = 0.5 (α = 0.05, 80% power) require approximately n=64 *per group*. The strict sample of n=68 *total* does not meet this threshold for subgroup comparisons. The funded/unfunded split is particularly constraining: only 13 DApps have documented raises against 55 without. Subgroup comparisons should therefore be read as **exploratory** — directionally informative and consistent across loose and strict samples, but not suitable for frequentist null-hypothesis rejection. Results are framed in terms of effect sizes and descriptive patterns accordingly.
 
-However, for **two-sample independent t-tests** at Cohen's *d* = 0.5 (a medium effect), α = 0.05, and 80 per cent power, the minimum required sample size is approximately n = 64 *per group* (total ≈ 128). The strict sample of n=68 total does not meet this threshold for two-group subgroup comparisons. The funded/unfunded split is particularly constraining: only 13 DApps have documented raises, against 55 without — far below the per-group target. Similarly, the multi-chain/single-chain and high-governance/low-governance splits involve unequal groups that reduce power below the full-sample level.
+The governance score composite (§3.7.1) consolidates five binary signals into one continuous measure, reducing the degrees-of-freedom penalty in a small-n multivariate setting.
 
-The consequence is that subgroup comparisons in this thesis are best understood as **exploratory**. Observed differences in means between funded and unfunded DApps, or between multi-chain and single-chain DApps, are informative and directionally consistent across both the loose and strict samples, but should not be interpreted with the same statistical assurance as full-sample analyses. Where the results chapter reports such comparisons, their exploratory status is noted and findings are framed in terms of effect sizes and descriptive patterns rather than frequentist rejection of null hypotheses.
-
-The governance score composite (§3.7.1) was specifically designed to reduce five binary signals to a single continuous measure, in part to avoid the degrees-of-freedom penalty of treating all signals independently in a small-n multivariate setting.
-
-**Peer comparison.** Studies that conduct deep, multi-dimensional manual governance coding — the most directly comparable analogue to this thesis — typically examine between 4 and 9 protocols (Table 3.1). At n=68 with manual governance classification applied to each DApp, this study is larger than all such governance-depth comparators. Studies that reach N≥100 are, without exception, purely computational with no manual governance coding.
+**Peer comparison.** Studies combining deep manual governance coding with comparable analytical scope typically examine 4–9 protocols (Table 3.1). At n=68 with full manual classification, this study is larger than all governance-depth comparators; studies reaching N≥100 are purely computational.
 
 **Table 3.1 — Sample sizes in governance-depth studies**
 
@@ -410,7 +406,7 @@ The governance score composite (§3.7.1) was specifically designed to reduce fiv
 | Wang et al. 2019 (no governance coding) | 734 |
 | **This thesis — strict sample** | **68** |
 
-The strict sample is not claimed to be a random draw from the full 855. It is a quality-gated, economically dominant subset. Given the Pareto-distributed nature of DApp activity — where a small fraction of protocols accounts for the majority of users and volume — the top 8 per cent by composite eligibility criteria accounts for a dominant share of observable economic activity, consistent with the Pareto-distributed concentration patterns documented in §4.3. Findings about governance structure, market concentration, and sector dynamics are therefore representative of the functioning, capital-significant tier of the ecosystem, even if not of the full tail.
+The strict sample is a quality-gated, economically dominant subset rather than a random draw. Given the Pareto-distributed nature of DApp activity (see §4.3), the top 8% by composite eligibility accounts for a dominant share of observable economic activity. Findings are representative of the functioning, capital-significant tier of the ecosystem.
 
 ### 3.9.4 Data Coverage: Funding Records
 
